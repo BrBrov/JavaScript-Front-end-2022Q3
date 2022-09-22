@@ -56,11 +56,10 @@ a, a:hover, a:focus, a:active{
 .logo-img{
     width: 27.15%;
     height: 65%;
-    margin: 4.75% 0 0 72.85%;
+    margin: 4.75% 0 0 70.85%;
 }
 .menu-nav{
-    width: 60.5%;
-
+    width: 60%;
 }
 .list{
     padding: 0;
@@ -72,7 +71,7 @@ a, a:hover, a:focus, a:active{
 }
 .list-item{
     list-style: none;
-    margin-left: 5.48%;
+    margin-left: 5.99%;
 }
 .link-nav{
     font-family: 'Roboto Regular', Arial, sans-serif;
@@ -96,11 +95,11 @@ a, a:hover, a:focus, a:active{
     text-fill-color: transparent;
 }
 .description{
-    width: 20.3125%;
+    width: 20.8125%;
 }
 .description-text{
     display: block;
-    margin: 9% 60% auto auto;
+    margin: 9.3% 58.8% auto 1%;
     font-family: 'Roboto Regular', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -117,8 +116,8 @@ a, a:hover, a:focus, a:active{
     z-index: 1;
     width: 29.0625%;
     height: 66.43%;
-    top: 1%;
-    margin: 0 19.9375% auto 51%;
+    top: 1.7%;
+    margin: 0 19.9375% auto 50%;
     border-radius: 90%;
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
 }
@@ -126,8 +125,8 @@ a, a:hover, a:focus, a:active{
     position: relative;
     z-index: 2;
     width: 31.25%;
-    top: -55%;
-    margin: 0 15% auto 53.75%;
+    top: -53.7%;
+    margin: 0 15% auto 54.75%;
     font-family: 'Roboto Regular', Arial, sans-serif;
     font-style: normal;
     font-weight: 700;
@@ -145,10 +144,10 @@ a, a:hover, a:focus, a:active{
     display: block;
     position: relative;
     z-index: 1;
-    top: -50%;
-    width: 19.625%;
-    height: 8.6%;
-    margin: 0 20% auto auto;
+    top: -45%;
+    width: 18.625%;
+    height: 7.6%;
+    margin: 0 20.2% auto auto;
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
     border-radius: 25px;
     border: none;
@@ -181,8 +180,8 @@ a, a:hover, a:focus, a:active{
 }
 .flower{
     position: relative;
-    top: 0.66%;
-    margin: 0 auto auto 87.5%;
+    top: 1%;
+    margin: 0 auto auto 87.1%;
     width: 18.3125%;
     height: 33.0782%;
 }
@@ -198,10 +197,96 @@ a, a:hover, a:focus, a:active{
     justify-content: space-between;
     align-items: self-end;
 }
+.left-flower{
+    width: 18.25%;
+    height: 25.1404%;
+}
+.palm{
+    width: 100%;
+    height: 100%;
+}
+.right-flower{
+    width: 23%;
+    height: 15.0355%;
+}
+.strelitzia{
+    width: 100%;
+    height: 100%;
+}
+/*Section animals------------------->*/
+
 .contain-animals{
     position: relative;
     z-index: 1;
     height: 100%;
     top: -100%;
 }
+
+/*The Backstage of the Wilderness World.*/
+.backstage{
+    display: grid;
+    width: 72.5625%;
+    height: 22.0338%;
+    margin: 8.8% auto 0 13.5%;
+    grid-template-rows: 100%;
+    grid-template-columns: 52% 40%;
+    gap: 7.7%;
+}
+.backstage-left{
+    width: 100%;
+    height: 100%;
+}
+.img-backstage{
+    display: block;
+    /*width: 100%;*/
+    height: 100%;
+}
+.backstage-right{
+    width: 100%;
+}
+.title-backstage{
+    margin-top: 0;
+    margin-bottom: 5%;
+    font-family: 'Roboto Regular', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 120%;
+    /* or 58px */
+    color: #333B41;
+}
+.sign-backstage{
+    margin-top: 5%;
+    font-family: 'Roboto Regular', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    /* or 21px */
+    color: #333B41;
+}
+.how-it-works{
+    margin-top: 11.5%;
+    margin-bottom: 6.8%;
+    font-family: 'Roboto Regular', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 120%;
+    /* identical to box height, or 29px */
+    color: #333B41;
+}
+.body-backstage{
+    font-family: 'Roboto Regular', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    /* or 22px */
+    color: #333B41;
+}
+
+/*Carousel*/
+
+
 
