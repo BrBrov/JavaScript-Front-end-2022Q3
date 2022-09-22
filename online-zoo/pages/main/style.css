@@ -288,5 +288,44 @@ a, a:hover, a:focus, a:active{
 
 /*Carousel*/
 
-
-
+.carousel-container{
+    width: 72.375%;
+    height: 47.6763%;
+    margin: 11.2% auto 0 13.5%;
+    border: 1px groove black;
+}
+.upper-carousel{
+    width: 100%;
+    height: 48.8532%;
+}
+.down-carousel{
+    width: 100%;
+    height: 48.8532%;
+}
+.left-arrow{
+    position: absolute;
+    width: 3.875%;
+    height: 3.39%;
+    top: 53.9%;
+    left: 8.4%;
+    border-radius: 90px;
+    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+}
+.arrow-left{
+    margin: 42.5% 36.3%;
+    fill: #FFFFFF;
+}
+.right-arrow{
+    position: absolute;
+    width: 3.875%;
+    height: 3.39%;
+    top: 53.9%;
+    right: 9.1%;
+    border-radius: 90px;
+    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+}
+.arrow-right{
+    margin: 42.5% 36.3%;
+    background: #FFFFFF;
+    /*border: 0.3px solid #FFFFFF;*/
+}
