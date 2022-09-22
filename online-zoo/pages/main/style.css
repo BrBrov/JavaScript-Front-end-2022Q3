@@ -292,11 +292,11 @@ a, a:hover, a:focus, a:active{
     width: 72.375%;
     height: 47.6763%;
     margin: 11.2% auto 0 13.5%;
-    border: 1px groove black;
 }
 .upper-carousel{
     width: 100%;
     height: 48.8532%;
+    margin-top: 0;
 }
 .down-carousel{
     width: 100%;
@@ -326,4 +326,41 @@ a, a:hover, a:focus, a:active{
 }
 .arrow-right{
     margin: 42.5% 36.3%;
+}
+.animal-card{
+    display: inline-block;
+    width: 31.7984%;
+    height: 100%;
+}
+.card-img{
+    display: block;
+    width: 100%;
+}
+.title-card{
+    display: inline-block;
+}
+.title-animal-card{
+    font-family: 'Roboto Regular', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 140%;
+    /* or 22px */
+    text-transform: uppercase;
+    color: #000000;
+}
+.animal-from{
+    font-family: 'Roboto Light', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 120%;
+    /* identical to box height, or 18px */
+    color: #000000;
+}
+.card-eat{
+    clear: left;
+    display: inline-block;
+    width: 9.0164%;
+    height: 8.6854%;
 }
