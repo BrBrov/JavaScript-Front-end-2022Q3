@@ -313,7 +313,7 @@ a, a:hover, a:focus, a:active{
 }
 .arrow-left{
     margin: 42.5% 36.3%;
-    fill: #FFFFFF;
+    transform: rotate(-180deg);
 }
 .right-arrow{
     position: absolute;
@@ -326,6 +326,4 @@ a, a:hover, a:focus, a:active{
 }
 .arrow-right{
     margin: 42.5% 36.3%;
-    background: #FFFFFF;
-    /*border: 0.3px solid #FFFFFF;*/
 }
