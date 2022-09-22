@@ -1,0 +1,207 @@
+@import "../../assets/styles/fonts.css";
+
+*,*::before,*::after {
+    box-sizing: border-box;
+}
+html, body{
+    margin: 0;
+    padding: 0;
+}
+a, a:hover, a:focus, a:active{
+    text-decoration: none;
+}
+
+/*Debug color*/
+
+.red{
+    background: red;
+}
+.green{
+    background: green;
+}
+.yellow{
+    background: yellow;
+}
+
+.container{
+    width: 100vm;
+}
+.page{
+    max-width: 1600px;
+    height: 4975px;
+    margin: 0 auto;
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-rows: 15.68% 75.42% 8.9%;
+}
+
+/*HEADER-------------------------->*/
+
+.header{
+    width: 100%;
+    background: url("../../assets/images/panda-bg.jpg") no-repeat;
+}
+.navigation{
+    height: 10.26%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+    background: #000000;
+    backdrop-filter: blur(2px);
+}
+.logo{
+    width: 19.1875%;
+}
+.logo-img{
+    width: 27.15%;
+    height: 65%;
+    margin: 4.75% 0 0 72.85%;
+}
+.menu-nav{
+    width: 60.5%;
+
+}
+.list{
+    padding: 0;
+    margin-top: 3%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: left;
+}
+.list-item{
+    list-style: none;
+    margin-left: 5.48%;
+}
+.link-nav{
+    font-family: 'Roboto Regular', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: #FFFFFF;
+}
+
+.list-item:first-child{
+    font-family: 'Roboto Regular', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+.description{
+    width: 20.3125%;
+}
+.description-text{
+    display: block;
+    margin: 9% 60% auto auto;
+    font-family: 'Roboto Regular', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: #FFFFFF;
+}
+.fav-animal{
+    height: 89.74%;
+    margin: 0;
+}
+.bg-title{
+    position: relative;
+    z-index: 1;
+    width: 29.0625%;
+    height: 66.43%;
+    top: 1%;
+    margin: 0 19.9375% auto 51%;
+    border-radius: 90%;
+    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+}
+.title{
+    position: relative;
+    z-index: 2;
+    width: 31.25%;
+    top: -55%;
+    margin: 0 15% auto 53.75%;
+    font-family: 'Roboto Regular', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 106.496px;
+    line-height: 75%;
+    /* or 80px */
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+.color-one-title{
+    color: #FFEE2E;
+}
+.btn-title{
+    display: block;
+    position: relative;
+    z-index: 1;
+    top: -50%;
+    width: 19.625%;
+    height: 8.6%;
+    margin: 0 20% auto auto;
+    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+    border-radius: 25px;
+    border: none;
+}
+.text-btn-title{
+    font-family: 'Roboto Medium', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 140%;
+    /* or 22px */
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+/*MAIN------------------------------------->*/
+
+.main{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 48.7473% 26.7591% 24.4936% ;
+}
+.bg-animals{
+    position: relative;
+    z-index: 0;
+    height: 100%;
+    overflow: hidden;
+}
+.flower{
+    position: relative;
+    top: 0.66%;
+    margin: 0 auto auto 87.5%;
+    width: 18.3125%;
+    height: 33.0782%;
+}
+.flower-img{
+    height: 100%;
+}
+.animals-flower-container{
+    display: flex;
+    width: 100%;
+    margin-top: 47.8%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: self-end;
+}
+.contain-animals{
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    top: -100%;
+}
+
