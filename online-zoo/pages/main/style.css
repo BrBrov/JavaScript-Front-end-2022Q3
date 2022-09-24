@@ -336,7 +336,7 @@ a, a:hover, a:focus, a:active {
     margin-top: 0;
     margin-bottom: 0.864%;
     overflow: hidden;
-    font-size: 0x;
+    font-size: 0;
 }
 
 .down-carousel {
@@ -457,7 +457,7 @@ a, a:hover, a:focus, a:active {
 }
 
 .animal-card:hover .title-card {
-    transform: translateY(-100%);
+    transform: translateY(-98%);
     transition: all 0.5s;
 }
 
@@ -497,4 +497,134 @@ a, a:hover, a:focus, a:active {
     background: rgba(253, 253, 255, 0.52);
     backdrop-filter: blur(2px);
     border-radius: 20px;
+    padding-top: 2.563%;
 }
+/*Friend text---------------------------------------------->*/
+.friend-text-container{
+    display: block;
+    width: 88.9310%;
+    height: 40.3592%;
+    margin: 0 auto auto 8.535%;
+}
+.friend-title{
+    display: block;
+    margin: 0 auto 0 24.332%;
+    font-family: 'Roboto Regular', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 120%;
+    /* identical to box height, or 58px */
+    /*text-align: center;*/
+    color: #FE9013;
+}
+.friend-block-one{
+    display: block;
+    font-family: 'Roboto Regular', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 120%;
+    /* identical to box height, or 29px */
+    color: #333B41;
+}
+.friend-block-two{
+    font-family: 'Roboto Medium', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 100%;
+    /* identical to box height, or 21px */
+    color: #333B41;
+}
+.friend-block-three{
+    display: block;
+    margin-top: 0.97%;
+    font-family: 'Roboto Regular', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    /* or 21px */
+    color: #333B41;
+}
+.friend-block-underline{
+    text-decoration: underline #FE9013;
+}
+.friend-block-four{
+    display: block;
+    margin: 6.108% auto 0 36.3519%;
+    font-family: 'Roboto Regular', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 130%;
+    /* identical to box height, or 47px */
+    color: #333B41;
+}
+/*Friend scheme----------------->*/
+.friend-scheme-container{
+    display: grid;
+    width: 65.865%;
+    height: 30.74%;
+    margin: 3.45% auto 0;
+    grid-template-columns: 22% 1fr 22% 1fr 22%;
+    grid-template-rows: 100%;
+}
+.friend-card-background{
+    width: 100%;
+    height: 68.87%;
+    background: #FFFFFF;
+    border: 1px solid #F9804B;
+    border-radius: 5px;
+}
+.friend-card-pay{
+    display: block;
+    margin: 32.1428% auto auto 17.8571%;
+}
+.friend-card-plant{
+    display: block;
+    margin: 22.619% auto auto 24.5416%;
+}
+.friend-card-monkey{
+    display: block;
+    margin: 28.5714% auto auto 13.0952%;
+}
+.friend-card-text{
+    display: block;
+    width: 100%;
+    margin-top: 12.295%;
+    font-family: 'Roboto Regular', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    /* or 22px */
+    color: #333B41;
+}
+.friend-arrow{
+    display: block;
+    margin: 48% auto auto;
+}
+/*Button friend----------------------------->*/
+.friend-btn{
+    display: block;
+    width: 26.726%;
+    height: 7.06%;
+    margin: 5.173% auto auto;
+    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+    border-radius: 25px;
+    border: none;
+}
+.friend-btn-text{
+    font-family: 'Roboto Medium', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 140%;
+    /* or 22px */
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
