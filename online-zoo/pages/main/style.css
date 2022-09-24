@@ -627,4 +627,116 @@ a, a:hover, a:focus, a:active {
     text-transform: uppercase;
     color: #FFFFFF;
 }
-
+/*Testimonals block----------------------------->*/
+.testimonials{
+    overflow: hidden;
+}
+.testimonials-plant{
+    display: block;
+    position: relative;
+    z-index: 1;
+    top: -10%;
+    right: -84.5%;
+    bottom: 0;
+}
+.testimonials-block{
+    position: relative;
+    z-index: 2;
+    width: 72.8%;
+    height: 65.2%;
+    margin: 8.75% auto auto;
+}
+.testimonials-title{
+    display: block;
+    margin: 0 auto;
+    font-family: 'Roboto Regular', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 130%;
+    /* identical to box height, or 47px */
+    text-align: center;
+    color: #333B41;
+}
+.testimonials-container{
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 65.2754%;
+    font-size: 0;
+}
+.testimonials-card{
+    display: inline-block;
+    width: 23.5%;
+    height: 99%;
+    margin: 0 0.7% 0;
+}
+.testimonials-header{
+    width: auto;
+    height: 10%;
+    margin: 5.6137% 0 0 5.988%;}
+.avatar{
+    display: inline-block;
+}
+.user-info{
+    display: inline-block;
+    margin-left: 3.7425%;
+}
+.user-name{
+    font-family: 'Roboto Regular', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    /* or 19px */
+    color: #000000;
+}
+.user-location{
+    font-family: 'Roboto Light', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 120%;
+    /* identical to box height, or 18px */
+    /* Gray 4 */
+    color: #BDBDBD;
+}
+.user-separator{
+    font-family: 'Roboto Light', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 120%;
+    /* identical to box height, or 18px */
+    /* Gray 4 */
+    color: #BDBDBD;
+}
+.user-date{
+    font-family: 'Roboto Light', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 120%;
+    /* identical to box height, or 18px */
+    /* Gray 4 */
+    color: #BDBDBD;
+}
+.testimonials-description{
+    width: 86.6%;
+    height: 80%;
+    margin: 3.7425% 0 6.9495% 5.988%;
+    overflow-y: hidden;
+}
+.review{
+    /*display: block;*/
+    overflow: hidden;
+    text-align: left;
+    font-family: 'Roboto Light', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 120%;
+    /* or 18px */
+    /* gray */
+    color: #767474;
+}
