@@ -1,32 +1,37 @@
 @import "../../assets/styles/fonts.css";
 
-*,*::before,*::after {
+*, *::before, *::after {
     box-sizing: border-box;
 }
-html, body{
+
+html, body {
     margin: 0;
     padding: 0;
 }
-a, a:hover, a:focus, a:active{
+
+a, a:hover, a:focus, a:active {
     text-decoration: none;
 }
 
 /*Debug color*/
 
-.red{
+.red {
     background: red;
 }
-.green{
+
+.green {
     background: green;
 }
-.yellow{
+
+.yellow {
     background: yellow;
 }
 
-.container{
+.container {
     width: 100vm;
 }
-.page{
+
+.page {
     max-width: 1600px;
     height: 4975px;
     margin: 0 auto;
@@ -37,11 +42,12 @@ a, a:hover, a:focus, a:active{
 
 /*HEADER-------------------------->*/
 
-.header{
+.header {
     width: 100%;
     background: url("../../assets/images/panda-bg.jpg") no-repeat;
 }
-.navigation{
+
+.navigation {
     height: 10.26%;
     display: flex;
     flex-wrap: nowrap;
@@ -50,18 +56,22 @@ a, a:hover, a:focus, a:active{
     background: #000000;
     backdrop-filter: blur(2px);
 }
-.logo{
+
+.logo {
     width: 19.1875%;
 }
-.logo-img{
+
+.logo-img {
     width: 27.15%;
     height: 65%;
     margin: 4.75% 0 0 70.85%;
 }
-.menu-nav{
+
+.menu-nav {
     width: 60%;
 }
-.list{
+
+.list {
     padding: 0;
     margin-top: 3%;
     display: flex;
@@ -69,11 +79,13 @@ a, a:hover, a:focus, a:active{
     flex-direction: row;
     justify-content: left;
 }
-.list-item{
+
+.list-item {
     list-style: none;
     margin-left: 5.99%;
 }
-.link-nav{
+
+.link-nav {
     font-family: 'Roboto Regular', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -82,7 +94,7 @@ a, a:hover, a:focus, a:active{
     color: #FFFFFF;
 }
 
-.list-item:first-child{
+.list-item:first-child {
     font-family: 'Roboto Regular', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -94,10 +106,12 @@ a, a:hover, a:focus, a:active{
     background-clip: text;
     text-fill-color: transparent;
 }
-.description{
+
+.description {
     width: 20.8125%;
 }
-.description-text{
+
+.description-text {
     display: block;
     margin: 9.3% 58.8% auto 1%;
     font-family: 'Roboto Regular', Arial, sans-serif;
@@ -107,11 +121,13 @@ a, a:hover, a:focus, a:active{
     line-height: 140%;
     color: #FFFFFF;
 }
-.fav-animal{
+
+.fav-animal {
     height: 89.74%;
     margin: 0;
 }
-.bg-title{
+
+.bg-title {
     position: relative;
     z-index: 1;
     width: 29.0625%;
@@ -121,7 +137,8 @@ a, a:hover, a:focus, a:active{
     border-radius: 90%;
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
 }
-.title{
+
+.title {
     position: relative;
     z-index: 2;
     width: 31.25%;
@@ -137,10 +154,12 @@ a, a:hover, a:focus, a:active{
     text-transform: uppercase;
     color: #FFFFFF;
 }
-.color-one-title{
+
+.color-one-title {
     color: #FFEE2E;
 }
-.btn-title{
+
+.btn-title {
     display: block;
     position: relative;
     z-index: 1;
@@ -152,7 +171,8 @@ a, a:hover, a:focus, a:active{
     border-radius: 25px;
     border: none;
 }
-.text-btn-title{
+
+.text-btn-title {
     font-family: 'Roboto Medium', Arial, sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -166,29 +186,33 @@ a, a:hover, a:focus, a:active{
 
 /*MAIN------------------------------------->*/
 
-.main{
+.main {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 48.7473% 26.7591% 24.4936% ;
+    grid-template-rows: 48.7473% 26.7591% 24.4936%;
 }
-.bg-animals{
+
+.bg-animals {
     position: relative;
     z-index: 0;
     height: 100%;
     overflow: hidden;
 }
-.flower{
+
+.flower {
     position: relative;
     top: 1%;
     margin: 0 auto auto 87.1%;
     width: 18.3125%;
     height: 33.0782%;
 }
-.flower-img{
+
+.flower-img {
     height: 100%;
 }
-.animals-flower-container{
+
+.animals-flower-container {
     display: flex;
     width: 100%;
     margin-top: 47.8%;
@@ -197,25 +221,30 @@ a, a:hover, a:focus, a:active{
     justify-content: space-between;
     align-items: self-end;
 }
-.left-flower{
+
+.left-flower {
     width: 18.25%;
     height: 25.1404%;
 }
-.palm{
+
+.palm {
     width: 100%;
     height: 100%;
 }
-.right-flower{
+
+.right-flower {
     width: 23%;
     height: 15.0355%;
 }
-.strelitzia{
+
+.strelitzia {
     width: 100%;
     height: 100%;
 }
+
 /*Section animals------------------->*/
 
-.contain-animals{
+.contain-animals {
     position: relative;
     z-index: 1;
     height: 100%;
@@ -223,7 +252,7 @@ a, a:hover, a:focus, a:active{
 }
 
 /*The Backstage of the Wilderness World.*/
-.backstage{
+.backstage {
     display: grid;
     width: 72.5625%;
     height: 22.0338%;
@@ -232,19 +261,23 @@ a, a:hover, a:focus, a:active{
     grid-template-columns: 52% 40%;
     gap: 7.7%;
 }
-.backstage-left{
+
+.backstage-left {
     width: 100%;
     height: 100%;
 }
-.img-backstage{
+
+.img-backstage {
     display: block;
     /*width: 100%;*/
     height: 100%;
 }
-.backstage-right{
+
+.backstage-right {
     width: 100%;
 }
-.title-backstage{
+
+.title-backstage {
     margin-top: 0;
     margin-bottom: 5%;
     font-family: 'Roboto Regular', Arial, sans-serif;
@@ -255,7 +288,8 @@ a, a:hover, a:focus, a:active{
     /* or 58px */
     color: #333B41;
 }
-.sign-backstage{
+
+.sign-backstage {
     margin-top: 5%;
     font-family: 'Roboto Regular', Arial, sans-serif;
     font-style: normal;
@@ -265,7 +299,8 @@ a, a:hover, a:focus, a:active{
     /* or 21px */
     color: #333B41;
 }
-.how-it-works{
+
+.how-it-works {
     margin-top: 11.5%;
     margin-bottom: 6.8%;
     font-family: 'Roboto Regular', Arial, sans-serif;
@@ -276,7 +311,8 @@ a, a:hover, a:focus, a:active{
     /* identical to box height, or 29px */
     color: #333B41;
 }
-.body-backstage{
+
+.body-backstage {
     font-family: 'Roboto Regular', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -288,21 +324,31 @@ a, a:hover, a:focus, a:active{
 
 /*Carousel*/
 
-.carousel-container{
+.carousel-container {
     width: 72.375%;
     height: 47.6763%;
     margin: 11.2% auto 0 13.5%;
 }
-.upper-carousel{
-    width: 100%;
-    height: 48.8532%;
+
+.upper-carousel {
+    width: 101.7271%;
+    height: 49.8532%;
     margin-top: 0;
+    margin-bottom: 0.864%;
+    overflow: hidden;
+    font-size: 0x;
 }
-.down-carousel{
-    width: 100%;
-    height: 48.8532%;
+
+.down-carousel {
+    width: 101.7271%;
+    height: 49.8532%;
+    margin-top: 0.864%;
+    margin-bottom: 0;
+    overflow: hidden;
+    font-size: 0;
 }
-.left-arrow{
+
+.left-arrow {
     position: absolute;
     width: 3.875%;
     height: 3.39%;
@@ -311,11 +357,13 @@ a, a:hover, a:focus, a:active{
     border-radius: 90px;
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
 }
-.arrow-left{
+
+.arrow-left {
     margin: 42.5% 36.3%;
-    transform: rotate(-180deg);
+    /*transform: rotate(-180deg);*/
 }
-.right-arrow{
+
+.right-arrow {
     position: absolute;
     width: 3.875%;
     height: 3.39%;
@@ -324,22 +372,55 @@ a, a:hover, a:focus, a:active{
     border-radius: 90px;
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
 }
-.arrow-right{
+
+.arrow-right {
     margin: 42.5% 36.3%;
 }
-.animal-card{
+
+/*Element of carousel ------------------->*/
+.elem-carousel {
     display: inline-block;
-    width: 31.7984%;
-    height: 100%;
+    width: 33%;
+    height: 98%;
 }
-.card-img{
+
+.animal-card {
     display: block;
+    clear: left;
+    width: 94.8186%;
+    /*width: 31.6062%;*/
+    height: 100%;
+    margin: 0 0.864% 0 0.864%;
+    overflow: hidden;
+}
+
+.card-img {
+    display: block;
+    position: relative;
+    z-index: 1;
     width: 100%;
+    height: 100%;
+    transform: scale(1);
+    transition: all 0.5s;
 }
-.title-card{
-    display: inline-block;
+
+.title-card {
+    display: flex;
+    position: relative;
+    width: 100%;
+    z-index: 2;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #FFFFFF;
 }
-.title-animal-card{
+
+.title-text {
+    width: 80%;
+    height: 25%;
+}
+
+.title-animal-card {
     font-family: 'Roboto Regular', Arial, sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -349,7 +430,8 @@ a, a:hover, a:focus, a:active{
     text-transform: uppercase;
     color: #000000;
 }
-.animal-from{
+
+.animal-from {
     font-family: 'Roboto Light', Arial, sans-serif;
     font-style: normal;
     font-weight: 300;
@@ -358,9 +440,61 @@ a, a:hover, a:focus, a:active{
     /* identical to box height, or 18px */
     color: #000000;
 }
-.card-eat{
-    clear: left;
-    display: inline-block;
+
+.card-eat {
+    display: block;
     width: 9.0164%;
     height: 8.6854%;
+    margin: 2% 2% auto auto;
+}
+
+/*Interactive card tune------------------>*/
+.card-img:hover {
+    overflow: hidden;
+    height: 100%;
+    transform: scale(1.05);
+    transition: all 0.5s;
+}
+
+.animal-card:hover .title-card {
+    transform: translateY(-100%);
+    transition: all 0.5s;
+}
+
+/*Button "choose your favorite" ------------------------------->*/
+.btn-choose {
+    display: block;
+    width: 19.625%;
+    height: 3.281%;
+    margin: 5% auto 0;
+    background: #FE9013;
+    border: none;
+    border-radius: 25px;
+}
+
+.text-choose {
+    font-family: 'Roboto Medium', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 140%;
+    /* or 22px */
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+/*Section friend------------------------------------------------>*/
+.friend {
+    background: linear-gradient(315.75deg, rgba(254, 210, 144, 0.7) 30.06%, #FEBDAB 100.95%, rgba(254, 210, 144, 0.7) 106.36%),
+                linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%),
+                linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%);
+}
+.friend-board {
+    width: 72.5%;
+    height: 83.165%;
+    margin: 4.313% auto 6.25%;
+    background: rgba(253, 253, 255, 0.52);
+    backdrop-filter: blur(2px);
+    border-radius: 20px;
 }
