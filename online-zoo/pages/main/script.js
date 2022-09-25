@@ -27,6 +27,14 @@ class ActiveElem{
                 }, 2000)
             }else{
                 this.emailBtn.className = 'footer-form-btn valid';
+                this.emailBtn.addEventListener('click',(evClk)=>{
+                    evClk.stopPropagation();
+                    evClk.target.className = 'footer-form-btn btn-push';
+                    setTimeout(()=>{
+                        evClk.target.className = 'footer-form-btn valid';
+                    },250);
+                    this.emailBtn.removeEventListener('click', ()=>{});
+                })
             }
         })
         this.email.addEventListener('focus', (ev)=>{

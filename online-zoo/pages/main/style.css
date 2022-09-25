@@ -995,8 +995,6 @@ input[type='email']:valid:not(:placeholder-shown){
     font-size: 16px;
     line-height: 140%;
     /* or 22px */
-    /* Green */
-    color: #4B9200;
 }
 .mistake{
     border: 1px solid #D31414;
@@ -1005,6 +1003,10 @@ input[type='email']:valid:not(:placeholder-shown){
 .valid{
     border: 1px solid #000000;
     color: #000000;
+}
+.btn-push{
+    border: 1px solid #4B9200;
+    color: #4B9200;
 }
 /*Button of footer------------------------------>*/
 .footer-btn{
