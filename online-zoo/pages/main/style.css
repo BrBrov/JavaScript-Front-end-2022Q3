@@ -12,6 +12,9 @@ html, body {
 a, a:hover, a:focus, a:active {
     text-decoration: none;
 }
+button{
+    cursor: pointer;
+}
 
 .container {
     width: 100vw;
@@ -48,6 +51,7 @@ a, a:hover, a:focus, a:active {
     height: 66%;
     margin: 1% 0 1% 13.55%;
     border: 1.18841px solid #FFFFFF;
+    cursor: pointer;
 }
 
 .logo-img {
@@ -96,6 +100,11 @@ a, a:hover, a:focus, a:active {
     line-height: 140%;
     color: #FFFFFF;
 }
+.link-nav.active:hover {
+    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
 .list-item:first-child {
     font-family: 'Roboto Regular', Arial, sans-serif;
@@ -123,6 +132,9 @@ a, a:hover, a:focus, a:active {
     font-size: 16px;
     line-height: 140%;
     color: #FFFFFF;
+}
+.description:hover,.description-text:hover{
+    color: #F9804B;
 }
 
 .fav-animal {
@@ -181,6 +193,12 @@ a, a:hover, a:focus, a:active {
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
     border-radius: 25px;
     border: none;
+}
+.btn-title:hover{
+    background: #E47209;
+}
+.btn-title:active{
+    background: #4B9200;
 }
 
 .text-btn-title {
@@ -387,6 +405,9 @@ a, a:hover, a:focus, a:active {
 .arrow-right {
     margin: 42.5% 36.3%;
 }
+.active-arrow:active{
+    background: #4B9200;
+}
 
 /*Element of carousel ------------------->*/
 .elem-carousel {
@@ -412,6 +433,7 @@ a, a:hover, a:focus, a:active {
     width: 100%;
     height: 100%;
     transform: scale(1);
+    filter: brightness(100%);
     transition: all 0.5s;
 }
 
@@ -464,6 +486,7 @@ a, a:hover, a:focus, a:active {
     overflow: hidden;
     height: 100%;
     transform: scale(1.05);
+    filter: brightness(60%);
     transition: all 0.5s;
 }
 
@@ -493,6 +516,12 @@ a, a:hover, a:focus, a:active {
     text-align: center;
     text-transform: uppercase;
     color: #FFFFFF;
+}
+.btn-choose:hover{
+    background: #E47209;
+}
+.btn-choose:active{
+    background: #4B9200;
 }
 
 /*Section friend------------------------------------------------>*/
@@ -565,7 +594,15 @@ a, a:hover, a:focus, a:active {
     color: #333B41;
 }
 .friend-block-underline{
+    color: #333B41;;
     text-decoration: underline #FE9013;
+    text-underline-position: under;
+}
+.friend-block-underline:hover{
+    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: underline #F9804B;
     text-underline-position: under;
 }
 .friend-block-four{
@@ -643,6 +680,12 @@ a, a:hover, a:focus, a:active {
     text-align: center;
     text-transform: uppercase;
     color: #FFFFFF;
+}
+.friend-btn:hover{
+    background: #E47209;
+}
+.friend-btn:active{
+    background: #4B9200;
 }
 /*Testimonals block----------------------------->*/
 .testimonials{
@@ -841,6 +884,12 @@ input[type="range"]::-webkit-slider-thumb{
     text-transform: uppercase;
     color: #FFFFFF;
 }
+.testimonials-btn:hover{
+    background: #E47209;
+}
+.testimonials-btn:active{
+    background: #4B9200;
+}
 /*Footer------------------------->*/
 .footer{
     background: #111115;
@@ -897,8 +946,12 @@ input[type="range"]::-webkit-slider-thumb{
     padding-left: 2.2%;
     border: 2px solid #F9804B;
     background-color: #111115;
+    color: #4B9200;
 }
 input[type='email']::placeholder{
+    width: 100%;
+    height: 100%;
+    margin: 0;
     outline: none;
     font-family: 'Roboto Regular', Arial, sans-serif;
     font-style: normal;
@@ -909,17 +962,32 @@ input[type='email']::placeholder{
     /* Gray 4 */
     color: #BDBDBD;
 }
+input[type='email']:focus{
+    border: 2px solid #4B9200;
+}
+input[type='email']:focus::placeholder{
+    background-color: #E0D8F0;
+}
 input[type = 'email']:focus{
     outline: none;
-    color: #BDBDBD;
+    color: #4B9200;
+    background-color: #E0D8F0;
 }
+input[type='email']:invalid{
+    color: #D31414;
+    border: 2px solid #D31414;
+}
+input[type='email']:valid:not(:placeholder-shown){
+    content: "Invalid emeil";
+    color: #4B9200;
+}
+
 .footer-form-btn{
     width: 34.6%;
     height: 50%;
     margin-left: 1%;
     background: #F1F3F2;
     /* Green */
-    border: 1px solid #4B9200;
     border-radius: 5px;
     font-family: 'Roboto Regular', Arial, sans-serif;
     font-style: normal;
@@ -929,6 +997,14 @@ input[type = 'email']:focus{
     /* or 22px */
     /* Green */
     color: #4B9200;
+}
+.mistake{
+    border: 1px solid #D31414;
+    color: #D31414;
+}
+.valid{
+    border: 1px solid #000000;
+    color: #000000;
 }
 /*Button of footer------------------------------>*/
 .footer-btn{
@@ -946,7 +1022,12 @@ input[type = 'email']:focus{
     /* or 22px */
     text-align: center;
     text-transform: uppercase;
-    color: #FFFFFF;
+}
+.footer-btn:hover{
+    background: #E47209;
+}
+.footer-btn:active{
+    background: #4B9200;
 }
 /*Footer links------------------------------------->*/
 .footer-links{
@@ -981,6 +1062,12 @@ input[type = 'email']:focus{
     border-radius: 90px;
     text-align: center;
     background: rgba(196, 196, 196, 0.5);
+}
+.social-link:active .social-name{
+    color: #4B9200;
+}
+.social-link:active .social-bg{
+    background-color: #4B9200;
 }
 .social-logo{
     display: inline-block;
@@ -1026,18 +1113,33 @@ input[type = 'email']:focus{
 }
 .navigate-link{
     width: auto;
+    cursor: pointer;
+}
+.link-nav.active:hover {
+    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.navigate-link:first-child {
     font-family: 'Roboto Regular', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 140%;
-    /* or 22px */
-    color: #FFFFFF;
+    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /*background-clip: text;*/
+    /*text-fill-color: transparent;*/
 }
+
+
 .footer-about{
     width: 80%;
     height: 38%;
     margin: 21% auto 0 41%;
+    cursor: pointer;
 }
 .author{
     font-family: 'Roboto Thin', Arial, sans-serif;
@@ -1058,4 +1160,7 @@ input[type = 'email']:focus{
     line-height: 130%;
     /* identical to box height, or 21px */
     color: #FFFFFF;
+}
+.footer-about:active> .author, .footer-about:active> .school{
+    color: #4B9200;
 }

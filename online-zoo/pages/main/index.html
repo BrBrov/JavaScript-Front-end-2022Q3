@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script>
+    <script src="script.js"></script>
     <title>Pet Story</title>
 </head>
 <body>
 <div class="container">
     <div class="page">
-        <header class="header">
-            <div class="navigation ">
+        <div class="header">
+            <header class="navigation ">
                 <div class="logo">
                     <h1 class="logo-title">PetStory online</h1>
                     <img class="logo-img" src="../../assets/icons/bamboo-logo.svg" alt="logo">
@@ -19,26 +19,26 @@
                 <nav class="menu-nav">
                     <ul class="list">
                         <li class="list-item">
-                            <a class="link-nav" href="#">About</a>
+                            <a class="link-nav" href="index.html">About</a>
                         </li>
                         <li class="list-item">
-                            <a class="link-nav" href="#">Map</a>
+                            <a class="link-nav active" href="#">Map</a>
                         </li>
                         <li class="list-item">
-                            <a class="link-nav" href="#">Zoos</a>
+                            <a class="link-nav active" href="#">Zoos</a>
                         </li>
                         <li class="list-item">
-                            <a class="link-nav" href="#">Donate</a>
+                            <a class="link-nav active" href="#">Donate</a>
                         </li>
                         <li class="list-item">
-                            <a class="link-nav" href="#">Contact us</a>
+                            <a class="link-nav active" href="#">Contact us</a>
                         </li>
                     </ul>
                 </nav>
                 <div class="description">
-                    <a class="description-text">Designed by ©</a>
+                    <a class="description-text" href="https://www.figma.com/file/jfEFwkXVj1WRq7sUHDr8os/PetStory-online">Designed by ©</a>
                 </div>
-            </div>
+            </header>
             <div class="fav-animal">
                 <div class="bg-title"></div>
                 <h1 class="title">Watch your <span class="color-one-title">favorite</span> animal online</h1>
@@ -46,7 +46,7 @@
                     <span class="text-btn-title">wath online</span>
                 </button>
             </div>
-        </header>
+        </div>
         <main class="main">
             <section class="animals">
                 <div class="bg-animals">
@@ -121,10 +121,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="left-arrow">
+                        <div class="left-arrow active-arrow">
                             <img class="arrow-left" src="../../assets/icons/arrow-left.svg" alt="">
                         </div>
-                        <div class="right-arrow">
+                        <div class="right-arrow active-arrow">
                             <img class="arrow-right" src="../../assets/icons/arrow-rigth.svg" alt="">
                         </div>
                         <div class="down-carousel">
@@ -181,8 +181,7 @@
                         <span class="friend-block-one">We know the animals bring you joy, and in these extraordinary times, we’re glad.</span><br>
                         <span class="friend-block-two">During a time when the COVID-19 epidemic is touching all of our lives, we’re proud and glad that people around the world find joy in PetStory.</span><br>
                         <span class="friend-block-three">Even though the zoo has reopened, we need you now more than ever to help us deal with these problems.
-                        Please consider<br>a gift to our <span
-                                    class="friend-block-underline">Emergency Support Fund .</span></span>
+                        Please consider<br>a gift to our <a class="friend-block-underline" href="#">Emergency Support Fund .</a></span>
                         <span class="friend-block-four">How it works</span>
                     </div>
                     <div class="friend-scheme-container">
@@ -329,42 +328,50 @@
                 <div class="footer-form">
                     <span class="footer-form-title">Subscribe to our news</span><br>
                     <input class="footer-input" type="email" placeholder="enter your email">
-                    <button class="footer-form-btn">Submit</button>
+                    <button class="footer-form-btn mistake">Submit</button>
                 </div>
             </div>
             <button class="footer-btn">donate for volunteers</button>
             <div class="footer-links">
                 <ul class="social">
                     <li class="social-link">
-                        <div class="social-bg">
+                        <a class="social-bg" href="https://www.facebook.com/">
                             <img class="social-logo facebook" src="../../assets/icons/facebbok.svg" alt="">
-                        </div>
-                        <span class="social-name">Facebook</span>
+                        </a>
+                        <a class="social-name" href="https://www.facebook.com/">Facebook</a>
                     </li>
                     <li class="social-link">
-                        <div class="social-bg">
+                        <a class="social-bg" href="https://twitter.com/">
                             <img class="social-logo twitter" src="../../assets/icons/twitter.svg" alt="">
-                        </div>
-                        <span class="social-name">Twitter</span>
+                        </a>
+                        <a class="social-name" href="https://twitter.com/">Twitter</a>
                     </li>
                     <li class="social-link">
-                        <div class="social-bg">
+                        <a class="social-bg" href="https://www.instagram.com/">
                             <img class="social-logo instagram" src="../../assets/icons/instagram.svg" alt="">
-                        </div>
-                        <span class="social-name">Instagram</span>
+                        </a>
+                        <a class="social-name" href="https://www.instagram.com/">Instagram</a>
                     </li>
                     <li class="social-link">
-                        <div class="social-bg">
+                        <a class="social-bg" href="https://www.youtube.com/">
                             <img class="social-logo youtube" src="../../assets/icons/youtube.svg" alt="">
-                        </div>
-                        <span class="social-name">Youtube</span>
+                        </a>
+                        <a class="social-name" href="https://www.youtube.com/">Youtube</a>
                     </li>
                 </ul>
                 <ul class="footer-navigate">
-                    <li class="navigate-link">About</li>
-                    <li class="navigate-link">Map</li>
-                    <li class="navigate-link">Zoos</li>
-                    <li class="navigate-link">Contact us</li>
+                    <li class="navigate-link">
+                        <a class="link-nav" href="index.html">About</a>
+                    </li>
+                    <li class="navigate-link">
+                        <a class="link-nav active" href="#">Map</a>
+                    </li>
+                    <li class="navigate-link">
+                        <a class="link-nav active" href="#">Zoos</a>
+                    </li>
+                    <li class="navigate-link">
+                        <a class="link-nav active" href="#">Contact us</a>
+                    </li>
                 </ul>
                 <div class="footer-about">
                     <span class="author">Designed by Alisa Samborskaya</span><br>
