@@ -13,20 +13,6 @@ a, a:hover, a:focus, a:active {
     text-decoration: none;
 }
 
-/*Debug color*/
-
-.red {
-    background: red;
-}
-
-.green {
-    background: green;
-}
-
-.yellow {
-    background: yellow;
-}
-
 .container {
     width: 100vw;
 }
@@ -59,8 +45,8 @@ a, a:hover, a:focus, a:active {
 
 .logo {
     width: 5.274%;
-    height: 68%;
-    margin: 1% 0 1% 14%;
+    height: 66%;
+    margin: 1% 0 1% 13.55%;
     border: 1.18841px solid #FFFFFF;
 }
 
@@ -150,7 +136,7 @@ a, a:hover, a:focus, a:active {
     width: 29.0625%;
     height: 66.43%;
     top: 1.7%;
-    margin: 0 19.9375% auto 50%;
+    margin: 0 19.9375% auto 50.2%;
     border-radius: 90%;
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
 }
@@ -160,8 +146,8 @@ a, a:hover, a:focus, a:active {
     z-index: 2;
     width: 31.25%;
     top: -53.7%;
-    margin: 0 15% auto 54.75%;
-    font-family: 'Roboto Regular', Arial, sans-serif;
+    margin: 0 15% auto 55%;
+    font-family: 'Roboto Regular', Arial, serif;
     font-style: normal;
     font-weight: 700;
     font-size: 106.496px;
@@ -173,6 +159,14 @@ a, a:hover, a:focus, a:active {
 }
 
 .color-one-title {
+    font-family: 'Roboto Medium', Arial, serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 106.496px;
+    line-height: 75%;
+    /* or 80px */
+    text-align: center;
+    text-transform: uppercase;
     color: #FFEE2E;
 }
 
@@ -537,11 +531,14 @@ a, a:hover, a:focus, a:active {
 }
 .friend-block-one{
     display: block;
+    margin-top: 1.5%;
+    margin-bottom: 1.9%;
     font-family: 'Roboto Regular', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
     line-height: 120%;
+    letter-spacing: -0.2px;
     /* identical to box height, or 29px */
     color: #333B41;
 }
@@ -551,22 +548,25 @@ a, a:hover, a:focus, a:active {
     font-weight: 500;
     font-size: 16px;
     line-height: 100%;
+    letter-spacing: -0.06px;
     /* identical to box height, or 21px */
     color: #333B41;
 }
 .friend-block-three{
     display: block;
-    margin-top: 0.97%;
+    margin-top: 1.4%;
     font-family: 'Roboto Regular', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 130%;
+    letter-spacing: -0.1px;
     /* or 21px */
     color: #333B41;
 }
 .friend-block-underline{
     text-decoration: underline #FE9013;
+    text-underline-position: under;
 }
 .friend-block-four{
     display: block;
@@ -584,7 +584,7 @@ a, a:hover, a:focus, a:active {
     display: grid;
     width: 65.865%;
     height: 30.74%;
-    margin: 3.45% auto 0;
+    margin: 4.8% auto 0;
     grid-template-columns: 22% 1fr 22% 1fr 22%;
     grid-template-rows: 100%;
 }
@@ -610,7 +610,7 @@ a, a:hover, a:focus, a:active {
 .friend-card-text{
     display: block;
     width: 100%;
-    margin-top: 12.295%;
+    margin-top: 18.295%;
     font-family: 'Roboto Regular', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -626,7 +626,7 @@ a, a:hover, a:focus, a:active {
 /*Button friend----------------------------->*/
 .friend-btn{
     display: block;
-    width: 26.726%;
+    width: 26.33%;
     height: 7.06%;
     margin: 5.173% auto auto;
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
@@ -659,7 +659,7 @@ a, a:hover, a:focus, a:active {
 .testimonials-block{
     position: relative;
     z-index: 2;
-    width: 72.8%;
+    width: 73.8%;
     height: 65.2%;
     margin: 8.75% auto auto;
 }
@@ -680,13 +680,14 @@ a, a:hover, a:focus, a:active {
     overflow: hidden;
     width: 100%;
     height: 65.2754%;
+    margin-top: 4%;
     font-size: 0;
 }
 .testimonials-card{
     display: inline-block;
-    width: 23.5%;
-    height: 99%;
-    margin: 0 0.7% 0;
+    width: 22.5%;
+    height: 99.4%;
+    margin: 0 1.2% 0;
     background: linear-gradient(#ffffff, #ffffff) padding-box,
                 linear-gradient(225deg, #FEBDABBD 74%, #F3A9F8A8 66%, #E0D8F0 100%, #EAF7FE 100%, #EAF7FE 100%) border-box;
     border-radius: 20px;
@@ -764,9 +765,9 @@ a, a:hover, a:focus, a:active {
 /*Scroll of testimonials------------------------->*/
 .testimonials-scroll {
     display: block;
-    width: 60.28%;
+    width: 51.28%;
     height: 1.336%;
-    margin: 2.0837% auto 0;
+    margin: 1.8% auto 0 24.3%;
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -822,9 +823,9 @@ input[type="range"]::-webkit-slider-thumb{
 /*Button testimonials---------------------------------->*/
 .testimonials-btn{
     display: block;
-    width: 31.15%;
-    height: 10.0174%;
-    margin: 4.6636% auto 0;
+    width: 25.15%;
+    height: 9.0174%;
+    margin: 2.6636% auto 0 1%;
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
     border: none;
     border-radius: 5px;
@@ -846,15 +847,15 @@ input[type="range"]::-webkit-slider-thumb{
 }
 .footer-label{
     display: flex;
-    width: 70.625%;
+    width: 72.625%;
     height: 19.9616%;
-    margin: 2.9% auto 0;
+    margin: 2.8% auto 0;
     flex-direction: row;
     justify-content: space-between;
 }
 .footer-logo{
-    width: 8.8%;
-    height: 64.35%;
+    width: 6.8%;
+    height: 53.35%;
     text-align: center;
     border: 1.18841px solid #FFFFFF;
 }
@@ -872,11 +873,11 @@ input[type="range"]::-webkit-slider-thumb{
     display: block;
     position: relative;
     z-index: 1;
-    top: -50%;
-    left: 17%;
+    top: -61%;
+    left: 10.2%;
 }
 .footer-form{
-    width: 39.52%;
+    width: 31.8%;
     height: 98%;
 }
 .footer-form-title{
@@ -885,15 +886,17 @@ input[type="range"]::-webkit-slider-thumb{
     font-weight: 400;
     font-size: 24px;
     line-height: 120%;
+    letter-spacing: -0.2px;
     /* identical to box height, or 29px */
     color: #FFFFFF;
 }
 .footer-input{
-    width: 59%;
-    height: 67%;
+    width: 62.4%;
+    height: 50%;
     margin-top: 2.65%;
-    padding-left: 4%;
+    padding-left: 2.2%;
     border: 2px solid #F9804B;
+    background-color: #111115;
 }
 input[type='email']::placeholder{
     outline: none;
@@ -908,10 +911,11 @@ input[type='email']::placeholder{
 }
 input[type = 'email']:focus{
     outline: none;
+    color: #BDBDBD;
 }
 .footer-form-btn{
-    width: 33.3%;
-    height: 67%;
+    width: 34.6%;
+    height: 50%;
     margin-left: 1%;
     background: #F1F3F2;
     /* Green */
@@ -929,9 +933,9 @@ input[type = 'email']:focus{
 /*Button of footer------------------------------>*/
 .footer-btn{
     display: block;
-    width: 22.675%;
+    width: 18.9%;
     height: 12.2%;
-    margin: 2.6% auto 0 15.8913%;
+    margin: 1.7% auto 0 13.5%;
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
     border-radius: 5px;
     font-family: 'Roboto Medium', Arial, sans-serif;
@@ -948,10 +952,10 @@ input[type = 'email']:focus{
 .footer-links{
     display: grid;
     /*width: 70.625%;*/
-    width: 71.625%;
+    width: 72.625%;
     height: 30.9616%;
     /*margin: 2.75% auto 0;*/
-    margin: 2% auto 0;
+    margin: 2.8% auto 0;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: 100%;
 }
@@ -1010,16 +1014,18 @@ input[type = 'email']:focus{
 }
 .footer-navigate{
     display: flex;
-    width: 95%;
+    width: 94%;
     height: 16.2%;
     padding: 0;
     margin-top: 29%;
+    margin-left: 2%;
     flex-direction: row;
     justify-content: space-between;
-    gap: 5%;
+    gap: 1%;
     list-style: none;
 }
 .navigate-link{
+    width: auto;
     font-family: 'Roboto Regular', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -1030,8 +1036,8 @@ input[type = 'email']:focus{
 }
 .footer-about{
     width: 80%;
-    height: 30%;
-    margin: 25% auto 0 30%;
+    height: 38%;
+    margin: 21% auto 0 41%;
 }
 .author{
     font-family: 'Roboto Thin', Arial, sans-serif;
@@ -1043,6 +1049,8 @@ input[type = 'email']:focus{
     color: #FFFFFF;
 }
 .school{
+    display: inline-block;
+    margin-top: 4%;
     font-family: 'Roboto Thin', Arial, sans-serif;
     font-style: normal;
     font-weight: 100;
