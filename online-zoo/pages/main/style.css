@@ -746,8 +746,82 @@ a, a:hover, a:focus, a:active {
 }
 /*Scroll of testimonials------------------------->*/
 .testimonials-scroll {
-    width: 50%;
     display: block;
+    width: 60.28%;
+    height: 1.336%;
+    margin: 2.0837% auto 0;
     appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
+input[type="range"]::-webkit-slider-runnable-track{
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(225deg, #FEBDABBD 74%, #F3A9F8A8 66%, #E0D8F0 100%, #EAF7FE 100%, #EAF7FE 100%) border-box;
+    border-radius: 20px;
+    border: 0.5px solid transparent;
+}
+input[type="range"]::-webkit-slider-thumb{
+    appearance: none;
+    width: 19.298%;
+    height: 100%;
+    background-color: #FE9013;
+    border: none;
+    border-radius: 5px;
+}
+.testimonials::-moz-range-track{
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(225deg, #FEBDABBD 74%, #F3A9F8A8 66%, #E0D8F0 100%, #EAF7FE 100%, #EAF7FE 100%) border-box;
+    border-radius: 20px;
+    border: 0.5px solid transparent;
+}
+.testimonials::-moz-range-thumb{
+    appearance: none;
+    width: 19.298%;
+    height: 100%;
+    background-color: #FE9013;
+    border: none;
+    border-radius: 5px;
+}
+.testimonials::-ms-track{
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(225deg, #FEBDABBD 74%, #F3A9F8A8 66%, #E0D8F0 100%, #EAF7FE 100%, #EAF7FE 100%) border-box;
+    border-radius: 20px;
+    border: 0.5px solid transparent;
+}
+.testimonials::-ms-thumb{
+    appearance: none;
+    width: 19.298%;
+    height: 100%;
+    background-color: #FE9013;
+    border: none;
+    border-radius: 5px;
+}
+/*Button testimonials---------------------------------->*/
+.testimonials-btn{
+    display: block;
+    width: 31.15%;
+    height: 10.0174%;
+    margin: 4.6636% auto 0;
+    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+    border: none;
+    border-radius: 5px;
+}
+.testimonials-btn-text{
+    font-family: 'Roboto Medium', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 140%;
+    /* or 22px */
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
 
