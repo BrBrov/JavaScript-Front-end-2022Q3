@@ -28,7 +28,7 @@ a, a:hover, a:focus, a:active {
 }
 
 .container {
-    width: 100vm;
+    width: 100vw;
 }
 
 .page {
@@ -103,8 +103,8 @@ a, a:hover, a:focus, a:active {
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
+    /*background-clip: text;*/
+    /*text-fill-color: transparent;*/
 }
 
 .description {
@@ -670,6 +670,10 @@ a, a:hover, a:focus, a:active {
     width: 23.5%;
     height: 99%;
     margin: 0 0.7% 0;
+    background: linear-gradient(#ffffff, #ffffff) padding-box,
+                linear-gradient(225deg, #FEBDABBD 74%, #F3A9F8A8 66%, #E0D8F0 100%, #EAF7FE 100%, #EAF7FE 100%) border-box;
+    border-radius: 20px;
+    border: 3px solid transparent;
 }
 .testimonials-header{
     width: auto;
@@ -740,3 +744,10 @@ a, a:hover, a:focus, a:active {
     /* gray */
     color: #767474;
 }
+/*Scroll of testimonials------------------------->*/
+.testimonials-scroll {
+    width: 50%;
+    display: block;
+    appearance: none;
+}
+
