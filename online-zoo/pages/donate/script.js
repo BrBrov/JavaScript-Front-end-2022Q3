@@ -40,6 +40,7 @@ class ActionElement{
                 }
             })
             this.input.value = ev.target.value;
+            this.inputImg.src = '../../assets/icons/dollar-green.svg';
         })
     }
     periodListener(){
