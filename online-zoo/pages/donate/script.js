@@ -34,12 +34,12 @@ class ActionElement{
     scaleListener(){
         this.checkboxArray.addEventListener('click',(ev)=>{
             ev.stopPropagation();
-            console.log(ev);
             this.scale.forEach(e=>{
                 if(e.value !== ev.target.value){
                     e.checked = false;
                 }
             })
+            this.input.value = ev.target.value;
         })
     }
     periodListener(){
@@ -58,7 +58,6 @@ class ActionElement{
     }
     emailListener(){
         this.email.addEventListener('blur', (ev)=>{
-            console.log(ev);
             ev.stopImmediatePropagation();
             if(!this.email.checkValidity() || this.email.value === ''){
                 this.email.value = 'Invalid email';
