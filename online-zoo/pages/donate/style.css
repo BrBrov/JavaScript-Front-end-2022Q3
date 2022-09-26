@@ -198,6 +198,183 @@ button{
     /* or3 */
     color: #FE9013;
 }
+/*Donation container------------------------->*/
+.donation-container{
+    width: 100%;
+    height: 76.3866%;
+    background: rgba(255, 255, 255, 0.52);
+    backdrop-filter: blur(2px);
+    /* Note: backdrop-filter has minimal browser support */
+    border-radius: 20px;
+}
+.donation{
+    width: 84.138%;
+    height: 89.419%;
+    margin: 3.45% auto 0;
+}
+.pick-and-feed{
+    display: block;
+    font-family: "Roboto Regular", Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 120%;
+    /* identical to box height, or 58px */
+    text-align: center;
+    /* or3 */
+    color: #FE9013;
+}
+.motivation-text{
+    display: block;
+    font-family: "Roboto Regular", Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 120%;
+    /* identical to box height, or 29px */
+    color: #333B41;
+}
+.friend-zoo{
+    display: flex;
+    width: 54.51%;
+    height: 28.55%;
+    margin: 1% auto auto 22.0512%;
+    flex-direction: row;
+}
+.diet{
+    width: 29.8872%;
+    height: 36.9919%;
+    margin-top: 19.738%;
+}
+.diet-value{
+    display: block;
+    font-family: "Roboto Bold", Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 72px;
+    line-height: 80%;
+    /* identical to box height, or 58px */
+    text-align: center;
+    text-transform: uppercase;
+    color: #000000;
+}
+.diet-text{
+    display: block;
+    width: 100%;
+    font-family: "Roboto Regular", Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    /* or 22px */
+    text-align: center;
+    letter-spacing: -0.2px;
+    color: #333B41;
+}
+.cross{
+    display: block;
+    width: 2.65%;
+    height: 5.69%;
+    margin: 24.44% 0 0 2.07%;
+}
+.zoo-img{
+    display: block;
+    margin: 0 0 0 12.045%;
+}
+.amount-text{
+    display: block;
+    font-family: "Roboto Regular", Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    /* or 22px */
+    color: #000000;
+}
+.scale-donation-container{
+    display: grid;
+    width: 100%;
+    height: 9.5128%;
+    grid-template-columns: 100%;
+    grid-template-rows: 48.8% 44%;
+    gap: 7.2%;
+}
+.scale-container{
+    width: 100%;
+    height: 100%;
+}
+.scale-background{
+    width: 100%;
+    height: 67.5%;
+    margin: 0.77% 0 0.77%;
+    padding-top: 1.23%;
+    padding-bottom: 1.23%;
+    background: #404950;
+    border-radius: 2px;
+}
+.line-scale{
+    position: relative;
+    z-index: 1;
+    width: 93.75%;
+    height: 7.42%;
+    /*margin: 1.23% 3.084% auto 3.18%;*/
+    margin-left: 3.2%;
+    background: #72828E;
+}
+.checkbox-scale-container{
+    display: flex;
+    position: relative;
+    z-index: 2;
+    width: 94.8%;
+    margin-left: 2.67%;
+    top: -200%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    /*gap: 12%*/
+}
+.check-scale{
+    display: block;
+    position: relative;
+    z-index: 0;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 10px;
+    height: 10px;
+    background-color: #FFEE2E;
+    border-radius: 100%;
+}
+.check-scale:checked{
+    position: relative;
+    z-index: 1;
+    width: 10px;
+    height: 10px;
+    background-color: #FFEE2E;
+    border-radius: 100%;
+}
+.check-scale:checked:before{
+    content: "";
+    position: absolute;
+    z-index: 3;
+    width: 23px;
+    height: 23px;
+    margin-left: -65%;
+    margin-top: -65%;
+    border: 2px solid #FE9013;
+    border-radius: 100%;
+}
+.check-scale:checked:after{
+    content: "";
+    position: absolute;
+    z-index: 3;
+    width: 40px;
+    height: 40px;
+    margin-left: -155%;
+    margin-top: -145%;
+    border: 2px solid #FE9013;
+    border-radius: 100%;
+}
 /*FOOTER--------------------------------->*/
 .footer{
     background: #111115;
