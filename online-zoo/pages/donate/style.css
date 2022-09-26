@@ -343,6 +343,7 @@ button{
     height: 10px;
     background-color: #FFEE2E;
     border-radius: 100%;
+    cursor: pointer;
 }
 .check-scale:checked{
     position: relative;
@@ -496,6 +497,7 @@ input[type=number]::-webkit-input-placeholder{
     height: 16px;
     border: 2px solid #F9804B;
     border-radius: 100%;
+    cursor: pointer;
 }
 
 .period-donation:checked{
@@ -569,6 +571,7 @@ input[type=number]::-webkit-input-placeholder{
     height: 53.9%;
     text-align: center;
     border: 1.18841px solid #FFFFFF;
+    cursor: pointer;
 }
 .footer-logo-title{
     font-family: 'Roboto Regular', Arial, sans-serif;
