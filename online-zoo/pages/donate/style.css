@@ -16,16 +16,6 @@ button{
     cursor: pointer;
 }
 
-.red{
-    background-color: #D31414;
-}
-.green{
-    background-color: #4B9200;
-}
-.yellow{
-    background-color: #FFEE2E;
-}
-
 .container {
     width: 100vw;
 }
@@ -63,8 +53,8 @@ button{
 .logo-img {
     position: relative;
     z-index: 2;
-    top: -53%;
-    left: 12%;
+    top: -51%;
+    left: 10%;
 }
 
 .logo-title{
@@ -112,7 +102,7 @@ button{
     -webkit-text-fill-color: transparent;
 }
 
-.list-item:first-child {
+.list-item:nth-child(4) {
     font-family: 'Roboto Regular', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -303,7 +293,7 @@ button{
     display: grid;
     width: 100%;
     height: 9.5128%;
-    margin-top: 0.5%;
+    margin-top: 0.9%;
     grid-template-columns: 100%;
     grid-template-rows: 48.8% 44%;
     gap: 7.2%;
@@ -336,7 +326,7 @@ button{
     z-index: 2;
     width: 94.8%;
     margin-left: 2.27%;
-    top: -200%;
+    top: -350%;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
@@ -432,9 +422,15 @@ button{
     height: 100%;
     padding-left: 2%;
     padding-top: 1%;
+    font-family: "Roboto Regular", Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    /* or 22px */
+    color: #929699;
     background-color: unset;
     border: 2px solid #929699;
-    color: #929699;
 }
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button
@@ -457,12 +453,25 @@ input[type=number]::-webkit-input-placeholder{
     color: #929699;
     border-radius: 5px;
 }
-
 .input-money:focus{
     background-color: unset;
     outline: none;
     border: 2px solid #929699;
 }
+.input-money:valid{
+    color: #4B9200;
+    border: 2px solid #4B9200;
+}
+.invalid{
+    color: #D31414;
+    border: 2px solid #D31414;
+}
+.invalid:focus{
+    color: #D31414;
+    background-color: unset;
+    border: 2px solid #D31414;
+}
+
 .input-money-img{
     display: block;
     position: relative;
@@ -523,6 +532,12 @@ input[type=number]::-webkit-input-placeholder{
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
     border: none;
     border-radius: 25px;
+}
+.feed-btn:hover{
+    background: #E47209;
+}
+.feed-btn:active{
+    background: #4B9200;
 }
 /*----------------------------------------->*/
 .share-social{
@@ -681,10 +696,8 @@ input[type='email']:valid:not(:placeholder-shown){
 /*Footer links------------------------------------->*/
 .footer-links{
     display: grid;
-    /*width: 70.625%;*/
     width: 72.625%;
     height: 32.9616%;
-    /*margin: 2.75% auto 0;*/
     margin: 2.8% auto 0;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: 100%;

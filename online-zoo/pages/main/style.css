@@ -366,6 +366,7 @@ button{
     margin-bottom: 0.864%;
     overflow: hidden;
     font-size: 0;
+    cursor: pointer;
 }
 
 .down-carousel {
@@ -375,6 +376,7 @@ button{
     margin-bottom: 0;
     overflow: hidden;
     font-size: 0;
+    cursor: pointer;
 }
 
 .left-arrow {
@@ -385,6 +387,7 @@ button{
     left: 8.4%;
     border-radius: 90px;
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+    cursor: pointer;
 }
 
 .arrow-left {
@@ -400,6 +403,7 @@ button{
     right: 9.1%;
     border-radius: 90px;
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+    cursor: pointer;
 }
 
 .arrow-right {
@@ -814,6 +818,7 @@ button{
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
+    cursor: pointer;
 }
 input[type="range"]::-webkit-slider-runnable-track{
     width: 100%;

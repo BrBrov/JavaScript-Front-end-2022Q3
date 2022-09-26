@@ -4,20 +4,25 @@ class ActiveElem{
         this.about = document.querySelector('.link-nav');
         this.email = document.querySelector('.footer-input');
         this.emailBtn = document.querySelector('.footer-form-btn');
+        this.btnVolunteers = document.querySelector('.footer-btn');
+        this.btnFeed = document.querySelector('.friend-btn');
+        this.logoFooter = document.querySelector('.footer-logo');
         this.addListener();
     }
     addListener(){
         this.logo.addEventListener('click', (ev) => {
-
             window.location.reload();
             ev.stopImmediatePropagation();
          })
+        this.logoFooter.addEventListener('click', (ev) => {
+            window.location.reload();
+            ev.stopImmediatePropagation();
+        })
         this.about.addEventListener('click', (ev) => {
             window.location.reload();
             ev.stopImmediatePropagation();
         })
         this.email.addEventListener('blur', (ev)=>{
-            console.log(ev);
             ev.stopImmediatePropagation();
             if(!this.email.checkValidity() || this.email.value === ''){
                 this.email.value = 'Invalid email';
@@ -41,11 +46,18 @@ class ActiveElem{
             ev.stopImmediatePropagation();
             this.email.value = '';
         })
+        this.btnVolunteers.addEventListener('click',(ev)=>{
+            ev.stopPropagation();
+            document.location.href = '../donate/index.html';
+        })
+        this.btnFeed.addEventListener('click',(ev)=>{
+            ev.stopPropagation();
+            document.location.href = '../donate/index.html';
+        })
     }
 }
 
 window.addEventListener('load', ()=>{
-    console.log('page loaded!');
     let active = new ActiveElem();
 })
 
