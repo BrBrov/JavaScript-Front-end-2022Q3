@@ -54,13 +54,6 @@ button{
     cursor: pointer;
 }
 
-.logo-img {
-    position: relative;
-    z-index: 2;
-    top: -53%;
-    left: 12%;
-}
-
 .logo-title{
     position: relative;
     z-index: 1;
@@ -73,6 +66,15 @@ button{
     /* or 23px */
     text-align: center;
     color: #FFFFFF;
+}
+.logo-title:after{
+    content: "";
+    position: absolute;
+    background: url("../../assets/icons/bamboo-logo.svg") no-repeat;
+    width: 20%;
+    height: 50%;
+    margin-left: -76%;
+    margin-top: -7%;
 }
 .menu-nav {
     width: 60%;
@@ -107,11 +109,11 @@ button{
 }
 
 .list-item:first-child {
-    font-family: 'Roboto Regular', Arial, sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 140%;
+    /*font-family: 'Roboto Regular', Arial, sans-serif;*/
+    /*font-style: normal;*/
+    /*font-weight: 400;*/
+    /*font-size: 16px;*/
+    /*line-height: 140%;*/
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -923,12 +925,14 @@ input[type="range"]::-webkit-slider-thumb{
     text-align: center;
     color: #FFFFFF;
 }
-.footer-logo-img{
-    display: block;
-    position: relative;
-    z-index: 1;
-    top: -61%;
-    left: 10.2%;
+.footer-logo-title:after{
+    content: "";
+    position: absolute;
+    background: url("../../assets/icons/bamboo-logo.svg") no-repeat;
+    width: 5%;
+    height: 5%;
+    margin-left: -2.999%;
+    margin-top: -0.25%;
 }
 .footer-form{
     width: 31.8%;
@@ -1120,6 +1124,11 @@ input[type='email']:valid:not(:placeholder-shown){
 }
 .navigate-link{
     width: auto;
+    font-family: 'Roboto Regular', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
     cursor: pointer;
 }
 .link-nav.active:hover {
@@ -1140,8 +1149,6 @@ input[type='email']:valid:not(:placeholder-shown){
     /*background-clip: text;*/
     /*text-fill-color: transparent;*/
 }
-
-
 .footer-about{
     width: 80%;
     height: 38%;
@@ -1171,3 +1178,104 @@ input[type='email']:valid:not(:placeholder-shown){
 .footer-about:active> .author, .footer-about:active> .school{
     color: #4B9200;
 }
+
+/*ADAPTIVE DESINE-------------------->*/
+
+/*from 1600px to 1001px*/
+
+@media screen and (max-width: 1599px) and (min-width: 1001px){
+    .page {
+        width: 100vw;
+        height: calc(100vw*3.109375);
+        margin: 0 auto;
+        display: grid;
+        grid-auto-columns: 1fr;
+        grid-auto-rows: 15.68% 75.42% 8.9%;
+    }
+    /*Fonts correcting--------------------------------->*/
+    /*19.0145px = font-size: calc((100vw*3.109375)/261.64243);*/
+    /*16px = font-size: calc((100vw*3.109375)/310.9375);*/
+    /*106.496px = font-size: calc((100vw*3.109375)/46.7154);*/
+    /*48px = font-size: calc((100vw*3.109375)/103.6458);*/
+    /*24px = font-size: calc((100vw*3.109375)/207.2917);*/
+    /*36px = font-size: calc((100vw*3.109375)/138.1944);*/
+    .logo-title,
+    .footer-logo-title{
+        font-size: calc((100vw*3.109375)/261.64243); /*19.0145px*/
+    }
+    .link-nav,
+    .list-nav:first-child,
+    .description-text,
+    .text-btn-title,
+    .sign-backstage,
+    .body-backstage,
+    .text-choose,
+    .friend-block-two,
+    .friend-block-three,
+    .friend-card-text,
+    .friend-btn-text,
+    .user-name,
+    .testimonials-btn-text,
+    .footer-input,
+    .footer-input::placeholder,
+    input[type='email']::placeholder,
+    .footer-form-btn,
+    .footer-btn,
+    .social-name,
+    .author,
+    .school{
+        font-size: calc((100vw*3.109375)/310.9375);  /*16px*/
+    }
+    .title,
+    .color-one-title{
+        font-size: calc((100vw*3.109375)/46.7154); /*106.496px*/
+    }
+    .img-backstage{
+        width: 100%;
+    }
+    .title-backstage,
+    .friend-title{
+        font-size: calc((100vw*3.109375)/103.6458); /*48px*/
+    }
+    .how-it-works,
+    .friend-block-one,
+    .footer-form-title{
+        font-size: calc((100vw*3.109375)/207.2917); /*24px*/
+    }
+    .friend-block-four,
+    .testimonials-title{
+        font-size: calc((100vw*3.109375)/138.1944); /*36px*/
+    }
+    .user-date,
+    .user-separator,
+    .user-location{
+        font-size: calc((100vw*3.109375)/331.6666); /*15px*/
+    }
+
+    .friend-card-pay,
+    .friend-card-plant,
+    .friend-card-monkey{
+        width: calc(100%/1.6);
+    }
+    .avatar{
+        width: calc((1600px - 100vw) * 0.0232);
+    }
+    .social-bg{
+        width: calc((1600px - 100vw) * 0.0166);
+    }
+    .footer-logo{
+        height: calc(((4975px - (100vw*3.109375)) * 0.009) + 22px);
+    }
+    .footer-logo-title:after{
+        position: absolute;
+        left: calc(100vw/5.9231);
+        top: calc((100vw*3.109375)/1.0816)
+    }
+    .footer-navigate{
+        height: 24.2%;
+        margin-bottom: 0;
+    }
+
+
+}
+
