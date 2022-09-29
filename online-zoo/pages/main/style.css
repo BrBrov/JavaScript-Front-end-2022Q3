@@ -727,13 +727,16 @@ button{
 .testimonials-container{
     display: block;
     overflow: hidden;
-    width: 100%;
+    width: 102%;
+    margin-left: -1%;
     height: 65.2754%;
     margin-top: 4%;
     font-size: 0;
+    white-space: nowrap;
 }
 .testimonials-card{
     display: inline-block;
+    overflow: visible;
     width: 22.5%;
     height: 99.4%;
     margin: 0 1.2% 0;
@@ -800,7 +803,7 @@ button{
 }
 .review{
     /*display: block;*/
-    overflow: hidden;
+    white-space: normal;
     text-align: left;
     font-family: 'Roboto Light', Arial, sans-serif;
     font-style: normal;
@@ -1258,7 +1261,7 @@ input[type='email']:valid:not(:placeholder-shown){
         width: calc(100%/1.6);
     }
     .avatar{
-        width: calc((1600px - 100vw) * 0.0232);
+        width: calc(100vw/43.2432);
     }
     .social-bg{
         width: calc((1600px - 100vw) * 0.0166);
@@ -1275,7 +1278,402 @@ input[type='email']:valid:not(:placeholder-shown){
         height: 24.2%;
         margin-bottom: 0;
     }
+}
+@media screen and (max-width: 1000px) and (min-width: 641px){
+    .page {
+        width: 100vw;
+        height: calc(100vw*4.489);
+        margin: 0 auto;
+        display: grid;
+        grid-auto-columns: 1fr;
+        grid-auto-rows: 13.0096% 77.12% 9.8686%;
+    }
+    /*font-size*/
+    .logo-title,
+    .footer-logo-title{
+        font-size: calc((100vw*4.489)/236.0829); /*19.0145px*/
+    }
+    .link-nav,
+    .description-text,
+    .text-btn-title,
+    .sign-backstage,
+    .body-backstage,
+    .title-animal-card,
+    .animal-from,
+    .text-choose,
+    .friend-block-two,
+    .friend-block-three,
+    .friend-block-underline,
+    .friend-card-text,
+    .friend-btn-text,
+    .user-name,
+    .testimonials-btn-text,
+    input[type='email']::placeholder,
+    .footer-form-btn,
+    .footer-btn,
+    .social-name,
+    .author{
+        font-size: calc((100vw*4.489)/280.5625);  /*16px*/
+    }
+    .title,
+    .color-one-title{
+        font-size: calc((100vw*4.489)/52.8119);  /*85px*/
+    }
+    .title-backstage,
+    .friend-title{
+        font-size: calc((100vw*4.489)/93.5208);  /*48px*/
+    }
+    .how-it-works,
+    .friend-block-one,
+    .footer-form-title{
+        font-size: calc((100vw*4.489)/187.0417);  /*24px*/
+    }
+    .friend-block-four,
+    .testimonials-title{
+        font-size: calc((100vw*4.489)/124.6944);  /*36px*/
+    }
+    .user-location,
+    .user-separator,
+    .user-date,
+    .review{
+        font-size: calc((100vw*4.489)/299.2667);  /*15px*/
+    }
 
+
+    /*/------------------------->*/
+    .header{
+        position: relative;
+        z-index: 0;
+        background: url(../../assets/images/panda-sd.jpg) no-repeat;
+    }
+    .navigation{
+        height: 13.6987%;
+        position: relative;
+        z-index: 2;
+    }
+    .fav-animal{
+        position: relative;
+        z-index: 1;
+        height: 86.3014%;
+    }
+    .logo{
+        position: relative;
+        width: calc(100vw/12.1951);
+        margin: 1.4% 0 0 3%;
+    }
+    .logo-title:after{
+        margin-left: -78%;
+    }
+    .list{
+        width: 99%;
+        margin-top: 5%;
+        margin-left: -10%;
+    }
+    .list-item{
+        margin-left: 8%;
+    }
+    .description{
+        width: 13.8125%;
+    }
+    .description-text{
+        margin: 20.7% auto auto 1%;
+    }
+    .bg-title{
+        width: 36.7%;
+        height: 72.82%;
+        margin: -2% auto auto 45.2%;
+    }
+    .title{
+        width: 40%;
+        top: -59.9%;
+        margin: 0 8.5% auto auto;
+        letter-spacing: 1px;
+    }
+    .btn-title{
+        top: -52.2%;
+        width: 29.9%;
+        height: 10.8%;
+        margin: 0 14.2% auto auto;
+    }
+    .main{
+        grid-template-rows: 50.3755% 25.3033% 24.3212%;
+    }
+    .flower{
+        display: none;
+    }
+    .animals-flower-container{
+        margin-top: 155.4%;
+    }
+    .left-flower{
+        margin-left: 0.6%;
+    }
+    .palm{
+        content: url("../../assets/images/palm-sd.jpg");
+    }
+    .contain-animals{
+        top: -100%;
+        padding-top: 10%;
+    }
+    .backstage{
+        width: 94%;
+        height: 25.98%;
+        margin-top: 0;
+        margin-left: 3%;
+        grid-template-columns: 48.8% 48.2979%;
+        gap: 2.5%;
+    }
+    .backstage-left{
+        width: 100%;
+        height: 95.53%;
+        margin-top: 2%;
+
+    }
+    .img-backstage{
+        height: 100%;
+        content: url("../../assets/images/old-man-sd.jpg");
+    }
+    .title-backstage{
+        letter-spacing: -0.1px;
+        margin-bottom: 5%;
+    }
+    .how-it-works{
+        margin-top: 11.9%;
+        margin-bottom: 7.49%;
+    }
+    .carousel-container{
+        position: relative;
+        width: 97%;
+        height: 48.725%;
+        margin: 14.2% auto 0 1.9%;
+    }
+    .upper-carousel{
+        width: 100%;
+        height: 44.195%;
+        margin-bottom: 9.5%;
+    }
+    .down-carousel{
+        width: 100%;
+        height: 44.195%;
+        margin-bottom: 9.79%;
+    }
+    .elem-carousel{
+        width: 33.3%;
+        height: 100%;
+        margin: 0;
+    }
+    .animal-card{
+        width: 91%;
+        margin: 0 auto;
+        border: 1px solid #FE9013;
+        border-radius: 5px;
+    }
+    .card-eat{
+        width: auto;
+        height: auto;
+    }
+    .left-arrow{
+        width: 6.6%;
+        height: 7.75%;
+        top: 45.9%;
+        left: 34.4%;
+    }
+    .right-arrow{
+        width: 6.6%;
+        height: 7.75%;
+        top: 45.9%;
+        left: 58.4%;
+    }
+    .btn-choose{
+        width: 29.8%;
+        margin: 8% auto 0;
+    }
+    .friend-board{
+        width: 94%;
+        height: 93.57%;
+        margin: 3% auto 6.25%;
+        padding-top: 3%;
+    }
+    .friend-text-container{
+        width: 92%;
+        height: 44.3%;
+        margin: 0 auto auto 4.28%;
+    }
+    .friend-block-three br{
+        display: none;
+    }
+    .friend-title{
+        margin: 0 auto 0 22.349%;
+    }
+    .friend-block-one{
+        margin: 0.38% auto 0.5% 1%;
+        letter-spacing: -0.2px;
+    }
+    .friend-block-two{
+        display: block;
+        width: 92%;
+        height: 11%;
+        margin-left: 0.7%;
+        line-height: 113%;
+    }
+    .friend-block-two br{
+        display: none;
+    }
+    .friend-block-three{
+        margin: -0.812% 0 0 0.8%;
+    }
+    .friend-block-four {
+        margin: 4.75% auto 0 37.4%;
+    }
+    .friend-scheme-container{
+        width: 81.3%;
+        height: 30.74%;
+        margin: 0 auto 7.6% 9%;
+    }
+    .friend-card-pay{
+        width: 64.35%;
+        margin: 32.1428% auto auto 17.8571%;
+    }
+    .friend-card-plant{
+        width: 53.35%;
+        margin: 21.619% auto auto 22.5416%;
+    }
+    .friend-card-monkey{
+        width: 75.35%;
+        margin: 27.619% auto auto 13.5416%;
+    }
+    .friend-arrow{
+        width: 53.2%;
+    }
+    .friend-btn{
+        width: 31.71%;
+        margin: auto auto 1%;
+    }
+    .testimonials-plant{
+        position: relative;
+        z-index: 1;
+        height: 39%;
+        top: -14%;
+        right: -79.9%;
+    }
+    .testimonials-block{
+        position: relative;
+        z-index: 0;
+        width: 96.5%;
+        height: 85.5%;
+        margin: 0 0 0 2.1%;
+        overflow: hidden;
+        padding-top: 10.2%;
+    }
+    .testimonials-container{
+        position: relative;
+        z-index: 2;
+        width: 99.999%;
+        height: 63.3%;
+        margin-top: 3.2%;
+        margin-left: -1%;
+    }
+    .testimonials-header{
+        margin: 3.6137% 0 0 4.988%;
+        white-space: nowrap;
+    }
+    .user-info{
+        margin-top: -1%;
+    }
+    .testimonials-title{
+        margin-left: -1%;
+        letter-spacing: -0.3px;
+    }
+    .testimonials-card{
+        width: 30.56%;
+        margin: 0 1.565% 0;
+    }
+    .avatar{
+        width: 14%;
+    }
+    .testimonials-scroll{
+        width: 40.3%;
+        margin: 1.72% auto 0 28.8%;
+    }
+    .testimonials-btn{
+        width: 30.71%;
+        height: 9.0174%;
+        margin: 5.54% auto 0 1%;
+    }
+    .footer-label{
+        width: 90.8%;
+        height: 19.2%;
+        margin: 4.1% auto 0 4.1%;
+    }
+    .footer-logo{
+        width: 9.2%;
+        height: 60%;
+    }
+    .footer-logo-title{
+        display: block;
+        position: relative;
+        margin-top: 1%;
+    }
+    .footer-logo-title:after{
+        width: 50%;
+        height: 50%;
+        margin-left: -70.999%;
+        margin-top: -6.25%;
+    }
+    .footer-form {
+        width: 40.79%;
+        height: 48.9%;
+        margin-left: 50.5%;
+    }
+    .footer-input {
+        width: 62.59%;
+        height: 100%;
+        margin-top: 4%;
+    }
+    .footer-form-btn {
+        width: 34%;
+        height: 100%;
+        margin-left: 1.7%
+    }
+    .footer-btn {
+        width: 29.9%;
+        margin: 3.5% auto 0 4.2%;
+        color: #FFFFFF;
+    }
+    .footer-links{
+        width: 93.8%;
+        height: 30.3%;
+        margin: 4.4% auto auto 4.4%;
+        grid-template-columns: 20% 50% 30%;
+    }
+    .social{
+        width: 63.52%;
+    }
+    .social-link{
+        height: 19.38%;
+    }
+    .social-bg{
+        width: 23.42%;
+        height: 100%;
+    }
+    .footer-navigate{
+        width: 72%;
+        margin-top: 23.8%;
+        margin-left: 21%;
+    }
+    .navigate-link{
+        margin-left: 1%;
+    }
+    .footer-about{
+        width: 80%;
+        height: 38%;
+        margin: 30% auto 0 19%;
+    }
+    .author{
+        letter-spacing: -0.1px;
+    }
+    .school{
+        letter-spacing: -0.1px;
+    }
 
 }
 
