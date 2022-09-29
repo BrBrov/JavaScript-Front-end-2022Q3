@@ -1312,7 +1312,8 @@ input[type='email']:valid:not(:placeholder-shown){
     .footer-form-btn,
     .footer-btn,
     .social-name,
-    .author{
+    .author,
+    .school{
         font-size: calc((100vw*4.489)/280.5625);  /*16px*/
     }
     .title,
@@ -1338,8 +1339,6 @@ input[type='email']:valid:not(:placeholder-shown){
     .review{
         font-size: calc((100vw*4.489)/299.2667);  /*15px*/
     }
-
-
     /*/------------------------->*/
     .header{
         position: relative;
@@ -1469,7 +1468,7 @@ input[type='email']:valid:not(:placeholder-shown){
     }
     .card-eat{
         width: auto;
-        height: auto;
+        height: 5%;
     }
     .left-arrow{
         width: 6.6%;
@@ -1589,6 +1588,15 @@ input[type='email']:valid:not(:placeholder-shown){
     }
     .avatar{
         width: 14%;
+    }
+    .testimonials-card:nth-child(2) .testimonials-header .avatar{
+        content: url("../../assets/images/avater3.jpg");
+    }
+    .testimonials-card:nth-child(2) .testimonials-header .user-info .user-name {
+        content: "Oska Samborska";
+    }
+    .testimonials-card:nth-child(2) .testimonials-description .review{
+        content: " Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. \n The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. The best online zoo I’ve met\. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.";
     }
     .testimonials-scroll{
         width: 40.3%;
