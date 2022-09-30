@@ -432,12 +432,14 @@ button {
 
 .animal-card {
     display: block;
+    overflow: hidden;
     clear: left;
     width: 94.8186%;
     /*width: 31.6062%;*/
     height: 100%;
     margin: 0 0.864% 0 0.864%;
-    overflow: hidden;
+    border: 1px solid #FA6F32;
+    border-radius: 5px;
 }
 
 .card-img {
@@ -1615,6 +1617,42 @@ input[type='email']:valid:not(:placeholder-shown) {
     .card-eat {
         width: auto;
         height: 20%;
+    }
+    .upper-carousel .elem-carousel:nth-child(3) .animal-card .card-img{
+        content: url("../../assets/images/cheetag.jpg");
+    }
+    .upper-carousel .elem-carousel:nth-child(3) .animal-card .title-card .title-text .title-animal-card{
+        content: "cheetahs" ;
+    }
+    .upper-carousel .elem-carousel:nth-child(3) .animal-card .title-card .title-text .animal-from{
+        content: "Native to Africa" ;
+    }
+    .upper-carousel .elem-carousel:nth-child(3) .animal-card .title-card .card-eat{
+        content: url("../../assets/icons/meet-fish.svg");
+    }
+    .down-carousel .elem-carousel:nth-child(1) .animal-card .card-img{
+        content: url("../../assets/images/gorilla.jpg");
+    }
+    .down-carousel .elem-carousel:nth-child(1) .animal-card .title-card .title-text .title-animal-card{
+        content: "gorillas" ;
+    }
+    .down-carousel .elem-carousel:nth-child(1) .animal-card .title-card .title-text .animal-from{
+        content: "Native to Congo" ;
+    }
+    .down-carousel .elem-carousel:nth-child(1) .animal-card .title-card .card-eat{
+        content: url("../../assets/icons/banana-bamboo.svg");
+    }
+    .down-carousel .elem-carousel:nth-child(2) .animal-card .card-img{
+        content: url("../../assets/images/alligator.jpg");
+    }
+    .down-carousel .elem-carousel:nth-child(2) .animal-card .title-card .title-text .title-animal-card{
+        content: "Alligators" ;
+    }
+    .down-carousel .elem-carousel:nth-child(2) .animal-card .title-card .title-text .animal-from{
+        content: "Native to Southeastern U. S." ;
+    }
+    .down-carousel .elem-carousel:nth-child(2) .animal-card .title-card .card-eat{
+        content: url("../../assets/icons/meet-fish.svg");
     }
 
     .left-arrow {

@@ -1071,13 +1071,13 @@ input[type='email']:valid:not(:placeholder-shown) {
     .input-money,
     input[type='number']::placeholder,
     .period-text,
-    .feed-btn,
+    /*.feed-btn,*/
     .share-social,
     .footer-input,
     .footer-input::placeholder,
     .input[type='email']::placeholder,
     /*.footer-form-btn,*/
-    .footer-btn,
+    /*.footer-btn,*/
     .social-name,
     .author,
     .school {
