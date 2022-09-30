@@ -12,7 +12,8 @@ html, body {
 a, a:hover, a:focus, a:active {
     text-decoration: none;
 }
-button{
+
+button {
     cursor: pointer;
 }
 
@@ -28,8 +29,9 @@ button{
     grid-auto-columns: 1fr;
     grid-auto-rows: 3.557% 78.0151% 18.5279%;
 }
+
 /*HEADER--------------------------------------->*/
-.header{
+.header {
     background: #000000;
     backdrop-filter: blur(2px);
 }
@@ -50,7 +52,7 @@ button{
     cursor: pointer;
 }
 
-.logo-title{
+.logo-title {
     position: relative;
     z-index: 1;
     margin: 5% 4.4% auto 4.4%;
@@ -63,7 +65,8 @@ button{
     text-align: center;
     color: #FFFFFF;
 }
-.logo-title:after{
+
+.logo-title:after {
     content: "";
     position: absolute;
     background: url("../../assets/icons/bamboo-logo.svg") no-repeat;
@@ -72,6 +75,7 @@ button{
     margin-left: -76%;
     margin-top: -7%;
 }
+
 .menu-nav {
     width: 60%;
 }
@@ -98,6 +102,7 @@ button{
     line-height: 140%;
     color: #FFFFFF;
 }
+
 .link-nav.active:hover {
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
     -webkit-background-clip: text;
@@ -126,29 +131,35 @@ button{
     line-height: 140%;
     color: #FFFFFF;
 }
-.description:hover,.description-text:hover{
+
+.description:hover, .description-text:hover {
     color: #F9804B;
 }
+
 /*MAIN--------------------------------->*/
-.main{
+.main {
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 20.77% 79.2299%;
 }
-.background-panda{
+
+.background-panda {
     background: url("../../assets/images/panda-donate.jpg") no-repeat;
 }
-.donate{
+
+.donate {
     background: linear-gradient(315.75deg, rgba(254, 210, 144, 0.7) 30.06%, #FEBDAB 100.95%, rgba(254, 210, 144, 0.7) 106.36%),
     linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%),
     linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%);
 }
-.donate-container{
+
+.donate-container {
     width: 72.5%;
     height: 87%;
     margin: 2.6936% auto auto;
 }
-.zoo-text{
+
+.zoo-text {
     display: block;
     margin-top: 0.2%;
     font-family: "Roboto Regular", Arial, sans-serif;
@@ -160,10 +171,11 @@ button{
     /* identical to box height, or 47px */
     color: #FFFFFF;
 }
-.info-text{
+
+.info-text {
     display: block;
     margin-top: 0.4%;
-    font-family: "Roboto Medium", Arial,sans-serif;
+    font-family: "Roboto Medium", Arial, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -171,7 +183,8 @@ button{
     /* or 22px */
     color: #FFFFFF;
 }
-.info-donation{
+
+.info-donation {
     margin-top: 4.2%;
     display: block;
     font-family: "Roboto Regular", Arial, sans-serif;
@@ -184,8 +197,9 @@ button{
     /* or3 */
     color: #FE9013;
 }
+
 /*Donation container------------------------->*/
-.donation-container{
+.donation-container {
     width: 100%;
     height: 75%;
     margin-top: 5%;
@@ -194,13 +208,15 @@ button{
     /* Note: backdrop-filter has minimal browser support */
     border-radius: 20px;
 }
-.donation{
+
+.donation {
     width: 84.138%;
     height: 89.419%;
     margin: 3.45% auto 0;
     padding-top: 3.3%;
 }
-.pick-and-feed{
+
+.pick-and-feed {
     display: block;
     margin-left: -1%;
     font-family: "Roboto Regular", Arial, sans-serif;
@@ -213,7 +229,8 @@ button{
     /* or3 */
     color: #FE9013;
 }
-.motivation-text{
+
+.motivation-text {
     display: block;
     margin-top: 2%;
     font-family: "Roboto Regular", Arial, sans-serif;
@@ -225,19 +242,22 @@ button{
     /* identical to box height, or 29px */
     color: #333B41;
 }
-.friend-zoo{
+
+.friend-zoo {
     display: flex;
     width: 54.51%;
     height: 28.55%;
     margin: 7.3% auto auto 22.0512%;
     flex-direction: row;
 }
-.diet{
+
+.diet {
     width: 29.8872%;
     height: 36.9919%;
     margin-top: 18%;
 }
-.diet-value{
+
+.diet-value {
     display: block;
     font-family: "Roboto Bold", Arial, sans-serif;
     font-style: normal;
@@ -249,7 +269,8 @@ button{
     text-transform: uppercase;
     color: #000000;
 }
-.diet-text{
+
+.diet-text {
     display: block;
     width: 100%;
     margin-top: 7%;
@@ -263,18 +284,21 @@ button{
     letter-spacing: -0.2px;
     color: #333B41;
 }
-.cross{
+
+.cross {
     display: block;
     width: 2.65%;
     height: 5.69%;
     margin: 22.44% 0 0 2.07%;
 }
-.zoo-img{
+
+.zoo-img {
     display: block;
     height: 105%;
     margin: -2% 0 0 12.045%;
 }
-.amount-text{
+
+.amount-text {
     display: block;
     margin-top: 5.2%;
     margin-left: 0.3%;
@@ -286,7 +310,8 @@ button{
     /* or 22px */
     color: #000000;
 }
-.scale-donation-container{
+
+.scale-donation-container {
     display: grid;
     width: 100%;
     height: 9.5128%;
@@ -295,11 +320,13 @@ button{
     grid-template-rows: 48.8% 44%;
     gap: 7.2%;
 }
-.scale-container{
+
+.scale-container {
     width: 100%;
     height: 100%;
 }
-.scale-background{
+
+.scale-background {
     width: 100%;
     height: 67.5%;
     margin: 0.77% 0 0.77%;
@@ -308,7 +335,8 @@ button{
     background: #404950;
     border-radius: 2px;
 }
-.line-scale{
+
+.line-scale {
     position: relative;
     z-index: 1;
     width: 93.75%;
@@ -317,7 +345,8 @@ button{
     margin-left: 3.2%;
     background: #72828E;
 }
-.checkbox-scale-container{
+
+.checkbox-scale-container {
     display: flex;
     position: relative;
     z-index: 2;
@@ -329,7 +358,8 @@ button{
     justify-content: space-between;
     /*gap: 12%*/
 }
-.check-scale{
+
+.check-scale {
     display: block;
     position: relative;
     z-index: 0;
@@ -342,7 +372,8 @@ button{
     border-radius: 100%;
     cursor: pointer;
 }
-.check-scale:checked{
+
+.check-scale:checked {
     position: relative;
     z-index: 1;
     width: 10px;
@@ -350,7 +381,8 @@ button{
     background-color: #FFEE2E;
     border-radius: 100%;
 }
-.check-scale:checked:before{
+
+.check-scale:checked:before {
     content: "";
     position: absolute;
     z-index: 3;
@@ -361,7 +393,8 @@ button{
     border: 2px solid #FE9013;
     border-radius: 100%;
 }
-.check-scale:checked:after{
+
+.check-scale:checked:after {
     content: "";
     position: absolute;
     z-index: 3;
@@ -372,7 +405,8 @@ button{
     border: 2px solid #FE9013;
     border-radius: 100%;
 }
-.value-money-container{
+
+.value-money-container {
     display: flex;
     width: 97.5%;
     flex-direction: row;
@@ -381,17 +415,20 @@ button{
     justify-self: left;
     gap: 1%;
 }
-.value-money{
+
+.value-money {
     display: block;
     height: 100%;
     padding: 0;
     margin: 0;
 }
-.dollar-money{
-     height: 50%;
-     margin-top: 20%;
- }
-.dollar-value{
+
+.dollar-money {
+    height: 50%;
+    margin-top: 20%;
+}
+
+.dollar-value {
     font-family: "Roboto Bold", Arial, sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -402,17 +439,20 @@ button{
     text-transform: uppercase;
     color: #333B41;
 }
-.checked-money{
+
+.checked-money {
     color: #FE9013;
 }
+
 /*Amount input----------------------------->*/
-.amount-container{
+.amount-container {
     width: 27%;
     height: 6.6%;
     margin: 5.8% auto 0;
     padding: 0;
 }
-.input-money{
+
+.input-money {
     display: inline-block;
     position: relative;
     z-index: 1;
@@ -430,16 +470,18 @@ button{
     background-color: unset;
     border: 2px solid #929699;
 }
+
 input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button
-{
+input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-input[type=number]::-webkit-input-placeholder{
+
+input[type=number]::-webkit-input-placeholder {
     border: none;
 }
-.input-money::placeholder{
+
+.input-money::placeholder {
     height: 100%;
     margin: 0;
     font-family: "Roboto Regular", Arial, sans-serif;
@@ -451,33 +493,38 @@ input[type=number]::-webkit-input-placeholder{
     color: #929699;
     border-radius: 5px;
 }
-.input-money:focus{
+
+.input-money:focus {
     background-color: unset;
     outline: none;
     border: 2px solid #929699;
 }
-.input-money:valid{
+
+.input-money:valid {
     color: #4B9200;
     border: 2px solid #4B9200;
 }
-.invalid{
+
+.invalid {
     color: #D31414;
     border: 2px solid #D31414;
 }
-.invalid:focus{
+
+.invalid:focus {
     color: #D31414;
     background-color: unset;
     border: 2px solid #D31414;
 }
 
-.input-money-img{
+.input-money-img {
     display: block;
     position: relative;
     z-index: 2;
     margin: -14% auto 0 93%;
 }
+
 /*Period check----------------------------->*/
-.check-period{
+.check-period {
     display: flex;
     width: 20.3%;
     height: 2.4362%;
@@ -486,7 +533,8 @@ input[type=number]::-webkit-input-placeholder{
     flex-direction: row;
     justify-content: space-between;
 }
-.period-donation{
+
+.period-donation {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -497,14 +545,15 @@ input[type=number]::-webkit-input-placeholder{
     cursor: pointer;
 }
 
-.period-donation:checked{
+.period-donation:checked {
     width: 16px;
     height: 16px;
     background-color: #4B9200;
     border: 2px solid #4B9200;
     border-radius: 100%;
 }
-.period-text{
+
+.period-text {
     font-family: "Roboto Regular", Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -513,8 +562,9 @@ input[type=number]::-webkit-input-placeholder{
     /* or 22px */
     color: #333B41;
 }
+
 /*Feed button------------------------------>*/
-.feed-btn{
+.feed-btn {
     display: block;
     width: 30.5%;
     height: 6.8%;
@@ -532,14 +582,17 @@ input[type=number]::-webkit-input-placeholder{
     border: none;
     border-radius: 25px;
 }
-.feed-btn:hover{
+
+.feed-btn:hover {
     background: #E47209;
 }
-.feed-btn:active{
+
+.feed-btn:active {
     background: #4B9200;
 }
+
 /*----------------------------------------->*/
-.share-social{
+.share-social {
     display: block;
     margin: 3% auto auto 35%;
     font-family: "Roboto Regular", Arial, sans-serif;
@@ -551,11 +604,13 @@ input[type=number]::-webkit-input-placeholder{
     /* or 22px */
     color: #333B41;
 }
+
 /*FOOTER--------------------------------->*/
-.footer{
+.footer {
     background: #111115;
 }
-.footer-label{
+
+.footer-label {
     display: flex;
     width: 72.625%;
     height: 19.9616%;
@@ -563,14 +618,16 @@ input[type=number]::-webkit-input-placeholder{
     flex-direction: row;
     justify-content: space-between;
 }
-.footer-logo{
+
+.footer-logo {
     width: 7.4%;
     height: 53.9%;
     text-align: center;
     border: 1.18841px solid #FFFFFF;
     cursor: pointer;
 }
-.footer-logo-title{
+
+.footer-logo-title {
     font-family: 'Roboto Regular', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -580,7 +637,8 @@ input[type=number]::-webkit-input-placeholder{
     text-align: center;
     color: #FFFFFF;
 }
-.footer-logo-title:after{
+
+.footer-logo-title:after {
     content: "";
     position: absolute;
     background: url("../../assets/icons/bamboo-logo.svg") no-repeat;
@@ -590,11 +648,12 @@ input[type=number]::-webkit-input-placeholder{
     margin-top: -0.25%;
 }
 
-.footer-form{
+.footer-form {
     width: 31.8%;
     height: 98%;
 }
-.footer-form-title{
+
+.footer-form-title {
     font-family: 'Roboto Regular', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -604,7 +663,8 @@ input[type=number]::-webkit-input-placeholder{
     /* identical to box height, or 29px */
     color: #FFFFFF;
 }
-.footer-input{
+
+.footer-input {
     width: 62.4%;
     height: 50%;
     margin-top: 2.65%;
@@ -613,7 +673,8 @@ input[type=number]::-webkit-input-placeholder{
     background-color: #111115;
     color: #4B9200;
 }
-input[type='email']::placeholder{
+
+input[type='email']::placeholder {
     width: 100%;
     height: 100%;
     margin: 0;
@@ -627,27 +688,32 @@ input[type='email']::placeholder{
     /* Gray 4 */
     color: #BDBDBD;
 }
-input[type='email']:focus{
+
+input[type='email']:focus {
     border: 2px solid #4B9200;
 }
-input[type='email']:focus::placeholder{
+
+input[type='email']:focus::placeholder {
     background-color: #E0D8F0;
 }
-input[type = 'email']:focus{
+
+input[type = 'email']:focus {
     outline: none;
     color: #4B9200;
     background-color: #E0D8F0;
 }
-input[type='email']:invalid{
+
+input[type='email']:invalid {
     color: #D31414;
     border: 2px solid #D31414;
 }
-input[type='email']:valid:not(:placeholder-shown){
+
+input[type='email']:valid:not(:placeholder-shown) {
     content: "Invalid emeil";
     color: #4B9200;
 }
 
-.footer-form-btn{
+.footer-form-btn {
     width: 34.6%;
     height: 50%;
     margin-left: 1%;
@@ -661,25 +727,30 @@ input[type='email']:valid:not(:placeholder-shown){
     line-height: 140%;
     /* or 22px */
 }
-.mistake{
+
+.mistake {
     border: 1px solid #D31414;
     color: #D31414;
 }
-.valid{
+
+.valid {
     border: 1px solid #000000;
     color: #000000;
 }
-.btn-push{
+
+.btn-push {
     border: 1px solid #4B9200;
     color: #4B9200;
 }
+
 /*Button of footer------------------------------>*/
-.footer-btn{
+.footer-btn {
     display: block;
     width: 18.9%;
     height: 12.2%;
     margin: 1.9% auto 0 13.6%;
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+    border: none;
     border-radius: 5px;
     font-family: 'Roboto Medium', Arial, sans-serif;
     font-style: normal;
@@ -690,22 +761,26 @@ input[type='email']:valid:not(:placeholder-shown){
     text-align: center;
     text-transform: uppercase;
 }
-.footer-btn:hover{
+
+.footer-btn:hover {
     background: #E47209;
 }
-.footer-btn:active{
+
+.footer-btn:active {
     background: #4B9200;
 }
+
 /*Footer links------------------------------------->*/
-.footer-links{
+.footer-links {
     display: grid;
     width: 72.625%;
     height: 32.9616%;
     margin: 2.8% auto 0;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 100%;
 }
-.social{
+
+.social {
     display: flex;
     width: 29.5%;
     padding: 0;
@@ -716,11 +791,13 @@ input[type='email']:valid:not(:placeholder-shown){
     flex-wrap: nowrap;
     justify-items: center;
 }
-.social-link{
+
+.social-link {
     height: 24.35%;
     margin: 0;
 }
-.social-bg{
+
+.social-bg {
     display: inline-block;
     width: 23.1%;
     height: 78%;
@@ -728,31 +805,39 @@ input[type='email']:valid:not(:placeholder-shown){
     text-align: center;
     background: rgba(196, 196, 196, 0.5);
 }
-.social-link:active .social-name{
+
+.social-link:active .social-name {
     color: #4B9200;
 }
-.social-link:active .social-bg{
+
+.social-link:active .social-bg {
     background-color: #4B9200;
 }
-.social-logo{
+
+.social-logo {
     display: inline-block;
     margin-top: 23%;
 }
-.facebook{
+
+.facebook {
     position: relative;
     margin-top: 23%;
 }
-.twitter{
+
+.twitter {
     margin-top: 22%;
 }
-.instagram{
+
+.instagram {
     margin-top: 20.5%;
     margin-left: 1%;
 }
-.youtube{
+
+.youtube {
     margin-top: 27%;
 }
-.social-name{
+
+.social-name {
     display: inline-block;
     position: relative;
     margin-left: 5%;
@@ -764,7 +849,8 @@ input[type='email']:valid:not(:placeholder-shown){
     /* or 22px */
     color: #FFFFFF;
 }
-.footer-navigate{
+
+.footer-navigate {
     display: flex;
     width: 94%;
     height: 16.2%;
@@ -776,10 +862,12 @@ input[type='email']:valid:not(:placeholder-shown){
     gap: 1%;
     list-style: none;
 }
-.navigate-link{
+
+.navigate-link {
     width: auto;
     cursor: pointer;
 }
+
 .link-nav.active:hover {
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
     -webkit-background-clip: text;
@@ -800,13 +888,14 @@ input[type='email']:valid:not(:placeholder-shown){
 }
 
 
-.footer-about{
+.footer-about {
     width: 80%;
     height: 38%;
     margin: 21% auto 0 41%;
     cursor: pointer;
 }
-.author{
+
+.author {
     font-family: 'Roboto Thin', Arial, sans-serif;
     font-style: normal;
     font-weight: 100;
@@ -815,7 +904,8 @@ input[type='email']:valid:not(:placeholder-shown){
     /* identical to box height, or 21px */
     color: #FFFFFF;
 }
-.school{
+
+.school {
     display: inline-block;
     margin-top: 4%;
     font-family: 'Roboto Thin', Arial, sans-serif;
@@ -826,27 +916,31 @@ input[type='email']:valid:not(:placeholder-shown){
     /* identical to box height, or 21px */
     color: #FFFFFF;
 }
-.footer-about:active> .author, .footer-about:active> .school{
+
+.footer-about:active > .author, .footer-about:active > .school {
     color: #4B9200;
 }
+
 /*ADAPTIVE DESIGN------------------------->*/
 /*from 1600px to 1001px*/
 
-@media screen and (max-width: 1599px) and (min-width: 1001px){
+@media (max-width: 1599px) and (min-width: 1001px) {
     .page {
         width: 100vw;
-        height: calc(100vw*1.494375);
+        height: calc(100vw * 1.494375);
         margin: 0 auto;
         display: grid;
         grid-auto-columns: 1fr;
         grid-auto-rows: 3.557% 78.0151% 18.5279%;
     }
-    .logo-title:after{
+
+    .logo-title:after {
         margin-left: -84%;
     }
+
     .logo-title,
-    .footer-logo-title{
-        font-size: calc((100vw*1.494375)/125.7461); /*19.0145px*/
+    .footer-logo-title {
+        font-size: calc((100vw * 1.494375) / 125.7461); /*19.0145px*/
     }
 
     .link-nav,
@@ -866,72 +960,334 @@ input[type='email']:valid:not(:placeholder-shown){
     .footer-btn,
     .social-name,
     .author,
-    .school{
-        font-size: calc((100vw*1.494375)/149.4375);  /*16px*/
+    .school {
+        font-size: calc((100vw * 1.494375) / 149.4375); /*16px*/
     }
 
-    .color-one-title{
-        font-size: calc((100vw*1.494375)/22.4515); /*106.496px*/
+    .color-one-title {
+        font-size: calc((100vw * 1.494375) / 22.4515); /*106.496px*/
     }
-    .img-backstage{
+
+    .img-backstage {
         width: 100%;
     }
-    .pick-and-feed{
-        font-size: calc((100vw*1.494375)/49.8125); /*48px*/
+
+    .pick-and-feed {
+        font-size: calc((100vw * 1.494375) / 49.8125); /*48px*/
     }
-    .diet-value{
-        font-size: calc((100vw*1.494375)/33.2083); /*72px*/
+
+    .diet-value {
+        font-size: calc((100vw * 1.494375) / 33.2083); /*72px*/
     }
-    .dollar-value{
-        font-size: calc((100vw*1.494375)/91.9615); /*26px*/
+
+    .dollar-value {
+        font-size: calc((100vw * 1.494375) / 91.9615); /*26px*/
     }
+
     .motivation-text,
-    .footer-form-title{
-        font-size: calc((100vw*1.494375)/99.625); /*24px*/
+    .footer-form-title {
+        font-size: calc((100vw * 1.494375) / 99.625); /*24px*/
     }
 
     .zoo-text,
-    .info-donation{
-        font-size: calc((100vw*1.494375)/66.4167); /*36px*/
+    .info-donation {
+        font-size: calc((100vw * 1.494375) / 66.4167); /*36px*/
     }
-    .checkbox-scale-container{
+
+    .checkbox-scale-container {
         top: -490%;
     }
-     .input-money-img{
+
+    .input-money-img {
         margin: -16% auto 0 90%;
     }
-    .footer-logo-title:after{
+
+    .footer-logo-title:after {
         position: absolute;
-        left: calc(100vw/5.8538);
-        top: calc((100vw*1.494375)/1.185);
+        left: calc(100vw / 5.8538);
+        top: calc((100vw * 1.494375) / 1.185);
     }
-    .social{
+
+    .social {
         width: 35.5%;
     }
-    .social-bg{
-        width: calc(100vw/59.2592);
+
+    .social-bg {
+        width: calc(100vw / 59.2592);
     }
-    .social-logo.facebook{
-        width: calc(100vw/200);
+
+    .social-logo.facebook {
+        width: calc(100vw / 200);
     }
-    .social-logo.twitter{
-        width: calc(100vw/100);
+
+    .social-logo.twitter {
+        width: calc(100vw / 100);
     }
-    .social-logo.instagram{
-        width: calc(100vw/100);
+
+    .social-logo.instagram {
+        width: calc(100vw / 100);
         margin-top: 15.5%;
     }
-    .social-logo.youtube{
-        width: calc(100vw/100);
+
+    .social-logo.youtube {
+        width: calc(100vw / 100);
     }
-    .youtube{
+
+    .youtube {
         margin-top: 27%;
     }
-    .footer-logo{
-        height: calc(((4975px - (100vw*3.109375)) * 0.009) + 22px);
+
+    .footer-logo {
+        height: calc(((4975px - (100vw * 3.109375)) * 0.009) + 22px);
     }
-    .footer-navigate{
+
+    .footer-navigate {
         height: 24.2%;
         margin-bottom: 0;
+    }
+}
+
+/*ADAPTIVE DESIGN------------------------->*/
+/*from 1000px to 641px*/
+@media (max-width: 1000px) and (min-width: 641px){
+    .page {
+        max-width: 100vw;
+        /*height: calc(100vw * 2.246);*/
+        height: 2246px;
+        grid-auto-rows: 3.5619% 76.7141% 19.724%;
+    }
+
+    /*Font sizes---------------------------------------------->*/
+    /*.logo-title,*/
+    /*.footer-logo-title {*/
+    /*    font-size: calc((100vw * 2.246) / 118.1204); !*19.0145px*!*/
+    /*}*/
+
+    .link-nav,
+    .description-text,
+    .info-text,
+    .diet-text,
+    .amount-text,
+    .input-money,
+    input[type='number']::placeholder,
+    .period-text,
+    .feed-btn,
+    .share-social,
+    .footer-input,
+    .footer-input::placeholder,
+    .input[type='email']::placeholder,
+    /*.footer-form-btn,*/
+    .footer-btn,
+    .social-name,
+    .author,
+    .school {
+        font-size: calc((100vw * 2.246) / 140.375); /*16px*/
+    }
+
+    .color-one-title {
+        font-size: calc((100vw * 2.246) / 21.09); /*106.496px*/
+    }
+
+    .img-backstage {
+        width: 100%;
+    }
+
+    .pick-and-feed {
+        font-size: calc((100vw * 2.246) / 46.7917); /*48px*/
+    }
+
+    .diet-value {
+        font-size: calc((100vw * 2.246) / 31.1944); /*72px*/
+    }
+
+    .dollar-value {
+        font-size: calc((100vw * 2.246) / 86.3846); /*26px*/
+    }
+
+    .motivation-text,
+    .footer-form-title {
+        font-size: calc((100vw * 2.246) / 93.5833); /*24px*/
+    }
+
+    .zoo-text,
+    .info-donation {
+        font-size: calc((100vw * 2.246) / 62.3889); /*36px*/
+    }
+
+    /*/------------------------------------------------------>*/
+
+    .header{
+        max-width: 100%;
+    }
+    .logo {
+        position: relative;
+        width: 8.2%;
+        height: 65%;
+        margin: 1.4% 0 1% 3%;
+    }
+
+    .logo-title:after {
+        margin-left: -80%;
+    }
+
+    .menu-nav {
+        width: 62.7%;
+    }
+
+    .list {
+        width: 69%;
+        margin-top: 4.7%;
+        justify-content: space-between;
+    }
+
+    .list-item {
+        margin-left: 0;
+    }
+
+    .description {
+        width: 13.6%;
+        margin: 0;
+    }
+
+    .description-text {
+        margin: 21% 15% 0 0;
+    }
+
+    .main {
+        grid-template-rows: 22.6349% 77.3651%;
+    }
+
+    .background-panda {
+        content: url("../../assets/images/panda-sd-donate.jpg");
+    }
+
+    .donate-container {
+        width: 94%;
+        height: 94.68%;
+    }
+
+    .zoo-text {
+        margin-top: 4.2%;
+        width: 83%;
+    }
+
+    .info-text {
+        margin-top: 3.2%;
+    }
+
+    .info-donation {
+        margin-top: 5%;
+    }
+    .donation-container{
+        margin-top: 4%;
+        height: 73%;
+    }
+    .donation{
+        width: 90%;
+        padding-top: 2.1%;
+    }
+    .pick-and-feed{
+        margin-left: -2%;
+    }
+    .motivation-text{
+        margin-top: 1.6%;
+    }
+    .friend-zoo{
+        width: 63%;
+        height: 29%;
+        margin: 8.2% 0 0 17.5%;
+    }
+    .amount-text{
+        margin: 5.92% 0 0 2%;
+    }
+    .scale-donation-container{
+        width: 95.6%;
+        height: 10%;
+        margin: 1.1% 0 0 2%;
+    }
+    .line-scale{
+        width: 96.5%;
+        margin: 0.29% 0 0 2%;
+    }
+    .checkbox-scale-container{
+        width: 98.8%;
+        margin: 2% 0 0 0.8%;
+    }
+    .value-money-container{
+        width: 101.5%;
+    }
+    .amount-container{
+        height: 6.8%;
+        margin: 6.2% 0 0 34%;
+        width: 31.7%;
+    }
+    .check-period{
+        width: 29.8%;
+        margin: 2.9% 0 0 36.5%;
+    }
+    .period-element{
+        width: 47%;
+    }
+    .period-text{
+        margin-left: 4%;
+    }
+    .feed-btn{
+        width: 35%;
+        height: 7%;
+        margin: 3.5% 0 0 33%;
+    }
+    .share-social{
+        margin: 3.5% 0 0 32.2%;
+    }
+    .footer-label{
+        width: 92%;
+        height: 20.5%;
+        margin: 4% 0 0 3%;
+    }
+    .footer-logo{
+        width: 9%;
+        height: 57%;
+    }
+    .footer-logo-title{
+        position: relative;
+    }
+    .footer-logo-title:after{
+        margin: -6% 0 0 -91%;
+        height: 44%;
+        width: 20%;
+    }
+    .footer-form{
+        width: 41.3%;
+        height: 100%;
+        margin-left: 1%;
+    }
+    .footer-input{
+        width: 60%;
+        height: 45%;
+        margin-top: 4%;
+    }
+    .footer-btn{
+        width: 30.2%;
+        height: 13%;
+        margin: 2.8% 0 0 2.8%;
+        color: #ffffff;
+    }
+    .footer-links{
+        width: 91%;
+        height: 32%;
+        margin: 4.3% 0 0 3%;
+    }
+    .social{
+        width: 38%;
+    }
+    .footer-navigate{
+        width: 109%;
+        height: 16%;
+        margin: 37.2% 0 0 0;
+    }
+    .footer-about{
+        width: 76%;
+        height: 10%;
+        margin: 28% 0 0 33.4%;
     }
 }
