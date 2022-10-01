@@ -110,6 +110,7 @@ button {
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .list-item:first-child {
@@ -121,7 +122,7 @@ button {
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    /*background-clip: text;*/
+    background-clip: text;
     /*text-fill-color: transparent;*/
 }
 
@@ -626,7 +627,7 @@ button {
 
 .friend-block-underline:hover {
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
-    -webkit-background-clip: text;
+    /* -webkit-background-clip: text; */
     -webkit-text-fill-color: transparent;
     text-decoration: underline #F9804B;
     text-underline-position: under;
@@ -1230,7 +1231,7 @@ input[type='email']:valid:not(:placeholder-shown) {
 
 .link-nav.active:hover {
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
-    -webkit-background-clip: text;
+    /* -webkit-background-clip: text; */
     -webkit-text-fill-color: transparent;
 }
 
@@ -1243,7 +1244,7 @@ input[type='email']:valid:not(:placeholder-shown) {
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    /*background-clip: text;*/
+    background-clip: text;
     /*text-fill-color: transparent;*/
 }
 
@@ -1390,7 +1391,7 @@ input[type='email']:valid:not(:placeholder-shown) {
         margin-bottom: 0;
     }
 }
-
+/*from 1000px to 641px*/
 @media screen and (max-width: 1000px) and (min-width: 641px) {
     .page {
         width: 100vw;
@@ -1916,5 +1917,44 @@ input[type='email']:valid:not(:placeholder-shown) {
         letter-spacing: -0.1px;
     }
 
+}
+@media screen and (max-width: 640px) and (min-width: 321px){
+    .page{
+        width: 100vw;
+        height: 3581px;
+        /* height: calc(100vw*5.5953125); */
+        grid-auto-rows: 10.4161% 81.709% 7.8749%;
+    }
+    .navigation{
+        height: 9.1153%;
+    }
+    .fav-animal{
+        height: 90.8847%;
+    }
+    .logo{
+        border: none;
+    }
+    .logo-title{
+        font-size: 12.2899px;
+    }
+    .menu-nav{        
+        display: none;
+    }
+    .description{
+        display: block;
+        position: relative;
+    }
+    .description-text{
+        display: none;
+    }
+    .description::after{
+        display: block;
+        position: absolute;
+        visibility: visible;
+        content: "";
+        width: 18px;
+        height: 10px;
+        background: url('../../assets/icons/menu.svg') no-repeat;
+    }
 }
 
