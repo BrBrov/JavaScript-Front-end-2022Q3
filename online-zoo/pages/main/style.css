@@ -107,7 +107,7 @@ button {
 }
 
 .link-nav.active:hover {
-    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%) border-box;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -119,11 +119,11 @@ button {
     /*font-weight: 400;*/
     /*font-size: 16px;*/
     /*line-height: 140%;*/
-    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%) border-box;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    /*text-fill-color: transparent;*/
+    text-fill-color: transparent;
 }
 
 .description {
@@ -1241,7 +1241,7 @@ input[type='email']:valid:not(:placeholder-shown) {
     font-weight: 400;
     font-size: 16px;
     line-height: 140%;
-    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%) border-box;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -1919,23 +1919,45 @@ input[type='email']:valid:not(:placeholder-shown) {
 
 }
 @media screen and (max-width: 640px) and (min-width: 321px){
+    html{
+        width: 100vw;
+    }
     .page{
+        /*position: relative;*/
+        z-index: 0;
         width: 100vw;
         height: 3581px;
-        /* height: calc(100vw*5.5953125); */
-        grid-auto-rows: 10.4161% 81.709% 7.8749%;
+        /*height: calc(100vw*5.5953125); */
+        grid-auto-rows: 10.4161% 81.6812% 7.8749%;
+    }
+    .header{
+        /*position: relative;*/
+        width: 100%;
+        background: url("../../assets/images/panda-tablet.jpg") no-repeat bottom;
     }
     .navigation{
-        height: 9.1153%;
+        position: fixed;
+        z-index: 5;
+        width: 100%;
+        height: 3.856%;
+        top: 0;
     }
     .fav-animal{
-        height: 90.8847%;
+        height: 100%;
+        /*padding-top: 6.2%;*/
+        padding-top: 37px;
     }
     .logo{
         border: none;
+        width: 10%;
+        height: 95%;
+        margin: 0 0 0 1.69%;
     }
     .logo-title{
         font-size: 12.2899px;
+    }
+    .logo-title:after{
+        margin-left: -65%;
     }
     .menu-nav{        
         display: none;
@@ -1943,6 +1965,8 @@ input[type='email']:valid:not(:placeholder-shown) {
     .description{
         display: block;
         position: relative;
+        width: 4%;
+        margin: 1.768% 3.212% 0 0;
     }
     .description-text{
         display: none;
@@ -1954,7 +1978,336 @@ input[type='email']:valid:not(:placeholder-shown) {
         content: "";
         width: 18px;
         height: 10px;
+        margin: 11px 20px 0 0;
         background: url('../../assets/icons/menu.svg') no-repeat;
     }
+    .bg-title{
+        width: 37%;
+        /*height: 71%;*/
+        height: calc((100vw * 0.2131) + 100px);
+        margin: 0 0 0 52%;
+    }
+    .title{
+        width: 31%;
+        /*margin: -1.9% 0 0 62%;*/
+        margin-left: 62%;
+        margin-top: calc(106.5px - (100vw * 0.1881));
+        /* font-size: 54.2894px; */
+        font-size: calc(100vw*5.5953125/65.9613);
+    }
+    .color-one-title{
+        font-size: calc(100vw*5.5953125/65.9613);
+        margin-left: -12%;
+    }
+    .btn-title{
+        width: 47%;
+        height: 16%;
+        margin: -6% 0 0 3%;
+    }
+    .text-btn-title{
+        margin-left: 0;
+    }
+    .main{
+        grid-template-rows: 50.4785% 26.6917% 22.8298%;
+    }
+    .flower{
+        height: 32%;
+        margin: -3% 0 0 80%;
+    }
+    .animals-flower-container{
+        width: 100%;
+        height: 25%;
+        /*margin-top: 102.1%;*/
+        margin-top: 653px;
+    }
+    .left-flower{
+        width: 21%;
+        height: 54.73%;
+    }
+    .right-flower{
+        width: 28%;
+        height: 35.492%;
+    }
+    .backstage{
+        display: block;
+        width: 80%;
+        height: 25%;
+        margin: 0;
+    }
+    .backstage-left{
+        display: none;
+    }
+    .backstage-right{
+        margin: 12.8% 0 0 4%;
+    }
+    .title-backstage{
+        margin: -1% 0 -1% 1%;
+        font-size: calc(100vw*5.5953125/74.6042);
+        letter-spacing: -0.2px;
+    }
+    .sign-backstage{
+        display: block;
+        width: 88%;
+        font-size: calc(100vw*5.5953125/223.8125);
+        letter-spacing: -0.1px;
+    }
+    .how-it-works{
+        margin: 6% 0 4% 0.5%;
+        font-size: calc(100vw*5.5953125/149.2083);
+    }
+    .body-backstage{
+        display: block;
+        width: 94%;
+        margin-top: -0.4%;
+        font-size: calc(100vw*5.5953125/223.8125);
+        letter-spacing: -0.1px;
+    }
+
+
+    .carousel-container{
+        width: 94.7125%;
+        /*height: 53.003%;*/
+        height: calc(759 + (100vw * 0.0909));
+        margin: 12% auto 0;
+    }
+    .upper-carousel{
+        height: 43.1%;
+        margin-bottom: 14.5899%;
+        white-space: nowrap;
+    }
+    .down-carousel{
+        height: 43.1%;
+        margin-bottom: 19.5899%;
+        white-space: nowrap;
+    }
+    .elem-carousel{
+        width: 51.3%;
+    }
+    .animal-card{
+        width: 90%;
+    }
+    .left-arrow{
+        width: 9.6%;
+        /*height: 4.2%;*/
+        height: calc(24px + (100vw * 0.0577));
+        /*top: 53.4%;*/
+        top: calc(703px + (100vw * 0.094));
+        left: 38%;
+    }
+    .right-arrow{
+        width: 9.6%;
+        height: calc(26px + (100vw * 0.0577));
+        top: calc(703px + (100vw * 0.094));
+        left: 52.2%;
+    }
+    .btn-choose{
+        width: 47%;
+        height: 3.8%;
+    }
+
+    .friend-board{
+        width: 100%;
+        height: 94.913%;
+        margin: 3% 0 0 0;
+    }
+    .friend-text-container{
+        width: 93.75%;
+        height: 43.198%;
+        margin: -1% auto 3%;
+    }
+    .friend-title{
+        margin: 0 0 0 16%;
+        font-size: calc(100vw*5.5953125/85.2619);
+    }
+    .friend-block-one{
+        margin: 0.5% 0 0.5% 0;
+        font-size: calc(100vw*5.5953125/162.7727);
+    }
+    .friend-block-two{
+        margin: 0;
+        font-size: calc(100vw*5.5953125/223.8125);
+    }
+    .friend-block-three{
+        margin: 2.2% 0 0 0;
+        font-size: calc(100vw*5.5953125/223.8125);
+    }
+    .friend-block-underline{
+        font-size: calc(100vw*5.5953125/223.8125);
+    }
+    .friend-block-three br{
+        display: none;
+    }
+    .friend-block-four{
+        margin: 5% 0 0 32.6%;
+        font-size: calc(100vw*5.5953125/99.4722);
+    }
+    .friend-scheme-container{
+        position: relative;
+        z-index: 0;
+        margin: 0 0 0 3.125%;
+        width: 91.875%;
+        height: 33.675%;
+        /*grid-template-columns: 28.5714% 7.1429% 28.5714% 7.1429% 28.5714%;*/
+        grid-template-columns: 28.5714% 1fr 28.5714% 1fr 28.5714%;
+    }
+    .friend-card{
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+    }
+    .friend-arrow{
+        position: relative;
+        z-index: 2;
+        content: url(../../assets/icons/styled-arrow.svg);
+        width: 430%;
+        height: 12%;
+        margin: -39% 0 0 -180%;
+    }
+    .friend-btn{
+        width: 46%;
+        height: 7.5%;
+        margin: 6.6% 0 0 27%;
+    }
+    .testimonials-block{
+        width: 95%;
+        height: 83%;
+        margin: 9.5% 0 0 2.8%;
+    }
+    .testimonials-title{
+        margin-left: -1%;
+    }
+    .testimonials-container{
+        height: 70%;
+        width: 100%;
+        margin-top: 1.8%;
+    }
+    .testimonials-card{
+        display: block;
+        width: 99%;
+        height: 28.1%;
+        margin-top: 2.8%;
+    }
+    .testimonials-header{
+        margin: 2.2% 0 0 1.7%;
+    }
+    .user-info{
+        margin: 0 0 0 1.7%;
+        vertical-align: top;
+    }
+    .testimonials-description{
+        width: 95%;
+        height: 37%;
+        margin: 6% 0 0 3%;
+    }
+    .testimonials-scroll{
+        display: none;
+    }
+    .testimonials-btn{
+        width: 39.5%;
+        height: 9.6%;
+        margin: 5% 0 0 30%;
+    }
+    .testimonials-plant{
+        width: 20%;
+        height: 32%;
+        margin: -2.2% 0 0 -3%
+    }
+    .footer{
+        position: relative;
+        z-index: 0;
+    }
+    .footer-label{
+        position: relative;
+        z-index: 2;
+        width: 17.8%;
+        height: 18.5%;
+        margin: 2.2% 0 0 3.3%;
+    }
+    .footer-form{
+        display: none;
+    }
+    .footer-logo{
+        /*width: 74%;*/
+        width: 82px;
+        height: 100%;
+        margin: 0;
+    }
+    .footer-logo-title:after{
+        height: 50%;
+        width: 50%;
+        margin-left: -50.9%;
+        margin-top: -3.4%;
+    }
+    .footer-btn{
+        position: relative;
+        z-index: 3;
+        width: 46.5%;
+        height: 19%;
+        margin: 5.1% 0 0 3%;
+        border: none;
+        color: #ffffff;
+    }
+    .footer-links{
+        display: grid;
+        position: relative;
+        z-index: 1;
+        width: 93.75%;
+        height: 93%;
+        margin: -22% 0 0 3%;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 70% 30%;
+        grid-template-areas: ". social"
+                             "links about";
+    }
+    .social{
+        grid-area: social;
+        position: relative;
+        z-index: 6;
+        width: 10%;
+        height: 92%;
+        margin-left: 90%;
+    }
+    .social-link{
+        position: relative;
+        width: 100%;
+        height: 18%;
+    }
+    .social-bg{
+        position: relative;
+        width: 87%;
+        height: 90%;
+        margin: 0% 0 0 11%;
+    }
+    .social-name{
+        display: none;
+    }
+    .footer-navigate{
+        grid-area: links;
+        position: relative;
+        z-index: 4;
+        width: 100%;
+        height: 24%;
+        margin: 17.5% 0 0 0.2%;
+    }
+    .navigate-link{
+        height: 90%;
+    }
+    .footer-about{
+        grid-area: about;
+        position: relative;
+        z-index: 4;
+        order: 1;
+        width: 77%;
+        height: 20%;
+        margin: 8.1% 0 0 24%;
+    }
+    .author{
+        margin-left: 0;
+    }
+    .school{
+        margin-left: 0;
+    }
+
 }
 
