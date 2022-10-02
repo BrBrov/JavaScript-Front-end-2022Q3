@@ -1919,9 +1919,6 @@ input[type='email']:valid:not(:placeholder-shown) {
 
 }
 @media screen and (max-width: 640px) and (min-width: 321px){
-    html{
-        width: 100vw;
-    }
     .page{
         /*position: relative;*/
         z-index: 0;
