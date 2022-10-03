@@ -2348,15 +2348,20 @@ input[type='email']:valid:not(:placeholder-shown) {
 /*from 640px to 321px*/
 @media screen and (max-width: 320px) and (min-width: 240px){
     .page{
+        position: relative;
+        z-index: 1;
         width: 100vw;
         height: 4271px;
         grid-auto-rows: 5.18% 87.0054% 7.8202%;
     }
     .header{
+        position: relative;
+        z-index: 2;
         background: url("../../assets/images/panda-mobile.jpg") no-repeat bottom/100%;
     }
     .navigation{
         position: fixed;
+        z-index: 3;
         width: 100vw;
         height: 3.9%;
     }
