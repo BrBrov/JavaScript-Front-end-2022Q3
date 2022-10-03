@@ -1296,7 +1296,7 @@ input[type='email']:valid:not(:placeholder-shown) {
 @media screen and (max-width: 640px) and (min-width: 321px){
     .page{
         /*position: relative;*/
-        z-index: 0;
+        /*z-index: 0;*/
         width: 100vw;
         height: 1984px;
         /*height: calc(100vw*5.5953125); */
@@ -1632,4 +1632,16 @@ input[type='email']:valid:not(:placeholder-shown) {
         margin-left: 0;
         font-size: calc((100vw * 3.1)/124);
     }
+}
+/*ADAPTIVE DESIGN------------------------->*/
+/*from 640px to 321px*/
+@media screen and (max-width: 320px) and (min-width: 240px){
+    .page{
+        width: 100vw;
+        height: 4271px;
+        grid-auto-rows: 5.1744% 87.0054% 7.8202%;
+    }
+    .navigation{display: none}
+
+
 }

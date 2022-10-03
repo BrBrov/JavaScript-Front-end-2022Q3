@@ -2331,6 +2331,375 @@ input[type='email']:valid:not(:placeholder-shown) {
     .school{
         margin-left: 0;
     }
+}
+/*ADAPTIVE DESIGN------------------------->*/
+/*from 640px to 321px*/
+@media screen and (max-width: 320px) and (min-width: 240px){
+    .page{
+        width: 100vw;
+        height: 4271px;
+        grid-auto-rows: 5.18% 87.0054% 7.8202%;
+    }
+    .header{
+        background: url("../../assets/images/panda-mobile.jpg") no-repeat bottom/100%;
+    }
+    .navigation{
+        position: fixed;
+        width: 100%;
+        height: 7.7%;
+    }
+    .menu-nav{
+        display: none;
+    }
+    .logo{
+        width: 19%;
+        height: 88%;
+        margin: 0 0 0 1%;
+        border: none;
+    }
+    .logo-title{
+        font-size: 12.2899px;
+    }
+    .logo-title:after{
+        width: 15%;
+        height: 50%;
+        margin-left: -68%;
+        margin-top: -6%;
+    }
+    .description{
+        position: relative;
+        width: 9%;
+        margin-left: 0;
+    }
+    .description-text{
+        display: none;
+    }
+    .description:after{
+        position: absolute;
+        content: "";
+        background: url(../../assets/icons/menu.svg) no-repeat;
+        width: 18px;
+        height: 10px;
+        margin-top: 43%;
+        margin-left: 4%;
+    }
+    .fav-animal{
+        padding-top: 13.6%;
+    }
+    .bg-title{
+        width: 37%;
+        height: 78%;
+        margin: 3% 0 0 51%;
+    }
+    .title{
+        width: 44%;
+        height: 63%;
+        margin: -5% 0 0 55%;
+        font-size: 28px;
+    }
+    .color-one-title{
+        font-size: 28px;
+    }
+    .btn-title{
+        width: 94%;
+        height: 35%;
+        margin: 17.2% 0 0 3%;
+    }
+    .main{
+        grid-template-rows: 55.24% 29.1173% 15.62%;
+    }
+    .animals{
+        width: 100%;
+        height: 100%;
+        margin-top: 0;
+    }
+    .bg-animals{
+        height: 100%;
+    }
+    .flower{
+        width: 10%;
+        height: 9%;
+        margin: 8% 0 0 84%;
+    }
+    .animals-flower-container{
+        width: 100%;
+        height: 6%;
+        margin-top: 538%;
+    }
+    .left-flower{
+        width: 18%;
+        height: 59%;
+    }
+    .right-flower{
+        width: 21%;
+        height: 52%;
+    }
+    .palm{
+        content: url("../../assets/images/palm-mobile.jpg");
+    }
+    .strelitzia{
+        content: url("../../assets/images/strelitzia-mobile.jpg");
+    }
+    /*.contain-animals{display: none}*/
+    .backstage{
+        display: block;
+        width: 100%;
+        height: 19%;
+        margin: 31% 0 0 0;
+    }
+    .backstage-left{
+        display: none
+    }
+    .backstage-right{
+        width: 97%;
+        padding-top: 1.8%;
+        margin: 0 0 0 3%;
+    }
+    .title-backstage{
+        font-size: 24px;
+        margin-bottom: 3.3%;
+    }
+    .sign-backstage{
+        font-size: 16px;
+    }
+    .how-it-works{
+        font-size: 24px;
+        margin: 6.8% 0 2.8% 1%;
+    }
+    .body-backstage{
+        display: block;
+        width: 97%;
+        font-size: 16px;
+    }
+    .carousel-container{
+        width: 94%;
+        height: 68%;
+        margin: 13.2% auto 0 4.5%;
+    }
+    .left-arrow{
+        display: none;
+    }
+    .right-arrow{
+        display: none;
+    }
+    .upper-carousel{
+        width: 100%;
+        height: 99.8%;
+    }
+    .elem-carousel{
+        display: block;
+        width: 100%;
+        height: 23.8%;
+        margin-bottom: 7%;
+    }
+    .down-carousel{
+        display: none;
+    }
+    .btn-choose{
+        width: 93%;
+        height: 2.65%;
+        margin: 3.9% 0 0 3%;
+    }
+    .friend{
+        width: 100%;
+        padding-top: 5.5%;
+    }
+    .friend-board{
+        width: 94%;
+        height: 97.9%;
+        margin: 1% 0 0 3%;
+    }
+    .friend-text-container{
+        width: 97%;
+        height: 17%;
+        margin: 0 auto;
+    }
+    .friend-title{
+        width: 85%;
+        margin: 4% auto 0;
+        padding-left: 3%;
+        font-size: 24px;
+    }
+    .friend-block-one{
+        margin: -2.2% auto 0;
+        text-align: center;
+        font-size: 18px;
+    }
+    .friend-block-two{
+        display: none;
+    }
+    .friend-block-three{
+        display: none;
+    }
+    .friend-block-four{
+        margin: -6% auto 0;
+        text-align: center;
+        font-size: 24px;
+    }
+    .friend-scheme-container{
+        width: 56%;
+        height: 69%;
+        margin: 0 auto 0;
+        grid-template-columns: 100%;
+        grid-template-rows: 31.1% 2.5% 31.5% auto 31.2%;
+    }
+    .friend-card-background{
+        height: 75.2%;
+    }
+    .friend-card-text{
+        margin-top: 6%;
+    }
+    .friend-arrow{
+        content: url(../../assets/icons/arrow-green-down.svg);
+        margin: -36% 0 0 103%;
+    }
+
+    .friend-btn{
+        width: 100%;
+        height: 5.2%;
+        margin: 13% auto 0;
+    }
+    .testimonials{
+        width: 100%;
+        padding-top: 9.5%;
+    }
+    .testimonials-block{
+        width: 95%;
+        height: 75%;
+        margin: 0 auto 0;
+    }
+    .testimonials-title{
+        font-size: 24px;
+    }
+    .testimonials-container{
+        width: 100%;
+        height: 87%;
+        margin: 6% auto 0;
+    }
+    .testimonials-card{
+        display: block;
+        width: 98%;
+        height: 31%;
+        margin-bottom: 4%;
+    }
+    .testimonials-header{
+        width: 80%;
+        height: 44%;
+        margin: 3% 0 0 3%;
+    }
+    .user-info{
+        margin-left: 2.4%;
+    }
+    .testimonials-description{
+        width: 87%;
+        height: 35%;
+        margin: 0.6% 0 0 5%;
+    }
+    .testimonials-scroll{
+        display: none;
+    }
+    .testimonials-btn{
+        width: 79%;
+        height: 13%;
+        margin: 9.8% auto 0;
+    }
+    .testimonials-plant{
+        content: url(../../assets/images/leaf-mobiile.jpg);
+        /* width: 100%; */
+        height: 17%;
+        margin-top: 41%;
+    }
+    .footer{
+        position: relative;
+        z-index: 0;
+        padding-top: 2%;
+    }
+    .footer-label{
+        z-index: 1;
+        position: relative;
+        display: block;
+        width: 44%;
+        height: 9%;
+    }
+    .footer-logo{
+        width: 99%;
+        height: 80%;
+        margin: 10.8% auto 0;
+        border: none;
+    }
+    .footer-logo-title{
+        font-size: 19.0145px;
+    }
+    .footer-logo-title:after{
+        width: 9%;
+        height: 69%;
+        margin-left: -40.69%;
+        margin-top: -3.25%;
+    }
+    .footer-form{
+        display: none;
+    }
+    .footer-btn{
+        position: relative;
+        z-index: 3;
+        width: 93%;
+        height: 16.5%;
+        margin: 24.6% 0 0 3%;
+        border: none;
+        color: #ffffff;
+    }
+    .footer-links{
+        display: flex;
+        position: relative;
+        z-index: 2;
+        width: 92%;
+        height: 76%;
+        margin: -36% 0 0 5%;
+        flex-direction: column;
+    }
+    .social{
+        order: 0;
+        width: 66%;
+        height: 12%;
+        margin: 1% 0 0 16%;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .social-link{
+        width: 14%;
+        height: 100%;
+        margin: 0;
+        padding-top: 0.9%;
+    }
+    .social-bg{
+        width: 97%;
+        height: 95%;
+        padding-top: 5%;
+    }
+    .social-name{
+        display: none;
+    }
+    .footer-navigate{
+        order: 2;
+        width: 94%;
+        height: 10%;
+        margin: 10% 0 0 2%;
+    }
+    .footer-about{
+        order: 1;
+        width: 74%;
+        height: 20%;
+        margin: 38% 0 0 27%;
+        justify-items: left;
+
+    }
+    .author, .school{
+        font-size: 15px;
+    }
+    .school{
+        margin-top: 5%;
+    }
+
 
 }
 
