@@ -1963,7 +1963,7 @@ input[type='email']:valid:not(:placeholder-shown) {
         display: block;
         position: relative;
         width: 4%;
-        margin: 1.768% 3.212% 0 0;
+        margin: 1.768% 2.212% 0 0;
     }
     .description-text{
         display: none;
@@ -1975,7 +1975,7 @@ input[type='email']:valid:not(:placeholder-shown) {
         content: "";
         width: 18px;
         height: 10px;
-        margin: 11px 20px 0 0;
+        /*margin: 11px 20px 0 0;*/
         background: url('../../assets/icons/menu.svg') no-repeat;
     }
     .bg-title{
@@ -2076,6 +2076,21 @@ input[type='email']:valid:not(:placeholder-shown) {
         height: 43.1%;
         margin-bottom: 19.5899%;
         white-space: nowrap;
+    }
+    .down-carousel .elem-carousel:nth-child(1) .animal-card .card-img{
+        content: url("../../assets/images/gorilla.jpg");
+    }
+    .down-carousel .elem-carousel:nth-child(2) .animal-card .card-img{
+        content: url("../../assets/images/alligator.jpg");
+    }
+    .down-carousel .elem-carousel:nth-child(1) .animal-card .card-img{
+        content: url("../../assets/images/gorilla.jpg");
+    }
+    .down-carousel .elem-carousel:nth-child(1) .animal-card .title-card .title-text .title-animal-card{
+        content:  "Gorillas";
+    }
+    .down-carousel .elem-carousel:nth-child(1) .animal-card .title-card .title-text .animal-from{
+        content: "Native to Congo";
     }
     .elem-carousel{
         width: 51.3%;
@@ -2196,6 +2211,17 @@ input[type='email']:valid:not(:placeholder-shown) {
         width: 95%;
         height: 37%;
         margin: 6% 0 0 3%;
+    }
+    .testimonials-card:nth-child(2) .testimonials-header .avatar {
+        content: url("../../assets/images/avater3.jpg");
+    }
+
+    .testimonials-card:nth-child(2) .testimonials-header .user-info .user-name {
+        content: "Oska Samborska";
+    }
+
+    .testimonials-card:nth-child(2) .testimonials-description .review {
+        content: " Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. \n The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. The best online zoo I’ve met\. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.";
     }
     .testimonials-scroll{
         display: none;
