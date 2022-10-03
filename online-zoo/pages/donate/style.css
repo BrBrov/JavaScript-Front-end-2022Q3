@@ -1325,7 +1325,8 @@ input[type='email']:valid:not(:placeholder-shown) {
         margin: 0 0 0 1.69%;
     }
     .logo-title{
-        font-size: 12.2899px;
+        /*font-size: 12.2899px;*/
+        font-size: calc((100vw * 3.1)/161.4333);
     }
     .logo-title:after{
         margin-left: -65%;
@@ -1337,7 +1338,7 @@ input[type='email']:valid:not(:placeholder-shown) {
         display: block;
         position: relative;
         width: 4%;
-        margin: 0 3.212% 0 0;
+        margin: 0 2.1% 0 0;
     }
     .description-text{
         display: none;
@@ -1364,10 +1365,15 @@ input[type='email']:valid:not(:placeholder-shown) {
         margin: 4.5% auto 0;
     }
     .zoo-text{
-        font-size: 24px;
+        /*font-size: 24px;*/
+        font-size: calc((100vw * 3.1)/82.6666);
+    }
+    .info-donation{
+        font-size: calc((100vw * 3.1)/55.1111);
     }
     .info-text{
         margin-top: 3%;
+        font-size: calc((100vw * 3.1)/124);
         letter-spacing: -0.03px;
     }
     .donation-container{
@@ -1380,11 +1386,13 @@ input[type='email']:valid:not(:placeholder-shown) {
         width: 78%;
         margin-left: 11.1%;
         margin-top: 2%;
+        font-size: calc((100vw * 3.1)/41.3333);
     }
     .motivation-text{
         width: 100%;
         text-align: center;
         margin-top: 3.5%;
+        font-size: calc((100vw * 3.1)/82.6666);
     }
     .friend-zoo{
         width: 91.667%;
@@ -1395,6 +1403,12 @@ input[type='email']:valid:not(:placeholder-shown) {
         width: 32.6%;
         height: 41%;
         margin: 19% 0 0 0;
+    }
+    .diet-value{
+        font-size: calc((100vw * 3.1)/27.5555);
+    }
+    .diet-text{
+        font-size: calc((100vw * 3.1)/124);
     }
     .cross{
         width: 3%;
@@ -1412,19 +1426,27 @@ input[type='email']:valid:not(:placeholder-shown) {
         margin: 1% auto 0;
     }
     .scale-container{
+        position: relative;
         width: 100%;
         margin: -0.7% auto 0;
     }
     .scale-background{
+        position: relative;
         height: 71%;
     }
     .line-scale{
+        position: relative;
         width: 86%;
-        margin: 0.905% 0 0 7%;
+        /*margin: 0.905% 0 0 7%;*/
+        margin-top: calc(9px - (100vw * 0.009));
+        margin-left: 7%;
     }
     .checkbox-scale-container{
+        position: relative;
         width: 89.6%;
-        margin: 5.5% 0 0 5%;
+        /*margin: 5.5% 0 0 5%;*/
+        margin-left: 5%;
+        margin-top: calc(92px - (100vw * 0.094));
     }
     .check-scale:nth-child(6){
         display: none;
@@ -1456,33 +1478,53 @@ input[type='email']:valid:not(:placeholder-shown) {
     .dollar-money{
         height: 50%;
     }
+    .dollar-value{
+        font-size: calc((100vw * 3.1)/76.3077);
+    }
     .amount-container{
         width: 30%;
         height: 5.5%;
         margin: 8% auto 0;
     }
+    .input-money{
+        font-size: calc((100vw * 3.1)/124);
+    }
+    .input-money::placeholder{
+        font-size: calc((100vw * 3.1)/124);
+    }
     .input-money-img{
-        margin: -17% 0 0 89%;
+        /*margin: -17% 0 0 89%;*/
+        margin-top: -32px;
+        margin-left: 89%;
     }
     .check-period{
-        width: 41.1%;
+        position: relative;
+        /*width: 41.1%;*/
+        width: calc(123px + (100vw * 0.1912));
         height: 3%;
-        margin: 5% 0 0 31.2%;
+        /*margin: 5% 0 0 31.2%;*/
+        margin-top: 5%;
+        margin-left: calc((100vw * 0.4107) - 52px);
     }
     .period-element{
+        position: relative;
         width: 46%;
     }
     .period-text{
+        position: relative;
         display: block;
         margin: -20% 0 0 26%;
+        font-size: calc((100vw * 3.1)/124);
     }
     .feed-btn{
         width: 50%;
         height: 6.8%;
         margin: 4.6% 0 0 25.2%;
+        font-size: calc((100vw * 3.1)/124);
     }
     .share-social{
         margin: 4.8% 0 0 25%;
+        font-size: calc((100vw * 3.1)/124);
     }
     /*footer------------------->*/
     .footer{
@@ -1505,6 +1547,9 @@ input[type='email']:valid:not(:placeholder-shown) {
         height: 100%;
         margin: 0;
     }
+    .footer-logo-title{
+        font-size: calc((100vw * 3.1)/104.3414);
+    }
     .footer-logo-title:after{
         height: 50%;
         width: 50%;
@@ -1517,6 +1562,7 @@ input[type='email']:valid:not(:placeholder-shown) {
         width: 46.5%;
         height: 19%;
         margin: 5.1% 0 0 3%;
+        font-size: calc((100vw * 3.1)/124);
         border: none;
         color: #ffffff;
     }
@@ -1525,7 +1571,8 @@ input[type='email']:valid:not(:placeholder-shown) {
         position: relative;
         z-index: 1;
         width: 93.75%;
-        height: 93%;
+        /*height: 93%;*/
+        height: calc(100vw * 0.4107);
         margin: -22% 0 0 3%;
         grid-template-columns: 50% 50%;
         grid-template-rows: 70% 30%;
@@ -1565,6 +1612,9 @@ input[type='email']:valid:not(:placeholder-shown) {
     .navigate-link{
         height: 90%;
     }
+    .link-nav{
+        font-size: calc((100vw * 3.1)/124);
+    }
     .footer-about{
         grid-area: about;
         position: relative;
@@ -1576,8 +1626,10 @@ input[type='email']:valid:not(:placeholder-shown) {
     }
     .author{
         margin-left: 0;
+        font-size: calc((100vw * 3.1)/124);
     }
     .school{
         margin-left: 0;
+        font-size: calc((100vw * 3.1)/124);
     }
 }
