@@ -1,4 +1,4 @@
-class ActiveElem{
+class ActiveElem {
     constructor() {
         this.logo = document.querySelector('.logo');
         this.about = document.querySelector('.link-nav');
@@ -9,57 +9,332 @@ class ActiveElem{
         this.logoFooter = document.querySelector('.footer-logo');
         this.addListener();
     }
-    addListener(){
-        this.logo.addEventListener('click', (ev) => {
-            window.location.reload();
+
+    addListener() {
+        this.logo.addEventListener('click', ev => this.reloader(ev));
+        this.logoFooter.addEventListener('click', ev => this.reloader(ev));
+        this.about.addEventListener('click', ev => this.reloader(ev));
+        this.email.addEventListener('blur', (ev) => {
             ev.stopImmediatePropagation();
-         })
-        this.logoFooter.addEventListener('click', (ev) => {
-            window.location.reload();
-            ev.stopImmediatePropagation();
-        })
-        this.about.addEventListener('click', (ev) => {
-            window.location.reload();
-            ev.stopImmediatePropagation();
-        })
-        this.email.addEventListener('blur', (ev)=>{
-            ev.stopImmediatePropagation();
-            if(!this.email.checkValidity() || this.email.value === ''){
+            if (!this.email.checkValidity() || this.email.value === '') {
                 this.email.value = 'Invalid email';
                 this.emailBtn.className = 'footer-form-btn mistake';
-                setTimeout(()=>{
+                setTimeout(() => {
                     this.email.value = 'Enter email';
                 }, 2000)
-            }else{
+            } else {
                 this.emailBtn.className = 'footer-form-btn valid';
-                this.emailBtn.addEventListener('click',(evClk)=>{
+                this.emailBtn.addEventListener('click', (evClk) => {
                     evClk.stopPropagation();
                     evClk.target.className = 'footer-form-btn btn-push';
-                    setTimeout(()=>{
+                    setTimeout(() => {
                         evClk.target.className = 'footer-form-btn valid';
-                    },250);
-                    this.emailBtn.removeEventListener('click', ()=>{});
+                    }, 250);
+                    this.emailBtn.removeEventListener('click', () => {
+                    });
                 })
             }
-        })
-        this.email.addEventListener('focus', (ev)=>{
+        });
+        this.email.addEventListener('focus', (ev) => {
             ev.stopImmediatePropagation();
             this.email.value = '';
-        })
-        this.btnVolunteers.addEventListener('click',(ev)=>{
-            ev.stopPropagation();
-            document.location.href = '../donate/index.html';
-        })
-        this.btnFeed.addEventListener('click',(ev)=>{
-            ev.stopPropagation();
-            document.location.href = '../donate/index.html';
-        })
+        });
+        this.btnVolunteers.addEventListener('click', ev => this.linkForMain(ev));
+        this.btnFeed.addEventListener('click', ev => this.linkForMain(ev));
+    }
+
+    linkForMain(ev) {
+        ev.stopPropagation();
+        document.location.href = '../donate/index.html';
+    }
+
+    reloader(ev) {
+        window.location.reload();
+        ev.stopImmediatePropagation();
     }
 }
 
-window.addEventListener('load', ()=>{
+class ElemsCarouselList {
+    constructor(upElems, downElems) {
+        this.elems = [];
+        [...upElems].forEach(e => this.clone(e));
+        [...downElems].forEach(e => this.clone(e));
+        return this.elems;
+    }
+
+    clone(htmlElem) {
+        let clone = htmlElem.cloneNode(true);
+        this.elems.push(clone);
+    }
+}
+
+class Carousel {
+    constructor() {
+        this.upCarousel = document.getElementsByClassName('upper-carousel')[0].children;
+        this.downCarousel = document.getElementsByClassName('down-carousel')[0].children;
+        this.elems = new ElemsCarouselList(this.upCarousel, this.downCarousel);
+        this._clickCtrl = false;
+    }
+    adaptiveDesktop(){
+        let imgCard = document.querySelectorAll('.card-img');
+        let textCard = document.querySelectorAll('.title-animal-card');
+        let from = document.querySelectorAll('.animal-from');
+        let eat = document.querySelectorAll('.card-eat');
+        imgCard[2].src = '../../assets/images/cheetag.jpg';
+        textCard[2].textContent = "cheetahs";
+        from[2].textContent = 'Native to Africa';
+        eat[2].src = '../../assets/icons/meet-fish.svg';
+        imgCard[4].src = '../../assets/images/gorilla.jpg';
+        textCard[4].textContent = "gorillas";
+        from[4].textContent = 'Native to Congo';
+        eat[4].src = '../../assets/icons/banana-bamboo.svg';
+        imgCard[5].src = '../../assets/images/alligator.jpg';
+        textCard[5].textContent = "Alligators";
+        from[5].textContent = 'Native to Southeastern U. S.';
+        eat[5].src = '../../assets/icons/meet-fish.svg';
+    }
+
+    addListenersDesktop() {
+        let arrow = this.getArrowElem();
+        let value = 3;
+        // left click
+        arrow[0].addEventListener('click', async (ev) => {
+            ev.stopImmediatePropagation();
+            if (!this._clickCtrl) {
+                this._clickCtrl = true;
+                this._leftDelete(value);
+                setTimeout(() => {
+                    this._createCarouselSixElemLeft();
+                    this._clickCtrl = false;
+                }, 1500);
+            }
+        })
+        //right click
+        arrow[1].addEventListener('click', async (ev) => {
+            ev.stopImmediatePropagation();
+            if (!this._clickCtrl) {
+                this._clickCtrl = true;
+                this._rightDelete(value);
+                this._createCarouselSixElemRight();
+                setTimeout(() => {
+                    this._clickCtrl = false;
+                }, 1550);
+            }
+        })
+    }
+
+    addListenerTablet() {
+        let arrow = this.getArrowElem();
+        let value = 2;
+        // left click
+        arrow[0].addEventListener('touchstart', async (ev) => {
+            ev.stopImmediatePropagation();
+            if (!this._clickCtrl) {
+                this._clickCtrl = true;
+                this._leftDelete(value);
+                setTimeout(() => {
+                    this._createCarouselFourElemLeft();
+                    this._clickCtrl = false;
+                }, 1500);
+            }
+        })
+        //right click
+        arrow[1].addEventListener('touchstart', async (ev) => {
+            ev.stopImmediatePropagation();
+            if (!this._clickCtrl) {
+                this._clickCtrl = true;
+                this._rightDelete(value);
+                this._createCarouselFourElemRight();
+                setTimeout(() => {
+                    this._clickCtrl = false;
+                }, 1550);
+            }
+        })
+    }
+
+    getArrowElem() {
+        let left = document.querySelector('.left-arrow');
+        let right = document.querySelector('.right-arrow');
+        return [left, right];
+    }
+
+    setUpBig() {
+        this.upCarousel[3].remove();
+        let upperContainer = document.querySelector('.upper-carousel');
+        let downContainer = document.querySelector('.down-carousel');
+        for (let i = 0; i < 3; i++) {
+            upperContainer.append(this.upCarousel[i].cloneNode(true));
+            downContainer.append(this.downCarousel[i].cloneNode(true));
+        }
+        let part = this._generate(6);
+        part.forEach((e, i) => {
+            if (i < 3) {
+                upperContainer.append(e.cloneNode(true));
+            } else {
+                downContainer.append(e.cloneNode(true));
+            }
+        })
+    }
+
+    setUpSmall() {
+        this.upCarousel[3].remove();
+        this.upCarousel[2].remove();
+        this.downCarousel[2].remove();
+        let upperContainer = document.querySelector('.upper-carousel');
+        let downContainer = document.querySelector('.down-carousel');
+        for (let i = 0; i < 2; i++) {
+            upperContainer.append(this.upCarousel[i].cloneNode(true));
+            downContainer.append(this.downCarousel[i].cloneNode(true));
+        }
+        let part = this._generate(4);
+        console.log(part);
+        part.forEach((e, i) => {
+            if (i < 2) {
+                upperContainer.append(e.cloneNode(true));
+            } else {
+                downContainer.append(e.cloneNode(true));
+            }
+        })
+    }
+
+    _createCarouselSixElemLeft() {
+        let upperContainer = document.querySelector('.upper-carousel');
+        let downContainer = document.querySelector('.down-carousel');
+        let part = this._generate(6);
+        part.forEach((e, i) => {
+            if (i < 3) {
+                upperContainer.append(e.cloneNode(true));
+            } else {
+                downContainer.append(e.cloneNode(true));
+            }
+        })
+    }
+
+    _createCarouselFourElemLeft() {
+        let upperContainer = document.querySelector('.upper-carousel');
+        let downContainer = document.querySelector('.down-carousel');
+        let part = this._generate(4);
+        part.forEach((e, i) => {
+            if (i < 2) {
+                upperContainer.append(e.cloneNode(true));
+            } else {
+                downContainer.append(e.cloneNode(true));
+            }
+        })
+    }
+
+    _createCarouselSixElemRight() {
+        let upperContainer = document.querySelector('.upper-carousel');
+        let downContainer = document.querySelector('.down-carousel');
+        let part = this._generate(6);
+        part.forEach((e, i) => {
+            if (i < 3) {
+                setTimeout(() => {
+                    upperContainer.insertBefore(e.cloneNode(true), upperContainer.children[0]);
+
+                }, 250)
+            } else {
+                setTimeout(() => {
+                    downContainer.insertBefore(e.cloneNode(true), downContainer.children[0]);
+                }, 250)
+            }
+        })
+    }
+
+    _createCarouselFourElemRight() {
+        let upperContainer = document.querySelector('.upper-carousel');
+        let downContainer = document.querySelector('.down-carousel');
+        let part = this._generate(4);
+        part.forEach((e, i) => {
+            if (i < 2) {
+                setTimeout(() => {
+                    upperContainer.insertBefore(e.cloneNode(true), upperContainer.children[0]);
+
+                }, 250)
+            } else {
+                setTimeout(() => {
+                    downContainer.insertBefore(e.cloneNode(true), downContainer.children[0]);
+                }, 250)
+            }
+        })
+    }
+
+    _leftDelete(value) {
+        let timer = setInterval(() => {
+            if (value) {
+                this.upCarousel[0].remove();
+                this.downCarousel[0].remove();
+                value--;
+            } else {
+                clearInterval(timer);
+            }
+        }, 150);
+
+    }
+
+    _rightDelete(value) {
+        let timer = setInterval(() => {
+            if (value) {
+                this.upCarousel[this.upCarousel.length - 1].remove();
+                this.downCarousel[this.downCarousel.length - 1].remove();
+                value--;
+            } else {
+                clearInterval(timer);
+            }
+        }, 50);
+    }
+
+    _generate(number) {
+        let block = [];
+        let controlUp = new Set();
+        for (let i = 0; i < number; i++) {
+            controlUp.add(i);
+        }
+        let index = undefined;
+        while (block.length !== number) {
+            index = this._random();
+            if (controlUp.has(index)) {
+                block.push(this.elems[index].cloneNode(true));
+                controlUp.delete(index);
+            }
+        }
+        return block;
+    }
+
+    _random() {
+        return Math.floor(Math.random() * 7);
+    }
+}
+
+window.addEventListener('load', () => {
     let active = new ActiveElem();
 })
+window.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM Content loaded');
+    let width = Math.max(window.innerWidth, document.body.clientWidth || 0);
+    if (width > 1001) {
+        let carousel = new Carousel();
+        carousel.setUpBig();
+        carousel.addListenersDesktop();
+    } else if (width < 1001 && width > 640) {
+        let carousel = new Carousel();
+        carousel.adaptiveDesktop();
+        carousel.setUpBig();
+        carousel.addListenersDesktop();
+    } else if (width < 641 && width > 320) {
+        let carousel = new Carousel();
+        carousel.adaptiveDesktop();
+        carousel.setUpSmall();
+        carousel.addListenerTablet();
+    }
+})
+window.addEventListener('resize', () => {
+    console.log('reloaded page');
+    window.location.reload();
+})
+
+
+
 
 
 

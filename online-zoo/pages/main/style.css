@@ -364,37 +364,42 @@ button {
 /*Carousel*/
 
 .carousel-container {
+    position: relative;
     width: 72.375%;
     height: 47.6763%;
     margin: 11.2% auto 0 13.5%;
 }
 
 .upper-carousel {
+    position: relative;
     width: 101.7271%;
     height: 49.8532%;
     margin-top: 0;
     margin-bottom: 0.864%;
     overflow: hidden;
+    white-space: nowrap;
     font-size: 0;
     cursor: pointer;
 }
 
 .down-carousel {
+    position: relative;
     width: 101.7271%;
     height: 49.8532%;
     margin-top: 0.864%;
     margin-bottom: 0;
     overflow: hidden;
+    white-space: nowrap;
     font-size: 0;
     cursor: pointer;
 }
 
 .left-arrow {
     position: absolute;
-    width: 3.875%;
-    height: 3.39%;
-    top: 53.9%;
-    left: 8.4%;
+    width: 4.875%;
+    height: 6.39%;
+    top: 46.9%;
+    left: -6.6%;
     border-radius: 90px;
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
     cursor: pointer;
@@ -407,10 +412,10 @@ button {
 
 .right-arrow {
     position: absolute;
-    width: 3.875%;
-    height: 3.39%;
-    top: 53.9%;
-    right: 9.1%;
+    width: 4.875%;
+    height: 6.39%;
+    top: 46.9%;
+    right: -8.9%;
     border-radius: 90px;
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
     cursor: pointer;
@@ -427,8 +432,37 @@ button {
 /*Element of carousel ------------------->*/
 .elem-carousel {
     display: inline-block;
+    position: absolute;
     width: 33%;
     height: 98%;
+    transition: all 1.5s;
+}
+.elem-carousel:nth-child(1){
+    transform: translateX(-306%);
+}
+.elem-carousel:nth-child(2){
+    transform: translateX(-206%);
+}
+.elem-carousel:nth-child(3){
+    transform: translateX(-106%);
+}
+.elem-carousel:nth-child(4){
+    transform: translateX(2%);
+}
+.elem-carousel:nth-child(5){
+    transform: translateX(104%);
+}
+.elem-carousel:nth-child(6){
+    transform: translateX(206%);
+}
+.elem-carousel:nth-child(7){
+    transform: translateX(308%);
+}
+.elem-carousel:nth-child(8){
+    transform: translateX(408%);
+}
+.elem-carousel:nth-child(9){
+    transform: translateX(508%);
 }
 
 .animal-card {
@@ -1605,6 +1639,33 @@ input[type='email']:valid:not(:placeholder-shown) {
         height: 100%;
         margin: 0;
     }
+    .elem-carousel:nth-child(1){
+        transform: translateX(-300%);
+    }
+    .elem-carousel:nth-child(2){
+        transform: translateX(-200%);
+    }
+    .elem-carousel:nth-child(3){
+        transform: translateX(-100%);
+    }
+    .elem-carousel:nth-child(4){
+        transform: translateX(0%);
+    }
+    .elem-carousel:nth-child(5){
+        transform: translateX(100%);
+    }
+    .elem-carousel:nth-child(6){
+        transform: translateX(200%);
+    }
+    .elem-carousel:nth-child(7){
+        transform: translateX(300%);
+    }
+    .elem-carousel:nth-child(8){
+        transform: translateX(400%);
+    }
+    .elem-carousel:nth-child(9){
+        transform: translateX(500%);
+    }
 
     .animal-card {
         width: 91%;
@@ -1617,42 +1678,42 @@ input[type='email']:valid:not(:placeholder-shown) {
         width: auto;
         height: 20%;
     }
-    .upper-carousel .elem-carousel:nth-child(3) .animal-card .card-img{
-        content: url("../../assets/images/cheetag.jpg");
-    }
-    .upper-carousel .elem-carousel:nth-child(3) .animal-card .title-card .title-text .title-animal-card{
-        content: "cheetahs" ;
-    }
-    .upper-carousel .elem-carousel:nth-child(3) .animal-card .title-card .title-text .animal-from{
-        content: "Native to Africa" ;
-    }
-    .upper-carousel .elem-carousel:nth-child(3) .animal-card .title-card .card-eat{
-        content: url("../../assets/icons/meet-fish.svg");
-    }
-    .down-carousel .elem-carousel:nth-child(1) .animal-card .card-img{
-        content: url("../../assets/images/gorilla.jpg");
-    }
-    .down-carousel .elem-carousel:nth-child(1) .animal-card .title-card .title-text .title-animal-card{
-        content: "gorillas" ;
-    }
-    .down-carousel .elem-carousel:nth-child(1) .animal-card .title-card .title-text .animal-from{
-        content: "Native to Congo" ;
-    }
-    .down-carousel .elem-carousel:nth-child(1) .animal-card .title-card .card-eat{
-        content: url("../../assets/icons/banana-bamboo.svg");
-    }
-    .down-carousel .elem-carousel:nth-child(2) .animal-card .card-img{
-        content: url("../../assets/images/alligator.jpg");
-    }
-    .down-carousel .elem-carousel:nth-child(2) .animal-card .title-card .title-text .title-animal-card{
-        content: "Alligators" ;
-    }
-    .down-carousel .elem-carousel:nth-child(2) .animal-card .title-card .title-text .animal-from{
-        content: "Native to Southeastern U. S." ;
-    }
-    .down-carousel .elem-carousel:nth-child(2) .animal-card .title-card .card-eat{
-        content: url("../../assets/icons/meet-fish.svg");
-    }
+    /*.upper-carousel .elem-carousel:nth-child(3) .animal-card .card-img{*/
+    /*    content: url("../../assets/images/cheetag.jpg");*/
+    /*}*/
+    /*.upper-carousel .elem-carousel:nth-child(3) .animal-card .title-card .title-text .title-animal-card{*/
+    /*    content: "cheetahs" ;*/
+    /*}*/
+    /*.upper-carousel .elem-carousel:nth-child(3) .animal-card .title-card .title-text .animal-from{*/
+    /*    content: "Native to Africa" ;*/
+    /*}*/
+    /*.upper-carousel .elem-carousel:nth-child(3) .animal-card .title-card .card-eat{*/
+    /*    content: url("../../assets/icons/meet-fish.svg");*/
+    /*}*/
+    /*.down-carousel .elem-carousel:nth-child(1) .animal-card .card-img{*/
+    /*    content: url("../../assets/images/gorilla.jpg");*/
+    /*}*/
+    /*.down-carousel .elem-carousel:nth-child(1) .animal-card .title-card .title-text .title-animal-card{*/
+    /*    content: "gorillas" ;*/
+    /*}*/
+    /*.down-carousel .elem-carousel:nth-child(1) .animal-card .title-card .title-text .animal-from{*/
+    /*    content: "Native to Congo" ;*/
+    /*}*/
+    /*.down-carousel .elem-carousel:nth-child(1) .animal-card .title-card .card-eat{*/
+    /*    content: url("../../assets/icons/banana-bamboo.svg");*/
+    /*}*/
+    /*.down-carousel .elem-carousel:nth-child(2) .animal-card .card-img{*/
+    /*    content: url("../../assets/images/alligator.jpg");*/
+    /*}*/
+    /*.down-carousel .elem-carousel:nth-child(2) .animal-card .title-card .title-text .title-animal-card{*/
+    /*    content: "Alligators" ;*/
+    /*}*/
+    /*.down-carousel .elem-carousel:nth-child(2) .animal-card .title-card .title-text .animal-from{*/
+    /*    content: "Native to Southeastern U. S." ;*/
+    /*}*/
+    /*.down-carousel .elem-carousel:nth-child(2) .animal-card .title-card .card-eat{*/
+    /*    content: url("../../assets/icons/meet-fish.svg");*/
+    /*}*/
 
     .left-arrow {
         width: 6.6%;
@@ -2086,38 +2147,56 @@ input[type='email']:valid:not(:placeholder-shown) {
         margin-bottom: 19.5899%;
         white-space: nowrap;
     }
-    .down-carousel .elem-carousel:nth-child(1) .animal-card .card-img{
-        content: url("../../assets/images/gorilla.jpg");
-    }
-    .down-carousel .elem-carousel:nth-child(2) .animal-card .card-img{
-        content: url("../../assets/images/alligator.jpg");
-    }
-    .down-carousel .elem-carousel:nth-child(1) .animal-card .card-img{
-        content: url("../../assets/images/gorilla.jpg");
-    }
-    .down-carousel .elem-carousel:nth-child(1) .animal-card .title-card .title-text .title-animal-card{
-        content:  "Gorillas";
-    }
-    .down-carousel .elem-carousel:nth-child(1) .animal-card .title-card .title-text .animal-from{
-        content: "Native to Congo";
-    }
+    /*.down-carousel .elem-carousel:nth-child(1) .animal-card .card-img{*/
+    /*    content: url("../../assets/images/gorilla.jpg");*/
+    /*}*/
+    /*.down-carousel .elem-carousel:nth-child(2) .animal-card .card-img{*/
+    /*    content: url("../../assets/images/alligator.jpg");*/
+    /*}*/
+    /*.down-carousel .elem-carousel:nth-child(1) .animal-card .card-img{*/
+    /*    content: url("../../assets/images/gorilla.jpg");*/
+    /*}*/
+    /*.down-carousel .elem-carousel:nth-child(1) .animal-card .title-card .title-text .title-animal-card{*/
+    /*    content:  "Gorillas";*/
+    /*}*/
+    /*.down-carousel .elem-carousel:nth-child(1) .animal-card .title-card .title-text .animal-from{*/
+    /*    content: "Native to Congo";*/
+    /*}*/
     .elem-carousel{
         width: 51.3%;
+    }
+    .elem-carousel:nth-child(1){
+        transform: translateX(-200%);
+    }
+    .elem-carousel:nth-child(2){
+        transform: translateX(-100%);
+    }
+    .elem-carousel:nth-child(3){
+        transform: translateX(0%);
+    }
+    .elem-carousel:nth-child(4){
+        transform: translateX(100%);
+    }
+    .elem-carousel:nth-child(5){
+        transform: translateX(200%);
+    }
+    .elem-carousel:nth-child(6){
+        transform: translateX(300%);
     }
     .animal-card{
         width: 90%;
     }
     .left-arrow{
         width: 9.6%;
-        height: auto;
-        top: calc(804px - ((640px - 100vw) * 0.18495));
+        height: 7%;
+        top: calc(365px - ((640px - 100vw) * 0.18495));
         left: 38%;
         border-radius: 100%;
     }
     .right-arrow{
         width: 9.6%;
-        height: auto;
-        top: calc(804px - ((640px - 100vw) * 0.18495));
+        height: 7%;
+        top: calc(365px - ((640px - 100vw) * 0.18495));
         left: 52.2%;
         border-radius: 100%;
     }
