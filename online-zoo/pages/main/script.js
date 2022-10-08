@@ -360,7 +360,6 @@ class Testimonials {
             }
             this.scrollLine.value = (this.scrollLine.value > 0) ? (this.scrollLine.value = `${this.scrollLine.value - 1}`) : (this.scrollLine.value = '0');
         }
-        console.dir(this.scrollLine);
     }
 
     _workerSlider(ev) {
