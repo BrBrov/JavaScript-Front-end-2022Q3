@@ -188,7 +188,6 @@ class Carousel {
             downContainer.append(this.downCarousel[i].cloneNode(true));
         }
         let part = this._generate(4);
-        console.log(part);
         part.forEach((e, i) => {
             if (i < 2) {
                 upperContainer.append(e.cloneNode(true));
@@ -318,6 +317,16 @@ class Testimonials {
         // });
         this._ctrlRotate = 0;
     }
+    setMobileDesktop(){
+        this.elems[0].remove();
+        this.elems[1].remove();
+        let saver = this.elems[3].cloneNode(true);
+        this.elems[0].after(saver);
+        let ctrl = this.elems.length;
+        for (let i = 3; i < ctrl; i++) {
+            this.elems[3].remove();
+        }
+    }
     setSmallDesktop(){
         let saver = this.elems[5].cloneNode(true);
         this.elems[2].remove();
@@ -430,7 +439,6 @@ class PopUp{
             this.menu.addEventListener('touchend', this._showPopUp.bind(this));
             this.background.addEventListener('touchstart',(ev)=>{
                 ev.stopPropagation();
-                console.log(ev.target.className);
                 switch(ev.target.className){
                     case 'popup-close':
                     case 'popup-background':
@@ -466,7 +474,6 @@ window.addEventListener('load', () => {
     let active = new ActiveElem();
 })
 window.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM Content loaded');
     let carousel = new Carousel();
     let testimonials = new Testimonials();
     let width = Math.max(window.innerWidth, document.body.clientWidth || 0);
@@ -487,10 +494,13 @@ window.addEventListener('DOMContentLoaded', () => {
         carousel.adaptiveDesktop();
         carousel.setUpSmall();
         carousel.addListenerTablet();
+    }else{
+        let popup = new PopUp();
+        popup.listener();
+        testimonials.setMobileDesktop();
     }
 })
 window.addEventListener('resize', () => {
-    console.log('reloaded page');
     window.location.reload();
 })
 

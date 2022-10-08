@@ -2597,7 +2597,7 @@ input[type='email']:valid:not(:placeholder-shown) {
 @media screen and (max-width: 320px) and (min-width: 240px){
     .page{
         position: relative;
-        z-index: -1;
+        z-index: 0;
         width: 100vw;
         height: 4271px;
         grid-auto-rows: 5.18% 87.0054% 7.8202%;
@@ -2605,6 +2605,99 @@ input[type='email']:valid:not(:placeholder-shown) {
     .header{
         background: url("../../assets/images/panda-mobile.jpg") no-repeat bottom/100%;
     }
+    /*POP UP*/
+    .popup-background{
+        position: absolute;
+        z-index: 3;
+        width: 100vw;
+        height: 4271px;
+        backdrop-filter: blur(3px) brightness(25%);
+    }
+    .popup-block{
+        display: grid;
+        position: absolute;
+        z-index: 4;
+        width: 100%;
+        height: 9.19%;
+        top: -12%;
+        grid-template-columns: 100%;
+        grid-template-rows: 20.9726% 79.0273%;
+        background: #FFFFFF;
+    }
+    .logo-container-popup{
+        display: flex;
+        width: 98%;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+    .logo-popup{
+        position: relative;
+        width: 65.6px;
+        height: 41.6px;
+        left: 10px;
+        top: 10px;
+        border: 0.8px solid #FE9013;
+        border-radius: 2px;
+    }
+    .logo-title-popup{
+        display: block;
+        /* width: 63px; */
+        margin: 2px auto;
+        text-align: center;
+        font-family: 'Roboto Regular', Arial, sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 15.2116px;
+        line-height: 120%;
+        color: #FE9013;
+        letter-spacing: -0.6px;
+    }
+    .logo-title-popup:after{
+        content: "";
+        position: absolute;
+        background: url(../../assets/icons/bamboo-popup.svg) no-repeat;
+        background-size: cover;
+        width: 9.62px;
+        height: 16.79px;
+        top: 17px;
+        left: 8px;
+    }
+    .popup-close{
+        position: relative;
+        width: 19px;
+        height: 17px;
+        background: url(../../assets/icons/close.svg) no-repeat;
+        background-size: cover;
+        top: 17px;
+        right: 22px;
+    }
+    .popup-container{
+        position: relative;
+    }
+    .navigation-popup{
+        display: flex;
+        width: 39%;
+        height: 66.4%;
+        margin: 0% 0 0 3%;
+        padding: 0;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+    .popup-list{
+        list-style: none;
+    }
+    .popup-link{
+        font-family: 'Roboto Regular', Arial, sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 140%;
+        /* or 22px */
+        color: #333B41;
+    }
+    /*---------------------->*/
     .navigation{
         width: 100%;
         height: 15.9%;
@@ -2749,9 +2842,22 @@ input[type='email']:valid:not(:placeholder-shown) {
     }
     .elem-carousel{
         display: block;
+        position: relative;
         width: 100%;
         height: 23.8%;
         margin-bottom: 7%;
+    }
+    .elem-carousel:nth-child(1){
+        left: 308%;
+    }
+    .elem-carousel:nth-child(2){
+        left: 208%;
+    }
+    .elem-carousel:nth-child(3){
+        left: 108%;
+    }
+    .elem-carousel:nth-child(4){
+        left: 0;
     }
     .down-carousel{
         display: none;
@@ -2839,9 +2945,19 @@ input[type='email']:valid:not(:placeholder-shown) {
     }
     .testimonials-card{
         display: block;
+        position: relative;
         width: 98%;
         height: 31%;
         margin-bottom: 4%;
+    }
+    .testimonials-card:nth-child(1){
+        left: 0%;
+    }
+    .testimonials-card:nth-child(2){
+        left: 0%;
+    }
+    .testimonials-card:nth-child(3){
+        left: 0%;
     }
     .testimonials-header{
         width: 80%;
@@ -2855,17 +2971,6 @@ input[type='email']:valid:not(:placeholder-shown) {
         width: 87%;
         height: 35%;
         margin: 0.6% 0 0 5%;
-    }
-    .testimonials-card:nth-child(2) .testimonials-header .avatar {
-        content: url("../../assets/images/avater3.jpg");
-    }
-
-    .testimonials-card:nth-child(2) .testimonials-header .user-info .user-name {
-        content: "Oska Samborska";
-    }
-
-    .testimonials-card:nth-child(2) .testimonials-description .review {
-        content: " Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. \n The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. The best online zoo I’ve met\. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.";
     }
     .testimonials-scroll{
         display: none;
