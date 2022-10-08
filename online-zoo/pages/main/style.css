@@ -1740,42 +1740,6 @@ input[type='email']:valid:not(:placeholder-shown) {
         width: auto;
         height: 20%;
     }
-    /*.upper-carousel .elem-carousel:nth-child(3) .animal-card .card-img{*/
-    /*    content: url("../../assets/images/cheetag.jpg");*/
-    /*}*/
-    /*.upper-carousel .elem-carousel:nth-child(3) .animal-card .title-card .title-text .title-animal-card{*/
-    /*    content: "cheetahs" ;*/
-    /*}*/
-    /*.upper-carousel .elem-carousel:nth-child(3) .animal-card .title-card .title-text .animal-from{*/
-    /*    content: "Native to Africa" ;*/
-    /*}*/
-    /*.upper-carousel .elem-carousel:nth-child(3) .animal-card .title-card .card-eat{*/
-    /*    content: url("../../assets/icons/meet-fish.svg");*/
-    /*}*/
-    /*.down-carousel .elem-carousel:nth-child(1) .animal-card .card-img{*/
-    /*    content: url("../../assets/images/gorilla.jpg");*/
-    /*}*/
-    /*.down-carousel .elem-carousel:nth-child(1) .animal-card .title-card .title-text .title-animal-card{*/
-    /*    content: "gorillas" ;*/
-    /*}*/
-    /*.down-carousel .elem-carousel:nth-child(1) .animal-card .title-card .title-text .animal-from{*/
-    /*    content: "Native to Congo" ;*/
-    /*}*/
-    /*.down-carousel .elem-carousel:nth-child(1) .animal-card .title-card .card-eat{*/
-    /*    content: url("../../assets/icons/banana-bamboo.svg");*/
-    /*}*/
-    /*.down-carousel .elem-carousel:nth-child(2) .animal-card .card-img{*/
-    /*    content: url("../../assets/images/alligator.jpg");*/
-    /*}*/
-    /*.down-carousel .elem-carousel:nth-child(2) .animal-card .title-card .title-text .title-animal-card{*/
-    /*    content: "Alligators" ;*/
-    /*}*/
-    /*.down-carousel .elem-carousel:nth-child(2) .animal-card .title-card .title-text .animal-from{*/
-    /*    content: "Native to Southeastern U. S." ;*/
-    /*}*/
-    /*.down-carousel .elem-carousel:nth-child(2) .animal-card .title-card .card-eat{*/
-    /*    content: url("../../assets/icons/meet-fish.svg");*/
-    /*}*/
 
     .left-arrow {
         width: 6.6%;
@@ -1899,6 +1863,63 @@ input[type='email']:valid:not(:placeholder-shown) {
         margin-left: -1%;
     }
 
+    .testimonials-card:nth-child(1){
+        /*transform: translateX(-33%);*/
+        left: -33%;
+    }
+    .testimonials-card:nth-child(2){
+        /*transform: translateX(0%);*/
+        left: 0;
+    }
+    .testimonials-card:nth-child(3){
+        /*transform: translateX(33%);*/
+        left: 33%;
+    }
+    .testimonials-card:nth-child(4){
+        /*transform: translateX(66%);*/
+        left: 66%;
+    }
+    .testimonials-card:nth-child(5){
+        /*transform: translateX(99%);*/
+        left: 99%;
+    }
+    .testimonials-card:nth-child(6){
+        /*transform: translateX(132%);*/
+        left: 132%;
+    }
+    .testimonials-card:nth-child(7){
+        /*transform: translateX(165%);*/
+        left: 165%;
+    }
+    .testimonials-card:nth-child(8){
+        /*transform: translateX(198%);*/
+        left: 198%;
+    }
+    .testimonials-card:nth-child(9){
+        /*transform: translateX(231%);*/
+        left: 231%;
+    }
+    .testimonials-card:nth-child(10){
+        /*transform: translateX(264%);*/
+        left: 264%;
+    }
+    .testimonials-card:nth-child(11){
+        /*transform: translateX(297%);*/
+        left: 297%;
+    }
+    .testimonials-card:nth-child(12){
+        /*transform: translateX(330%);*/
+        left: 330%;
+    }
+    .testimonials-card:nth-child(13){
+        /*transform: translateX(363%);*/
+        left: 363%;
+    }
+    .testimonials-card:nth-child(14){
+        /*transform: translateX(396%);*/
+        left: 396%;
+    }
+
     .testimonials-header {
         margin: 3.6137% 0 0 4.988%;
         white-space: nowrap;
@@ -1922,17 +1943,17 @@ input[type='email']:valid:not(:placeholder-shown) {
         width: 14%;
     }
 
-    .testimonials-card:nth-child(2) .testimonials-header .avatar {
-        content: url("../../assets/images/avater3.jpg");
-    }
+    /*.testimonials-card:nth-child(2) .testimonials-header .avatar {*/
+    /*    content: url("../../assets/images/avater3.jpg");*/
+    /*}*/
 
-    .testimonials-card:nth-child(2) .testimonials-header .user-info .user-name {
-        content: "Oska Samborska";
-    }
+    /*.testimonials-card:nth-child(2) .testimonials-header .user-info .user-name {*/
+    /*    content: "Oska Samborska";*/
+    /*}*/
 
-    .testimonials-card:nth-child(2) .testimonials-description .review {
-        content: " Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. \n The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. The best online zoo I’ve met\. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.";
-    }
+    /*.testimonials-card:nth-child(2) .testimonials-description .review {*/
+    /*    content: " Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. \n The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. The best online zoo I’ve met\. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.";*/
+    /*}*/
 
     .testimonials-scroll {
         width: 40.3%;

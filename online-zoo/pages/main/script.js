@@ -318,6 +318,11 @@ class Testimonials {
         // });
         this._ctrlRotate = 0;
     }
+    setSmallDesktop(){
+        let saver = this.elems[5].cloneNode(true);
+        this.elems[2].remove();
+        this.elems[1].after(saver);
+    }
 
     addListener() {
         this.scrollLine.addEventListener('input', this._workerSlider.bind(this));
@@ -326,15 +331,15 @@ class Testimonials {
     _wheelListener(ev){
         ev.preventDefault();
         if(ev.deltaY > 0){
-            this.scrollLine.value = (this.scrollLine.value < 7) ? (this.scrollLine.value = `${Number(this.scrollLine.value) + 1}`) : (this.scrollLine.value = '7');
             if(this.scrollLine.value < 7){
                 this._leftRotate();
             }
+            this.scrollLine.value = (this.scrollLine.value < 7) ? (this.scrollLine.value = `${Number(this.scrollLine.value) + 1}`) : (this.scrollLine.value = '7');
         }else{
-            this.scrollLine.value = (this.scrollLine.value > 0) ? (this.scrollLine.value = `${this.scrollLine.value - 1}`) : (this.scrollLine.value = '0');
             if(this.scrollLine.value > 0){
                 this._rightRotate();
             }
+            this.scrollLine.value = (this.scrollLine.value > 0) ? (this.scrollLine.value = `${this.scrollLine.value - 1}`) : (this.scrollLine.value = '0');
         }
         console.dir(this.scrollLine);
     }
@@ -374,6 +379,9 @@ window.addEventListener('DOMContentLoaded', () => {
         carousel.addListenersDesktop();
     } else if (width < 1001 && width > 640) {
         let carousel = new Carousel();
+        let testimonials = new Testimonials();
+        testimonials.setSmallDesktop();
+        testimonials.addListener();
         carousel.adaptiveDesktop();
         carousel.setUpBig();
         carousel.addListenersDesktop();
