@@ -306,6 +306,15 @@ class Carousel {
     }
 }
 
+class TestimonialsPopUp{
+    constructor() {
+        this.background = document.createElement('div');
+        this.background.className = 'testimonials-popup-background';
+        this.block = document.createElement('div');
+        this.block.className = 'testimonials-popup-block';
+    }
+}
+
 class Testimonials {
     constructor() {
         this.container = document.querySelector('.testimonials-container');
@@ -341,6 +350,9 @@ class Testimonials {
         this.elems[this.elems.length - 1].after(saver);
         saver = this.elems[3].cloneNode(true);
         this.elems[0].after(saver);
+        while(this.elems.length > 3){
+            this.elems[3].remove();
+        }
     }
 
     addListener() {
