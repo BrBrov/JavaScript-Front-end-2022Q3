@@ -75,7 +75,8 @@ class Carousel {
         this.elems = new ElemsCarouselList(this.upCarousel, this.downCarousel);
         this._clickCtrl = false;
     }
-    adaptiveDesktop(){
+
+    adaptiveDesktop() {
         let imgCard = document.querySelectorAll('.card-img');
         let textCard = document.querySelectorAll('.title-animal-card');
         let from = document.querySelectorAll('.animal-from');
@@ -306,6 +307,59 @@ class Carousel {
     }
 }
 
+class Testimonials {
+    constructor() {
+        this.container = document.querySelector('.testimonials-container');
+        this.scrollLine = document.querySelector('.testimonials-scroll');
+        this.elems = document.getElementsByClassName('testimonials-card');
+        // [...document.getElementsByClassName('testimonials-card')].forEach(e=>{
+        //     let block = e.cloneNode(true);
+        //     this.elems.push(block);
+        // });
+        this._ctrlRotate = 0;
+    }
+
+    addListener() {
+        this.scrollLine.addEventListener('input', this._workerSlider.bind(this));
+        this.container.addEventListener('wheel', this._wheelListener.bind(this));
+    }
+    _wheelListener(ev){
+        ev.preventDefault();
+        if(ev.deltaY > 0){
+            this.scrollLine.value = (this.scrollLine.value < 7) ? (this.scrollLine.value = `${Number(this.scrollLine.value) + 1}`) : (this.scrollLine.value = '7');
+            if(this.scrollLine.value < 7){
+                this._leftRotate();
+            }
+        }else{
+            this.scrollLine.value = (this.scrollLine.value > 0) ? (this.scrollLine.value = `${this.scrollLine.value - 1}`) : (this.scrollLine.value = '0');
+            if(this.scrollLine.value > 0){
+                this._rightRotate();
+            }
+        }
+        console.dir(this.scrollLine);
+    }
+
+    _workerSlider(ev) {
+            if (this._ctrlRotate < ev.target.value) {
+                this._leftRotate();
+            }else{
+                this._rightRotate();
+            }
+        this._ctrlRotate = ev.target.value;
+    }
+    _leftRotate(){
+        let saver = this.elems[0].cloneNode(true);
+        this.elems[0].remove()
+        this.elems[this.elems.length - 1].after(saver);
+    }
+    _rightRotate(){
+        let saver = this.elems[this.elems.length - 1].cloneNode(true);
+        this.elems[this.elems.length - 1].remove();
+        this.elems[0].before(saver);
+        this._ctrlRotate--;
+    }
+}
+
 window.addEventListener('load', () => {
     let active = new ActiveElem();
 })
@@ -314,6 +368,8 @@ window.addEventListener('DOMContentLoaded', () => {
     let width = Math.max(window.innerWidth, document.body.clientWidth || 0);
     if (width > 1001) {
         let carousel = new Carousel();
+        let testimonials = new Testimonials();
+        testimonials.addListener();
         carousel.setUpBig();
         carousel.addListenersDesktop();
     } else if (width < 1001 && width > 640) {
