@@ -443,6 +443,9 @@ button {
 .checked-money {
     color: #FE9013;
 }
+.checked-dollar{
+    content: url("../../assets/icons/dollar-orange.svg");
+}
 
 /*Amount input----------------------------->*/
 .amount-container {
@@ -1552,13 +1555,13 @@ input[type='email']:valid:not(:placeholder-shown) {
         margin-left: 5%;
         margin-top: calc(92px - (100vw * 0.094));
     }
-    .check-scale:nth-child(6){
+    .check-scale:nth-child(1){
         display: none;
     }
-    .check-scale:nth-child(7){
+    .check-scale:nth-child(2){
         display: none;
     }
-    .check-scale:nth-child(8){
+    .check-scale:nth-child(3){
         display: none;
     }
     .value-money-container{
@@ -1570,13 +1573,13 @@ input[type='email']:valid:not(:placeholder-shown) {
     .value-money{
         white-space: nowrap
     }
-    .value-money:nth-child(6){
+    .value-money:nth-child(1){
         display: none;
     }
-    .value-money:nth-child(7){
+    .value-money:nth-child(2){
         display: none;
     }
-    .value-money:nth-child(8){
+    .value-money:nth-child(3){
         display: none;
     }
     .dollar-money{
@@ -1955,13 +1958,13 @@ input[type='email']:valid:not(:placeholder-shown) {
         font-size: 13px;
         line-height: 140%;
     }
-    .check-scale:nth-child(6){
+    .check-scale:nth-child(1){
         display: none;
     }
-    .check-scale:nth-child(7){
+    .check-scale:nth-child(2){
         display: none;
     }
-    .check-scale:nth-child(8){
+    .check-scale:nth-child(3){
         display: none;
     }
 
