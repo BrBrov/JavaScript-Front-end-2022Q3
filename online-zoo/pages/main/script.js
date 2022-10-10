@@ -312,6 +312,70 @@ class TestimonialsPopUp{
         this.background.className = 'testimonials-popup-background';
         this.block = document.createElement('div');
         this.block.className = 'testimonials-popup-block';
+        this.background.appendChild(this.block);
+        this.close = document.createElement('div');
+        this.close.className = 'testimonials-popup-close';
+    }
+    listener(){
+        this.testiomonialsContainer = document.querySelector('.testimonials-container');
+        this.testiomonialsContainer.addEventListener('touchstart', this._showReview.bind(this));
+    }
+    _showReview(ev) {
+        switch(ev.target.className){
+            case 'testimonials-card':
+            case 'testimonials-header':
+            case 'testimonials-description':
+            case 'avatar':
+            case 'user-info':
+            case 'user-name':
+            case 'user-location':
+            case 'user-separator':
+            case 'user-date':
+            case 'review':
+              let page = document.querySelector('body');
+              page.children[0].before(this.background);
+              this.background.addEventListener('touchmove',this._stopScrolling);
+              this.background.addEventListener('wheel',this._stopScrolling);
+              if(ev.target.className !=='testimonials-card'){
+                  let card = ev.target.offsetParent.cloneNode(true);
+                  card.className += '-popup';
+                  this._addNewClassName(card.children);
+                  this.block.appendChild(card);
+              }else{
+                  let card = ev.target.cloneNode(true);
+                  card.className += '-popup';
+                  this._addNewClassName(card.children);
+                  this.block.appendChild(card);
+              }
+              this.block.appendChild(this.close);
+              this.background.addEventListener('touchstart', this._closeReview.bind(this));
+              this.close.addEventListener('touchstart', this._closeReview.bind(this));
+            break;
+        }
+    }
+    _closeReview(ev){
+        ev.stopPropagation();
+        this.close.removeEventListener('touchstart', this._closeReview);
+        this.background.removeEventListener('touchstart', this._closeReview);
+        if(this.block.children[0]){
+            this.block.children[0].remove();
+        };
+        this.background.remove();
+    }
+    _stopScrolling(ev){
+        ev.preventDefault();
+    }
+    _addNewClassName(childCollection){
+        if(childCollection.length){
+            [...childCollection].forEach(child=>{
+                if(child.localName !== 'br'){
+                    child.className +='-popup';
+                }
+                if(child.children.length > 0){
+                    return this._addNewClassName(child.children);
+                }
+            })
+        }
     }
 }
 
@@ -499,16 +563,20 @@ window.addEventListener('DOMContentLoaded', () => {
         carousel.setUpBig();
         carousel.addListenersDesktop();
     } else if (width < 641 && width > 320) {
-        let popup = new PopUp();
-        popup.listener();
         testimonials.setTabletDesktop();
         carousel.adaptiveDesktop();
         carousel.setUpSmall();
         carousel.addListenerTablet();
-    }else{
         let popup = new PopUp();
         popup.listener();
+        let review = new TestimonialsPopUp();
+        review.listener();
+    }else{
         testimonials.setMobileDesktop();
+        let popup = new PopUp();
+        popup.listener();
+        let review = new TestimonialsPopUp();
+        review.listener();
     }
 })
 window.addEventListener('resize', () => {
