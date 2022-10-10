@@ -45,20 +45,25 @@ class ActionElement {
                     e.checked = false;
                 }
             })
-            this.moneyCash.forEach((e,i)=>{
-                if(i === ctrlIndex){
-                    e.children[0].className +=' checked-dollar';
-                    e.children[1].className +=' checked-money';
+            this.moneyCash.forEach((e, i) => {
+                if (i === ctrlIndex) {
+                    e.children[0].className += ' checked-dollar';
+                    e.children[1].className += ' checked-money';
                     this._animation(e.children[1]);
-                }else{
-                    e.children[0].className ='dollar-money';
-                    e.children[1].className ='dollar-value';
+                } else {
+                    e.children[0].className = 'dollar-money';
+                    e.children[1].className = 'dollar-value';
                 }
             })
         })
     }
-    _animation(elem){
-        let blink = new KeyframeEffect(elem,[{color: '#ff0000'},{color: '#FE9013'},{color: '#ff0000'},{color: '#FE9013'}, {color: '#ff0000'}, {color: '#FE9013'}],{duration: 500, fill: 'auto', delay: 50});
+
+    _animation(elem) {
+        let blink = new KeyframeEffect(elem,
+            [{color: '#f8f602'}, {color: '#FE9013'},
+                {color: '#d5593e'}, {color: '#FE9013'},
+                {color: '#aff509'}, {color: '#FE9013'}],
+            {duration: 500, fill: 'auto', delay: 50});
         let elemAnimation = new Animation(blink);
         elemAnimation.play();
     }
@@ -70,20 +75,20 @@ class ActionElement {
             this.scale.forEach((e, i) => {
                 if (e.value !== ev.target.value) {
                     e.checked = false;
-                }else{
+                } else {
                     ctrl = i;
                 }
             })
             this.input.value = ev.target.value;
             this.inputImg.src = '../../assets/icons/dollar-green.svg';
-            this.moneyCash.forEach((e,i)=>{
-                if(i === ctrl){
-                    e.children[0].className +=' checked-dollar';
-                    e.children[1].className +=' checked-money';
+            this.moneyCash.forEach((e, i) => {
+                if (i === ctrl) {
+                    e.children[0].className += ' checked-dollar';
+                    e.children[1].className += ' checked-money';
                     this._animation(e.children[1]);
-                }else{
-                    e.children[0].className ='dollar-money';
-                    e.children[1].className ='dollar-value';
+                } else {
+                    e.children[0].className = 'dollar-money';
+                    e.children[1].className = 'dollar-value';
                 }
             })
         })
