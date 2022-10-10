@@ -364,37 +364,42 @@ button {
 /*Carousel*/
 
 .carousel-container {
+    position: relative;
     width: 72.375%;
     height: 47.6763%;
     margin: 11.2% auto 0 13.5%;
 }
 
 .upper-carousel {
+    position: relative;
     width: 101.7271%;
     height: 49.8532%;
     margin-top: 0;
     margin-bottom: 0.864%;
     overflow: hidden;
+    white-space: nowrap;
     font-size: 0;
     cursor: pointer;
 }
 
 .down-carousel {
+    position: relative;
     width: 101.7271%;
     height: 49.8532%;
     margin-top: 0.864%;
     margin-bottom: 0;
     overflow: hidden;
+    white-space: nowrap;
     font-size: 0;
     cursor: pointer;
 }
 
 .left-arrow {
     position: absolute;
-    width: 3.875%;
-    height: 3.39%;
-    top: 53.9%;
-    left: 8.4%;
+    width: 4.875%;
+    height: 6.39%;
+    top: 46.9%;
+    left: -6.6%;
     border-radius: 90px;
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
     cursor: pointer;
@@ -407,10 +412,10 @@ button {
 
 .right-arrow {
     position: absolute;
-    width: 3.875%;
-    height: 3.39%;
-    top: 53.9%;
-    right: 9.1%;
+    width: 4.875%;
+    height: 6.39%;
+    top: 46.9%;
+    right: -8.9%;
     border-radius: 90px;
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
     cursor: pointer;
@@ -427,8 +432,37 @@ button {
 /*Element of carousel ------------------->*/
 .elem-carousel {
     display: inline-block;
+    position: absolute;
     width: 33%;
     height: 98%;
+    transition: all 1.5s;
+}
+.elem-carousel:nth-child(1){
+    transform: translateX(-306%);
+}
+.elem-carousel:nth-child(2){
+    transform: translateX(-206%);
+}
+.elem-carousel:nth-child(3){
+    transform: translateX(-106%);
+}
+.elem-carousel:nth-child(4){
+    transform: translateX(2%);
+}
+.elem-carousel:nth-child(5){
+    transform: translateX(104%);
+}
+.elem-carousel:nth-child(6){
+    transform: translateX(206%);
+}
+.elem-carousel:nth-child(7){
+    transform: translateX(308%);
+}
+.elem-carousel:nth-child(8){
+    transform: translateX(408%);
+}
+.elem-carousel:nth-child(9){
+    transform: translateX(508%);
 }
 
 .animal-card {
@@ -764,6 +798,7 @@ button {
 
 .testimonials-container {
     display: block;
+    position: relative;
     overflow: hidden;
     width: 102%;
     margin-left: -1%;
@@ -775,6 +810,7 @@ button {
 
 .testimonials-card {
     display: inline-block;
+    position: absolute;
     overflow: visible;
     width: 22.5%;
     height: 99.4%;
@@ -783,6 +819,66 @@ button {
     linear-gradient(225deg, #FEBDABBD 74%, #F3A9F8A8 66%, #E0D8F0 100%, #EAF7FE 100%, #EAF7FE 100%) border-box;
     border-radius: 20px;
     border: 3px solid transparent;
+    transition: all 0.1s;
+}
+.card-hidden{
+    display: none;
+}
+.testimonials-card:nth-child(1){
+    /*transform: translateX(-112%);*/
+    left: -25%;
+}
+.testimonials-card:nth-child(2){
+    /*transform: translateX(0%);*/
+    left: 0;
+}
+.testimonials-card:nth-child(3){
+     /*transform: translateX(112%);*/
+    left: 25%;
+}
+.testimonials-card:nth-child(4){
+    /*transform: translateX(224%);*/
+    left: 50%;
+}
+.testimonials-card:nth-child(5){
+    /*transform: translateX(338%);*/
+    left: 75%;
+}
+.testimonials-card:nth-child(6){
+    /*transform: translateX(450%);*/
+    left: 100%;
+}
+.testimonials-card:nth-child(7){
+    /*transform: translateX(562%);*/
+    left: 125%;
+}
+.testimonials-card:nth-child(8){
+    /*transform: translateX(674%);*/
+    left: 150%;
+}
+.testimonials-card:nth-child(9){
+    /*transform: translateX(786%);*/
+    left: 175%;
+}
+.testimonials-card:nth-child(10){
+    /*transform: translateX(898%);*/
+    left: 200%;
+}
+.testimonials-card:nth-child(11){
+    /*transform: translateX(1010%);*/
+    left: 225%;
+}
+.testimonials-card:nth-child(12){
+    /*transform: translateX(1122%);*/
+    left: 250%;
+}
+.testimonials-card:nth-child(13){
+    /*transform: translateX(1234%);*/
+    left: 275%;
+}
+.testimonials-card:nth-child(14){
+    /*transform: translateX(1346%);*/
+    left: 300%;
 }
 
 .testimonials-header {
@@ -1605,6 +1701,33 @@ input[type='email']:valid:not(:placeholder-shown) {
         height: 100%;
         margin: 0;
     }
+    .elem-carousel:nth-child(1){
+        transform: translateX(-300%);
+    }
+    .elem-carousel:nth-child(2){
+        transform: translateX(-200%);
+    }
+    .elem-carousel:nth-child(3){
+        transform: translateX(-100%);
+    }
+    .elem-carousel:nth-child(4){
+        transform: translateX(0%);
+    }
+    .elem-carousel:nth-child(5){
+        transform: translateX(100%);
+    }
+    .elem-carousel:nth-child(6){
+        transform: translateX(200%);
+    }
+    .elem-carousel:nth-child(7){
+        transform: translateX(300%);
+    }
+    .elem-carousel:nth-child(8){
+        transform: translateX(400%);
+    }
+    .elem-carousel:nth-child(9){
+        transform: translateX(500%);
+    }
 
     .animal-card {
         width: 91%;
@@ -1616,42 +1739,6 @@ input[type='email']:valid:not(:placeholder-shown) {
     .card-eat {
         width: auto;
         height: 20%;
-    }
-    .upper-carousel .elem-carousel:nth-child(3) .animal-card .card-img{
-        content: url("../../assets/images/cheetag.jpg");
-    }
-    .upper-carousel .elem-carousel:nth-child(3) .animal-card .title-card .title-text .title-animal-card{
-        content: "cheetahs" ;
-    }
-    .upper-carousel .elem-carousel:nth-child(3) .animal-card .title-card .title-text .animal-from{
-        content: "Native to Africa" ;
-    }
-    .upper-carousel .elem-carousel:nth-child(3) .animal-card .title-card .card-eat{
-        content: url("../../assets/icons/meet-fish.svg");
-    }
-    .down-carousel .elem-carousel:nth-child(1) .animal-card .card-img{
-        content: url("../../assets/images/gorilla.jpg");
-    }
-    .down-carousel .elem-carousel:nth-child(1) .animal-card .title-card .title-text .title-animal-card{
-        content: "gorillas" ;
-    }
-    .down-carousel .elem-carousel:nth-child(1) .animal-card .title-card .title-text .animal-from{
-        content: "Native to Congo" ;
-    }
-    .down-carousel .elem-carousel:nth-child(1) .animal-card .title-card .card-eat{
-        content: url("../../assets/icons/banana-bamboo.svg");
-    }
-    .down-carousel .elem-carousel:nth-child(2) .animal-card .card-img{
-        content: url("../../assets/images/alligator.jpg");
-    }
-    .down-carousel .elem-carousel:nth-child(2) .animal-card .title-card .title-text .title-animal-card{
-        content: "Alligators" ;
-    }
-    .down-carousel .elem-carousel:nth-child(2) .animal-card .title-card .title-text .animal-from{
-        content: "Native to Southeastern U. S." ;
-    }
-    .down-carousel .elem-carousel:nth-child(2) .animal-card .title-card .card-eat{
-        content: url("../../assets/icons/meet-fish.svg");
     }
 
     .left-arrow {
@@ -1776,6 +1863,63 @@ input[type='email']:valid:not(:placeholder-shown) {
         margin-left: -1%;
     }
 
+    .testimonials-card:nth-child(1){
+        /*transform: translateX(-33%);*/
+        left: -33%;
+    }
+    .testimonials-card:nth-child(2){
+        /*transform: translateX(0%);*/
+        left: 0;
+    }
+    .testimonials-card:nth-child(3){
+        /*transform: translateX(33%);*/
+        left: 33%;
+    }
+    .testimonials-card:nth-child(4){
+        /*transform: translateX(66%);*/
+        left: 66%;
+    }
+    .testimonials-card:nth-child(5){
+        /*transform: translateX(99%);*/
+        left: 99%;
+    }
+    .testimonials-card:nth-child(6){
+        /*transform: translateX(132%);*/
+        left: 132%;
+    }
+    .testimonials-card:nth-child(7){
+        /*transform: translateX(165%);*/
+        left: 165%;
+    }
+    .testimonials-card:nth-child(8){
+        /*transform: translateX(198%);*/
+        left: 198%;
+    }
+    .testimonials-card:nth-child(9){
+        /*transform: translateX(231%);*/
+        left: 231%;
+    }
+    .testimonials-card:nth-child(10){
+        /*transform: translateX(264%);*/
+        left: 264%;
+    }
+    .testimonials-card:nth-child(11){
+        /*transform: translateX(297%);*/
+        left: 297%;
+    }
+    .testimonials-card:nth-child(12){
+        /*transform: translateX(330%);*/
+        left: 330%;
+    }
+    .testimonials-card:nth-child(13){
+        /*transform: translateX(363%);*/
+        left: 363%;
+    }
+    .testimonials-card:nth-child(14){
+        /*transform: translateX(396%);*/
+        left: 396%;
+    }
+
     .testimonials-header {
         margin: 3.6137% 0 0 4.988%;
         white-space: nowrap;
@@ -1799,17 +1943,17 @@ input[type='email']:valid:not(:placeholder-shown) {
         width: 14%;
     }
 
-    .testimonials-card:nth-child(2) .testimonials-header .avatar {
-        content: url("../../assets/images/avater3.jpg");
-    }
+    /*.testimonials-card:nth-child(2) .testimonials-header .avatar {*/
+    /*    content: url("../../assets/images/avater3.jpg");*/
+    /*}*/
 
-    .testimonials-card:nth-child(2) .testimonials-header .user-info .user-name {
-        content: "Oska Samborska";
-    }
+    /*.testimonials-card:nth-child(2) .testimonials-header .user-info .user-name {*/
+    /*    content: "Oska Samborska";*/
+    /*}*/
 
-    .testimonials-card:nth-child(2) .testimonials-description .review {
-        content: " Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. \n The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. The best online zoo I’ve met\. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.";
-    }
+    /*.testimonials-card:nth-child(2) .testimonials-description .review {*/
+    /*    content: " Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. \n The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. The best online zoo I’ve met\. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.";*/
+    /*}*/
 
     .testimonials-scroll {
         width: 40.3%;
@@ -1929,17 +2073,115 @@ input[type='email']:valid:not(:placeholder-shown) {
     }
     .header{
         position: relative;
-        z-index: 1;
-        width: 100%;
-        background: url("../../assets/images/panda-tablet.jpg") no-repeat;
-    }
-    .navigation{
-        position: fixed;
         z-index: 2;
         width: 100%;
-        height: 3.856%;
+        background: url("../../assets/images/panda-tablet.jpg") no-repeat;
+        overflow: hidden;
+    }
+    /*POP UP*/
+    .popup-background{
+        position: absolute;
+        z-index: 3;
+        width: 100vw;
+        height: 3581px;
+        backdrop-filter: blur(3px) brightness(25%);
+    }
+    .popup-block{
+        display: grid;
+        position: absolute;
+        z-index: 4;
+        width: 100%;
+        height: 9.19%;
+        top: -12%;
+        grid-template-columns: 100%;
+        grid-template-rows: 20.9726% 79.0273%;
+        background: #FFFFFF;
+    }
+    .logo-container-popup{
+        display: flex;
+        width: 98%;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+    .logo-popup{
+        position: relative;
+        width: 65.6px;
+        height: 41.6px;
+        left: 10px;
+        top: 10px;
+        border: 0.8px solid #FE9013;
+        border-radius: 2px;
+    }
+    .logo-title-popup{
+        display: block;
+        /* width: 63px; */
+        margin: 2px auto;
+        text-align: center;
+        font-family: 'Roboto Regular', Arial, sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 15.2116px;
+        line-height: 120%;
+        color: #FE9013;
+        letter-spacing: -0.6px;
+    }
+    .logo-title-popup:after{
+        content: "";
+        position: absolute;
+        background: url(../../assets/icons/bamboo-popup.svg) no-repeat;
+        background-size: cover;
+        width: 9.62px;
+        height: 16.79px;
+        top: 17px;
+        left: 8px;
+    }
+    .popup-close{
+        position: relative;
+        width: 19px;
+        height: 17px;
+        background: url(../../assets/icons/close.svg) no-repeat;
+        background-size: cover;
+        top: 17px;
+        right: 22px;
+    }
+    .popup-close:active, .popup-close:hover, .popup-close:focus {
+        transform: scale3d(1.5, 0.5, 1.5);
+    }
+    .popup-container{
+        position: relative;
+    }
+    .navigation-popup{
+        display: flex;
+        width: 25%;
+        height: 78%;
+        margin: 2.3% 0 0 1.2%;
+        padding: 0;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+    .popup-list{
+        list-style: none;
+    }
+    .popup-link{
+        font-family: 'Roboto Regular', Arial, sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 140%;
+        /* or 22px */
+        color: #333B41;
+    }
+    /*---------------------->*/
+    .navigation{
+        position: fixed;
+        z-index: 5;
+        width: 100%;
+        height: 4.856%;
         top: 0;
     }
+
     .fav-animal{
         width: 100%;
         height: 100%;
@@ -2086,38 +2328,41 @@ input[type='email']:valid:not(:placeholder-shown) {
         margin-bottom: 19.5899%;
         white-space: nowrap;
     }
-    .down-carousel .elem-carousel:nth-child(1) .animal-card .card-img{
-        content: url("../../assets/images/gorilla.jpg");
-    }
-    .down-carousel .elem-carousel:nth-child(2) .animal-card .card-img{
-        content: url("../../assets/images/alligator.jpg");
-    }
-    .down-carousel .elem-carousel:nth-child(1) .animal-card .card-img{
-        content: url("../../assets/images/gorilla.jpg");
-    }
-    .down-carousel .elem-carousel:nth-child(1) .animal-card .title-card .title-text .title-animal-card{
-        content:  "Gorillas";
-    }
-    .down-carousel .elem-carousel:nth-child(1) .animal-card .title-card .title-text .animal-from{
-        content: "Native to Congo";
-    }
     .elem-carousel{
         width: 51.3%;
+    }
+    .elem-carousel:nth-child(1){
+        transform: translateX(-200%);
+    }
+    .elem-carousel:nth-child(2){
+        transform: translateX(-100%);
+    }
+    .elem-carousel:nth-child(3){
+        transform: translateX(0%);
+    }
+    .elem-carousel:nth-child(4){
+        transform: translateX(100%);
+    }
+    .elem-carousel:nth-child(5){
+        transform: translateX(200%);
+    }
+    .elem-carousel:nth-child(6){
+        transform: translateX(300%);
     }
     .animal-card{
         width: 90%;
     }
     .left-arrow{
         width: 9.6%;
-        height: auto;
-        top: calc(804px - ((640px - 100vw) * 0.18495));
+        height: 7%;
+        top: calc(365px - ((640px - 100vw) * 0.18495));
         left: 38%;
         border-radius: 100%;
     }
     .right-arrow{
         width: 9.6%;
-        height: auto;
-        top: calc(804px - ((640px - 100vw) * 0.18495));
+        height: 7%;
+        top: calc(365px - ((640px - 100vw) * 0.18495));
         left: 52.2%;
         border-radius: 100%;
     }
@@ -2208,9 +2453,13 @@ input[type='email']:valid:not(:placeholder-shown) {
     }
     .testimonials-card{
         display: block;
+        position: relative;
         width: 99%;
         height: 28.1%;
         margin-top: 2.8%;
+    }
+    .testimonials-card:nth-child(n){
+        left: -0.1%;
     }
     .testimonials-header{
         margin: 2.2% 0 0 1.7%;
@@ -2223,17 +2472,6 @@ input[type='email']:valid:not(:placeholder-shown) {
         width: 95%;
         height: 37%;
         margin: 6% 0 0 3%;
-    }
-    .testimonials-card:nth-child(2) .testimonials-header .avatar {
-        content: url("../../assets/images/avater3.jpg");
-    }
-
-    .testimonials-card:nth-child(2) .testimonials-header .user-info .user-name {
-        content: "Oska Samborska";
-    }
-
-    .testimonials-card:nth-child(2) .testimonials-description .review {
-        content: " Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. \n The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. The best online zoo I’ve met\. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.";
     }
     .testimonials-scroll{
         display: none;
@@ -2248,6 +2486,120 @@ input[type='email']:valid:not(:placeholder-shown) {
         height: 32%;
         margin: -2.2% 0 0 -3%
     }
+    /*Testimonials POPUP---------->*/
+    .testimonials-popup-background{
+        position: fixed;
+        z-index: 5;
+        width: 100%;
+        height: 3581px;
+        backdrop-filter: brightness(30%) blur(2px);
+    }
+    .testimonials-popup-block{
+        position: relative;
+        display: flex;
+        max-width: 320px;
+        max-height: 428px;
+        margin: 8% auto 0;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+    .testimonials-card-popup {
+        overflow: hidden;
+        width: 85%;
+        max-height: 428px;
+        margin: 6% 0 0 5%;
+        background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(225deg, #FEBDABBD 74%, #F3A9F8A8 66%, #E0D8F0 100%, #EAF7FE 100%, #EAF7FE 100%) border-box;
+        border-radius: 20px;
+        border: 3px solid transparent;
+    }
+    .testimonials-header-popup {
+        width: auto;
+        height: 10%;
+        margin: 4.62% 0 0 4.988%;
+    }
+    .avatar-popup {
+        display: inline-block;
+    }
+
+    .user-info-popup {
+        display: inline-block;
+        margin-left: 2.7425%;
+    }
+
+    .user-name-popup {
+        font-family: 'Roboto Regular', Arial, sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 120%;
+        /* or 19px */
+        color: #000000;
+    }
+
+    .user-location-popup {
+        font-family: 'Roboto Light Italic', Arial, sans-serif;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 15px;
+        line-height: 120%;
+        /* identical to box height, or 18px */
+        /* Gray 4 */
+        color: #BDBDBD;
+    }
+
+    .user-separator-popup {
+        font-family: 'Roboto Light Italic', Arial, sans-serif;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 15px;
+        line-height: 120%;
+        /* identical to box height, or 18px */
+        /* Gray 4 */
+        color: #BDBDBD;
+    }
+
+    .user-date-popup {
+        font-family: 'Roboto Light Italic', Arial, sans-serif;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 15px;
+        line-height: 120%;
+        /* identical to box height, or 18px */
+        /* Gray 4 */
+        color: #BDBDBD;
+    }
+
+    .testimonials-description-popup {
+        width: 89.6%;
+        height: 80%;
+        margin: 3.7425% 0 6.9495% 5.988%;
+        overflow-y: hidden;
+    }
+
+    .review-popup {
+        /*display: block;*/
+        white-space: normal;
+        text-align: left;
+        font-family: 'Roboto Light', Arial, sans-serif;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 15px;
+        line-height: 120%;
+        /* or 18px */
+        /* gray */
+        color: #767474;
+    }
+    .testimonials-popup-close {
+        display: block;
+        width: 24px;
+        height: 24px;
+        margin: 2.8% 2% 0 0;
+        background: url(../../assets/icons/close-review.svg) center no-repeat, linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(225deg, #FEBDABBD 74%, #F3A9F8A8 66%, #E0D8F0 100%, #EAF7FE 100%, #EAF7FE 100%) border-box;
+        border-radius: 100%;
+        border: 2px solid transparent;
+    }
+    /*---------------------------->*/
     .footer{
         position: relative;
         z-index: 2;
@@ -2349,7 +2701,7 @@ input[type='email']:valid:not(:placeholder-shown) {
 @media screen and (max-width: 320px) and (min-width: 240px){
     .page{
         position: relative;
-        z-index: -1;
+        z-index: 0;
         width: 100vw;
         height: 4271px;
         grid-auto-rows: 5.18% 87.0054% 7.8202%;
@@ -2357,6 +2709,103 @@ input[type='email']:valid:not(:placeholder-shown) {
     .header{
         background: url("../../assets/images/panda-mobile.jpg") no-repeat bottom/100%;
     }
+    /*POP UP*/
+    .popup-background{
+        position: absolute;
+        z-index: 3;
+        width: 100vw;
+        height: 4271px;
+        backdrop-filter: blur(3px) brightness(25%);
+    }
+    .popup-block{
+        display: grid;
+        position: absolute;
+        z-index: 4;
+        width: 100%;
+        height: 9.19%;
+        top: -12%;
+        grid-template-columns: 100%;
+        grid-template-rows: 20.9726% 79.0273%;
+        background: #FFFFFF;
+    }
+    .logo-container-popup{
+        display: flex;
+        width: 98%;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+    .logo-popup{
+        position: relative;
+        width: 65.6px;
+        height: 41.6px;
+        left: 10px;
+        top: 10px;
+        border: 0.8px solid #FE9013;
+        border-radius: 2px;
+    }
+    .logo-title-popup{
+        display: block;
+        /* width: 63px; */
+        margin: 2px auto;
+        text-align: center;
+        font-family: 'Roboto Regular', Arial, sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 15.2116px;
+        line-height: 120%;
+        color: #FE9013;
+        letter-spacing: -0.6px;
+    }
+    .logo-title-popup:after{
+        content: "";
+        position: absolute;
+        background: url(../../assets/icons/bamboo-popup.svg) no-repeat;
+        background-size: cover;
+        width: 9.62px;
+        height: 16.79px;
+        top: 17px;
+        left: 8px;
+    }
+    .popup-close{
+        position: relative;
+        width: 19px;
+        height: 17px;
+        background: url(../../assets/icons/close.svg) no-repeat;
+        background-size: cover;
+        top: 17px;
+        right: 22px;
+        transition: all 0.1s;
+    }
+    .popup-close:active, .popup-close:hover, .popup-close:focus {
+        transform: scale3d(1.5, 0.5, 1.5);
+    }
+    .popup-container{
+        position: relative;
+    }
+    .navigation-popup{
+        display: flex;
+        width: 39%;
+        height: 66.4%;
+        margin: 0% 0 0 3%;
+        padding: 0;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+    .popup-list{
+        list-style: none;
+    }
+    .popup-link{
+        font-family: 'Roboto Regular', Arial, sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 140%;
+        /* or 22px */
+        color: #333B41;
+    }
+    /*---------------------->*/
     .navigation{
         width: 100%;
         height: 15.9%;
@@ -2501,9 +2950,22 @@ input[type='email']:valid:not(:placeholder-shown) {
     }
     .elem-carousel{
         display: block;
+        position: relative;
         width: 100%;
         height: 23.8%;
         margin-bottom: 7%;
+    }
+    .elem-carousel:nth-child(1){
+        left: 308%;
+    }
+    .elem-carousel:nth-child(2){
+        left: 208%;
+    }
+    .elem-carousel:nth-child(3){
+        left: 108%;
+    }
+    .elem-carousel:nth-child(4){
+        left: 0;
     }
     .down-carousel{
         display: none;
@@ -2591,9 +3053,19 @@ input[type='email']:valid:not(:placeholder-shown) {
     }
     .testimonials-card{
         display: block;
+        position: relative;
         width: 98%;
         height: 31%;
         margin-bottom: 4%;
+    }
+    .testimonials-card:nth-child(1){
+        left: 0%;
+    }
+    .testimonials-card:nth-child(2){
+        left: 0%;
+    }
+    .testimonials-card:nth-child(3){
+        left: 0%;
     }
     .testimonials-header{
         width: 80%;
@@ -2607,17 +3079,6 @@ input[type='email']:valid:not(:placeholder-shown) {
         width: 87%;
         height: 35%;
         margin: 0.6% 0 0 5%;
-    }
-    .testimonials-card:nth-child(2) .testimonials-header .avatar {
-        content: url("../../assets/images/avater3.jpg");
-    }
-
-    .testimonials-card:nth-child(2) .testimonials-header .user-info .user-name {
-        content: "Oska Samborska";
-    }
-
-    .testimonials-card:nth-child(2) .testimonials-description .review {
-        content: " Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. \n The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. The best online zoo I’ve met\. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.";
     }
     .testimonials-scroll{
         display: none;
@@ -2633,6 +3094,122 @@ input[type='email']:valid:not(:placeholder-shown) {
         height: 17%;
         margin-top: 41%;
     }
+    /*Testimonials POPUP---------->*/
+    .testimonials-popup-background{
+        position: fixed;
+        z-index: 5;
+        width: 100%;
+        height: 3581px;
+        backdrop-filter: brightness(30%) blur(2px);
+    }
+    .testimonials-popup-block{
+        position: relative;
+        display: flex;
+        max-width: 320px;
+        max-height: 428px;
+        margin: 5% auto 0;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+    .testimonials-card-popup {
+        position: relative;
+        width: 85%;
+        /*height: 92.4%;*/
+        max-height: 428px;
+        margin: 6% 0 0 5%;
+        overflow: hidden;
+        background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(225deg, #FEBDABBD 74%, #F3A9F8A8 66%, #E0D8F0 100%, #EAF7FE 100%, #EAF7FE 100%) border-box;
+        border-radius: 20px;
+        border: 3px solid transparent;
+    }
+    .testimonials-header-popup {
+        width: auto;
+        height: 10%;
+        margin: 4.62% 0 0 4.988%;
+    }
+    .avatar-popup {
+        display: inline-block;
+    }
+
+    .user-info-popup {
+        display: inline-block;
+        margin-left: 2.7425%;
+    }
+
+    .user-name-popup {
+        font-family: 'Roboto Regular', Arial, sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 120%;
+        /* or 19px */
+        color: #000000;
+    }
+
+    .user-location-popup {
+        font-family: 'Roboto Light Italic', Arial, sans-serif;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 15px;
+        line-height: 120%;
+        /* identical to box height, or 18px */
+        /* Gray 4 */
+        color: #BDBDBD;
+    }
+
+    .user-separator-popup {
+        font-family: 'Roboto Light Italic', Arial, sans-serif;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 15px;
+        line-height: 120%;
+        /* identical to box height, or 18px */
+        /* Gray 4 */
+        color: #BDBDBD;
+    }
+
+    .user-date-popup {
+        font-family: 'Roboto Light Italic', Arial, sans-serif;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 15px;
+        line-height: 120%;
+        /* identical to box height, or 18px */
+        /* Gray 4 */
+        color: #BDBDBD;
+    }
+
+    .testimonials-description-popup {
+        width: 89.6%;
+        height: 80%;
+        margin: 3.7425% 0 6.9495% 5.988%;
+        overflow-y: hidden;
+    }
+
+    .review-popup {
+        /*display: block;*/
+        white-space: normal;
+        text-align: left;
+        font-family: 'Roboto Light', Arial, sans-serif;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 15px;
+        line-height: 120%;
+        /* or 18px */
+        /* gray */
+        color: #767474;
+    }
+    .testimonials-popup-close {
+        display: block;
+        width: 24px;
+        height: 24px;
+        margin: 2.8% 2% 0 0;
+        background: url(../../assets/icons/close-review.svg) center no-repeat, linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(225deg, #FEBDABBD 74%, #F3A9F8A8 66%, #E0D8F0 100%, #EAF7FE 100%, #EAF7FE 100%) border-box;
+        border-radius: 100%;
+        border: 2px solid transparent;
+    }
+    /*---------------------------->*/
     .footer{
         position: relative;
         z-index: 0;
