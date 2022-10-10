@@ -96,6 +96,91 @@ class ActionElement{
         })
     }
 }
+class PopUp{
+    constructor() {
+        this.menu = document.querySelector('.description');
+        this._createPopUp();
+    }
+    _createPopUp(){
+        this.background = document.createElement('div');
+        this.background.className = 'popup-background';
+        this.block = document.createElement('div');
+        this.block.className = 'popup-block';
+        let elem = document.createElement('div');
+        elem.className = 'logo-container-popup';
+        this.block.appendChild(elem);
+        elem = document.createElement('div');
+        elem.className = 'logo-popup';
+        this.block.children[0].appendChild(elem);
+        elem = document.createElement('span');
+        elem.className = 'logo-title-popup';
+        elem.textContent = 'Pet Story online';
+        this.block.children[0].children[0].appendChild(elem);
+        elem = document.createElement('div');
+        elem.className = 'popup-close';
+        this.block.children[0].appendChild(elem);
+        elem = document.createElement('div');
+        elem.className = 'popup-container';
+        this.block.appendChild(elem);
+        let nav = document.createElement('ul');
+        nav.className = 'navigation-popup';
+        this.block.children[1].appendChild(nav);
+        elem = document.createElement('li');
+        elem.className = 'popup-list';
+        for(let i=0; i < 6; i++){
+            let saver = elem.cloneNode(true);
+            nav.appendChild(saver);
+        }
+        elem = document.createElement('a');
+        elem.className = 'popup-link';
+        let names = ['About', 'Map', 'Zoos', 'Donate', 'Contact us', 'Designed by ©'];
+        for (let i = 0; i < 6; i++) {
+            let saver = elem.cloneNode(true);
+            saver.textContent = names[i];
+            saver.href = '#';
+            nav.children[i].appendChild(saver);
+        }
+        nav.children[0].children[0].href = 'index.html';
+        nav.children[3].children[0].href = '../donate/index.html';
+        nav.children[5].children[0].href = 'https://www.figma.com/file/ypzT9idgAILaSRVRmDAJxn/online-zoo-3-weeks';
+    }
+    listener(){
+        this.menu.addEventListener('touchstart', this._processing.bind(this));
+    }
+    _processing(){
+        this.menu.addEventListener('touchend', this._showPopUp.bind(this));
+        this.background.addEventListener('touchstart',(ev)=>{
+            ev.stopPropagation();
+            switch(ev.target.className){
+                case 'popup-close':
+                case 'popup-background':
+                    this._closePopUp();
+                    break;
+                case 'logo-popup':
+                case 'logo-title-popup':
+                    window.location.href = 'index.html';
+                    break;
+            }
+        })
+    }
+    _showPopUp(ev){
+        let page = document.querySelector('.page');
+        page.children[0].before(this.background);
+        this.background.appendChild(this.block);
+        let open = new KeyframeEffect(this.block,[{top: '-15%'},{top: '0'}],{duration: 1000, fill: 'forwards'});
+        let anim = new Animation(open);
+        anim.play();
+    }
+    _closePopUp(ev){
+        let close = new KeyframeEffect(this.block, [{top: '0'}, {top:"-15%"}], {duration: 1000, fill: 'forwards'});
+        let anim = new Animation(close);
+        anim.play();
+        anim.onfinish = () =>{
+            this.block.remove();
+            this.background.remove();
+        }
+    }
+}
 
 window.addEventListener('load', ()=>{
     let action = new ActionElement();
@@ -105,4 +190,24 @@ window.addEventListener('load', ()=>{
     action.emailListener();
     action.logoListener();
     action.footerLogoListener();
+})
+
+window.addEventListener('DOMContentLoaded', () => {
+    let width = Math.max(window.innerWidth, document.body.clientWidth || 0);
+    if (width > 1001) {
+
+    } else if (width < 1001 && width > 640) {
+
+    } else if (width < 641 && width > 320) {
+        let popup = new PopUp();
+        popup.listener();
+
+    }else{
+        testimonials.setMobileDesktop();
+        let popup = new PopUp();
+        popup.listener();
+    }
+})
+window.addEventListener('resize', () => {
+    window.location.reload();
 })
