@@ -430,15 +430,17 @@ class Testimonials {
                 this._leftRotate();
             }
             this.scrollLine.value = (this.scrollLine.value < 7) ? (this.scrollLine.value = `${Number(this.scrollLine.value) + 1}`) : (this.scrollLine.value = '7');
+            this._ctrlRotate = Number(this.scrollLine.value);
         }else{
             if(this.scrollLine.value > 0){
                 this._rightRotate();
             }
             this.scrollLine.value = (this.scrollLine.value > 0) ? (this.scrollLine.value = `${this.scrollLine.value - 1}`) : (this.scrollLine.value = '0');
+            this._ctrlRotate = Number(this.scrollLine.value);
         }
     }
-
     _workerSlider(ev) {
+        console.log(this._ctrlRotate);
             if (this._ctrlRotate < ev.target.value) {
                 this._leftRotate();
             }else{
