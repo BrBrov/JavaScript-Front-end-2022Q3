@@ -1,0 +1,164 @@
+@import "./assets/font/marckscript.css";
+
+html, body{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: url("assets/image/background.jpg") center/cover no-repeat;
+}
+.container{
+    position: relative;
+    width: 100%;
+}
+.page{
+    position: relative;
+    width: 600px;
+    height: 570px;
+    margin: 3% auto 0;
+    padding-top: 2%;
+    background: linear-gradient(45deg, #11a09e, #6573cb, #3a56b9);
+    border-radius: 5px;
+    box-shadow: -1px 1px 2px 2px #3a56b9;
+}
+.game-board{
+    position: relative;
+    display: grid;
+    width: 400px;
+    height: 520px;
+    margin: 0 auto;
+    grid-template-columns: 100%;
+    grid-template-rows: 70px 400px 50px;
+}
+/*Upper control*/
+.upper-board{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(2, 35px);
+    grid-row-gap: 15%;
+}
+.upper-control{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.shuffle{
+    width: 155px;
+    height: 35px;
+    font-family: 'Marck Script', 'Calibri', sans-serif;
+    font-size: 1em;
+    background: linear-gradient(15deg, #0d9095, #0d9095 75%);
+    color: #e1f1f2;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 1px 1px #bbd2d4;
+}
+.stop{
+    width: 50px;
+    height: 35px;
+    font-family: 'Marck Script', 'Calibri', sans-serif;
+    font-size: 1em;
+    background: linear-gradient(15deg, #0d9095, #0d9095 75%);
+    color: #e1f1f2;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 1px 1px #bbd2d4;
+}
+.save{
+    width: 75px;
+    height: 35px;
+    font-family: 'Marck Script', 'Calibri', sans-serif;
+    font-size: 1em;
+    background: linear-gradient(15deg, #0d9095, #0d9095 75%);
+    color: #e1f1f2;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 1px 1px #bbd2d4;
+}
+
+button:where(.shuffle,.stop,.save,.results):hover{
+    background: linear-gradient(15deg, #114444, #0d9095 75%);
+    color: #9d9c81;
+    box-shadow: 0 0 1px 1px #8c79c5;
+}
+button:where(.shuffle,.stop,.save,.results):active{
+    background: linear-gradient(15deg, #0d9095, #114444 75%);
+    color: #b76b24;
+    box-shadow: 0 0 1px 1px #5165b4;
+}
+
+.results{
+    width: 85px;
+    height: 35px;
+    font-family: 'Marck Script', 'Calibri', sans-serif;
+    font-size: 1em;
+    background: linear-gradient(15deg, #0d9095, #0d9095 75%);
+    color: #e1f1f2;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 1px 1px #bbd2d4;
+}
+.upper-statistic{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10%;
+}
+.moves-block{
+    text-align: center;
+    width: 95px;
+    font-family: 'Marck Script', 'Calibri', sans-serif;
+    font-size: 1em;
+    color: #e1f1f2;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+.time-block{
+    text-align: center;
+    width: 115px;
+    font-family: 'Marck Script', 'Calibri', sans-serif;
+    font-size: 1em;
+    color: #e1f1f2;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+/*Game*/
+.middle-board{
+    box-sizing: border-box;
+}
+/*Size*/
+.down-bord{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 25px 25px;
+}
+.info-size{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 3%;
+}
+.check-size{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 1%;
+}
+.frame-label,.frame-value,.check-label {
+    font-family: 'Marck Script', 'Calibri', sans-serif;
+    font-size: 1em;
+    color: #e1f1f2;
+}
+.very-easy, .easy, .normal, .hard,.very-hard,.unreal{
+    font-family: 'Marck Script', 'Calibri', sans-serif;
+    font-size: 1em;
+    color: #dcbc86;
+    text-decoration: underline solid #9a07ea;
+}
+span:where(.very-easy,.easy,.normal,.hard,.very-hard,.unreal):hover{
+    color: #e77272;
+    text-decoration: underline wavy #9a07ea;
+}
