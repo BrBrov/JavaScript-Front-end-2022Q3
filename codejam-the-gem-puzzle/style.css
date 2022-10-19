@@ -19,7 +19,7 @@ body{
     padding-top: 2%;
     background: linear-gradient(45deg, #11a09e, #6573cb, #3a56b9);
     border-radius: 5px;
-    box-shadow: -1px 1px 2px 2px #3a56b9;
+    box-shadow: 0 0 2px 2px #656a83;
 }
 .game-board{
     position: relative;
@@ -108,22 +108,35 @@ button:where(.shuffle,.stop,.save,.results):active{
     column-gap: 10%;
 }
 .moves-block{
-    text-align: center;
-    width: 95px;
-    font-family: 'Marck Script', 'Calibri', sans-serif;
-    font-size: 1em;
-    color: #e1f1f2;
+    display: flex;
+    width: 150px;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 5%;
     border: 1px solid white;
     border-radius: 5px;
 }
-.time-block{
+.move-label,.move-count{
     text-align: center;
-    width: 115px;
     font-family: 'Marck Script', 'Calibri', sans-serif;
     font-size: 1em;
     color: #e1f1f2;
+}
+.time-block{
+    display: flex;
+    width: 150px;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 5%;
     border: 1px solid white;
     border-radius: 5px;
+}
+.time-label,.minute,.time-separator,.seconds{
+    text-align: center;
+    font-family: 'Marck Script', 'Calibri', sans-serif;
+    font-size: 1em;
+    color: #e1f1f2;
+
 }
 /*Game*/
 .middle-board{
@@ -161,4 +174,58 @@ button:where(.shuffle,.stop,.save,.results):active{
 span:where(.very-easy,.easy,.normal,.hard,.very-hard,.unreal):hover{
     color: #e77272;
     text-decoration: underline wavy #9a07ea;
+}
+
+.sound-control{
+    display: flex;
+    margin: 0 auto 0;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 2%;
+}
+
+.sound-control input{
+    appearance: none;
+    width: 28px;
+    height: 15px;
+    border-radius: 15px;
+    box-shadow: inset 1em 0 0 0 rgb(173, 4, 36);
+    background-color: #110ae8;
+    border: 1px solid rgb(158, 139, 203);
+    outline: none;
+    transition: 0.2s;
+}
+
+.sound-control input:checked {
+    box-shadow: inset -1em 0 0 0 rgba(47, 227, 49, 0.99);
+    background-color: #0f0be1;
+    border: 1px solid rgb(53, 121, 176);
+}
+
+.sound-control input:focus {
+    outline-width: 0;
+}
+.sound-label{
+    font-family: 'Marck Script', 'Calibri', sans-serif;
+    font-size: 1em;
+    color: #e1f1f2;
+}
+
+@media screen and (max-width: 768px) {
+    .page{
+        height: 540px;
+        margin: 1% auto;
+        padding-top: 1%;
+    }
+}
+
+@media screen and (max-width: 600px){
+    body{
+        background: unset;
+    }
+    .page{
+        margin: 0;
+        border-radius: unset;
+        box-shadow: none;
+    }
 }
