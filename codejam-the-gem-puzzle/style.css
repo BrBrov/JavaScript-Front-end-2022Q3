@@ -25,10 +25,10 @@ body{
     position: relative;
     display: grid;
     width: 400px;
-    height: 520px;
+    height: 525px;
     margin: 0 auto;
     grid-template-columns: 100%;
-    grid-template-rows: 70px 400px 50px;
+    grid-template-rows: 80px 400px 45px;
 }
 /*Upper control*/
 .upper-board{
@@ -142,6 +142,10 @@ button:where(.shuffle,.stop,.save,.results):active{
 .middle-board{
     box-sizing: border-box;
 }
+.game{
+    width: 400px;
+    height: 400px;
+}
 /*Size*/
 .down-bord{
     display: grid;
@@ -178,7 +182,7 @@ span:where(.very-easy,.easy,.normal,.hard,.very-hard,.unreal):hover{
 
 .sound-control{
     display: flex;
-    margin: 0 auto 0;
+    margin: auto auto 0;
     flex-direction: row;
     justify-content: center;
     column-gap: 2%;
@@ -213,7 +217,7 @@ span:where(.very-easy,.easy,.normal,.hard,.very-hard,.unreal):hover{
 
 @media screen and (max-width: 768px) {
     .page{
-        height: 540px;
+        height: 550px;
         margin: 1% auto;
         padding-top: 1%;
     }

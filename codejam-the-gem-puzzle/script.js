@@ -23,6 +23,7 @@ class Sound{
         this.soundBlock.appendChild(soundLabel);
         this.audio = new Audio(`./assets/sound/click.mp3`);
         this.audio.volume = 0.5;
+        this.audio.autoplay = false;
     }
     play(){
         this.audio.play();
