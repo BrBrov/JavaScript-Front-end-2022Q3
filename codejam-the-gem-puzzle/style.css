@@ -65,6 +65,15 @@ body{
     border-radius: 5px;
     box-shadow: 0 0 1px 1px #bbd2d4;
 }
+@keyframes anim {
+    0%{color: #f30707}
+    50%{color: #e3a43c}
+    100%{color: #459302}
+}
+.choosed{
+    background: linear-gradient(15deg, #525859, #9fe7d5 75%);
+    animation: anim 1s linear 1s infinite;
+}
 .save{
     width: 75px;
     height: 35px;
@@ -83,7 +92,7 @@ button:where(.shuffle,.stop,.save,.results):hover{
     box-shadow: 0 0 1px 1px #8c79c5;
 }
 button:where(.shuffle,.stop,.save,.results):active{
-    background: linear-gradient(15deg, #0d9095, #114444 75%);
+    background: linear-gradient(15deg, #23147a, #094473 75%);
     color: #b76b24;
     box-shadow: 0 0 1px 1px #5165b4;
 }
@@ -136,7 +145,10 @@ button:where(.shuffle,.stop,.save,.results):active{
     font-family: 'Marck Script', 'Calibri', sans-serif;
     font-size: 1em;
     color: #e1f1f2;
+}
 
+.time-separator{
+    width: 2px;
 }
 /*Game*/
 .middle-board{
@@ -180,6 +192,11 @@ span:where(.very-easy,.easy,.normal,.hard,.very-hard,.unreal):hover{
     text-decoration: underline wavy #9a07ea;
 }
 
+.checked{
+    color: #021542;
+    text-decoration: underline double #9a07ea;
+}
+/*Sound settings*/
 .sound-control{
     display: flex;
     margin: auto auto 0;
