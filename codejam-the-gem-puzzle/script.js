@@ -21,7 +21,7 @@ class Sound {
         this.soundBlock.appendChild(this.sound);
         let soundLabel = new AddElement('span', 'sound-label', 'Sound on');
         this.soundBlock.appendChild(soundLabel);
-        this.audio = new Audio(`./assets/sound/click.mp3`);
+        this.audio = new Audio(`./assets/sound/click.ogg`);
         this.audio.volume = 0.5;
         this.audio.autoplay = false;
     }
@@ -198,6 +198,7 @@ class Draw {
         let height = this.canvas.width / 3;
         let x = this.canvas.width / 8;
         let y = this.canvas.width / 3;
+        this.dc.clearRect(0,0,width, height);
         this.dc.fillStyle = '#076e08'
         this.dc.fillRect(x, y, width, height);
         this.dc.font = '1.2em sans-serif';
@@ -303,8 +304,25 @@ class Draw {
         [this.tableCells[cells.cell.index].textX, this.tableCells[cells.nullCell.index].textX] = [this.tableCells[cells.nullCell.index].textX, this.tableCells[cells.cell.index].textX];
         [this.tableCells[cells.cell.index].textY, this.tableCells[cells.nullCell.index].textY] = [this.tableCells[cells.nullCell.index].textY, this.tableCells[cells.cell.index].textY];
     }
-    _checkResult() {
-
+    checkResult(size) {
+        size = size**2;
+        let controlArray = [];
+        for (let i = 1; i <= size; i++) {
+            if (i < size) {
+                controlArray.push(i);
+            } else {
+                controlArray.push(0);
+            }
+        }
+        let resultArray = this.tableCells.map(e=>{
+            return e.text;
+        })
+        for (const index in controlArray) {
+            if(controlArray[index] !== resultArray[index]){
+                return false;
+            }
+        }
+        return true;
     }
 }
 
@@ -533,7 +551,7 @@ class Page extends Settings {
             setTimeout(() => {
                 this.clickCtrl = false;
                 this.timer.start();
-            }, 750);
+            }, 100);
         }
     }
 
@@ -557,7 +575,7 @@ class Page extends Settings {
             } else {
                 setTimeout(() => {
                     this.clickCtrl = false;
-                }, 750);
+                }, 100);
             }
         }
     }
@@ -594,11 +612,11 @@ class Page extends Settings {
             this.setOption('size', size);
             if (this.sound.checked) {
                 this.sound.play();
-            } else {
-                setTimeout(() => {
-                    this.clickCtrl = false;
-                }, 750);
             }
+            setTimeout(() => {
+                this.clickCtrl = false;
+            }, 100);
+
         }
     }
 
@@ -612,9 +630,15 @@ class Page extends Settings {
                 x: e.offsetX,
                 y: e.offsetY
             }
-            this.canvas.moveElement(mousePosition, this.getOption('size'));
-            
-            this.clickCtrl = false;
+            let countCell = this.getOption('size');
+            this.canvas.moveElement(mousePosition, countCell);
+            this.canvas.checkResult(countCell);
+            if (this.sound.checked) {
+                this.sound.play();
+            }
+            setTimeout(() => {
+                this.clickCtrl = false;
+            }, 100);
         }
     }
 
