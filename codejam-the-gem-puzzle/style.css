@@ -159,7 +159,7 @@ button:where(.shuffle,.stop,.save,.results):active{
     height: 400px;
 }
 /*Size*/
-.down-bord{
+.down-board{
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 25px 25px;

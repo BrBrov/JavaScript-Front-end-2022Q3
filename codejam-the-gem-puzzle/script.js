@@ -136,7 +136,7 @@ class Draw {
     createCells(value) {
         let countCells = value ** 2;
         let width = (this.canvas.width / 4) - 2;
-        let heigth = width;
+        let height = width;
         let cellsArray = this._generateCellsNumber(countCells);
         let matrix = [];
         let saver = [];
@@ -161,10 +161,10 @@ class Draw {
                     textY: 0
                 }
                 position.x = 2 * (j + 1) + width * j;
-                position.y = 2 * (i + 1) + heigth * i
+                position.y = 2 * (i + 1) + height * i
 
                 position.textX = position.x + (width / 2);
-                position.textY = position.y + (heigth / 1.5);
+                position.textY = position.y + (height / 1.5);
                 position.text = matrix[i][j];
                 this.tableCells.push(position);
             }
@@ -195,11 +195,11 @@ class Draw {
 
     drawCongratulation(time, count) {
         let width = (this.canvas.width * 6) / 8;
-        let heigth = this.canvas.width / 3;
+        let height = this.canvas.width / 3;
         let x = this.canvas.width / 8;
         let y = this.canvas.width / 3;
         this.dc.fillStyle = '#076e08'
-        this.dc.fillRect(x, y, width, heigth);
+        this.dc.fillRect(x, y, width, height);
         this.dc.font = '1.2em sans-serif';
         this.dc.fillStyle = '#e72525';
         x = this.canvas.width / 2;
@@ -266,37 +266,42 @@ class Draw {
         neighborsElements.forEach(e => {
             if (e >= 0 || e < this.tableCells.length) {
                 if (cells.cell.index === e) {
-                    moveSide = {
-                        stepTextX: (cells.nullCell.element.textX - cells.cell.element.textX)/25,
-                        steptextY: (cells.nullCell.element.textY - cells.cell.element.textY)/25,
-                        stepX: ((cells.nullCell.element.x - cells.cell.element.x) / 25),
-                        stepY: ((cells.nullCell.element.y - cells.cell.element.y) / 25)
-                    }
+                    moveSide = {}
+                    let x = cells.nullCell.element.x - cells.cell.element.x;
+                    let y = cells.nullCell.element.y - cells.cell.element.y;
+                    let stepX = (cells.nullCell.element.x - cells.cell.element.x) / 25;
+                    let stepY = (cells.nullCell.element.y - cells.cell.element.y) / 25;
+                    moveSide.long = (x === 0) ? y : x;
+                    moveSide.step = (stepX === 0) ? stepY : stepX;
+                    moveSide.stepX = (cells.nullCell.element.x - cells.cell.element.x) / 25;
+                    moveSide.stepY = (cells.nullCell.element.y - cells.cell.element.y) / 25;
                 }
             }
         })
         if (!moveSide) {
             return;
         }
-        console.log(moveSide);
-        console.log(cells.cell.element.x !== cells.nullCell.element.x || cells.cell.element.y !== cells.nullCell.element.y);
-        // let tick = setInterval(() => {
-        //
-        //     if ((cells.cell.element.x !== cells.nullCell.element.x) || (cells.cell.element.y !== cells.nullCell.element.y)) {
-        //         this.tableCells[cells.cell.index].x = this.tableCells[cells.cell.index].x + moveSide.stepX;
-        //         this.tableCells[cells.cell.index].y = this.tableCells[cells.cell.index].y + moveSide.stepY;
-        //         this.tableCells[cells.cell.index].textX = this.tableCells[cells.cell.index].textX + moveSide.stepX;
-        //         this.tableCells[cells.cell.index].textY = this.tableCells[cells.cell.index].textY + moveSide.stepY;
-        //         this.dc.clearRect(0, 0, length, length);
-        //         this.drawCells();
-        //         cells.cell.element.x = (cells.cell.element.x + moveSide.stepX);
-        //         cells.cell.element.y = (cells.cell.element.y + moveSide.stepY);
-        //     } else {
-        //
-        //         clearInterval(tick);
-        //     }
-        // }, 500);
-        console.log(this.tableCells);
+        let step = moveSide.long;
+        while (step) {
+            this.tableCells[cells.cell.index].x += moveSide.stepX;
+            this.tableCells[cells.cell.index].y += moveSide.stepY;
+            this.tableCells[cells.cell.index].textX += moveSide.stepX;
+            this.tableCells[cells.cell.index].textY += moveSide.stepY;
+            this.tableCells[cells.nullCell.index].x -= moveSide.stepX;
+            this.tableCells[cells.nullCell.index].y -= moveSide.stepY;
+            this.tableCells[cells.nullCell.index].textX -= moveSide.stepX;
+            this.tableCells[cells.nullCell.index].textY -= moveSide.stepY;
+            let side = this.canvas.width;
+            this.dc.clearRect(0, 0, side, side);
+            this.createBackground()
+            this.drawCells();
+            step = step - moveSide.step;
+        };
+        [this.tableCells[cells.cell.index].text, this.tableCells[cells.nullCell.index].text] = [this.tableCells[cells.nullCell.index].text, this.tableCells[cells.cell.index].text];
+        [this.tableCells[cells.cell.index].x, this.tableCells[cells.nullCell.index].x] = [this.tableCells[cells.nullCell.index].x, this.tableCells[cells.cell.index].x];
+        [this.tableCells[cells.cell.index].y, this.tableCells[cells.nullCell.index].y] = [this.tableCells[cells.nullCell.index].y, this.tableCells[cells.cell.index].y];
+        [this.tableCells[cells.cell.index].textX, this.tableCells[cells.nullCell.index].textX] = [this.tableCells[cells.nullCell.index].textX, this.tableCells[cells.cell.index].textX];
+        [this.tableCells[cells.cell.index].textY, this.tableCells[cells.nullCell.index].textY] = [this.tableCells[cells.nullCell.index].textY, this.tableCells[cells.cell.index].textY];
     }
 }
 
@@ -440,7 +445,7 @@ class Page extends Settings {
         this.canvas = new Draw();//canvas
         block.appendChild(this.canvas.canvas);
         gameBoard.appendChild(block);
-        block = new AddElement(tags.div, 'down-bord');
+        block = new AddElement(tags.div, 'down-board');
         element = new AddElement(tags.div, `info-size`);
         insertElem = new AddElement(tags.span, `frame-label`, 'Frame size:');
         element.appendChild(insertElem);
@@ -476,7 +481,7 @@ class Page extends Settings {
             this.canvas.createCells(cellsNumbers);
         } else {
             this.canvas.tableCells = this.getOption('tableCells');
-            this.size.textConten = this._getTextSize(cellsNumbers);
+            this.size.textContent = this._getTextSize(cellsNumbers);
         }
         this.canvas.drawCells();
         if (this.getOption('condition')) {
@@ -554,7 +559,6 @@ class Page extends Settings {
                 }, 500);
             }
         }
-
     }
 
     _save(e) {
