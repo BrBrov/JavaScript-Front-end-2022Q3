@@ -527,6 +527,7 @@ class Page extends Settings {
         this.stop.addEventListener('click', ev => this._stop.call(this, ev));
         this.save.addEventListener('click', ev => this._save.call(this, ev));
         this.canvas.canvas.addEventListener('click', ev => this._canvas.call(this, ev));
+        this.checkSize.addEventListener('click', ev=>this._checkSize.call(this, ev));
     }
 
     _shuffle(e) {
@@ -640,6 +641,8 @@ class Page extends Settings {
                 this.clickCtrl = false;
             }, 100);
         }
+    }
+    _checkSize(ev){
     }
 
     _getTextSize(value) {
