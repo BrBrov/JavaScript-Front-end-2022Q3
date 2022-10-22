@@ -134,6 +134,7 @@ class Draw {
     }
 
     createCells(value) {
+        this.tableCells = [];
         let countCells = value ** 2;
         let width = (this.canvas.width / 4) - 2;
         let height = width;
@@ -181,7 +182,6 @@ class Draw {
         let height = width;
         this.tableCells.forEach(position => {
             if (position.text !== 0) {
-                // this.dc.beginPath();
                 this.dc.fillStyle = '#e59d4b';
                 this.dc.fillRect(position.x, position.y, width, height);
                 this.dc.font = '3em serif';
@@ -302,6 +302,9 @@ class Draw {
         [this.tableCells[cells.cell.index].y, this.tableCells[cells.nullCell.index].y] = [this.tableCells[cells.nullCell.index].y, this.tableCells[cells.cell.index].y];
         [this.tableCells[cells.cell.index].textX, this.tableCells[cells.nullCell.index].textX] = [this.tableCells[cells.nullCell.index].textX, this.tableCells[cells.cell.index].textX];
         [this.tableCells[cells.cell.index].textY, this.tableCells[cells.nullCell.index].textY] = [this.tableCells[cells.nullCell.index].textY, this.tableCells[cells.cell.index].textY];
+    }
+    _checkResult() {
+
     }
 }
 
@@ -515,24 +518,22 @@ class Page extends Settings {
             this.timer.stop();
             this.timer.setTimer(0, 0);
             this.moves.reset();
-            console.log(this.getOption('size'));
             this.canvas.createCells(this.getOption('size'));
+            console.log(this.canvas.canvas.height);
+            this.canvas.dc.clearRect(0, 0, this.canvas.canvas.width, this.canvas.canvas.height);
+            this.canvas.createBackground();
             this.canvas.drawCells();
             this.setOption('tableCells', null);
             this.setOption('moves', 0);
             this.setOption('minutes', 0);
             this.setOption('seconds', 0);
             if (this.sound.checked) {
-                this.sound.play().then(r => {
-                    this.clickCtrl = false;
-                    this.timer.start();
-                });
-            } else {
-                setTimeout(() => {
-                    this.clickCtrl = false;
-                    this.timer.start();
-                }, 500);
+                this.sound.play();
             }
+            setTimeout(() => {
+                this.clickCtrl = false;
+                this.timer.start();
+            }, 750);
         }
     }
 
@@ -556,7 +557,7 @@ class Page extends Settings {
             } else {
                 setTimeout(() => {
                     this.clickCtrl = false;
-                }, 500);
+                }, 750);
             }
         }
     }
@@ -592,13 +593,11 @@ class Page extends Settings {
             }
             this.setOption('size', size);
             if (this.sound.checked) {
-                this.sound.play().then(r => {
-                    this.clickCtrl = false;
-                });
+                this.sound.play();
             } else {
                 setTimeout(() => {
                     this.clickCtrl = false;
-                }, 500);
+                }, 750);
             }
         }
     }
@@ -614,6 +613,7 @@ class Page extends Settings {
                 y: e.offsetY
             }
             this.canvas.moveElement(mousePosition, this.getOption('size'));
+            
             this.clickCtrl = false;
         }
     }
