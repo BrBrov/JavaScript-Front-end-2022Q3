@@ -324,9 +324,6 @@ class Draw {
             }
         })
         if (!moveSide) {
-            this.dc.clearRect(0, 0, side, side);
-            this.createBackground()
-            this.drawCells(size);
             return false;
         }
         let step = 100;
@@ -474,6 +471,8 @@ class Page extends Settings {
         this.clickCtrl = false;
         this.stopCtrl = false;
         this.canvasCtrl = false;
+        this.resultsShow = false;
+        this.sizeCheckCtrl = true;
     }
 
     _buildHTML() {
@@ -591,7 +590,7 @@ class Page extends Settings {
         this.shuffle.addEventListener('click', ev => this._shuffle.call(this, ev));
         this.stop.addEventListener('click', ev => this._stop.call(this, ev));
         this.save.addEventListener('click', ev => this._save.call(this, ev));
-        this.results.addEventListener('click', ev => this._result.call(this, ev));
+        this.results.addEventListener('click', ev => this._resultOpen.call(this, ev));
         this.canvas.canvas.addEventListener('click', ev => this._canvas.call(this, ev));
         this.checkSize.addEventListener('click', ev => this._checkSize.call(this, ev));
         this.sound.sound.addEventListener('click', ev => this._soundCheck.call(this, ev))
@@ -763,36 +762,58 @@ class Page extends Settings {
         }
     }
 
-    _result(ev) {
+    _resultOpen(ev) {
         ev.stopPropagation();
+        console.log(this.clickCtrl);
         if (!this.clickCtrl) {
             this.clickCtrl = true;
             if (this.sound.checkStatus()) {
                 this.sound.play();
             }
-
-            this.canvas.dc.clearRect(0, 0, this.canvas.canvas.width, this.canvas.canvas.height);
-            this.canvas.createBackground();
-            let resultArray = this.getOption('result');
-            let position = {
-                x: 20,
-                y: 35
-            }
-            if (resultArray.length !== 0) {
-                resultArray.forEach(e => {
-                    this.canvas.dc.font = '30px sans';
-
-                    this.canvas.dc.fillStyle = '#9fd3c9';
-                    this.canvas.dc.fillText(`${e.date} -> ${e.moves} for the ${e.time}`, position.x, position.y);
-                    this.canvas.dc.strokeStyle = '#7133b0';
-                    this.canvas.dc.strokeRect(position.x - 10, position.y - 30, 380, 35);
-                    position.y += 35;
-                })
-            }
-            if (this.timer.timerStarted) {
-                this.timer.stop();
+            if(!this.resultsShow){
+                this._showResults();
+                this.resultsShow = true;
+                this.sizeCheckCtrl = false;
+                if (this.timer.timerStarted) {
+                    this.timer.stop();
+                }
+            }else{
+                this.canvas.dc.clearRect(0, 0, 400, 400);
+                this.canvas.createBackground();
+                this.canvas.drawCells(this.getOption('size'));
+                this.resultsShow = false;
+                this.sizeCheckCtrl = true;
+                if (this.timer.timerStarted) {
+                    this.timer.start();
+                }
             }
             this.clickCtrl = false;
+        }
+    }
+
+    _showResults(){
+        let resultArray = this.getOption('result');
+        let position = {
+            x: 20,
+            y: 35
+        }
+        if (resultArray.length !== 0) {
+            this.canvas.dc.clearRect(0, 0, 400, 400);
+            this.canvas.createBackground();
+            resultArray.forEach(e => {
+                this.canvas.dc.font = '30px sans';
+                this.canvas.dc.fillStyle = '#9fd3c9';
+                this.canvas.dc.fillText(`${e.date} -> ${e.moves} for the ${e.time}`, position.x, position.y);
+                this.canvas.dc.strokeStyle = '#7133b0';
+                this.canvas.dc.strokeRect(position.x - 10, position.y - 30, 380, 35);
+                position.y += 35;
+            })
+        }else{
+            this.canvas.dc.clearRect(0, 0, 400, 400);
+            this.canvas.createBackground();
+            this.canvas.dc.font = '30px sans';
+            this.canvas.dc.fillStyle = '#9fd3c9';
+            this.canvas.dc.fillText(`Here aren\'t a results`, 100, 200);
         }
     }
 
@@ -827,54 +848,63 @@ class Page extends Settings {
 
     _checkSize(ev) {
         ev.stopPropagation();
-        let size = 0;
-        if (ev.target.className !== 'check-label') {
-            switch (ev.target.textContent) {
-                case '3x3':
-                    size = 3;
-                    break;
-                case '4x4':
-                    size = 4;
-                    break;
-                case '5x5':
-                    size = 5;
-                    break;
-                case '6x6':
-                    size = 6;
-                    break;
-                case '7x7':
-                    size = 7;
-                    break;
-                case '8x8':
-                    size = 8;
-                    break;
-            }
-            this.setOption('size', size);
-            this.setOption('tableCells', null);
-            this.setOption('condition', false);
-            this.setOption('minutes', 0);
-            this.setOption('seconds', 0);
-            this.setOption('moves', 0);
-            this.timer.stop();
-            this.moves.reset();
-            this.timer.min = 0;
-            this.timer.sec = 0;
-            let arrClassName = ['very-easy', 'easy', 'normal', 'hard', 'very-hard', 'unreal'];
-            [...this.checkSize.children].forEach((e, i) => {
-                if (e.className !== 'check-label') {
-                    if (e.className === ev.target.className) {
-                        e.className = arrClassName[i - 1] + ' checked';
-                    } else {
-                        e.className = arrClassName[i - 1];
+        if(!this.clickCtrl){
+            this.clickCtrl = true;
+            if(this.sizeCheckCtrl){
+                let size = 0;
+                if (ev.target.className !== 'check-label') {
+                    switch (ev.target.textContent) {
+                        case '3x3':
+                            size = 3;
+                            break;
+                        case '4x4':
+                            size = 4;
+                            break;
+                        case '5x5':
+                            size = 5;
+                            break;
+                        case '6x6':
+                            size = 6;
+                            break;
+                        case '7x7':
+                            size = 7;
+                            break;
+                        case '8x8':
+                            size = 8;
+                            break;
                     }
-                }
-            });
-            this.size.textContent = ev.target.textContent;
-            this.canvas.dc.clearRect(0, 0, this.canvas.canvas.width, this.canvas.canvas.height);
-            this.canvasCtrl = false;
-            this.madeGame();
+                    this.setOption('size', size);
+                    this.setOption('tableCells', null);
+                    this.setOption('condition', false);
+                    this.setOption('minutes', 0);
+                    this.setOption('seconds', 0);
+                    this.setOption('moves', 0);
+                    this.timer.stop();
+                    this.moves.reset();
+                    this.timer.min = 0;
+                    this.timer.sec = 0;
+                    let arrClassName = ['very-easy', 'easy', 'normal', 'hard', 'very-hard', 'unreal'];
+                    [...this.checkSize.children].forEach((e, i) => {
+                        if (e.className !== 'check-label') {
+                            if (e.className === ev.target.className) {
+                                e.className = arrClassName[i - 1] + ' checked';
+                            } else {
+                                e.className = arrClassName[i - 1];
+                            }
+                        }
+                    });
+                    this.size.textContent = ev.target.textContent;
+                    this.canvas.dc.clearRect(0, 0, this.canvas.canvas.width, this.canvas.canvas.height);
+                    this.canvasCtrl = false;
+                    this.canvas.createBackground();
+                    this.canvas.createCells(this.getOption('size'));
+                    this.canvas.drawCells(this.getOption('size'));
+                    console.log(this.clickCtrl);
+                    this.resultsShow = true;
+               }
+           }
         }
-
+        this.clickCtrl = false;
     }
 }
 
