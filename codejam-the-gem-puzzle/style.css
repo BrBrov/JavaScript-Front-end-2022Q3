@@ -244,8 +244,13 @@ span:where(.very-easy,.easy,.normal,.hard,.very-hard,.unreal):hover{
     body{
         background: unset;
     }
+    .container{
+        width: auto;
+    }
     .page{
+        height: 1050px;
         margin: 0;
+        padding-top: 10%;
         border-radius: unset;
         box-shadow: none;
     }

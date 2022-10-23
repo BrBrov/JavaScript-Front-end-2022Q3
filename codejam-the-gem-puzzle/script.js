@@ -28,7 +28,8 @@ class Sound {
     play() {
         return this.audio.play();
     }
-    checkStatus(){
+
+    checkStatus() {
         this.checked = this.sound.checked;
         return this.checked;
     }
@@ -94,14 +95,14 @@ class Timer {
     }
 
     start() {
-        if(!this.timerStarted){
+        if (!this.timerStarted) {
             this._processing();
             this.timerStarted = true;
         }
     }
 
     stop() {
-        if(this.timerStarted){
+        if (this.timerStarted) {
             if (this.handle) {
                 clearInterval(this.handle);
             }
@@ -111,7 +112,7 @@ class Timer {
             this.handle = 0;
             this.hBlink = 0;
             this.separator.textContent = ':';
-            this.timerStarted =false;
+            this.timerStarted = false;
         }
     }
 
@@ -143,7 +144,7 @@ class Draw {
         this.dc.save();
     }
 
-    _generateMatrix(value){
+    _generateMatrix(value) {
         let countCells = value ** 2;
         let cellsArray = this._generateCellsNumber(countCells);
         let matrix = [];
@@ -166,7 +167,7 @@ class Draw {
         let height = width;
         let matrix = null;
         let x = false;
-        while(x === false){
+        while (x === false) {
             matrix = this._generateMatrix(value);
             x = this._checkMatrix(matrix);
         }
@@ -197,10 +198,10 @@ class Draw {
         })
     }
 
-    _checkMatrix(matrix){
+    _checkMatrix(matrix) {
         let arrayMatrix = [];
-        matrix.forEach(e=>{
-            e.forEach(elem=>{
+        matrix.forEach(e => {
+            e.forEach(elem => {
                 arrayMatrix.push(elem);
             })
         })
@@ -208,19 +209,19 @@ class Draw {
         [arrayMatrix[indexOfNull], arrayMatrix[arrayMatrix.length - 1]] = [arrayMatrix[arrayMatrix.length - 1], arrayMatrix[indexOfNull]];
         // arrayMatrix.pop();
         let summery = 0;
-        arrayMatrix.forEach((e, index, array) =>{
+        arrayMatrix.forEach((e, index, array) => {
             let count = 0;
             for (let i = index + 1; i < array.length; i++) {
-                if(array[i] && array[i]<e){
+                if (array[i] && array[i] < e) {
                     count++;
                 }
             }
-            summery +=count;
+            summery += count;
         })
-        let result = summery%2;
-        if(result === 0){
+        let result = summery % 2;
+        if (result === 0) {
             return true
-        }else{
+        } else {
             return false
         }
     }
@@ -301,6 +302,7 @@ class Draw {
     }
 
     moveElement(mousePosition, size) {
+        let side = this.canvas.width;
         let cells = this.getElemOnClick(mousePosition, size);
         if (cells.cell.element.text === cells.nullCell.element.text) {
             return;
@@ -315,13 +317,16 @@ class Draw {
             if (e >= 0 || e < this.tableCells.length) {
                 if (cells.cell.index === e) {
                     moveSide = {
-                        stepX : ((cells.nullCell.element.x - cells.cell.element.x) / 25),
-                        stepY : ((cells.nullCell.element.y - cells.cell.element.y) / 25)
+                        stepX: ((cells.nullCell.element.x - cells.cell.element.x) / 25),
+                        stepY: ((cells.nullCell.element.y - cells.cell.element.y) / 25)
                     }
                 }
             }
         })
         if (!moveSide) {
+            this.dc.clearRect(0, 0, side, side);
+            this.createBackground()
+            this.drawCells(size);
             return false;
         }
         let step = 100;
@@ -334,7 +339,6 @@ class Draw {
             this.tableCells[cells.nullCell.index].y -= moveSide.stepY;
             this.tableCells[cells.nullCell.index].textX -= moveSide.stepX;
             this.tableCells[cells.nullCell.index].textY -= moveSide.stepY;
-            let side = this.canvas.width;
             this.dc.clearRect(0, 0, side, side);
             this.createBackground()
             this.drawCells(size);
@@ -349,7 +353,7 @@ class Draw {
     }
 
     checkResult(size) {
-        size = size**2;
+        size = size ** 2;
         let controlArray = [];
         for (let i = 1; i <= size; i++) {
             if (i < size) {
@@ -358,11 +362,11 @@ class Draw {
                 controlArray.push(0);
             }
         }
-        let resultArray = this.tableCells.map(e=>{
+        let resultArray = this.tableCells.map(e => {
             return e.text;
         })
         for (const index in controlArray) {
-            if(controlArray[index] !== resultArray[index]){
+            if (controlArray[index] !== resultArray[index]) {
                 return false;
             }
         }
@@ -470,16 +474,6 @@ class Page extends Settings {
         this.clickCtrl = false;
         this.stopCtrl = false;
         this.canvasCtrl = false;
-        // this.sound
-        // this.stop
-        // this.shuffle
-        // this.save
-        // this.results
-        // this.size
-        // this.checkSize
-        // this.canvas
-        // this.moves
-        // this.timer
     }
 
     _buildHTML() {
@@ -559,13 +553,13 @@ class Page extends Settings {
             this.canvas.tableCells = this.getOption('tableCells');
         }
         this.size.textContent = this._getTextSize(cellsNumbers);
-        let arrClassName = ['very-easy','easy', 'normal', 'hard', 'very-hard', 'unreal'];
-        [...this.checkSize.children].forEach((e, i)=>{
-            if(e.className !== 'check-label'){
-                if(e.textContent === this._getTextSize(cellsNumbers)){
-                    e.className = arrClassName[i-1] +' checked';
-                }else{
-                    e.className = arrClassName[i-1];
+        let arrClassName = ['very-easy', 'easy', 'normal', 'hard', 'very-hard', 'unreal'];
+        [...this.checkSize.children].forEach((e, i) => {
+            if (e.className !== 'check-label') {
+                if (e.textContent === this._getTextSize(cellsNumbers)) {
+                    e.className = arrClassName[i - 1] + ' checked';
+                } else {
+                    e.className = arrClassName[i - 1];
                 }
             }
         });
@@ -584,7 +578,7 @@ class Page extends Settings {
             this.moves.textContent = this.getOption('moves');
             this.timer.stop();
         }
-        if(this.getOption('stop')){
+        if (this.getOption('stop')) {
             this.stop.className = 'stop choosed';
             this.stopCtrl = true;
             this.canvasCtrl = true;
@@ -593,12 +587,14 @@ class Page extends Settings {
     }
 
     _logicProcess() {
-        this.shuffle.addEventListener('click', ev=>this._shuffle.call(this, ev));
-        this.stop.addEventListener('click', ev=>this._stop.call(this, ev));
-        this.save.addEventListener('click', ev=>this._save.call(this, ev));
-        this.canvas.canvas.addEventListener('click', ev =>this._canvas.call(this, ev));
-        this.checkSize.addEventListener('click', ev=>this._checkSize.call(this, ev));
-        this.sound.sound.addEventListener('click', ev=>this._soundCheck.call(this, ev))
+        this.resultCtrl = false;
+        this.shuffle.addEventListener('click', ev => this._shuffle.call(this, ev));
+        this.stop.addEventListener('click', ev => this._stop.call(this, ev));
+        this.save.addEventListener('click', ev => this._save.call(this, ev));
+        this.results.addEventListener('click', ev => this._result.call(this, ev));
+        this.canvas.canvas.addEventListener('click', ev => this._canvas.call(this, ev));
+        this.checkSize.addEventListener('click', ev => this._checkSize.call(this, ev));
+        this.sound.sound.addEventListener('click', ev => this._soundCheck.call(this, ev))
     }
 
     _shuffle(e) {
@@ -616,6 +612,7 @@ class Page extends Settings {
             this.setOption('moves', 0);
             this.setOption('minutes', 0);
             this.setOption('seconds', 0);
+            this.setOption('condition', false);
             this.canvasCtrl = false;
             if (this.sound.checkStatus()) {
                 this.sound.play();
@@ -635,11 +632,11 @@ class Page extends Settings {
                 this.stop.className += ` choosed`;
                 this.timer.stop();
                 this.stopCtrl = true;
-                this.stopTimeCtrl = setInterval(()=>{
-                    if(this.timer.timerStarted === true){
+                this.stopTimeCtrl = setInterval(() => {
+                    if (this.timer.timerStarted === true) {
                         this.timer.stop();
                     }
-                },10);
+                }, 10);
                 this.canvasCtrl = true;
                 this.setOption('stop', true);
                 this.setOption('tableCells', this.canvas.tableCells);
@@ -663,7 +660,7 @@ class Page extends Settings {
                 this.sound.play();
             }
             setTimeout(() => {
-                    this.clickCtrl = false;
+                this.clickCtrl = false;
             }, 100);
 
         }
@@ -711,7 +708,7 @@ class Page extends Settings {
     _canvas(e) {
         e.stopPropagation();
         if (!this.clickCtrl) {
-            if(this.canvasCtrl){
+            if (this.canvasCtrl) {
                 return;
             }
             this.clickCtrl = true;
@@ -722,11 +719,11 @@ class Page extends Settings {
             }
             let countCell = this.getOption('size');
             let moveResult = this.canvas.moveElement(mousePosition, countCell);
-            if(moveResult){
+            if (moveResult) {
                 this.moves.addition();
             }
             let checkFlag = this.canvas.checkResult(countCell);
-            if(checkFlag){
+            if (checkFlag) {
                 this.canvasCtrl = true;
                 this.timer.stop();
                 let time = {
@@ -741,7 +738,7 @@ class Page extends Settings {
                 this.setOption('seconds', this.timer.sec);
                 let savedResults = this.getOption('result');
                 let date = new Date();
-                let resultDate = date.getDate()+'.';
+                let resultDate = date.getDate() + '.';
                 resultDate += (date.getMonth() + 1) + '.';
                 resultDate += date.getFullYear();
                 let result = {
@@ -749,14 +746,13 @@ class Page extends Settings {
                     moves: this.moves.value,
                     time: `${this.timer.min}:${this.timer.sec}`
                 }
-                if (savedResults.length < 10){
+                if (savedResults.length < 10) {
                     savedResults.push(result);
-                }else{
+                } else {
                     savedResults.pop();
                     savedResults.unshift(result);
                 }
                 this.setOption('result', savedResults);
-
             }
             if (this.sound.checkStatus()) {
                 this.sound.play();
@@ -767,11 +763,40 @@ class Page extends Settings {
         }
     }
 
-    _result(){
+    _result(ev) {
+        ev.stopPropagation();
+        if (!this.clickCtrl) {
+            this.clickCtrl = true;
+            if (this.sound.checkStatus()) {
+                this.sound.play();
+            }
 
+            this.canvas.dc.clearRect(0, 0, this.canvas.canvas.width, this.canvas.canvas.height);
+            this.canvas.createBackground();
+            let resultArray = this.getOption('result');
+            let position = {
+                x: 20,
+                y: 35
+            }
+            if (resultArray.length !== 0) {
+                resultArray.forEach(e => {
+                    this.canvas.dc.font = '30px sans';
+
+                    this.canvas.dc.fillStyle = '#9fd3c9';
+                    this.canvas.dc.fillText(`${e.date} -> ${e.moves} for the ${e.time}`, position.x, position.y);
+                    this.canvas.dc.strokeStyle = '#7133b0';
+                    this.canvas.dc.strokeRect(position.x - 10, position.y - 30, 380, 35);
+                    position.y += 35;
+                })
+            }
+            if (this.timer.timerStarted) {
+                this.timer.stop();
+            }
+            this.clickCtrl = false;
+        }
     }
 
-    _soundCheck(ev){
+    _soundCheck(ev) {
         this.setOption('sound', this.sound.checkStatus());
     }
 
@@ -800,9 +825,10 @@ class Page extends Settings {
         return size;
     };
 
-    _checkSize(ev){
+    _checkSize(ev) {
+        ev.stopPropagation();
         let size = 0;
-        if(ev.target.className !== 'check-label'){
+        if (ev.target.className !== 'check-label') {
             switch (ev.target.textContent) {
                 case '3x3':
                     size = 3;
@@ -833,18 +859,19 @@ class Page extends Settings {
             this.moves.reset();
             this.timer.min = 0;
             this.timer.sec = 0;
-            let arrClassName = ['very-easy','easy', 'normal', 'hard', 'very-hard', 'unreal'];
-            [...this.checkSize.children].forEach((e, i)=>{
-                if(e.className !== 'check-label'){
-                    if(e.className === ev.target.className){
-                        e.className = arrClassName[i-1] +' checked';
-                    }else{
-                        e.className = arrClassName[i-1];
+            let arrClassName = ['very-easy', 'easy', 'normal', 'hard', 'very-hard', 'unreal'];
+            [...this.checkSize.children].forEach((e, i) => {
+                if (e.className !== 'check-label') {
+                    if (e.className === ev.target.className) {
+                        e.className = arrClassName[i - 1] + ' checked';
+                    } else {
+                        e.className = arrClassName[i - 1];
                     }
                 }
             });
             this.size.textContent = ev.target.textContent;
-            this.canvas.dc.clearRect(0,0, this.canvas.canvas.width, this.canvas.canvas.height);
+            this.canvas.dc.clearRect(0, 0, this.canvas.canvas.width, this.canvas.canvas.height);
+            this.canvasCtrl = false;
             this.madeGame();
         }
 
