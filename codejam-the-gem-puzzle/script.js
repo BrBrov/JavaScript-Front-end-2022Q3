@@ -586,7 +586,6 @@ class Page extends Settings {
     }
 
     _logicProcess() {
-        this.resultCtrl = false;
         this.shuffle.addEventListener('click', ev => this._shuffle.call(this, ev));
         this.stop.addEventListener('click', ev => this._stop.call(this, ev));
         this.save.addEventListener('click', ev => this._save.call(this, ev));
@@ -773,6 +772,7 @@ class Page extends Settings {
                 this._showResults();
                 this.resultsShow = true;
                 this.sizeCheckCtrl = false;
+                this.canvasCtrl = true;
                 if (this.timer.timerStarted) {
                     this.timer.stop();
                 }
@@ -782,6 +782,7 @@ class Page extends Settings {
                 this.canvas.drawCells(this.getOption('size'));
                 this.resultsShow = false;
                 this.sizeCheckCtrl = true;
+                this.canvasCtrl = false;
                 if (this.timer.timerStarted) {
                     this.timer.start();
                 }
@@ -899,8 +900,8 @@ class Page extends Settings {
                     this.canvas.createBackground();
                     this.canvas.createCells(this.getOption('size'));
                     this.canvas.drawCells(this.getOption('size'));
-                    this.resultsShow = true;
-               }
+                    this.resultsShow = false;
+                }
            }
         }
         this.clickCtrl = false;
