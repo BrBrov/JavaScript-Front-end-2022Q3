@@ -16,8 +16,7 @@ class Sound {
         this.soundBlock = new AddElement(`div`, `sound-control`);
         this.sound = new AddElement('input', 'sound');
         this.sound.type = 'checkbox';
-        this.sound.value = true;
-        this.sound.checked = true;
+        this.checked = this.sound.checked;
         this.soundBlock.appendChild(this.sound);
         let soundLabel = new AddElement('span', 'sound-label', 'Sound on');
         this.soundBlock.appendChild(soundLabel);
@@ -28,6 +27,10 @@ class Sound {
 
     play() {
         return this.audio.play();
+    }
+    checkStatus(){
+        this.checked = this.sound.checked;
+        return this.checked;
     }
 }
 
@@ -134,9 +137,12 @@ class Draw {
     }
 
     createCells(value) {
+        function createMatrix(){
+
+        }
         this.tableCells = [];
         let countCells = value ** 2;
-        let width = (this.canvas.width / 4) - 2;
+        let width = (this.canvas.width / value) - 2;
         let height = width;
         let cellsArray = this._generateCellsNumber(countCells);
         let matrix = [];
@@ -150,6 +156,7 @@ class Draw {
                 saver = [];
             }
         }
+        console.log(matrix);
         this.tableCells = [];
         for (let i = 0; i < value; i++) {
             for (let j = 0; j < value; j++) {
@@ -177,8 +184,8 @@ class Draw {
         })
     }
 
-    drawCells() {
-        let width = (this.canvas.width / 4) - 4;
+    drawCells(size) {
+        let width = (this.canvas.width / size) - 4;
         let height = width;
         this.tableCells.forEach(position => {
             if (position.text !== 0) {
@@ -267,22 +274,17 @@ class Draw {
         neighborsElements.forEach(e => {
             if (e >= 0 || e < this.tableCells.length) {
                 if (cells.cell.index === e) {
-                    moveSide = {}
-                    let x = cells.nullCell.element.x - cells.cell.element.x;
-                    let y = cells.nullCell.element.y - cells.cell.element.y;
-                    let stepX = (cells.nullCell.element.x - cells.cell.element.x) / 25;
-                    let stepY = (cells.nullCell.element.y - cells.cell.element.y) / 25;
-                    moveSide.long = (x === 0) ? y : x;
-                    moveSide.step = (stepX === 0) ? stepY : stepX;
-                    moveSide.stepX = (cells.nullCell.element.x - cells.cell.element.x) / 25;
-                    moveSide.stepY = (cells.nullCell.element.y - cells.cell.element.y) / 25;
+                    moveSide = {
+                        stepX : ((cells.nullCell.element.x - cells.cell.element.x) / 25),
+                        stepY : ((cells.nullCell.element.y - cells.cell.element.y) / 25)
+                    }
                 }
             }
         })
         if (!moveSide) {
             return;
         }
-        let step = moveSide.long;
+        let step = 100;
         while (step) {
             this.tableCells[cells.cell.index].x += moveSide.stepX;
             this.tableCells[cells.cell.index].y += moveSide.stepY;
@@ -295,15 +297,16 @@ class Draw {
             let side = this.canvas.width;
             this.dc.clearRect(0, 0, side, side);
             this.createBackground()
-            this.drawCells();
-            step = step - moveSide.step;
-        };
+            this.drawCells(size);
+            step = step - 4;
+        }
         [this.tableCells[cells.cell.index].text, this.tableCells[cells.nullCell.index].text] = [this.tableCells[cells.nullCell.index].text, this.tableCells[cells.cell.index].text];
         [this.tableCells[cells.cell.index].x, this.tableCells[cells.nullCell.index].x] = [this.tableCells[cells.nullCell.index].x, this.tableCells[cells.cell.index].x];
         [this.tableCells[cells.cell.index].y, this.tableCells[cells.nullCell.index].y] = [this.tableCells[cells.nullCell.index].y, this.tableCells[cells.cell.index].y];
         [this.tableCells[cells.cell.index].textX, this.tableCells[cells.nullCell.index].textX] = [this.tableCells[cells.nullCell.index].textX, this.tableCells[cells.cell.index].textX];
         [this.tableCells[cells.cell.index].textY, this.tableCells[cells.nullCell.index].textY] = [this.tableCells[cells.nullCell.index].textY, this.tableCells[cells.cell.index].textY];
     }
+
     checkResult(size) {
         size = size**2;
         let controlArray = [];
@@ -424,6 +427,7 @@ class Page extends Settings {
         // this.save
         // this.results
         // this.size
+        // this.checkSize
         // this.canvas
         // this.moves
         // this.timer
@@ -443,6 +447,7 @@ class Page extends Settings {
         let gameBoard = new AddElement(tags.div, 'game-board');
         element.appendChild(gameBoard);
         this.sound = new Sound();//sound
+        this.sound.sound.checked = this.getOption('sound');
         element.appendChild(this.sound.soundBlock);
         let block = new AddElement(tags.div, `upper-board`);
         gameBoard.appendChild(block);
@@ -495,16 +500,27 @@ class Page extends Settings {
     madeGame() {
         this.timer.setTimer(this.getOption('minutes'), this.getOption('seconds'));
         this.moves.textContent = this.getOption('moves');
-        this.sound.checked = this.getOption('sound');
+        this.sound.sound.checked = this.getOption('sound');
         this.canvas.createBackground();
         let cellsNumbers = this.getOption('size');
         if (!this.getOption('tableCells')) {
             this.canvas.createCells(cellsNumbers);
+
         } else {
             this.canvas.tableCells = this.getOption('tableCells');
-            this.size.textContent = this._getTextSize(cellsNumbers);
         }
-        this.canvas.drawCells();
+        this.size.textContent = this._getTextSize(cellsNumbers);
+        let arrClassName = ['very-easy','easy', 'normal', 'hard', 'very-hard', 'unreal'];
+        [...this.checkSize.children].forEach((e, i)=>{
+            if(e.className !== 'check-label'){
+                if(e.textContent === this._getTextSize(cellsNumbers)){
+                    e.className = arrClassName[i-1] +' checked';
+                }else{
+                    e.className = arrClassName[i-1];
+                }
+            }
+        });
+        this.canvas.drawCells(this.getOption('size'));
         if (this.getOption('condition')) {
             let time = {
                 minutes: this.getOption('minutes'),
@@ -523,11 +539,12 @@ class Page extends Settings {
     }
 
     _logicProcess() {
-        this.shuffle.addEventListener('click', ev => this._shuffle.call(this, ev));
-        this.stop.addEventListener('click', ev => this._stop.call(this, ev));
-        this.save.addEventListener('click', ev => this._save.call(this, ev));
-        this.canvas.canvas.addEventListener('click', ev => this._canvas.call(this, ev));
+        this.shuffle.addEventListener('click', ev=>this._shuffle.call(this, ev));
+        this.stop.addEventListener('click', ev=>this._stop.call(this, ev));
+        this.save.addEventListener('click', ev=>this._save.call(this, ev));
+        this.canvas.canvas.addEventListener('click', ev =>this._canvas.call(this, ev));
         this.checkSize.addEventListener('click', ev=>this._checkSize.call(this, ev));
+        this.sound.sound.addEventListener('click', ev=>this._soundCheck.call(this, ev))
     }
 
     _shuffle(e) {
@@ -541,12 +558,12 @@ class Page extends Settings {
             console.log(this.canvas.canvas.height);
             this.canvas.dc.clearRect(0, 0, this.canvas.canvas.width, this.canvas.canvas.height);
             this.canvas.createBackground();
-            this.canvas.drawCells();
+            this.canvas.drawCells(this.getOption('size'));
             this.setOption('tableCells', null);
             this.setOption('moves', 0);
             this.setOption('minutes', 0);
             this.setOption('seconds', 0);
-            if (this.sound.checked) {
+            if (this.sound.checkStatus()) {
                 this.sound.play();
             }
             setTimeout(() => {
@@ -569,15 +586,13 @@ class Page extends Settings {
                 this.timer.start();
                 this.stopCtrl = false;
             }
-            if (this.sound.checked) {
-                this.sound.play().then(r => {
-                    this.clickCtrl = false;
-                });
-            } else {
-                setTimeout(() => {
-                    this.clickCtrl = false;
-                }, 100);
+            if (this.sound.checkStatus()) {
+                this.sound.play();
             }
+            setTimeout(() => {
+                    this.clickCtrl = false;
+            }, 100);
+
         }
     }
 
@@ -610,8 +625,7 @@ class Page extends Settings {
                     size = 4;
                     break;
             }
-            this.setOption('size', size);
-            if (this.sound.checked) {
+            if (this.sound.checkStatus()) {
                 this.sound.play();
             }
             setTimeout(() => {
@@ -633,8 +647,9 @@ class Page extends Settings {
             }
             let countCell = this.getOption('size');
             this.canvas.moveElement(mousePosition, countCell);
-            this.canvas.checkResult(countCell);
-            if (this.sound.checked) {
+            let checkFlag = this.canvas.checkResult(countCell);
+            console.log(checkFlag);
+            if (this.sound.checkStatus()) {
                 this.sound.play();
             }
             setTimeout(() => {
@@ -642,7 +657,55 @@ class Page extends Settings {
             }, 100);
         }
     }
+
     _checkSize(ev){
+        let size = 0;
+        switch (ev.target.textContent) {
+            case '3x3':
+                size = 3;
+                break;
+            case '4x4':
+                size = 4;
+                break;
+            case '5x5':
+                size = 5;
+                break;
+            case '6x6':
+                size = 6;
+                break;
+            case '7x7':
+                size = 7;
+                break;
+            case '8x8':
+                size = 8;
+                break;
+        }
+        this.setOption('size', size);
+        this.setOption('tableCells', null);
+        this.setOption('condition', false);
+        this.setOption('minutes', 0);
+        this.setOption('seconds', 0);
+        this.setOption('moves', 0);
+        this.timer.stop();
+        this.timer.min = 0;
+        this.timer.sec = 0;
+        let arrClassName = ['very-easy','easy', 'normal', 'hard', 'very-hard', 'unreal'];
+        [...this.checkSize.children].forEach((e, i)=>{
+            if(e.className !== 'check-label'){
+                if(e.className === ev.target.className){
+                    e.className = arrClassName[i-1] +' checked';
+                }else{
+                    e.className = arrClassName[i-1];
+                }
+            }
+        });
+        this.size.textContent = ev.target.textContent;
+        this.canvas.dc.clearRect(0,0, this.canvas.canvas.width, this.canvas.canvas.height);
+        this.madeGame();
+    }
+
+    _soundCheck(ev){
+        this.setOption('sound', this.sound.checkStatus());
     }
 
     _getTextSize(value) {
@@ -664,7 +727,7 @@ class Page extends Settings {
                 size = '7x7';
                 break;
             case 8:
-                size = '7x7';
+                size = '8x8';
                 break;
         }
         return size;
