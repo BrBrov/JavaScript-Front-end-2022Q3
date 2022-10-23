@@ -64,6 +64,7 @@ class CountMove {
 class Timer {
     constructor() {
         this.timerStarted = false;
+        this.timerBlocked = false;
         this.handle = null;
         this.hBlink = null;
         this.min = 0;
@@ -95,7 +96,7 @@ class Timer {
     }
 
     start() {
-        if (!this.timerStarted) {
+        if (!this.timerStarted && !this.timerBlocked) {
             this._processing();
             this.timerStarted = true;
         }
@@ -623,18 +624,13 @@ class Page extends Settings {
 
     _stop(e) {
         e.stopPropagation();
-        this.stopTimeCtrl = null;
         if (!this.clickCtrl) {
             this.clickCtrl = true;
             if (!this.stopCtrl) {
                 this.stop.className += ` choosed`;
                 this.timer.stop();
+                this.timer.timerBlocked = true;
                 this.stopCtrl = true;
-                this.stopTimeCtrl = setInterval(() => {
-                    if (this.timer.timerStarted === true) {
-                        this.timer.stop();
-                    }
-                }, 10);
                 this.canvasCtrl = true;
                 this.setOption('stop', true);
                 this.setOption('tableCells', this.canvas.tableCells);
@@ -642,11 +638,9 @@ class Page extends Settings {
                 this.setOption('minutes', this.timer.min);
                 this.setOption('seconds', this.timer.sec);
             } else {
-                clearInterval(this.stopTimeCtrl);
                 this.canvasCtrl = false;
-                this.stopTimeCtrl = null;
                 this.stop.className = 'stop';
-                this.timer.start();
+                this.timer.timerBlocked = false;
                 this.stopCtrl = false;
                 this.setOption('stop', false);
                 this.setOption('tableCells', null);
@@ -710,7 +704,9 @@ class Page extends Settings {
                 return;
             }
             this.clickCtrl = true;
-            this.timer.start();
+            if(!this.timer.timerStarted){
+                this.timer.start();
+            }
             let mousePosition = {
                 x: e.offsetX,
                 y: e.offsetY
