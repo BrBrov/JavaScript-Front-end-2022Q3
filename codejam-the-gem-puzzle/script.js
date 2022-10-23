@@ -251,11 +251,11 @@ class Draw {
         let height = this.canvas.width / 3;
         let x = this.canvas.width / 8;
         let y = this.canvas.width / 3;
-        this.dc.clearRect(0,0,width, height);
-        this.dc.fillStyle = '#076e08'
+        // this.dc.clearRect(0,0,width, height);
+        this.dc.fillStyle = '#89e8d2'
         this.dc.fillRect(x, y, width, height);
-        this.dc.font = '1.2em sans-serif';
-        this.dc.fillStyle = '#e72525';
+        this.dc.font = '0.8em sans-serif';
+        this.dc.fillStyle = '#b03939';
         x = this.canvas.width / 2;
         y = y + y / 3;
         this.dc.textAlign = 'center';
@@ -388,7 +388,7 @@ class Settings {
                 countMoves: 0,
                 tableCells: null,
                 size: 4,
-                result: {},
+                result: [],
                 stop: false,
                 condition: false,
                 sound: true
@@ -622,6 +622,7 @@ class Page extends Settings {
             this.setOption('moves', 0);
             this.setOption('minutes', 0);
             this.setOption('seconds', 0);
+            this.canvasCtrl = false;
             if (this.sound.checkStatus()) {
                 this.sound.play();
             }
@@ -723,7 +724,38 @@ class Page extends Settings {
                 this.moves.addition();
             }
             let checkFlag = this.canvas.checkResult(countCell);
-            console.log(checkFlag);
+            if(checkFlag){
+                this.canvasCtrl = true;
+                this.timer.stop();
+                let time = {
+                    minutes: this.timer.min,
+                    seconds: this.timer.sec
+                }
+                this.canvas.drawCongratulation(time, this.moves.value);
+                this.setOption('condition', true);
+                this.setOption('moves', this.moves.value);
+                this.setOption('tableCells', this.canvas.tableCells);
+                this.setOption('minutes', this.timer.min);
+                this.setOption('seconds', this.timer.sec);
+                let savedResults = this.getOption('result');
+                let date = new Date();
+                let resultDate = date.getDate()+'.';
+                resultDate += (date.getMonth() + 1) + '.';
+                resultDate += date.getFullYear();
+                let result = {
+                    date: resultDate,
+                    moves: this.moves.value,
+                    time: `${this.timer.min}:${this.timer.sec}`
+                }
+                if (savedResults.length < 10){
+                    savedResults.push(result);
+                }else{
+                    savedResults.pop();
+                    savedResults.unshift(result);
+                }
+                this.setOption('result', savedResults);
+
+            }
             if (this.sound.checkStatus()) {
                 this.sound.play();
             }
