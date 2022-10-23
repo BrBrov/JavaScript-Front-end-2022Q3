@@ -143,14 +143,8 @@ class Draw {
         this.dc.save();
     }
 
-    createCells(value) {
-        function createMatrix(){
-
-        }
-        this.tableCells = [];
+    _generateMatrix(value){
         let countCells = value ** 2;
-        let width = (this.canvas.width / value) - 2;
-        let height = width;
         let cellsArray = this._generateCellsNumber(countCells);
         let matrix = [];
         let saver = [];
@@ -163,7 +157,20 @@ class Draw {
                 saver = [];
             }
         }
-        console.log(matrix);
+        return matrix;
+    }
+
+    createCells(value) {
+        this.tableCells = [];
+        let countCells = value ** 2;
+        let width = (this.canvas.width / value) - 2;
+        let height = width;
+        let matrix = null;
+        let x = false;
+        while(x === false){
+            matrix = this._generateMatrix(value);
+            x = this._checkMatrix(matrix, countCells);
+        }
         this.tableCells = [];
         for (let i = 0; i < value; i++) {
             for (let j = 0; j < value; j++) {
@@ -189,6 +196,38 @@ class Draw {
                 [e.text, this.tableCells[this.tableCells.length - 1].text] = [this.tableCells[this.tableCells.length - 1].text, e.text];
             }
         })
+    }
+
+    _checkMatrix(matrix, size){
+        let arrayMatrix = [];
+        matrix.forEach(e=>{
+            e.forEach(elem=>{
+                arrayMatrix.push(elem);
+            })
+        })
+        let indexOfNull = arrayMatrix.indexOf(0);
+        [arrayMatrix[indexOfNull], arrayMatrix[arrayMatrix.length - 1]] = [arrayMatrix[arrayMatrix.length - 1], arrayMatrix[indexOfNull]];
+        // arrayMatrix.pop();
+        let arr = [];
+        for (let i = 1; i <= size; i++) {
+            arr.push(i);
+        }
+        let summery = 0;
+        arrayMatrix.forEach((e, index, array) =>{
+            let count = 0;
+            for (let i = index + 1; i < array.length; i++) {
+                if(array[i] && array[i]<e){
+                    count++;
+                }
+            }
+            summery +=count;
+        })
+        let result = summery%2;
+        if(result === 0){
+            return true
+        }else{
+            return false
+        }
     }
 
     drawCells(size) {
