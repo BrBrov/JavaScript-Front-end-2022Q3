@@ -764,7 +764,6 @@ class Page extends Settings {
 
     _resultOpen(ev) {
         ev.stopPropagation();
-        console.log(this.clickCtrl);
         if (!this.clickCtrl) {
             this.clickCtrl = true;
             if (this.sound.checkStatus()) {
@@ -818,6 +817,7 @@ class Page extends Settings {
     }
 
     _soundCheck(ev) {
+        ev.stopPropagation();
         this.setOption('sound', this.sound.checkStatus());
     }
 
@@ -899,7 +899,6 @@ class Page extends Settings {
                     this.canvas.createBackground();
                     this.canvas.createCells(this.getOption('size'));
                     this.canvas.drawCells(this.getOption('size'));
-                    console.log(this.clickCtrl);
                     this.resultsShow = true;
                }
            }
