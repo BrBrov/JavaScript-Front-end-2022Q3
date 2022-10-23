@@ -162,14 +162,13 @@ class Draw {
 
     createCells(value) {
         this.tableCells = [];
-        let countCells = value ** 2;
         let width = (this.canvas.width / value) - 2;
         let height = width;
         let matrix = null;
         let x = false;
         while(x === false){
             matrix = this._generateMatrix(value);
-            x = this._checkMatrix(matrix, countCells);
+            x = this._checkMatrix(matrix);
         }
         this.tableCells = [];
         for (let i = 0; i < value; i++) {
@@ -198,7 +197,7 @@ class Draw {
         })
     }
 
-    _checkMatrix(matrix, size){
+    _checkMatrix(matrix){
         let arrayMatrix = [];
         matrix.forEach(e=>{
             e.forEach(elem=>{
@@ -208,10 +207,6 @@ class Draw {
         let indexOfNull = arrayMatrix.indexOf(0);
         [arrayMatrix[indexOfNull], arrayMatrix[arrayMatrix.length - 1]] = [arrayMatrix[arrayMatrix.length - 1], arrayMatrix[indexOfNull]];
         // arrayMatrix.pop();
-        let arr = [];
-        for (let i = 1; i <= size; i++) {
-            arr.push(i);
-        }
         let summery = 0;
         arrayMatrix.forEach((e, index, array) =>{
             let count = 0;
@@ -310,7 +305,6 @@ class Draw {
         if (cells.cell.element.text === cells.nullCell.element.text) {
             return;
         }
-        let length = this.canvas.width;
         let neighborsElements = [];
         neighborsElements.push((cells.nullCell.index - size));
         neighborsElements.push(cells.nullCell.index - 1);
@@ -642,12 +636,16 @@ class Page extends Settings {
                 this.timer.stop();
                 this.stopCtrl = true;
                 this.stopTimeCtrl = setInterval(()=>{
-                    if(this.timer.timerStarted = true){
+                    if(this.timer.timerStarted === true){
                         this.timer.stop();
                     }
                 },10);
                 this.canvasCtrl = true;
                 this.setOption('stop', true);
+                this.setOption('tableCells', this.canvas.tableCells);
+                this.setOption('moves', this.moves.value);
+                this.setOption('minutes', this.timer.min);
+                this.setOption('seconds', this.timer.sec);
             } else {
                 clearInterval(this.stopTimeCtrl);
                 this.canvasCtrl = false;
@@ -656,6 +654,10 @@ class Page extends Settings {
                 this.timer.start();
                 this.stopCtrl = false;
                 this.setOption('stop', false);
+                this.setOption('tableCells', null);
+                this.setOption('moves', 0);
+                this.setOption('minutes', 0);
+                this.setOption('seconds', 0);
             }
             if (this.sound.checkStatus()) {
                 this.sound.play();
@@ -765,6 +767,39 @@ class Page extends Settings {
         }
     }
 
+    _result(){
+
+    }
+
+    _soundCheck(ev){
+        this.setOption('sound', this.sound.checkStatus());
+    }
+
+    _getTextSize(value) {
+        let size = 0;
+        switch (value) {
+            case 3:
+                size = '3x3';
+                break;
+            case 4:
+                size = '4x4';
+                break;
+            case 5:
+                size = '5x5';
+                break;
+            case 6:
+                size = '6x6';
+                break;
+            case 7:
+                size = '7x7';
+                break;
+            case 8:
+                size = '8x8';
+                break;
+        }
+        return size;
+    };
+
     _checkSize(ev){
         let size = 0;
         if(ev.target.className !== 'check-label'){
@@ -814,35 +849,6 @@ class Page extends Settings {
         }
 
     }
-
-    _soundCheck(ev){
-        this.setOption('sound', this.sound.checkStatus());
-    }
-
-    _getTextSize(value) {
-        let size = 0;
-        switch (value) {
-            case 3:
-                size = '3x3';
-                break;
-            case 4:
-                size = '4x4';
-                break;
-            case 5:
-                size = '5x5';
-                break;
-            case 6:
-                size = '6x6';
-                break;
-            case 7:
-                size = '7x7';
-                break;
-            case 8:
-                size = '8x8';
-                break;
-        }
-        return size;
-    };
 }
 
 window.addEventListener('load', () => {
