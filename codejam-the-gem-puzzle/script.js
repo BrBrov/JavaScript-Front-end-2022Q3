@@ -62,6 +62,7 @@ class CountMove {
 
 class Timer {
     constructor() {
+        this.timerStarted = false;
         this.handle = null;
         this.hBlink = null;
         this.min = 0;
@@ -93,19 +94,25 @@ class Timer {
     }
 
     start() {
-        this._processing();
+        if(!this.timerStarted){
+            this._processing();
+            this.timerStarted = true;
+        }
     }
 
     stop() {
-        if (this.handle) {
-            clearInterval(this.handle);
+        if(this.timerStarted){
+            if (this.handle) {
+                clearInterval(this.handle);
+            }
+            if (this.hBlink) {
+                clearInterval(this.hBlink);
+            }
+            this.handle = 0;
+            this.hBlink = 0;
+            this.separator.textContent = ':';
+            this.timerStarted =false;
         }
-        if (this.hBlink) {
-            clearInterval(this.hBlink);
-        }
-        this.handle = 0;
-        this.hBlink = 0;
-        this.separator.textContent = ':';
     }
 
     setTimer(minute, second) {
@@ -282,7 +289,7 @@ class Draw {
             }
         })
         if (!moveSide) {
-            return;
+            return false;
         }
         let step = 100;
         while (step) {
@@ -305,6 +312,7 @@ class Draw {
         [this.tableCells[cells.cell.index].y, this.tableCells[cells.nullCell.index].y] = [this.tableCells[cells.nullCell.index].y, this.tableCells[cells.cell.index].y];
         [this.tableCells[cells.cell.index].textX, this.tableCells[cells.nullCell.index].textX] = [this.tableCells[cells.nullCell.index].textX, this.tableCells[cells.cell.index].textX];
         [this.tableCells[cells.cell.index].textY, this.tableCells[cells.nullCell.index].textY] = [this.tableCells[cells.nullCell.index].textY, this.tableCells[cells.cell.index].textY];
+        return true;
     }
 
     checkResult(size) {
@@ -342,6 +350,7 @@ class Settings {
                 tableCells: null,
                 size: 4,
                 result: {},
+                stop: false,
                 condition: false,
                 sound: true
             };
@@ -374,6 +383,9 @@ class Settings {
                 break;
             case 'sound':
                 return this.settings.sound;
+                break;
+            case 'stop':
+                return this.settings.stop;
                 break;
             default:
                 return this.settings;
@@ -410,6 +422,9 @@ class Settings {
             case 'sound':
                 this.settings.sound = value;
                 break;
+            case 'stop':
+                this.settings.stop = value;
+                break;
         }
         localStorage.setItem('settings', JSON.stringify(this.settings));
     }
@@ -421,6 +436,7 @@ class Page extends Settings {
         this._buildHTML();
         this.clickCtrl = false;
         this.stopCtrl = false;
+        this.canvasCtrl = false;
         // this.sound
         // this.stop
         // this.shuffle
@@ -533,7 +549,12 @@ class Page extends Settings {
         } else {
             this.timer.setTimer(this.getOption('minutes'), this.getOption('seconds'));
             this.moves.textContent = this.getOption('moves');
-            this.timer.start();
+            this.timer.stop();
+        }
+        if(this.getOption('stop')){
+            this.stop.className = 'stop choosed';
+            this.stopCtrl = true;
+            this.canvasCtrl = true;
         }
         this._logicProcess();
     }
@@ -555,7 +576,6 @@ class Page extends Settings {
             this.timer.setTimer(0, 0);
             this.moves.reset();
             this.canvas.createCells(this.getOption('size'));
-            console.log(this.canvas.canvas.height);
             this.canvas.dc.clearRect(0, 0, this.canvas.canvas.width, this.canvas.canvas.height);
             this.canvas.createBackground();
             this.canvas.drawCells(this.getOption('size'));
@@ -568,23 +588,34 @@ class Page extends Settings {
             }
             setTimeout(() => {
                 this.clickCtrl = false;
-                this.timer.start();
             }, 100);
         }
     }
 
-    _stop(e) {//need to fix after canvas logic click!!!!!!!
+    _stop(e) {
         e.stopPropagation();
+        this.stopTimeCtrl = null;
         if (!this.clickCtrl) {
             this.clickCtrl = true;
             if (!this.stopCtrl) {
                 this.stop.className += ` choosed`;
                 this.timer.stop();
                 this.stopCtrl = true;
+                this.stopTimeCtrl = setInterval(()=>{
+                    if(this.timer.timerStarted = true){
+                        this.timer.stop();
+                    }
+                },10);
+                this.canvasCtrl = true;
+                this.setOption('stop', true);
             } else {
+                clearInterval(this.stopTimeCtrl);
+                this.canvasCtrl = false;
+                this.stopTimeCtrl = null;
                 this.stop.className = 'stop';
                 this.timer.start();
                 this.stopCtrl = false;
+                this.setOption('stop', false);
             }
             if (this.sound.checkStatus()) {
                 this.sound.play();
@@ -638,15 +669,20 @@ class Page extends Settings {
     _canvas(e) {
         e.stopPropagation();
         if (!this.clickCtrl) {
+            if(this.canvasCtrl){
+                return;
+            }
             this.clickCtrl = true;
-            // console.log(this.size);
-            // console.log(this.canvas.tableCells);
+            this.timer.start();
             let mousePosition = {
                 x: e.offsetX,
                 y: e.offsetY
             }
             let countCell = this.getOption('size');
-            this.canvas.moveElement(mousePosition, countCell);
+            let moveResult = this.canvas.moveElement(mousePosition, countCell);
+            if(moveResult){
+                this.moves.addition();
+            }
             let checkFlag = this.canvas.checkResult(countCell);
             console.log(checkFlag);
             if (this.sound.checkStatus()) {
@@ -660,48 +696,52 @@ class Page extends Settings {
 
     _checkSize(ev){
         let size = 0;
-        switch (ev.target.textContent) {
-            case '3x3':
-                size = 3;
-                break;
-            case '4x4':
-                size = 4;
-                break;
-            case '5x5':
-                size = 5;
-                break;
-            case '6x6':
-                size = 6;
-                break;
-            case '7x7':
-                size = 7;
-                break;
-            case '8x8':
-                size = 8;
-                break;
-        }
-        this.setOption('size', size);
-        this.setOption('tableCells', null);
-        this.setOption('condition', false);
-        this.setOption('minutes', 0);
-        this.setOption('seconds', 0);
-        this.setOption('moves', 0);
-        this.timer.stop();
-        this.timer.min = 0;
-        this.timer.sec = 0;
-        let arrClassName = ['very-easy','easy', 'normal', 'hard', 'very-hard', 'unreal'];
-        [...this.checkSize.children].forEach((e, i)=>{
-            if(e.className !== 'check-label'){
-                if(e.className === ev.target.className){
-                    e.className = arrClassName[i-1] +' checked';
-                }else{
-                    e.className = arrClassName[i-1];
-                }
+        if(ev.target.className !== 'check-label'){
+            switch (ev.target.textContent) {
+                case '3x3':
+                    size = 3;
+                    break;
+                case '4x4':
+                    size = 4;
+                    break;
+                case '5x5':
+                    size = 5;
+                    break;
+                case '6x6':
+                    size = 6;
+                    break;
+                case '7x7':
+                    size = 7;
+                    break;
+                case '8x8':
+                    size = 8;
+                    break;
             }
-        });
-        this.size.textContent = ev.target.textContent;
-        this.canvas.dc.clearRect(0,0, this.canvas.canvas.width, this.canvas.canvas.height);
-        this.madeGame();
+            this.setOption('size', size);
+            this.setOption('tableCells', null);
+            this.setOption('condition', false);
+            this.setOption('minutes', 0);
+            this.setOption('seconds', 0);
+            this.setOption('moves', 0);
+            this.timer.stop();
+            this.moves.reset();
+            this.timer.min = 0;
+            this.timer.sec = 0;
+            let arrClassName = ['very-easy','easy', 'normal', 'hard', 'very-hard', 'unreal'];
+            [...this.checkSize.children].forEach((e, i)=>{
+                if(e.className !== 'check-label'){
+                    if(e.className === ev.target.className){
+                        e.className = arrClassName[i-1] +' checked';
+                    }else{
+                        e.className = arrClassName[i-1];
+                    }
+                }
+            });
+            this.size.textContent = ev.target.textContent;
+            this.canvas.dc.clearRect(0,0, this.canvas.canvas.width, this.canvas.canvas.height);
+            this.madeGame();
+        }
+
     }
 
     _soundCheck(ev){
