@@ -251,13 +251,13 @@ class Draw {
         // this.dc.clearRect(0,0,width, height);
         this.dc.fillStyle = '#89e8d2'
         this.dc.fillRect(x, y, width, height);
-        this.dc.font = '0.8em sans-serif';
+        this.dc.font = '20px sans-serif';
         this.dc.fillStyle = '#b03939';
-        x = this.canvas.width / 2;
+        x = this.canvas.width / 1.1;
         y = y + y / 3;
         this.dc.textAlign = 'center';
         this.dc.fillText(`Hooray! You solved the puzzle in`, x, y);
-        y = y + 30;
+        y = y + 20;
         this.dc.fillText(`${time.minutes}:${time.seconds} and ${count} moves!`, x, y);
     }
 
@@ -305,7 +305,7 @@ class Draw {
     moveElement(mousePosition, size) {
         let side = this.canvas.width;
         let cells = this.getElemOnClick(mousePosition, size);
-        if (cells.cell.element.text === cells.nullCell.element.text) {
+        if (!cells.cell && cells.cell.element.text === 0) {
             return;
         }
         let neighborsElements = [];
@@ -369,6 +369,19 @@ class Draw {
             }
         }
         return true;
+    }
+
+    _checkDrag(cells, size) {
+        let arrayIndexes = [];
+        arrayIndexes.push(cells.cell.index - size);
+        arrayIndexes.push(cells.cell.index - 1);
+        arrayIndexes.push(cells.cell.index + 1);
+        arrayIndexes.push(cells.cell.index + size);
+        if(arrayIndexes.includes(cells.nullCell.index)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
@@ -474,6 +487,7 @@ class Page extends Settings {
         this.canvasCtrl = false;
         this.resultsShow = false;
         this.sizeCheckCtrl = true;
+        this.dragable = false;
     }
 
     _buildHTML() {
@@ -573,6 +587,8 @@ class Page extends Settings {
             this.timer.stop();
             this.timer.setTimer(time.minutes, time.seconds);
             this.moves.textContent = this.getOption('moves');
+            this.canvasCtrl = true;
+            this.dragable = true;
         } else {
             this.timer.setTimer(this.getOption('minutes'), this.getOption('seconds'));
             this.moves.textContent = this.getOption('moves');
@@ -591,9 +607,10 @@ class Page extends Settings {
         this.stop.addEventListener('click', ev => this._stop.call(this, ev));
         this.save.addEventListener('click', ev => this._save.call(this, ev));
         this.results.addEventListener('click', ev => this._resultOpen.call(this, ev));
-        this.canvas.canvas.addEventListener('click', ev => this._canvas.call(this, ev));
+        this.canvas.canvas.addEventListener('touchstart', ev => this._canvas.call(this, ev));
         this.checkSize.addEventListener('click', ev => this._checkSize.call(this, ev));
-        this.sound.sound.addEventListener('click', ev => this._soundCheck.call(this, ev))
+        this.sound.sound.addEventListener('click', ev => this._soundCheck.call(this, ev));
+        this.canvas.canvas.addEventListener('mousedown', ev => this._dragNdrop.call(this, ev));
     }
 
     _shuffle(e) {
@@ -613,6 +630,7 @@ class Page extends Settings {
             this.setOption('seconds', 0);
             this.setOption('condition', false);
             this.canvasCtrl = false;
+            this.dragable = false;
             if (this.sound.checkStatus()) {
                 this.sound.play();
             }
@@ -632,6 +650,7 @@ class Page extends Settings {
                 this.timer.timerBlocked = true;
                 this.stopCtrl = true;
                 this.canvasCtrl = true;
+                this.dragable = true;
                 this.setOption('stop', true);
                 this.setOption('tableCells', this.canvas.tableCells);
                 this.setOption('moves', this.moves.value);
@@ -642,6 +661,7 @@ class Page extends Settings {
                 this.stop.className = 'stop';
                 this.timer.timerBlocked = false;
                 this.stopCtrl = false;
+                this.dragable = false;
                 this.setOption('stop', false);
                 this.setOption('tableCells', null);
                 this.setOption('moves', 0);
@@ -704,7 +724,7 @@ class Page extends Settings {
                 return;
             }
             this.clickCtrl = true;
-            if(!this.timer.timerStarted){
+            if (!this.timer.timerStarted) {
                 this.timer.start();
             }
             let mousePosition = {
@@ -757,6 +777,146 @@ class Page extends Settings {
         }
     }
 
+    _dragNdrop(ev) {
+        ev.stopPropagation();
+        if(!this.dragable){
+            this.dragable = true;
+            if (!this.timer.timerStarted) {
+                this.timer.start();
+            }
+            if (this.sound.checkStatus()) {
+                this.sound.play();
+            }
+            let size = this.getOption('size');
+            let sizeElem = this.canvas.canvas.width / size;
+            let mousePosition = {
+                x: ev.offsetX,
+                y: ev.offsetY
+            }
+            let cells = this.canvas.getElemOnClick(mousePosition, size);
+            console.log(cells);
+            if(!cells){
+                this.dragable = false;
+                return;
+            }
+            mousePosition.stepX = (cells.nullCell.element.x - cells.cell.element.x);
+            mousePosition.stepY = (cells.nullCell.element.y - cells.cell.element.y);
+            let dragCtrl = this.canvas._checkDrag(cells, size);
+            let starPositionCell = {
+                index: cells.cell.index,
+                text: cells.cell.element.text,
+                x: cells.cell.element.x,
+                y: cells.cell.element.y,
+                textX: cells.cell.element.textX,
+                textY: cells.cell.element.textY
+            }
+            let startPositionNullCell = {
+                index: cells.nullCell.index,
+                text: cells.nullCell.element.text,
+                x: cells.nullCell.element.x,
+                y: cells.nullCell.element.y,
+                textX: cells.nullCell.element.textX,
+                textY: cells.nullCell.element.textY
+            }
+            function protoMove(e) {
+                e.stopPropagation();
+                if(mousePosition.stepX > 0){
+                    if(cells.cell.element.x >= starPositionCell.x && cells.cell.element.x <= startPositionNullCell.x){
+                        cells.cell.element.x += (e.offsetX - mousePosition.x);
+                        cells.cell.element.textX += (e.offsetX - mousePosition.x);
+                        mousePosition.x = e.offsetX;
+                    }
+                }else if(mousePosition.stepX < 0){
+                    if(cells.cell.element.x <= starPositionCell.x && cells.cell.element.x >= startPositionNullCell.x){
+                        cells.cell.element.x += (e.offsetX - mousePosition.x);
+                        cells.cell.element.textX += (e.offsetX - mousePosition.x);
+                        mousePosition.x = e.offsetX;
+                    }
+                }
+
+                if(mousePosition.stepY > 0){
+                    if(cells.cell.element.y >= starPositionCell.y && cells.cell.element.y <= startPositionNullCell.y){
+                        cells.cell.element.y += (e.offsetY - mousePosition.y);
+                        cells.cell.element.textY += (e.offsetY - mousePosition.y);
+                        mousePosition.y = e.offsetY;
+                    }
+                }else if(mousePosition.stepY < 0){
+                    if(cells.cell.element.y <= starPositionCell.y && cells.cell.element.y >= startPositionNullCell.y){
+                        cells.cell.element.y += (e.offsetY - mousePosition.y);
+                        cells.cell.element.textY += (e.offsetY - mousePosition.y);
+                        mousePosition.y = e.offsetY;
+                    }
+                }
+                this.canvas.dc.clearRect(0, 0, this.canvas.canvas.width, this.canvas.canvas.height);
+                this.canvas.createBackground();
+                this.canvas.drawCells(size);
+            }
+            let move = protoMove.bind(this);
+            function protoUnclick(e) {
+                e.stopPropagation();
+                this.canvas.canvas.removeEventListener('mousemove', move);
+                this.canvas.tableCells[cells.cell.index].x = starPositionCell.x;
+                this.canvas.tableCells[cells.cell.index].y = starPositionCell.y;
+                this.canvas.tableCells[cells.cell.index].textX = starPositionCell.textX;
+                this.canvas.tableCells[cells.cell.index].textY = starPositionCell.textY;
+                this.canvas.tableCells[cells.cell.index].text = startPositionNullCell.text;
+                this.canvas.tableCells[cells.nullCell.index].x = startPositionNullCell.x;
+                this.canvas.tableCells[cells.nullCell.index].y = startPositionNullCell.y;
+                this.canvas.tableCells[cells.nullCell.index].textX = startPositionNullCell.textX;
+                this.canvas.tableCells[cells.nullCell.index].textY= startPositionNullCell.textY;
+                this.canvas.tableCells[cells.nullCell.index].text = starPositionCell.text;
+                this.canvas.dc.clearRect(0, 0, this.canvas.canvas.width, this.canvas.canvas.height);
+                this.canvas.createBackground();
+                this.canvas.drawCells(size);
+                this.moves.addition();
+                let checkFlag = this.canvas.checkResult(size);
+                if (checkFlag) {
+                    this.canvas.canvas.removeEventListener('mousedown', ev => {});
+                    this.timer.stop();
+                    let time = {
+                        minutes: this.timer.min,
+                        seconds: this.timer.sec
+                    }
+                    this.canvas.drawCongratulation(time, this.moves.value);
+                    this.setOption('condition', true);
+                    this.setOption('moves', this.moves.value);
+                    this.setOption('tableCells', this.canvas.tableCells);
+                    this.setOption('minutes', this.timer.min);
+                    this.setOption('seconds', this.timer.sec);
+                    let savedResults = this.getOption('result');
+                    let date = new Date();
+                    let resultDate = date.getDate() + '.';
+                    resultDate += (date.getMonth() + 1) + '.';
+                    resultDate += date.getFullYear();
+                    let result = {
+                        date: resultDate,
+                        moves: this.moves.value,
+                        time: `${this.timer.min}:${this.timer.sec}`
+                    }
+                    if (savedResults.length < 10) {
+                        savedResults.push(result);
+                    } else {
+                        savedResults.pop();
+                        savedResults.unshift(result);
+                    }
+                    this.setOption('result', savedResults);
+                    this.canvasCtrl = true;
+                    this.dragable = true;
+                    return this.canvas.tableCells;
+                }
+                this.canvas.canvas.removeEventListener('mouseup', unclick);
+                this.dragable = false;
+            }
+            let unclick = protoUnclick.bind(this);
+            if (dragCtrl) {
+                this.canvas.canvas.addEventListener('mousemove', move);
+                this.canvas.canvas.addEventListener('mouseup', unclick);
+            }else{
+                this.dragable = false;
+            }
+        }
+    }
+
     _resultOpen(ev) {
         ev.stopPropagation();
         if (!this.clickCtrl) {
@@ -764,7 +924,7 @@ class Page extends Settings {
             if (this.sound.checkStatus()) {
                 this.sound.play();
             }
-            if(!this.resultsShow){
+            if (!this.resultsShow) {
                 this._showResults();
                 this.resultsShow = true;
                 this.sizeCheckCtrl = false;
@@ -772,7 +932,7 @@ class Page extends Settings {
                 if (this.timer.timerStarted) {
                     this.timer.stop();
                 }
-            }else{
+            } else {
                 this.canvas.dc.clearRect(0, 0, 400, 400);
                 this.canvas.createBackground();
                 this.canvas.drawCells(this.getOption('size'));
@@ -787,7 +947,7 @@ class Page extends Settings {
         }
     }
 
-    _showResults(){
+    _showResults() {
         let resultArray = this.getOption('result');
         let position = {
             x: 20,
@@ -797,17 +957,17 @@ class Page extends Settings {
             this.canvas.dc.clearRect(0, 0, 400, 400);
             this.canvas.createBackground();
             resultArray.forEach(e => {
-                this.canvas.dc.font = '30px sans';
+                this.canvas.dc.font = '1.6em sans';
                 this.canvas.dc.fillStyle = '#9fd3c9';
-                this.canvas.dc.fillText(`${e.date} -> ${e.moves} for the ${e.time}`, position.x, position.y);
+                this.canvas.dc.fillText(`${e.date} ${e.moves} moves for the ${e.time}`, position.x, position.y);
                 this.canvas.dc.strokeStyle = '#7133b0';
                 this.canvas.dc.strokeRect(position.x - 10, position.y - 30, 380, 35);
                 position.y += 35;
             })
-        }else{
+        } else {
             this.canvas.dc.clearRect(0, 0, 400, 400);
             this.canvas.createBackground();
-            this.canvas.dc.font = '30px sans';
+            this.canvas.dc.font = '1.6em sans';
             this.canvas.dc.fillStyle = '#9fd3c9';
             this.canvas.dc.fillText(`Here aren\'t a results`, 100, 200);
         }
@@ -845,9 +1005,9 @@ class Page extends Settings {
 
     _checkSize(ev) {
         ev.stopPropagation();
-        if(!this.clickCtrl){
+        if (!this.clickCtrl) {
             this.clickCtrl = true;
-            if(this.sizeCheckCtrl){
+            if (this.sizeCheckCtrl) {
                 let size = 0;
                 if (ev.target.className !== 'check-label') {
                     switch (ev.target.textContent) {
@@ -898,7 +1058,7 @@ class Page extends Settings {
                     this.canvas.drawCells(this.getOption('size'));
                     this.resultsShow = false;
                 }
-           }
+            }
         }
         this.clickCtrl = false;
     }
