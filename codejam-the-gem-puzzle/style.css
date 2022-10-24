@@ -6,6 +6,7 @@ html, body{
 }
 body{
     background: url("assets/image/background.jpg") center/cover no-repeat;
+    height: 100vh;
 }
 .container{
     position: relative;
@@ -234,7 +235,7 @@ span:where(.very-easy,.easy,.normal,.hard,.very-hard,.unreal):hover{
 
 @media screen and (max-width: 768px) {
     .page{
-        height: 550px;
+        height: 768px;
         margin: 1% auto;
         padding-top: 1%;
     }
@@ -242,16 +243,63 @@ span:where(.very-easy,.easy,.normal,.hard,.very-hard,.unreal):hover{
 
 @media screen and (max-width: 600px){
     body{
-        background: unset;
+        background: linear-gradient(65deg, #25088a, #044c64, #673604);
+        height: 100vh;
     }
     .container{
-        width: auto;
+        width: 100%;
     }
     .page{
-        height: 1050px;
-        margin: 0;
-        padding-top: 10%;
+        width: 400px;
+        max-width: 600px;
+        height: 95vh;
+        margin: 0 auto;
+        padding-top: 5vh;
         border-radius: unset;
         box-shadow: none;
+    }
+    .game-board{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 399px){
+    body{
+        background: unset;
+        height: 100vh;
+    }
+    .page{
+        width: 100%;
+        height: 98vh;
+        margin: 0 auto;
+        padding-top: 2vh;
+        border-radius: unset;
+        box-shadow: none;
+    }
+    .game-board{
+        grid-template-rows: auto auto auto;
+        height: 92vh;
+    }
+    .upper-board{
+        grid-template-rows: auto auto;
+        grid-row-gap: 3%;
+    }
+    .upper-control{
+        flex-direction: column;
+        align-items: center;
+        row-gap: 5%;
+    }
+    .upper-statistic{
+        flex-direction: column;
+    }
+    .middle-board{
+        width: 100%;
+        margin: 0 auto;
+    }
+    .game{
+        width: 100vw;
+        max-width: 400px;
+        height: calc(100vw);
+        max-height: 400px;
+        margin: 0 auto;
     }
 }
