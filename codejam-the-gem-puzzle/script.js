@@ -251,13 +251,13 @@ class Draw {
         // this.dc.clearRect(0,0,width, height);
         this.dc.fillStyle = '#89e8d2'
         this.dc.fillRect(x, y, width, height);
-        this.dc.font = '0.8em sans-serif';
+        this.dc.font = '20px sans-serif';
         this.dc.fillStyle = '#b03939';
-        x = this.canvas.width / 2;
+        x = this.canvas.width / 1.1;
         y = y + y / 3;
         this.dc.textAlign = 'center';
         this.dc.fillText(`Hooray! You solved the puzzle in`, x, y);
-        y = y + 30;
+        y = y + 20;
         this.dc.fillText(`${time.minutes}:${time.seconds} and ${count} moves!`, x, y);
     }
 
