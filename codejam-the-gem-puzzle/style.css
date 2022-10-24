@@ -1,0 +1,257 @@
+@import "./assets/font/marckscript.css";
+
+html, body{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: url("assets/image/background.jpg") center/cover no-repeat;
+}
+.container{
+    position: relative;
+    width: 100%;
+}
+.page{
+    position: relative;
+    width: 600px;
+    height: 570px;
+    margin: 3% auto 0;
+    padding-top: 2%;
+    background: linear-gradient(45deg, #11a09e, #6573cb, #3a56b9);
+    border-radius: 5px;
+    box-shadow: 0 0 2px 2px #656a83;
+}
+.game-board{
+    position: relative;
+    display: grid;
+    width: 400px;
+    height: 525px;
+    margin: 0 auto;
+    grid-template-columns: 100%;
+    grid-template-rows: 80px 400px 45px;
+}
+/*Upper control*/
+.upper-board{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(2, 35px);
+    grid-row-gap: 15%;
+}
+.upper-control{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.shuffle{
+    width: 155px;
+    height: 35px;
+    font-family: 'Marck Script', 'Calibri', sans-serif;
+    font-size: 1em;
+    background: linear-gradient(15deg, #0d9095, #0d9095 75%);
+    color: #e1f1f2;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 1px 1px #bbd2d4;
+}
+.stop{
+    width: 50px;
+    height: 35px;
+    font-family: 'Marck Script', 'Calibri', sans-serif;
+    font-size: 1em;
+    background: linear-gradient(15deg, #0d9095, #0d9095 75%);
+    color: #e1f1f2;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 1px 1px #bbd2d4;
+}
+@keyframes anim {
+    0%{color: #f30707}
+    50%{color: #e3a43c}
+    100%{color: #459302}
+}
+.choosed{
+    background: linear-gradient(15deg, #525859, #9fe7d5 75%);
+    animation: anim 1s linear 1s infinite;
+}
+.save{
+    width: 75px;
+    height: 35px;
+    font-family: 'Marck Script', 'Calibri', sans-serif;
+    font-size: 1em;
+    background: linear-gradient(15deg, #0d9095, #0d9095 75%);
+    color: #e1f1f2;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 1px 1px #bbd2d4;
+}
+
+button:where(.shuffle,.stop,.save,.results):hover{
+    background: linear-gradient(15deg, #114444, #0d9095 75%);
+    color: #9d9c81;
+    box-shadow: 0 0 1px 1px #8c79c5;
+}
+button:where(.shuffle,.stop,.save,.results):active{
+    background: linear-gradient(15deg, #23147a, #094473 75%);
+    color: #b76b24;
+    box-shadow: 0 0 1px 1px #5165b4;
+}
+
+.results{
+    width: 85px;
+    height: 35px;
+    font-family: 'Marck Script', 'Calibri', sans-serif;
+    font-size: 1em;
+    background: linear-gradient(15deg, #0d9095, #0d9095 75%);
+    color: #e1f1f2;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 1px 1px #bbd2d4;
+}
+.upper-statistic{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10%;
+}
+.moves-block{
+    display: flex;
+    width: 150px;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 5%;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+.move-label,.move-count{
+    text-align: center;
+    font-family: 'Marck Script', 'Calibri', sans-serif;
+    font-size: 1em;
+    color: #e1f1f2;
+}
+.time-block{
+    display: flex;
+    width: 150px;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 5%;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+.time-label,.minute,.time-separator,.seconds{
+    text-align: center;
+    font-family: 'Marck Script', 'Calibri', sans-serif;
+    font-size: 1em;
+    color: #e1f1f2;
+}
+
+.time-separator{
+    width: 2px;
+}
+/*Game*/
+.middle-board{
+    box-sizing: border-box;
+}
+.game{
+    width: 400px;
+    height: 400px;
+}
+/*Size*/
+.down-board{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 25px 25px;
+}
+.info-size{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 3%;
+}
+.check-size{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 1%;
+}
+.frame-label,.frame-value,.check-label {
+    font-family: 'Marck Script', 'Calibri', sans-serif;
+    font-size: 1em;
+    color: #e1f1f2;
+}
+.very-easy, .easy, .normal, .hard,.very-hard,.unreal{
+    font-family: 'Marck Script', 'Calibri', sans-serif;
+    font-size: 1em;
+    color: #dcbc86;
+    text-decoration: underline solid #9a07ea;
+}
+span:where(.very-easy,.easy,.normal,.hard,.very-hard,.unreal):hover{
+    color: #e77272;
+    text-decoration: underline wavy #9a07ea;
+}
+
+.checked{
+    color: #021542;
+    text-decoration: underline double #9a07ea;
+}
+/*Sound settings*/
+.sound-control{
+    display: flex;
+    margin: auto auto 0;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 2%;
+}
+
+.sound-control input{
+    appearance: none;
+    width: 28px;
+    height: 15px;
+    border-radius: 15px;
+    box-shadow: inset 1em 0 0 0 rgb(173, 4, 36);
+    background-color: #110ae8;
+    border: 1px solid rgb(158, 139, 203);
+    outline: none;
+    transition: 0.2s;
+}
+
+.sound-control input:checked {
+    box-shadow: inset -1em 0 0 0 rgba(47, 227, 49, 0.99);
+    background-color: #0f0be1;
+    border: 1px solid rgb(53, 121, 176);
+}
+
+.sound-control input:focus {
+    outline-width: 0;
+}
+.sound-label{
+    font-family: 'Marck Script', 'Calibri', sans-serif;
+    font-size: 1em;
+    color: #e1f1f2;
+}
+
+@media screen and (max-width: 768px) {
+    .page{
+        height: 550px;
+        margin: 1% auto;
+        padding-top: 1%;
+    }
+}
+
+@media screen and (max-width: 600px){
+    body{
+        background: unset;
+    }
+    .container{
+        width: auto;
+    }
+    .page{
+        height: 1050px;
+        margin: 0;
+        padding-top: 10%;
+        border-radius: unset;
+        box-shadow: none;
+    }
+}
