@@ -1,0 +1,84 @@
+@import "../../assets/font/Roger/stylesheet.css";
+@import "../../assets/font/Kitsch/stylesheet.css";
+
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+.container{
+    width: 100%;
+    background-color: #171717;
+}
+.page{
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100px 1fr 200px;
+}
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.logo{
+    margin: 15px 0 0 15px;
+    font-family: "Kitsch Text", Arial, serif;
+    font-size: 4em;
+    text-align: center;
+    color: #02110b;
+    text-shadow: 5px 2px 10px aquamarine;
+}
+.navigation{
+    margin: 15px 0 0 0;
+}
+.nav-list{
+    display: flex;
+    width: 320px;
+    flex-direction: row;
+    justify-content: space-between;
+    list-style: none;
+}
+.nav-list{
+    text-align: center;
+}
+.nav-link{
+    text-decoration: none;
+    font-family: "Kitsch", "Arial", sans-serif;
+    font-size: 2em;
+    font-style: normal;
+    color: #0db990;
+}
+.nav-link:hover{
+    color: #0b7259;
+}
+.nav-link:active{
+    color: aqua;
+}
+.language{
+    width: 50px;
+    height: 50px;
+    margin: 25px 25px 0 0;
+    font-family: "Roger Serif", "Tahoma", sans-serif;
+    font-size: 1.3em;
+    color: #930202;
+    background: linear-gradient(45deg, #0b7259, #46e3b3);
+    border: dashed 3px #d4e840;
+    border-radius: 50%;
+}
+.language:hover{
+    box-shadow: inset 0 0 10px 2px #343003;
+    border: solid 3px #c4890f;
+}
+.language:active{
+    color: #46e3b3;
+}
+.main{
+    background-color: green;
+}
+.footer{
+    background-color: aquamarine;
+}
