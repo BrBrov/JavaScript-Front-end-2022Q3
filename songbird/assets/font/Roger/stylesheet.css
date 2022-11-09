@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Roger Serif';
+    src: url('RogerSerifLight.eot');
+    src: local('Roger Serif Light'), local('RogerSerifLight'),
+        url('RogerSerifLight.eot?#iefix') format('embedded-opentype'),
+        url('RogerSerifLight.woff2') format('woff2'),
+        url('RogerSerifLight.woff') format('woff'),
+        url('RogerSerifLight.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roger Serif';
+    src: url('RogerSerifBold.eot');
+    src: local('Roger Serif Bold'), local('RogerSerifBold'),
+        url('RogerSerifBold.eot?#iefix') format('embedded-opentype'),
+        url('RogerSerifBold.woff2') format('woff2'),
+        url('RogerSerifBold.woff') format('woff'),
+        url('RogerSerifBold.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
