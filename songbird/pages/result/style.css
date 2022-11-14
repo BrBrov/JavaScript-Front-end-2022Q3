@@ -14,7 +14,7 @@ body{
 .page{
     max-width: 1200px;
     margin: 0 auto;
-    max-height: 1600px;
+    max-height: 1800px;
     min-height: 1200px;
     display: grid;
     grid-template-columns: 100%;
