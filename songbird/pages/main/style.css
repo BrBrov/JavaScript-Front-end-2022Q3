@@ -178,10 +178,10 @@ body{
         font-size: 1em;
     }
 }
-@media screen and (max-width: 660px) and (min-width: 420px){
+@media screen and (max-width: 660px) and (min-width: 320px){
     .page{
         width: 100%;
-        min-height: auto;
+        height: 1150px;
         grid-template-rows: 160px 1fr 60px;
     }
     .header{
@@ -198,11 +198,54 @@ body{
         align-self: center;
     }
     .nav-list{
+        width: 100%;
         padding: 0;
     }
     .language{
         order: 1;
         margin: 0;
+        align-self: center;
+    }
+    .intro{
+        width: 90%;
+    }
+}
+@media  screen and (max-width: 419px) and (min-width: 320px) {
+    .page{
+        height: 1550px;
+        grid-template-rows: 300px 1fr 200px;
+    }
+    .logo{
+        order: 2;
+        margin: 0 0 20px 0;
+        align-self: center;
+    }
+    .navigation{
+        order: 0;
+        height: 150px;
+        margin: 0;
+        align-self: center;
+    }
+    .nav-list{
+        flex-direction: column;
+        row-gap: 20px;
+    }
+    .language{
+        order: 1;
+        margin: 0;
+        align-self: center;
+    }
+    .footer{
+        flex-direction: column;
+    }
+    .git{
+        margin: 0;
+        flex-direction: column;
+        align-self: center;
+        row-gap: 10px;
+    }
+    .school{
+        margin: 0 0 25px 0;
         align-self: center;
     }
 }
