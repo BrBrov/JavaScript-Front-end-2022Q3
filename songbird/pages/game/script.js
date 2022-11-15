@@ -378,10 +378,40 @@ async function getQuestion(){
     while (ctrl.size){
         let index = Math.ceil(Math.random()*7);
         if(ctrl.has(index)){
+            console.log(index - 1);
             ctrl.delete(index);
-            result.push(asks[index]);
+            result.push(asks[index - 1]);
         }
     }
     return result;
 }
 
+async 
+
+async function locale(language){
+    if (language) {
+        localStorage.setItem('language', language);
+    } else {
+        let local = localStorage.getItem('language');
+        if (local) {
+            return local;
+        } else {
+            if(/^en\b/.test(navigator.language)){
+                local = 'en';
+            }else{
+                local = 'ru';
+            }
+            console.log(navigator.language);
+            localStorage.setItem('language', local);
+            return local;
+        }
+    }
+}
+async function translate(language){
+
+}
+
+document.addEventListener('DOMContentLoaded', async ()=>{
+    questionArray = await getQuestion();
+
+})
