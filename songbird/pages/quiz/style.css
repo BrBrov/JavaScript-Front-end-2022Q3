@@ -1,0 +1,401 @@
+@import "../../assets/fonts/fonts.css";
+
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    background: url("../../assets/image/quiz_bg.jpg") center/cover no-repeat;
+}
+.page{
+    display: grid;
+    max-width: 1200px;
+    height: 100vh;
+    margin: 0 auto;
+    grid-template-columns: 100%;
+    grid-template-rows: 80px 1fr 80px;
+}
+
+/*Header*/
+
+.header{
+    display: grid;
+    grid-template-columns: 200px 1fr 50px;
+    grid-template-rows: 100%;
+    grid-column-gap: 10px;
+}
+.logo{
+    margin-top: 20px;
+    justify-self: center;
+    justify-items: center;
+    font-family: "beer money", sans-serif;
+    font-size: 4em;
+    color: #6d580a;
+}
+.navigation{
+    justify-self: center;
+}
+.nav-list{
+    display: flex;
+    width: 360px;
+    padding: 0;
+    margin-top: 30px;
+    list-style: none;
+    flex-direction: row;
+    justify-content: space-between;
+    row-gap: 2%;
+}
+.nav-item{
+    align-self: center;
+}
+.nav-link{
+    display: block;
+    padding: 5px;
+    text-decoration: none;
+    font-family: "MADELikesSlab", serif;
+    font-size: 2em;
+    color: #040e35;
+    text-shadow: 2px 2px 4px #9372d5;
+    border-radius: 10px;
+    background: linear-gradient( 45deg, #7decdc, #45beb2, #2dadd7);
+    box-shadow: 2px 2px 3px 4px #052e28;
+}
+.nav-link:hover{
+    font-size: 2.1em;
+    box-shadow: 2px 2px 3px 4px #09584f;
+}
+.nav-link:active{
+    color: #820404;
+}
+.language{
+    width: 50px;
+    height: 50px;
+    margin-top: 30px;
+    font-family: "beer money", sans-serif;
+    font-size: 2em;
+    color: #01172f;
+    background: linear-gradient(90deg, #698699, #478fb0, #22adc5);
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 0 3px 4px #040e35;
+    cursor: pointer;
+}
+.language:hover{
+    color: #0e5404;
+    box-shadow: 0 0 2px 3px #040e35;
+}
+.language:active{
+    color: #820404;
+    box-shadow: 0 0 1px 2px #040e35;
+}
+/*Main*/
+.main{
+    display: grid;
+    width: 90%;
+    margin: 20px auto 20px;
+    grid-template-columns: 120px 40px 1fr;
+    grid-template-rows: 40px 1fr;
+    grid-template-areas: "label score test"
+                         "quiz quiz quiz";
+    grid-gap: 20px 15px;
+
+}
+.score-text,
+.score{
+    grid-area: label;
+    text-align: center;
+    font-family: "MADELikesSlab", sans-serif;
+    font-size: 2em;
+    color: #1fddf4;
+    backdrop-filter: brightness(50%) ;
+    border-radius: 10px;
+    box-shadow: 0 0 2px 4px #94ccc0;
+}
+.score{
+    grid-area: score;
+}
+.test-wrapper{
+    grid-area: test;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    backdrop-filter: brightness(70%) ;
+    border-radius: 10px;
+    box-shadow: 0 0 2px 4px #94ccc0;
+}
+.test-label{
+    font-family: "MADELikesSlab", sans-serif;
+    font-size: 1.2em;
+    color: #1fddf4;
+}
+.quiz-wrapper{
+    grid-area: quiz;
+    display: grid;
+    grid-template-columns: 27% 73%;
+    grid-template-rows: 35% 52% 13%;
+    grid-template-areas: "question question"
+                         "answers comment"
+                         "button button";
+    backdrop-filter: brightness(70%) ;
+    border-radius: 10px;
+    box-shadow: 0 0 2px 4px #94ccc0;
+}
+.question{
+    grid-area: question;
+    width: 80%;
+    height: 200px;
+    margin: 20px auto 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    column-gap: 20px;
+    background-color: #040e35;
+    border-radius: 10px;
+}
+.question-image{
+    width: 200px;
+    background-color: #17d8d2;
+    border-radius: 10px;
+}
+/*Top player*/
+.player-wrapper{
+    display: flex;
+    /*width: 60%;*/
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 20px;
+}
+.question-answer{
+    align-items: start;
+    font-family: "MADELikesSlab", serif;
+    font-size: 2em;
+    color: #7decdc;
+    border-bottom: solid 2px #17d8d2;
+}
+.player{
+    display: flex;
+    flex-direction: row;
+    column-gap: 30px;
+}
+.play{
+    width: 60px;
+}
+.controls{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    column-gap: 30px;
+}
+.range,
+.info-volume{
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    row-gap: 5px;
+}
+.timing{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.seek{
+    appearance: none;
+}
+.seek::-webkit-slider-runnable-track{
+    background-color: #d6e3db;
+}
+.seek::-webkit-slider-thumb{
+    appearance: none;
+    width: 0;
+    height: 0;
+    border-left: 10px solid #4d0253;
+    border-bottom: 7px solid  transparent;
+    border-top: 7px solid  transparent;
+}
+.volume{
+    width: 60px;
+    appearance: none;
+}
+.volume::-webkit-slider-runnable-track{
+    background-color: #d6e3db;
+}
+.volume::-webkit-slider-thumb{
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    background-color: #4d0253;
+}
+.current,
+.duration,
+.volume-value{
+    font-family: "MADELikesSlab", serif;
+    font-size: 1em;
+    color: #17d8d2;
+}
+.volume-value{
+align-self: center;
+}
+
+/*Answers block*/
+.answers{
+    display: flex;
+    margin: 0 auto;
+    padding: 0;
+    width: 80%;
+    flex-direction: column;
+    row-gap: 10px;
+}
+.answer-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 10px;
+    background-color: #040e35;
+    border-radius: 10px;
+}
+.mark{
+    width: 20px;
+}
+.answer{
+    font-family: "Frozen Memory Cyr", sans-serif;
+    font-size: 1.8em;
+    letter-spacing: 1px;
+    color: #17d8d2;
+}
+/*Right block for answers*/
+.answer-comment{
+    display: flex;
+    width: 85%;
+    height: 95%;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: flex-start;
+    row-gap: 30px;
+    background-color: #040e35;
+    border-radius: 10px;
+}
+.answer-play{
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+}
+.answer-image{
+    height: 120px;
+    border-radius: 10px;
+}
+.answer-player{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    row-gap: 10px;
+}
+.answer-name,
+.latin-name{
+    font-family: "MADELikesSlab", sans-serif;
+    font-size: 1.2em;
+    color: #19d5d3;
+    border-bottom: 2px solid #19d5d3;
+}
+
+.answer-description{
+    padding: 5%;
+    font-family: "MADELikesSlab", sans-serif;
+    font-size: 1.2em;
+    color: #19d5d3;
+}
+.player-of-answer{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    column-gap: 10px;
+}
+.image-of-answer{
+    height: 50px;
+}
+
+/*Button next question*/
+.next-test{
+    grid-area: button;
+    justify-self: center;
+    width: 200px;
+    height: 50px;
+    margin-top: 10px;
+    font-family: "Frozen Memory Cyr", sans-serif;
+    font-size: 1.8em;
+    background-color: #9372d5;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 2px 3px #040e35;
+}
+.next-test:hover{
+    color: #076d5d;
+}
+.next-test:active{
+    color: #640009;
+    box-shadow: 0 0 1px 1px #040e35;
+}
+
+/*Footer*/
+.footer{
+    display: flex;
+    width: 90%;
+    margin: 0 auto 20px;
+    flex-direction: row;
+    justify-content: space-between;
+    backdrop-filter: brightness(60%) ;
+    border-radius: 10px;
+    box-shadow: 0 0 2px 4px #94ccc0;
+}
+.git-wrapper{
+    display: flex;
+    margin-left: 20px;
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: 25px;
+}
+.git-logo{
+    width: 40px;
+    height: 40px;
+    align-self: center;
+    cursor: pointer;
+    transform: rotate(0);
+    transition: 0.5s transform linear;
+}
+.git-logo:hover{
+    transform: rotate(360deg);
+    transition: 0.5s transform linear;
+}
+.git-logo:active{
+    transform: rotate(-360deg);
+    transition: 0.5s transform linear;
+}
+.git-text{
+    align-self: center;
+    font-family: "MADELikesSlab", sans-serif;
+    font-size: 1.2em;
+    color: #71f3ce;
+}
+.rsschool{
+    align-self: center;
+    margin-right: 20px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transform-origin: 23px;
+    transform: rotate(0);
+    transition: 0.5s transform linear;
+}
+.rsschool:hover{
+    transform: rotate(-360deg);
+    transition: 0.5s transform linear;
+}
+.rsschool:active{
+    transform: rotate(360deg);
+    transition: 0.5s transform linear;
+}

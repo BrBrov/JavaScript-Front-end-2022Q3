@@ -300,4 +300,4 @@ const birdsData = [
         }
     ]
 ];
-export default birdsData;
+// export default birdsData;

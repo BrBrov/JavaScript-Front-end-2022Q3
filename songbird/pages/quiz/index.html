@@ -6,14 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shotcut icon" type="image/svg" href="../../assets/svg/icon.svg">
     <link rel="stylesheet" href="./style.css">
-    <script type="module" src="./script.js"></script>
+<!--    <script type="module" src="./script.js"></script>-->
+    <script src="./module/ru.js"></script>
+    <script src="./module/en.js"></script>
+    <script src="script.js"></script>
     <title>Song Bird</title>
 </head>
 <body>
 <div class="container">
     <div class="page">
         <header class="header">
-            <span class="logo">SongBird</span>
+            <h1 class="logo">SongBird</h1>
             <nav class="navigation">
                 <ul class="nav-list">
                     <li class="nav-item">
@@ -30,7 +33,97 @@
             <button class="language">EN</button>
         </header>
         <main class="main">
-
+            <span class="score-text">Score: </span>
+            <span class="score">36</span>
+            <div class="test-wrapper">
+                <span class="test-label">Разминка</span>
+                <span class="test-label">Воробьиные</span>
+                <span class="test-label">Лесные птицы</span>
+                <span class="test-label">Певчие птицы</span>
+                <span class="test-label">Хищные птицы</span>
+                <span class="test-label">Морские птицы</span>
+            </div>
+            <div class="quiz-wrapper">
+                <div class="question">
+                    <img class="question-image" src="../../assets/svg/ask.svg" alt="">
+                    <div class="player-wrapper">
+                        <span class="question-answer">********</span>
+                        <div class="player">
+                            <img class="play" src="../../assets/svg/play.svg" alt="play">
+                            <div class="controls">
+                                <div class="range">
+                                    <input class="seek" type="range" value="0">
+                                    <div class="timing">
+                                        <span class="current">00:00</span>
+                                        <span class="duration">00:00</span>
+                                    </div>
+                                </div>
+                                <div class="info-volume">
+                                    <input class="volume" type="range" max="100" min="0" value="50">
+                                    <span class="volume-value">50</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="answers">
+                    <li class="answer-wrapper">
+                        <img class="mark" src="../../assets/svg/unchecked.svg" alt="">
+                        <span class="answer">Голубь</span>
+                    </li>
+                    <li class="answer-wrapper">
+                        <img class="mark" src="../../assets/svg/unchecked.svg" alt="">
+                        <span class="answer">Shitter</span>
+                    </li>
+                    <li class="answer-wrapper">
+                        <img class="mark" src="../../assets/svg/unchecked.svg" alt="">
+                        <span class="answer">Shitter</span>
+                    </li>
+                    <li class="answer-wrapper">
+                        <img class="mark" src="../../assets/svg/unchecked.svg" alt="">
+                        <span class="answer">Shitter</span>
+                    </li>
+                    <li class="answer-wrapper">
+                        <img class="mark" src="../../assets/svg/unchecked.svg" alt="">
+                        <span class="answer">Shitter</span>
+                    </li>
+                    <li class="answer-wrapper">
+                        <img class="mark" src="../../assets/svg/unchecked.svg" alt="">
+                        <span class="answer">Shitter</span>
+                    </li>
+                </ul>
+                <div class="answer-comment">
+                    <div class="answer-play">
+                        <img class="answer-image" src="../../assets/svg/ask.svg" alt="">
+                        <div class="answer-player">
+                            <span class="answer-name">Ворон</span>
+                            <span class="latin-name">Corvus corax</span>
+                            <div class="player-of-answer">
+                                <img class="image-of-answer" src="../../assets/svg/play.svg" alt="">
+                                <div class="range">
+                                    <input class="seek answer" type="range" value="0">
+                                    <div class="timing">
+                                        <span class="current">00:00</span>
+                                        <span class="duration">00:00</span>
+                                    </div>
+                                </div>
+                                <div class="info-volume">
+                                    <input class="volume" type="range" max="100" min="0" value="50">
+                                    <span class="volume-value">50</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="answer-description">
+                        Seagulls inhabit the shores of the seas,
+                        lakes, rivers, reservoirs, swamps,
+                        often nest on islands. Since the end of the last century,
+                        seagulls began to appear in large cities, where they nest
+                        on the roofs of buildings. All seagulls lead a colonial lifestyle.
+                    </span>
+                </div>
+                <button class="next-test">Next question</button>
+            </div>
         </main>
         <footer class="footer">
             <div class="git-wrapper">

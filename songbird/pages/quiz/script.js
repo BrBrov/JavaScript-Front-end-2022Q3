@@ -1,5 +1,5 @@
-import birdsData from "./module/ru.js";
-import birdsDataEn from "./module/en.js";
+// import birdsData from "./module/ru.js";
+// import birdsDataEn from "./module/en.js";
 
 window.onload = () =>{
     console.log(birdsData);
