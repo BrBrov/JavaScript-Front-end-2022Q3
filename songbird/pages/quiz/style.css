@@ -110,7 +110,7 @@ body{
     text-align: center;
     font-family: "MADELikesSlab", sans-serif;
     font-size: 2em;
-    color: #1fddf4;
+    color: #0B0349;
     backdrop-filter: brightness(50%) ;
     border-radius: 10px;
     box-shadow: 0 0 2px 4px #94ccc0;
@@ -132,7 +132,7 @@ body{
 .test-label{
     font-family: "MADELikesSlab", sans-serif;
     font-size: 1.2em;
-    color: #1fddf4;
+    color: #0B0349;
 }
 .quiz-wrapper{
     grid-area: quiz;
@@ -398,4 +398,181 @@ align-self: center;
 .rsschool:active{
     transform: rotate(360deg);
     transition: 0.5s transform linear;
+}
+@media screen and (max-width: 1220px) {
+    .header{
+        padding: 0 20px 0 20px;
+    }
+}
+@media  screen and (max-width: 1199px) {
+    .page{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 1100px) {
+    .score,
+    .score-text{
+        padding-top: 20px;
+    }
+    .main{
+        grid-template-rows: 80px 1fr;
+    }
+    .test-wrapper{
+        column-gap: 30px;
+    }
+    .question{
+        height: 70%;
+    }
+    .question-image{
+        object-fit: cover;
+        background-color: unset;
+    }
+    .answers{
+        justify-content: end;
+    }
+    .answer-comment{
+        align-self: end;
+        justify-content: flex-start;
+        height: 90%;
+    }
+    .answer-image{
+        object-fit: cover;
+    }
+    .answer-description{
+        padding: 5px;
+    }
+}
+@media screen and (max-width: 929px) {
+    .container{
+        height: 1200px;
+    }
+    .page{
+        min-height: 1200px;
+        grid-template-rows: 240px 1fr 80px;
+    }
+    .header{
+        grid-template-columns: 100%;
+        grid-template-rows: repeat(3, 80px);
+    }
+    .language{
+        justify-self: center;
+    }
+    .main{
+        width: auto;
+        margin: 20px;
+    }
+}
+@media screen and (max-width: 900px) {
+    .main{
+        grid-template-columns: 120px 40px 1fr;
+        grid-template-rows: 40px 80px 1fr;
+        grid-template-areas: "label label score"
+                             "test test test"
+                             "quiz quiz quiz";
+    }
+    .score-text,
+    .score{
+        margin: 0;
+        padding: 0;
+
+    }
+    .score-text{
+        justify-self: right;
+    }
+    .score{
+        justify-self: left;
+    }
+}
+@media screen and (max-width: 689px) {
+    .container{
+        height: 1500px;
+    }
+    .page{
+        height: 1500px;
+    }
+    .main{
+        grid-template-columns: 120px 40px 1fr;
+        grid-template-rows: 40px 1fr;
+        grid-template-areas: "label label score"
+                             "quiz quiz quiz";
+    }
+    .test-wrapper{
+        display: none;
+    }
+    .quiz-wrapper{
+        grid-template-columns: 100%;
+        grid-template-rows: 28% 26% 40% 7%;
+        grid-template-areas:
+        "question"
+        "comment"
+        "answers"
+        "button";
+    }
+    .question{
+        height: 80%;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .question-image{
+        width: 100px;
+        height: 100px;
+    }
+    .answers{
+        justify-content: start;
+    }
+    .answer-comment{
+        height: 100%;
+    }
+    .answer-play{
+        flex-direction: column;
+    }
+    .answer-image{
+        width: 100px;
+        height: 100px;
+    }
+}
+@media screen and (max-width: 440px) {
+    .container{
+        height: 2000px;
+    }
+    .page{
+        height: 2000px;
+        grid-template-rows: 420px 1fr 240px;
+    }
+    .header{
+        grid-template-rows: 80px 1fr 80px;
+    }
+    .nav-list{
+        flex-direction: column;
+        row-gap: 20px;
+    }
+    .language{
+        margin: 0 0 30px 0;
+    }
+    .answers{
+        height: 90%;
+    }
+    .answer-wrapper{
+        height: 60px;
+    }
+    .controls{
+        flex-direction: column;
+    }
+    .footer{
+        flex-direction: column;
+    }
+    .git-wrapper{
+        margin: 20px 0 0 0;
+        flex-direction: column;
+        row-gap: 30px;
+    }
+    .git-logo{
+        width: 60px;
+        height: 60px;
+    }
+    .rsschool{
+        width: 60px;
+        height: 60px;
+        margin: 0 14px 20px 0;
+    }
 }
