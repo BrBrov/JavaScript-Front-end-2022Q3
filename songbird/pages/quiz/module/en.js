@@ -300,5 +300,3 @@ const birdsDataEn = [
         }
     ]
 ];
-
-// export default birdsDataEn;
