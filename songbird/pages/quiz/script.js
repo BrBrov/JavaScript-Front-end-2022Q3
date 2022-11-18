@@ -4,6 +4,8 @@ let startGame = false;
 
 let answerCount = 0;
 
+let answerValue = null;
+
 let answer = null;
 
 async function locale(language){
@@ -85,7 +87,19 @@ async function translator(lanquage, testData){
         el.textContent = test[i].name;
     })
     answer = testData[answerCount].answer;
-
+    if(startGame){
+        document.querySelector(".question-answer").textContent = test[answer].name;
+    }
+    if(startGame === null && answerValue !== null){
+        document.querySelector(".answer-name").textContent = test[answerValue].name;
+        document.querySelector(".latin-name").textContent = test[answerValue].species;
+        document.querySelector(".answer-description").textContent = test[answerValue].description;
+    }
+    if(local === 'en'){
+        document.querySelector(".text-welcom").textContent = "Choose an answer option to start the quiz";
+    }else{
+        document.querySelector(".text-welcom").textContent = "Выберите вариант ответа для начала викторины";
+    }
     console.log(answer);
 }
 
@@ -95,5 +109,9 @@ window.addEventListener('DOMContentLoaded', async () =>{
     let lang = await locale();
     testData = await getTestArray(lang);
     translator(lang, testData);
+})
+
+window.addEventListener('load', async()=>{
+    
 })
 
