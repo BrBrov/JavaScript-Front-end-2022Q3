@@ -117,6 +117,7 @@ body{
 }
 .score{
     grid-area: score;
+    width: 40px;
 }
 .test-wrapper{
     grid-area: test;
@@ -185,6 +186,11 @@ body{
 }
 .play{
     width: 60px;
+    cursor: pointer;
+}
+.play:active{
+    border-radius: 50%;
+    box-shadow: 0 0 2px 3px #19d5d3;
 }
 .controls{
     display: flex;
@@ -258,6 +264,13 @@ align-self: center;
     column-gap: 10px;
     background-color: #040e35;
     border-radius: 10px;
+    cursor: pointer;
+}
+.answer-wrapper:hover{
+    background-color: #0a1b5c;
+}
+.answer-wrapper:active .answer{
+    color: #4d0253;
 }
 .mark{
     width: 20px;
@@ -334,6 +347,10 @@ align-self: center;
 .image-of-answer{
     height: 50px;
 }
+.image-of-answer:active{
+    border-radius: 50%;
+    box-shadow: 0 0 2px 3px #19d5d3;
+}
 
 /*Button next question*/
 .next-test{
@@ -341,7 +358,9 @@ align-self: center;
     justify-self: center;
     width: 200px;
     height: 50px;
-    margin-top: 10px;
+    margin-top: 10px;    
+}
+.active{
     font-family: "Frozen Memory Cyr", sans-serif;
     font-size: 1.8em;
     background-color: #9372d5;
@@ -349,12 +368,26 @@ align-self: center;
     border-radius: 10px;
     box-shadow: 0 0 2px 3px #040e35;
 }
-.next-test:hover{
+.active:hover{
     color: #076d5d;
 }
-.next-test:active{
+.active:active{
     color: #640009;
     box-shadow: 0 0 1px 1px #040e35;
+}
+.inactive{
+    grid-area: button;
+    justify-self: center;
+    width: 200px;
+    height: 50px;
+    margin-top: 10px;
+    font-family: "Frozen Memory Cyr", sans-serif;
+    font-size: 1.8em;
+    color: #435351;
+    background-color: #cdc7da;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 2px 3px #444547;
 }
 
 /*Footer*/
