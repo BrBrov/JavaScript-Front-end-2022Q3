@@ -115,7 +115,6 @@ async function quizProcessing(ev) {
             startGame = null;
         }
     }
-
 }
 
 window.addEventListener('DOMContentLoaded', async () => {
