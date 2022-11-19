@@ -131,9 +131,14 @@ body{
     box-shadow: 0 0 2px 4px #94ccc0;
 }
 .test-label{
+    padding: 5px;
     font-family: "MADELikesSlab", sans-serif;
     font-size: 1.2em;
     color: #0B0349;
+}
+.check-round{
+    background-color: #51bc14;
+    border-radius: 10px;
 }
 .quiz-wrapper{
     grid-area: quiz;
@@ -281,6 +286,12 @@ align-self: center;
     letter-spacing: 1px;
     color: #17d8d2;
 }
+.correct{
+    background-color: #112a00;
+}
+.incorrect{
+    background-color: #760303;
+}
 /*Right block for answers*/
 .welcom-game{
     /* display: flex; */
@@ -316,6 +327,7 @@ align-self: center;
 }
 .answer-image{
     height: 120px;
+    width: 120px;
     border-radius: 10px;
 }
 .answer-player{

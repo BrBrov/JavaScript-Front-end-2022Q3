@@ -35,7 +35,7 @@
             <span class="score-text"></span>
             <span class="score">0</span>
             <div class="test-wrapper">
-                <span class="test-label"></span>
+                <span class="test-label check-round"></span>
                 <span class="test-label"></span>
                 <span class="test-label"></span>
                 <span class="test-label"></span>
@@ -51,21 +51,25 @@
                             <img class="play" src="../../assets/svg/play.svg" alt="play">
                             <div class="controls">
                                 <div class="range">
-                                    <input class="seek" type="range" value="0">
+                                    <input class="seek main-seek" type="range" value="0" min="0">
                                     <div class="timing">
-                                        <span class="current">00:00</span>
-                                        <span class="duration">00:00</span>
+                                        <span class="current main-current">00:00</span>
+                                        <span class="duration main-duration">00:00</span>
                                     </div>
                                 </div>
                                 <div class="info-volume">
-                                    <input class="volume" type="range" max="100" min="0" value="50">
-                                    <span class="volume-value">50</span>
+                                    <input class="volume main-volume" type="range" max="100" min="0" value="50">
+                                    <span class="volume-value main-value">50</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <ul class="answers">
+                    <li class="answer-wrapper" data-item="0">
+                        <img class="mark" src="../../assets/svg/unchecked.svg" alt="">
+                        <span class="answer"></span>
+                    </li>
                     <li class="answer-wrapper" data-item="1">
                         <img class="mark" src="../../assets/svg/unchecked.svg" alt="">
                         <span class="answer"></span>
@@ -86,10 +90,6 @@
                         <img class="mark" src="../../assets/svg/unchecked.svg" alt="">
                         <span class="answer"></span>
                     </li>
-                    <li class="answer-wrapper" data-item="6">
-                        <img class="mark" src="../../assets/svg/unchecked.svg" alt="">
-                        <span class="answer"></span>
-                    </li>
                 </ul>
                 <div class="welcom-game" style="display: flex;">
                     <span class="text-welcom" ></span>
@@ -105,20 +105,20 @@
                                 <div class="range">
                                     <input class="seek answer-block" type="range" value="0">
                                     <div class="timing">
-                                        <span class="current">00:00</span>
-                                        <span class="duration">00:00</span>
+                                        <span class="current answer-current">00:00</span>
+                                        <span class="duration answer-duration">00:00</span>
                                     </div>
                                 </div>
                                 <div class="info-volume">
-                                    <input class="volume" type="range" max="100" min="0" value="50">
-                                    <span class="volume-value">50</span>
+                                    <input class="volume answer-volume" type="range" max="100" min="0" value="50">
+                                    <span class="volume-value answer-value">50</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <span class="answer-description"></span>
                 </div>
-                <button class="next-test active"></button>
+                <button class="next-test inactive"></button>
             </div>
         </main>
         <footer class="footer">
