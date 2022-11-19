@@ -27,31 +27,29 @@ async function locale(language){
     }
 }
 
-async function getTestArray(language){
-    let arr = [];
-    if(language === 'en'){
-        arr = birdsDataEn;
-    }else{
-        arr = birdsData;
-    }
+async function getTestArray(){
     let test = []
-    arr.forEach(bird =>{
+    birdsDataEn.forEach((bird, i) =>{
         let ctrl = new Set([0,1,2,3,4,5]);
         let result = [];
+        let tResult = [];
         while (ctrl.size !== 0){
             let index = Math.floor(Math.random()*6);
             if(ctrl.has(index)){
                 result.push(bird[index]);
+                tResult.push(birdsData[i][index])
                 ctrl.delete(index);
             }
         }
-        let number = Math.ceil(Math.random()*5);
+        let number = Math.ceil(Math.random()*6);
         let obj = {
-            test: result,
+            en: result,
+            ru: tResult,
             answer: number
         };
         test.push(obj);
     })
+    
 
     return test;
 }
@@ -60,8 +58,10 @@ async function translator(lanquage, testData){
     let ru = ["Главная", "Тест", "Галерея", "RU", "Счёт", "Разминка", "Воробьиные", "Лесные птицы", "Певчие птицы", "Хищные птицы", "Морские птицы", "Следующий", "Все права защищены ©, 2022"];
     let en = ["Main", "Quiz", "Gallery", "EN", "Score", "Warm-up", "Sparrows", "Forest birds", "Songbirds", "Birds of prey", "Seabirds", "Next question", "All right reserved ©, 2022"];
     let local = (lanquage === 'en') ? en : ru;
-    let test = testData[answerCount].test;
     console.log(testData);
+    let test = testData[answerCount];
+    test = test[lanquage]
+    console.log(test);
     let elemsArray = [];
 
     let elem = document.querySelectorAll(".nav-link");
@@ -95,12 +95,22 @@ async function translator(lanquage, testData){
         document.querySelector(".latin-name").textContent = test[answerValue].species;
         document.querySelector(".answer-description").textContent = test[answerValue].description;
     }
-    if(local === 'en'){
+    if(lanquage === 'en'){
         document.querySelector(".text-welcom").textContent = "Choose an answer option to start the quiz";
     }else{
         document.querySelector(".text-welcom").textContent = "Выберите вариант ответа для начала викторины";
     }
-    console.log(answer);
+
+    console.log(testData);
+}
+async function goToMain(ev){
+    ev.stopPropagation();
+    localStorage.setItem('score', '0');
+    localStorage.setItem('mode', 'null');
+    location.href = "../main/index.html";
+}
+async function setQuestion(){
+    
 }
 
 window.addEventListener('DOMContentLoaded', async () =>{
@@ -112,6 +122,47 @@ window.addEventListener('DOMContentLoaded', async () =>{
 })
 
 window.addEventListener('load', async()=>{
-    
+    let nav = document.querySelectorAll(".nav-link");
+    nav[0].addEventListener('click', goToMain)
+    nav[1].addEventListener('click', (ev)=>{
+        ev.stopPropagation();
+        location.reload();
+    });
+    nav[2].addEventListener('click', (ev)=>{
+        ev.stopPropagation();
+        localStorage.setItem('mode', 'gallery');
+        location.href = "../result/index.html";
+    })
+    let git = document.querySelector(".git-logo");
+    git.addEventListener('click', ()=>{
+        location.href = "https://github.com/BrBrov";
+    })
+    let rs = document.querySelector(".rsschool");
+    rs.addEventListener('click', ()=>{
+        location.href = "https://rs.school/js/";
+    })
+    let langBtn = document.querySelector(".language");
+    langBtn.addEventListener('click', async ()=>{
+        let lang = await locale();
+        if(lang === 'ru'){
+            lang = 'en';
+        }else{
+            lang = 'ru';
+        }
+        locale(lang);
+        let startRotate  = new KeyframeEffect(langBtn,
+            [{transform:'rotateY(0)'},{transform: 'rotateY(90deg)'}],
+            {duration: 500, fill: "forwards"});
+        let endRotate = new KeyframeEffect(langBtn,
+            [{transform:'rotateY(90deg)'},{transform: "rotateY(0deg)"}],
+            {duration: 500, fill: "forwards"});
+        let anim = new Animation(startRotate, document.timeline);
+        anim.play();
+        anim.onfinish = async () =>{
+            await translator(lang, testData);
+            anim = new Animation(endRotate, document.timeline);
+            anim.play();
+        }
+    })
 })
 
