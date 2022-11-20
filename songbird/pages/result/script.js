@@ -45,10 +45,10 @@ class Player {
         audio.ondurationchange = () => {
             let minutes = Math.trunc(audio.duration / 60);
             let seconds = Math.ceil(audio.duration - minutes * 60);
-            if(minutes<10){
+            if (minutes < 10) {
                 minutes = '0' + minutes;
             }
-            if(seconds<10){
+            if (seconds < 10) {
                 seconds = '0' + seconds;
             }
             duration.textContent = `${minutes}:${seconds}`;
@@ -100,27 +100,49 @@ class BirdsGroup {
     }
 }
 
-class WinTemplatePage{
+class WinTemplatePage {
     constructor(main) {
-         let wrapper = createElem('div', 'win-image-wrapper');
-         let elem = this.createElem('img', 'win-image');
-         elem.src = "../../assets/image/win_image.gif";
-         elem.alt = "victory";
-         wrapper.appendChild(elem);
-         main.appendChild(wrapper);
-         for(let i=0; i < 3; i++){
-             elem = this.createElem('span', 'result-win');
-             main.appendChild(elem);
-         }
-         elem = this.createElem('span', 'text-win');
-         main.appendChild(elem);
-         elem = this.createElem('button', 'to-gallery');
-         main.appendChild(elem);
-         return main;
+        let wrapper = createElem('div', 'win-image-wrapper');
+        let elem = this.createElem('img', 'win-image');
+        elem.src = "../../assets/image/win_image.gif";
+        elem.alt = "victory";
+        wrapper.appendChild(elem);
+        main.appendChild(wrapper);
+        for (let i = 0; i < 3; i++) {
+            elem = this.createElem('span', 'result-win');
+            main.appendChild(elem);
+        }
+        elem = this.createElem('span', 'text-win');
+        main.appendChild(elem);
+        elem = this.createElem('button', 'to-gallery');
+        main.appendChild(elem);
+        return main;
     }
 }
 
 WinTemplatePage.prototype.createElem = createElem;
+
+class LooseTemplatePage {
+    constructor(main) {
+        let wrapper = createElem('div', 'loose-image-wrapper');
+        let elem = this.createElem('img', 'loose-image');
+        elem.src = "../../assets/image/loose_image.gif";
+        elem.alt = "loose";
+        wrapper.appendChild(elem);
+        main.appendChild(wrapper);
+        for (let i = 0; i < 3; i++) {
+            elem = this.createElem('span', 'result-loose');
+            main.appendChild(elem);
+        }
+        elem = this.createElem('span', 'text-loose');
+        main.appendChild(elem);
+        elem = this.createElem('button', 'new-quiz');
+        main.appendChild(elem);
+        return main;
+    }
+}
+
+LooseTemplatePage.prototype.createElem = createElem;
 
 async function getMode() {
     let mode = localStorage.getItem('mode');
@@ -190,6 +212,9 @@ async function translator(language, mode) {
         case 'win':
             showWin(language);
             break;
+        case 'loose':
+            showLoose(language);
+            break;
     }
 }
 
@@ -203,8 +228,8 @@ async function showGallery(language) {
     console.log(data);
     let mainBlock = document.querySelector(".main");
     console.dir(mainBlock);
-    if(mainBlock.childrenElementCount !== 0){
-        [...mainBlock.children].forEach(elem=>{
+    if (mainBlock.childrenElementCount !== 0) {
+        [...mainBlock.children].forEach(elem => {
             elem.remove();
         })
     }
@@ -221,10 +246,10 @@ async function showGallery(language) {
     })
 }
 
-async function showWin(language){
+async function showWin(language) {
     let main = document.querySelector(".main");
-    if(main.childElementCount !== 0){
-        [...main.children].forEach(elem=>{
+    if (main.childElementCount !== 0) {
+        [...main.children].forEach(elem => {
             elem.remove();
         })
     }
@@ -232,8 +257,8 @@ async function showWin(language){
     let ru = ["Поздравляем!",
         "Вы набрали из \<span class=\"result-win color\"\>6\<\/span\> вопросов \<span class=\"result-win color\"\>30\<\/span\> баллов!",
         "Это максимальное количество баллов!",
-    "Вы очень хорошо знаете птиц. Вы можете повторно посмотреть информацию он них у нас в галерее\.",
-    "Перейти в галерею"];
+        "Вы очень хорошо знаете птиц. Вы можете повторно посмотреть информацию он них у нас в галерее\.",
+        "Перейти в галерею"];
     let en = ["Congratulations!",
         "You scored from \<span class=\"result-win color\"\>6\<\/span\> questions \<span class=\"result-win color\"\>30\<\/span\> points!",
         "This is the maximum number of points!",
@@ -242,22 +267,62 @@ async function showWin(language){
     let local = (language === 'ru') ? ru : en;
     let arrayElements = [];
     let elem = document.querySelectorAll(".result-win");
-    elem.forEach(e=>{
+    elem.forEach(e => {
         arrayElements.push(e);
     })
     elem = document.querySelector(".text-win");
     arrayElements.push(elem);
     elem = document.querySelector(".to-gallery");
     arrayElements.push(elem);
-    console.log(arrayElements);
-    arrayElements.forEach((element, index)=>{
-        if(index === 1){
+    arrayElements.forEach((element, index) => {
+        if (index === 1) {
             element.innerHTML = local[index];
-        }else{
+        } else {
             element.textContent = local[index];
         }
     })
 
+}
+
+async function showLoose(language){
+    let main = document.querySelector(".main");
+    if (main.childElementCount !== 0) {
+        [...main.children].forEach(elem => {
+            elem.remove();
+        })
+    }
+    new LooseTemplatePage(main);
+    let ru = ["Вы проиграли!",
+        "Вы набрали из \<span class=\"result-win color\"\>6\<\/span\> вопросов \<span class=\"result-win color\"\>0\<\/span\> баллов!",
+        "Максимальное количество баллов - 30!",
+        "Вам нужно подтянуть знания. Попробуйте ещё раз пройти тест\.",
+        "Попробовать снова?"];
+    let en = ["You lost!",
+        "You scored from \<span class=\"result-win color\"\>6\<\/span\> questions \<span class=\"result-win color\"\>0\<\/span\> points!",
+        "The maximum number of points is 30!",
+        "You need to improve your knowledge. Try to take the quiz again\.",
+        "Try again?"];
+    let local = (language === 'ru') ? ru : en;
+    let score = localStorage.getItem('score');
+    let arrayElements = [];
+    let elem = document.querySelectorAll(".result-loose");
+    elem.forEach(e => {
+        arrayElements.push(e);
+    })
+    elem = document.querySelector(".text-loose");
+    arrayElements.push(elem);
+    elem = document.querySelector(".new-quiz");
+    arrayElements.push(elem);
+    arrayElements.forEach((element, index) => {
+        if (index === 1) {
+            element.innerHTML = local[index];
+        } else {
+            element.textContent = local[index];
+        }
+    })
+    if(score > 0){
+        document.querySelectorAll(".color")[1].textContent = score;
+    }
 }
 
 //Function of controls for pages
@@ -265,24 +330,27 @@ async function showWin(language){
 async function galleryListener() {
     let main = document.querySelector(".main");
     let arrayOfAllPlayers = document.querySelectorAll(".player-wrapper");
-    async function setSeek(e){
-        if(e.target.dataset.count === player.count){
+
+    async function setSeek(e) {
+        if (e.target.dataset.count === player.count) {
             player.audio.pause();
             player.audio.currentTime = e.target.value;
         }
     }
-    async function playAfter(){
+
+    async function playAfter() {
         await player.audio.play();
     }
+
     let seekElements = main.querySelectorAll(".seek");
-    seekElements.forEach(elem=>{
+    seekElements.forEach(elem => {
         elem.addEventListener('input', setSeek);
         elem.addEventListener('mouseup', playAfter);
     })
     let volumeElements = document.querySelectorAll(".volume");
-    volumeElements.forEach(elem=>{
-        elem.addEventListener('input', (e)=>{
-            player.audio.volume = e.target.value/100;
+    volumeElements.forEach(elem => {
+        elem.addEventListener('input', (e) => {
+            player.audio.volume = e.target.value / 100;
             let volumeValue = e.target.parentElement.querySelector(".volume-value");
             volumeValue.textContent = e.target.value;
         })
@@ -347,12 +415,21 @@ async function galleryListener() {
     })
 }
 
-async function winListener(){
+async function winListener() {
     let btn = document.querySelector(".to-gallery");
-    btn.addEventListener('click', ()=>{
+    btn.addEventListener('click', () => {
         localStorage.setItem('score', '0');
         localStorage.setItem('mode', 'gallery');
         location.href = "./index.html";
+    })
+}
+
+async function looseListener(){
+    let btn = document.querySelector(".new-quiz");
+    btn.addEventListener('click', ()=>{
+        localStorage.setItem('mode', null);
+        localStorage.setItem('score', '0');
+        location.href = "../quiz/index.html";
     })
 }
 
@@ -366,17 +443,18 @@ window.addEventListener('DOMContentLoaded', async () => {
     let lang = await locale();
     dataBirds = await createData();
     translator(lang, mode);
-    switch(mode){
+    switch (mode) {
         case 'gallery':
-        document.querySelector(".container").className += " gallery";
-        document.querySelector(".logo").className += " logo-gallery";
-        break;
+            document.querySelector(".container").className += " gallery";
+            document.querySelector(".logo").className += " logo-gallery";
+            break;
         case 'win':
             document.querySelector(".container").className += " win";
             document.querySelector(".logo").className += " logo-win";
             break;
         case 'loose':
-
+            document.querySelector(".container").className += " loose";
+            document.querySelector(".logo").className += " logo-loose";
             break;
         default:
             localStorage.setItem('score', '0');
@@ -385,27 +463,29 @@ window.addEventListener('DOMContentLoaded', async () => {
             break;
     }
 })
+
 window.addEventListener('load', async () => {
-    function clearLStorage(){
+    function clearLStorage() {
         localStorage.setItem('score', '0');
         localStorage.setItem('mode', null);
     }
+
     let navLinks = document.querySelectorAll(".nav-link");
-    navLinks[0].addEventListener('click', ()=>{
+    navLinks[0].addEventListener('click', () => {
         clearLStorage();
         location.href = "../main/index.html";
     })
-    navLinks[1].addEventListener('click', ()=>{
+    navLinks[1].addEventListener('click', () => {
         clearLStorage();
         location.href = "../quiz/index.html";
     })
-    navLinks[2].addEventListener('click', ()=>{
+    navLinks[2].addEventListener('click', () => {
         localStorage.setItem('mode', 'gallery');
         localStorage.setItem('score', '0');
         location.href = "./index.html";
     })
     let git = document.querySelector(".git-logo");
-    git.addEventListener('click', ()=>{
+    git.addEventListener('click', () => {
         clearLStorage();
         location.href = "https://github.com/BrBrov";
     })
@@ -444,9 +524,16 @@ window.addEventListener('load', async () => {
             galleryListener();
             break;
         case 'win':
+            player.audio.src = "../../assets/mp3/win.mp3";
+            player.audio.autoplay = true;
+            player.audio.oncanplaythrough = ()=>{
+                player.audio.play()
+                    .then(player.audio.load());
+            }
             winListener();
             break;
         case 'loose':
+            looseListener();
             break;
         default:
             clearLStorage();

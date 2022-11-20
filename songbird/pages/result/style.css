@@ -8,14 +8,16 @@ body{
 
 .container{
     width: 100%;
-    /*height: 100vh;*/
+    min-height: 100vh;
 }
 .gallery{
     background: url("../../assets/image/gallery.jpg") right/cover no-repeat;
 }
 .win{
-    min-height: 100vh;
     background: url("../../assets/image/win.jpg") right/cover no-repeat;
+}
+.loose{
+    background: url("../../assets/image/loose.jpg") right/cover no-repeat;
 }
 .page{
     display: grid;
@@ -46,6 +48,9 @@ body{
 }
 .logo-win{
     color: #c50352;
+}
+.logo-loose{
+    color: #f1683b;
 }
 .navigation{
     justify-self: center;
@@ -117,6 +122,50 @@ body{
     backdrop-filter: brightness(50%) ;
     border-radius: 10px;
     box-shadow: 0 0 2px 4px #94ccc0;
+}
+/*Styles for loose page*/
+.loose-image-wrapper{
+    align-self: center;
+    height: 50%;
+}
+.loose-image{
+    height: 100%;
+    border-radius: 10px;
+}
+.result-loose{
+    text-align: center;
+    font-family: "Frozen Memory Cyr", serif;
+    font-size: 2em;
+    color: #e858e2;
+}
+.color{
+    color: #df070a;
+}
+.text-loose{
+    text-align: center;
+    font-family: "MADELikesSlab", serif;
+    font-size: 1.6em;
+    color: #dfa273;
+}
+.new-quiz{
+    align-self: center;
+    width: 300px;
+    height: 60px;
+    font-family: "MADELikesSlab", serif;
+    font-size: 1.6em;
+    color: #461b01;
+    background-color: #a7e5bb;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 2px 3px #eadbb5;
+}
+.new-quiz:hover{
+    color: #dab148;
+    background-color: #002500;
+}
+.new-quiz:active{
+    color: #c702ed;
+    box-shadow: 0 0 1px 2px #564b13;
 }
 
 /*Styles for win page*/
@@ -345,6 +394,10 @@ body{
 .rsschool:active{
     transform: rotate(360deg);
     transition: 0.5s transform linear;
+}
+/*Hidden AudioElement for play sound on load*/
+.hidden-sound{
+    display: none;
 }
 /*Adaptive for gallery*/
 @media screen and (max-width: 1220px) {
