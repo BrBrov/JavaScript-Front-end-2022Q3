@@ -8,11 +8,14 @@ let answerValue = null;
 
 let answer = null;
 
+let answerControl = new Set();
+
 let player = {
     audio: new Audio(),
     mode: false,
     volume: 0.5
 }
+
 let mainPlayer = {
     audio: new Audio(),
     mode: false,
@@ -146,7 +149,7 @@ async function goToMain(ev) {
 
 async function quizProcessing(ev) {
     ev.stopPropagation();
-    await player.audio.load();
+    // await player.audio.load();
     answerValue = ev.target.dataset.item || ev.target.parentElement.dataset.item;
     if (answerValue) {
         if (startGame !== null) {
@@ -168,38 +171,47 @@ async function quizProcessing(ev) {
         }
         document.querySelector(".answer-block").value = 0;
         document.querySelector(".answer-volume").value = 50;
-        if (answerValue == (answer - 1)) {
-            startGame = true;
-            document.querySelectorAll(".answer-wrapper")[answerValue].className = 'answer-wrapper correct';
-            let sound = new Audio('../../assets/mp3/correct.mp3');
-            sound.volume = 0.5;
-            sound.onloadeddata = () => {
-                sound.play();
-            }
-            document.querySelectorAll(".mark")[answerValue].src = '../../assets/svg/correct.svg';
-            flagBtnNext = true;
-            document.querySelector(".next-test").className = "next-test active";
-            document.querySelector(".question-image").src = data[answerValue].image;
-            let totalScore = Number(localStorage.getItem('score'));
-            totalScore += countScore;
-            document.querySelector(".score").textContent = `${totalScore}`;
-            localStorage.setItem('score', totalScore);
-            countScore = 5;
-            document.querySelector(".question-answer").textContent = testData[answerCount][lang][answer - 1].name;
-            mainPlayer.audio.pause();
-            player.audio.pause();
-        } else {
-            if (!flagBtnNext) {
-                document.querySelectorAll(".answer-wrapper")[answerValue].className = 'answer-wrapper incorrect';
-                let sound = new Audio('../../assets/mp3/error.mp3');
-                sound.volume = 0.5;
-                sound.onloadeddata = () => {
-                    sound.play();
+        if(!answerControl.has(answerValue)){
+            answerControl.add(answerValue);
+            if (answerValue == (answer - 1)) {
+                document.querySelectorAll(".answer-wrapper")[answerValue].className = 'answer-wrapper correct';
+                if(!startGame){
+                    let sound = new Audio('../../assets/mp3/correct.mp3');
+                    sound.volume = 0.5;
+                    sound.onloadeddata = () => {
+                        sound.play();
+                    }
                 }
-                document.querySelectorAll(".mark")[answerValue].src = '../../assets/svg/wrong.svg';
-                countScore--;
+                startGame = true;
+                answer = null;
+                document.querySelectorAll(".mark")[answerValue].src = '../../assets/svg/correct.svg';
+                flagBtnNext = true;
+                document.querySelector(".next-test").className = "next-test active";
+                document.querySelector(".question-image").src = data[answerValue].image;
+                let totalScore = Number(localStorage.getItem('score'));
+                totalScore += countScore;
+                document.querySelector(".score").textContent = `${totalScore}`;
+                localStorage.setItem('score', totalScore);
+                countScore = 5;
+                document.querySelector(".question-answer").textContent = testData[answerCount][lang][answer - 1].name;
+                mainPlayer.audio.pause();
+                document.querySelector(".play").src = "../../assets/svg/play.svg";
+                player.audio.pause();
+                document.querySelector(".image-of-answer").src = "../../assets/svg/play.svg";
+            } else {
+                if (!flagBtnNext) {
+                    document.querySelectorAll(".answer-wrapper")[answerValue].className = 'answer-wrapper incorrect';
+                    let sound = new Audio('../../assets/mp3/error.mp3');
+                    sound.volume = 0.5;
+                    sound.onloadeddata = () => {
+                        sound.play();
+                    }
+                    document.querySelectorAll(".mark")[answerValue].src = '../../assets/svg/wrong.svg';
+                    countScore--;
+                }
             }
         }
+
     }
 }
 
@@ -384,6 +396,7 @@ window.addEventListener('load', async () => {
                 countScore = 5;
                 answerValue = null;
                 answer = null;
+                answerControl.clear();
                 let lang = await locale();
                 translator(lang, testData);
                 document.querySelector(".next-test").className = 'next-test inactive';
