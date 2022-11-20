@@ -13,6 +13,10 @@ body{
 .gallery{
     background: url("../../assets/image/gallery.jpg") right/cover no-repeat;
 }
+.win{
+    min-height: 100vh;
+    background: url("../../assets/image/win.jpg") right/cover no-repeat;
+}
 .page{
     display: grid;
     max-width: 1200px;
@@ -39,6 +43,9 @@ body{
 }
 .logo-gallery{
     color: #12064c;
+}
+.logo-win{
+    color: #c50352;
 }
 .navigation{
     justify-self: center;
@@ -111,9 +118,53 @@ body{
     border-radius: 10px;
     box-shadow: 0 0 2px 4px #94ccc0;
 }
-.main-gallery{
 
+/*Styles for win page*/
+.win-image-wrapper{
+    align-self: center;
+    height: 50%;
 }
+.win-image{
+    height: 100%;
+    border-radius: 10px;
+}
+.result-win{
+    text-align: center;
+    font-family: "Frozen Memory Cyr", serif;
+    font-size: 2em;
+    color: #daf4a2;
+}
+.color{
+    color: #df070a;
+}
+.text-win{
+    text-align: center;
+    font-family: "MADELikesSlab", serif;
+    font-size: 1.6em;
+    color: #17d8d2;
+}
+.to-gallery{
+    align-self: center;
+    width: 300px;
+    height: 60px;
+    font-family: "MADELikesSlab", serif;
+    font-size: 1.6em;
+    color: #0B0349;
+    background-color: #17d8d2;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 2px 3px #7decdc;
+}
+.to-gallery:hover{
+    color: #17d8d2;
+    background-color: #4d0253;
+}
+.to-gallery:active{
+    color: #9372d5;
+    box-shadow: 0 0 1px 2px #174c46;
+}
+
+
 /*Main gallery*/
 .player-wrapper{
     align-self: center;
@@ -151,7 +202,7 @@ body{
 .controls-volume{
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
 }
 .timing-wrapper{
     display: flex;
@@ -314,6 +365,14 @@ body{
     .language{
         justify-self: center;
     }
+}
+@media screen and (max-width: 559px) {
+    .win-image{
+        align-self: center;
+        width: 98%;
+        height: auto;
+    }
+
 }
 @media screen and (max-width: 459px) {
     .page{

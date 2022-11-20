@@ -1,3 +1,9 @@
+function createElem(tag, nameClass) {
+    let elem = document.createElement(tag);
+    elem.className = nameClass;
+    return elem;
+}
+
 class Player {
     constructor(objectData, dataSet) {
         let wrapper = this.createElem('div', 'player-wrapper');
@@ -78,13 +84,9 @@ class Player {
         wrapper.appendChild(playerInfo);
         return wrapper;
     }
-
-    createElem(tag, nameClass) {
-        let elem = document.createElement(tag);
-        elem.className = nameClass;
-        return elem;
-    }
 }
+
+Player.prototype.createElem = createElem;
 
 class BirdsGroup {
     constructor(text) {
@@ -97,6 +99,28 @@ class BirdsGroup {
         return wrapper;
     }
 }
+
+class WinTemplatePage{
+    constructor(main) {
+         let wrapper = createElem('div', 'win-image-wrapper');
+         let elem = this.createElem('img', 'win-image');
+         elem.src = "../../assets/image/win_image.gif";
+         elem.alt = "victory";
+         wrapper.appendChild(elem);
+         main.appendChild(wrapper);
+         for(let i=0; i < 3; i++){
+             elem = this.createElem('span', 'result-win');
+             main.appendChild(elem);
+         }
+         elem = this.createElem('span', 'text-win');
+         main.appendChild(elem);
+         elem = this.createElem('button', 'to-gallery');
+         main.appendChild(elem);
+         return main;
+    }
+}
+
+WinTemplatePage.prototype.createElem = createElem;
 
 async function getMode() {
     let mode = localStorage.getItem('mode');
@@ -163,6 +187,9 @@ async function translator(language, mode) {
         case 'gallery':
             showGallery(language);
             break;
+        case 'win':
+            showWin(language);
+            break;
     }
 }
 
@@ -175,6 +202,12 @@ async function showGallery(language) {
     let strArr = (language === 'ru') ? strRu : strEn;
     console.log(data);
     let mainBlock = document.querySelector(".main");
+    console.dir(mainBlock);
+    if(mainBlock.childrenElementCount !== 0){
+        [...mainBlock.children].forEach(elem=>{
+            elem.remove();
+        })
+    }
     let dataSetCounter = 0;
     data.forEach((elem, index) => {
         let label = new BirdsGroup(strArr[index]);
@@ -188,6 +221,44 @@ async function showGallery(language) {
     })
 }
 
+async function showWin(language){
+    let main = document.querySelector(".main");
+    if(main.childElementCount !== 0){
+        [...main.children].forEach(elem=>{
+            elem.remove();
+        })
+    }
+    new WinTemplatePage(main);
+    let ru = ["Поздравляем!",
+        "Вы набрали из \<span class=\"result-win color\"\>6\<\/span\> вопросов \<span class=\"result-win color\"\>30\<\/span\> баллов!",
+        "Это максимальное количество баллов!",
+    "Вы очень хорошо знаете птиц. Вы можете повторно посмотреть информацию он них у нас в галерее\.",
+    "Перейти в галерею"];
+    let en = ["Congratulations!",
+        "You scored from \<span class=\"result-win color\"\>6\<\/span\> questions \<span class=\"result-win color\"\>30\<\/span\> points!",
+        "This is the maximum number of points!",
+        "You know birds very well. You can re-view the information about them in our gallery.",
+        "Go to Gallery"];
+    let local = (language === 'ru') ? ru : en;
+    let arrayElements = [];
+    let elem = document.querySelectorAll(".result-win");
+    elem.forEach(e=>{
+        arrayElements.push(e);
+    })
+    elem = document.querySelector(".text-win");
+    arrayElements.push(elem);
+    elem = document.querySelector(".to-gallery");
+    arrayElements.push(elem);
+    console.log(arrayElements);
+    arrayElements.forEach((element, index)=>{
+        if(index === 1){
+            element.innerHTML = local[index];
+        }else{
+            element.textContent = local[index];
+        }
+    })
+
+}
 
 //Function of controls for pages
 
@@ -276,21 +347,110 @@ async function galleryListener() {
     })
 }
 
+async function winListener(){
+    let btn = document.querySelector(".to-gallery");
+    btn.addEventListener('click', ()=>{
+        localStorage.setItem('score', '0');
+        localStorage.setItem('mode', 'gallery');
+        location.href = "./index.html";
+    })
+}
+
 window.addEventListener('DOMContentLoaded', async () => {
     let mode = await getMode();
     if (!mode) {
+        localStorage.setItem('score', '0');
+        localStorage.setItem('mode', null);
         location.href = "../main/index.html";
     }
-    dataBirds = await createData();
-    console.log(dataBirds);
     let lang = await locale();
+    dataBirds = await createData();
     translator(lang, mode);
+    switch(mode){
+        case 'gallery':
+        document.querySelector(".container").className += " gallery";
+        document.querySelector(".logo").className += " logo-gallery";
+        break;
+        case 'win':
+            document.querySelector(".container").className += " win";
+            document.querySelector(".logo").className += " logo-win";
+            break;
+        case 'loose':
+
+            break;
+        default:
+            localStorage.setItem('score', '0');
+            localStorage.setItem('mode', null);
+            location.href = "../main/index.html";
+            break;
+    }
 })
 window.addEventListener('load', async () => {
+    function clearLStorage(){
+        localStorage.setItem('score', '0');
+        localStorage.setItem('mode', null);
+    }
+    let navLinks = document.querySelectorAll(".nav-link");
+    navLinks[0].addEventListener('click', ()=>{
+        clearLStorage();
+        location.href = "../main/index.html";
+    })
+    navLinks[1].addEventListener('click', ()=>{
+        clearLStorage();
+        location.href = "../quiz/index.html";
+    })
+    navLinks[2].addEventListener('click', ()=>{
+        localStorage.setItem('mode', 'gallery');
+        localStorage.setItem('score', '0');
+        location.href = "./index.html";
+    })
+    let git = document.querySelector(".git-logo");
+    git.addEventListener('click', ()=>{
+        clearLStorage();
+        location.href = "https://github.com/BrBrov";
+    })
+    let rs = document.querySelector(".rsschool");
+    rs.addEventListener('click', () => {
+        clearLStorage();
+        location.href = "https://rs.school/js/";
+    })
+    let langBtn = document.querySelector(".language");
+    langBtn.addEventListener('click', async () => {
+        let lang = await locale();
+        let mode = await getMode();
+        if (lang === 'ru') {
+            lang = 'en';
+        } else {
+            lang = 'ru';
+        }
+        locale(lang);
+        let startRotate = new KeyframeEffect(langBtn,
+            [{transform: 'rotateY(0)'}, {transform: 'rotateY(90deg)'}],
+            {duration: 500, fill: "forwards"});
+        let endRotate = new KeyframeEffect(langBtn,
+            [{transform: 'rotateY(90deg)'}, {transform: "rotateY(0deg)"}],
+            {duration: 500, fill: "forwards"});
+        let anim = new Animation(startRotate, document.timeline);
+        anim.play();
+        anim.onfinish = async () => {
+            await translator(lang, mode);
+            anim = new Animation(endRotate, document.timeline);
+            anim.play();
+        }
+    });
     let mode = await getMode();
     switch (mode) {
         case "gallery":
             galleryListener();
+            break;
+        case 'win':
+            winListener();
+            break;
+        case 'loose':
+            break;
+        default:
+            clearLStorage();
+            location.href = "../main/index.html";
             break;
     }
 })

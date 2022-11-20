@@ -89,8 +89,8 @@ async function translator(lanquage, testData) {
     })
     elemsArray.push(document.querySelector(".next-test"));
     elemsArray.push(document.querySelector(".git-text"));
-    elemsArray.forEach((elment, i) => {
-        elment.textContent = local[i];
+    elemsArray.forEach((element, i) => {
+        element.textContent = local[i];
     })
 
     elemsArray = [];
