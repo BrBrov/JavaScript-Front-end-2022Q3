@@ -26,6 +26,9 @@ let flagBtnNext = false;
 
 let countScore = 5;
 
+console.log("Uncomment string 117 for help to do the quiz with maximum score!!!");
+console.log("Only for testing!!!");
+
 async function locale(language) {
     if (language) {
         localStorage.setItem('language', language);
@@ -110,6 +113,8 @@ async function translator(lanquage, testData) {
         }
     }
     answer = testData[answerCount].answer;
+    // Uncomment console.log for help to do quiz no max score
+    // console.log(answer);
     if (startGame) {
         document.querySelector(".question-answer").textContent = test[answer-1].name;
     }
@@ -183,7 +188,6 @@ async function quizProcessing(ev) {
                     }
                 }
                 startGame = true;
-                answer = null;
                 document.querySelectorAll(".mark")[answerValue].src = '../../assets/svg/correct.svg';
                 flagBtnNext = true;
                 document.querySelector(".next-test").className = "next-test active";
@@ -198,6 +202,7 @@ async function quizProcessing(ev) {
                 document.querySelector(".play").src = "../../assets/svg/play.svg";
                 player.audio.pause();
                 document.querySelector(".image-of-answer").src = "../../assets/svg/play.svg";
+                answer = null;
             } else {
                 if (!flagBtnNext) {
                     document.querySelectorAll(".answer-wrapper")[answerValue].className = 'answer-wrapper incorrect';

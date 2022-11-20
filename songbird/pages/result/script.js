@@ -524,12 +524,6 @@ window.addEventListener('load', async () => {
             galleryListener();
             break;
         case 'win':
-            player.audio.src = "../../assets/mp3/win.mp3";
-            player.audio.autoplay = true;
-            player.audio.oncanplaythrough = ()=>{
-                player.audio.play()
-                    .then(player.audio.load());
-            }
             winListener();
             break;
         case 'loose':
