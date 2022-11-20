@@ -113,7 +113,7 @@ async function translator(lanquage, testData) {
         }
     }
     answer = testData[answerCount].answer;
-    // Uncomment console.log for help to do quiz no max score
+    // Uncomment console.log for help to do quiz with max score
     // console.log(answer);
     if (startGame) {
         document.querySelector(".question-answer").textContent = test[answer-1].name;

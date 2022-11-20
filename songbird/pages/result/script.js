@@ -225,9 +225,7 @@ async function showGallery(language) {
     let strEn = ["For warm-up", "Sparrows", "Forest birds", "Songbirds", "Birds of Prey", "Seabirds"];
     let data = (language === 'ru') ? dataBirds.ru : dataBirds.en;
     let strArr = (language === 'ru') ? strRu : strEn;
-    console.log(data);
     let mainBlock = document.querySelector(".main");
-    console.dir(mainBlock);
     if (mainBlock.childrenElementCount !== 0) {
         [...mainBlock.children].forEach(elem => {
             elem.remove();
