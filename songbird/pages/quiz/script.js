@@ -408,7 +408,7 @@ window.addEventListener('load', async () => {
                 player.mode = false;
             }else{
                 let result = Number(localStorage.getItem('score'));
-                if(result < 25){
+                if(result < 30){
                     localStorage.setItem('mode', 'loose');
                 }else{
                     localStorage.setItem('mode', 'win');
