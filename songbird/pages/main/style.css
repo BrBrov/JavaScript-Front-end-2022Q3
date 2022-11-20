@@ -1,0 +1,291 @@
+@import "../../assets/fonts/fonts.css";
+
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+.container{
+    width: 100%;
+    min-height: 100vh;
+    background: url("../../assets/image/background.jpg") center/cover no-repeat;
+}
+.page{
+    display: grid;
+    max-width: 1200px;
+    min-height: 100vh;
+    margin: 0 auto;
+    grid-template-columns: 100%;
+    grid-template-rows: 80px 1fr 80px;
+}
+
+/*Header*/
+
+.header{
+    display: grid;
+    grid-template-columns: 200px 1fr 50px;
+    grid-template-rows: 100%;
+    grid-column-gap: 10px;
+}
+.logo{
+    margin-top: 20px;
+    justify-self: center;
+    justify-items: center;
+    font-family: "beer money", sans-serif;
+    font-size: 4em;
+    color: #51bc14;
+}
+.navigation{
+    justify-self: center;
+}
+.nav-list{
+    display: flex;
+    width: 360px;
+    padding: 0;
+    margin-top: 30px;
+    list-style: none;
+    flex-direction: row;
+    justify-content: space-between;
+    row-gap: 2%;
+}
+.nav-item{
+    align-self: center;
+}
+.nav-link{
+    display: block;
+    padding: 5px;
+    text-decoration: none;
+    font-family: "MADELikesSlab", serif;
+    font-size: 2em;
+    color: #040e35;
+    text-shadow: 2px 2px 4px #9372d5;
+    border-radius: 10px;
+    background: linear-gradient( 45deg, #7decdc, #45beb2, #2dadd7);
+    box-shadow: 2px 2px 3px 4px #052e28;
+}
+.nav-link:hover{
+    font-size: 2.1em;
+    box-shadow: 2px 2px 3px 4px #09584f;
+}
+.nav-link:active{
+    color: #820404;
+}
+.language{
+    width: 50px;
+    height: 50px;
+    margin-top: 30px;
+    font-family: "beer money", sans-serif;
+    font-size: 2em;
+    color: #01172f;
+    background: linear-gradient(90deg, #698699, #478fb0, #22adc5);
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 0 3px 4px #040e35;
+    cursor: pointer;
+}
+.language:hover{
+    color: #0e5404;
+    box-shadow: 0 0 2px 3px #040e35;
+}
+.language:active{
+    color: #820404;
+    box-shadow: 0 0 1px 2px #040e35;
+}
+/*Main*/
+.main{
+    display: flex;
+    width: 90%;
+    height: 450px;
+    margin: 80px auto;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 50px;
+    /*background: linear-gradient(50deg, #7decdc, #5baca0, #3a726a);*/
+    backdrop-filter: brightness(70%) ;
+    border-radius: 10px;
+    box-shadow: 0 0 2px 4px #94ccc0;
+}
+.main-text{
+    width: 90%;
+    margin-top: 50px;
+    align-self: center;
+    text-align: center;
+    font-family: "MADELikesSlab", serif;
+    font-size: 2em;
+    color: #0eab95;
+}
+.start-quiz{
+    width: 200px;
+    height: 50px;
+    margin-bottom: 50px;
+    align-self: center;
+    font-family: "Frozen Memory Cyr", sans-serif;
+    font-size: 2em;
+    color: #2dadd7;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px 2px #5b827a;
+    cursor: pointer;
+}
+.start-quiz:hover{
+    background: linear-gradient(45deg, #7decdc, #42e3d0);
+    color: #51bc14;
+}
+.start-quiz:active{
+    box-shadow: 2px 2px 0 0 #5b827a;
+    color: #03530f;
+}
+/*Footer*/
+.footer{
+    display: flex;
+    width: 90%;
+    margin: 0 auto 20px;
+    flex-direction: row;
+    justify-content: space-between;
+    backdrop-filter: brightness(60%) ;
+    border-radius: 10px;
+    box-shadow: 0 0 2px 4px #94ccc0;
+}
+.git-wrapper{
+    display: flex;
+    margin-left: 20px;
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: 25px;
+}
+.git-logo{
+    width: 40px;
+    height: 40px;
+    align-self: center;
+    cursor: pointer;
+    transform: rotate(0);
+    transition: 0.5s transform linear;
+}
+.git-logo:hover{
+    transform: rotate(360deg);
+    transition: 0.5s transform linear;
+}
+.git-logo:active{
+    transform: rotate(-360deg);
+    transition: 0.5s transform linear;
+}
+.git-text{
+    align-self: center;
+    font-family: "MADELikesSlab", sans-serif;
+    font-size: 1.2em;
+    color: #71f3ce;
+}
+.rsschool{
+    align-self: center;
+    margin-right: 20px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transform-origin: 23px;
+    transform: rotate(0);
+    transition: 0.5s transform linear;
+}
+.rsschool:hover{
+    transform: rotate(-360deg);
+    transition: 0.5s transform linear;
+}
+.rsschool:active{
+    transform: rotate(360deg);
+    transition: 0.5s transform linear;
+}
+@media screen and (max-width: 1200px){
+    .logo{
+        margin-left: 20px;
+    }
+    .language{
+        display: block;
+        margin-left: -20px;
+    }
+}
+@media screen and (max-width: 700px){
+    .container{
+        min-height: 100vh;
+        max-height: 1200px;
+    }
+    .page{
+        grid-template-rows: 320px 1fr 80px;
+    }
+    .header{
+        grid-template-columns: 98%;
+        grid-template-rows: repeat(3, 90px);
+        row-gap: 20px;
+    }
+    .logo{
+        margin: 20px 0 0 0;
+    }
+    .language{
+        margin: 20px 0 0 0;
+        justify-self: center;
+    }
+}
+@media screen and (max-width: 639px) {
+    .main{
+        margin: 20px auto 40px;
+        height: 620px;
+    }
+    .footer{
+        margin: 0 auto 10px;
+    }
+}
+@media screen and (max-width: 439px) {
+    .container{
+        max-height: 2000px;
+        min-height: 100vh;
+    }
+    .page{
+        max-height: 1800px;
+        min-height: 1300px;
+        grid-template-rows: 500px 1fr 80px;
+    }
+    .header{
+        grid-template-rows: 100px 260px 80px;
+    }
+    .nav-list{
+        flex-direction: column;
+        row-gap: 40px;
+    }
+    .main{
+        min-height: 600px;
+        max-height: 1500px;
+    }
+}
+@media screen and (max-width: 429px) {
+    .container{
+        min-height: 1350px;
+    }
+    .page{
+        min-height: 1350px;
+        grid-template-rows: 500px 1fr 160px;
+    }
+    .footer{
+        flex-direction: column;
+    }
+    .git-wrapper{
+        align-self: center;
+        margin: 10px 0 0 0;
+        flex-direction: column;
+        row-gap: 10px;
+    }
+    .rsschool{
+        align-self: center;
+        margin: 0 10px 10px 0;
+    }
+    
+}
+@media screen and (max-width: 389px) {
+    .container{
+        min-height: 1450px;
+    }
+    .page{
+        min-height: 1300px;
+    }
+    .main{
+        height: 700px;
+    }
+}

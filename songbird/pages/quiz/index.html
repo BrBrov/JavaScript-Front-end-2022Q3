@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shotcut icon" type="image/svg" href="../../assets/svg/icon.svg">
+    <link rel="stylesheet" href="./style.css">
+    <script src="../../assets/module/ru.js"></script>
+    <script src="../../assets/module/en.js"></script>
+    <script src="script.js"></script>
+    <title>Song Bird</title>
+</head>
+<body>
+<div class="container">
+    <div class="page">
+        <header class="header">
+            <h1 class="logo">SongBird</h1>
+            <nav class="navigation">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"></a>
+                    </li>
+                </ul>
+            </nav>
+            <button class="language"></button>
+        </header>
+        <main class="main">
+            <span class="score-text"></span>
+            <span class="score">0</span>
+            <div class="test-wrapper">
+                <span class="test-label check-round"></span>
+                <span class="test-label"></span>
+                <span class="test-label"></span>
+                <span class="test-label"></span>
+                <span class="test-label"></span>
+                <span class="test-label"></span>
+            </div>
+            <div class="quiz-wrapper">
+                <div class="question">
+                    <img class="question-image" src="../../assets/svg/ask.svg" alt="">
+                    <div class="player-wrapper">
+                        <span class="question-answer">********</span>
+                        <div class="player">
+                            <img class="play" src="../../assets/svg/play.svg" alt="play">
+                            <div class="controls">
+                                <div class="range">
+                                    <input class="seek main-seek" type="range" value="0" min="0">
+                                    <div class="timing">
+                                        <span class="current main-current">00:00</span>
+                                        <span class="duration main-duration">00:00</span>
+                                    </div>
+                                </div>
+                                <div class="info-volume">
+                                    <input class="volume main-volume" type="range" max="100" min="0" value="50">
+                                    <span class="volume-value main-value">50</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="answers">
+                    <li class="answer-wrapper" data-item="0">
+                        <img class="mark" src="../../assets/svg/unchecked.svg" alt="">
+                        <span class="answer"></span>
+                    </li>
+                    <li class="answer-wrapper" data-item="1">
+                        <img class="mark" src="../../assets/svg/unchecked.svg" alt="">
+                        <span class="answer"></span>
+                    </li>
+                    <li class="answer-wrapper" data-item="2">
+                        <img class="mark" src="../../assets/svg/unchecked.svg" alt="">
+                        <span class="answer"></span>
+                    </li>
+                    <li class="answer-wrapper" data-item="3">
+                        <img class="mark" src="../../assets/svg/unchecked.svg" alt="">
+                        <span class="answer"></span>
+                    </li>
+                    <li class="answer-wrapper" data-item="4">
+                        <img class="mark" src="../../assets/svg/unchecked.svg" alt="">
+                        <span class="answer"></span>
+                    </li>
+                    <li class="answer-wrapper" data-item="5">
+                        <img class="mark" src="../../assets/svg/unchecked.svg" alt="">
+                        <span class="answer"></span>
+                    </li>
+                </ul>
+                <div class="welcom-game" style="display: flex;">
+                    <span class="text-welcom" ></span>
+                </div>
+                <div class="answer-comment" style="display: none;">
+                    <div class="answer-play">
+                        <img class="answer-image" src="../../assets/svg/ask.svg" alt="">
+                        <div class="answer-player">
+                            <span class="answer-name"></span>
+                            <span class="latin-name"></span>
+                            <div class="player-of-answer">
+                                <img class="image-of-answer" src="../../assets/svg/play.svg" alt="">
+                                <div class="range">
+                                    <input class="seek answer-block" type="range" value="0">
+                                    <div class="timing">
+                                        <span class="current answer-current">00:00</span>
+                                        <span class="duration answer-duration">00:00</span>
+                                    </div>
+                                </div>
+                                <div class="info-volume">
+                                    <input class="volume answer-volume" type="range" max="100" min="0" value="50">
+                                    <span class="volume-value answer-value">50</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="answer-description"></span>
+                </div>
+                <button class="next-test inactive"></button>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="git-wrapper">
+                <img class="git-logo" src="../../assets/svg/git.svg" alt="">
+                <span class="git-text"></span>
+            </div>
+            <img class="rsschool" src="../../assets/svg/rs.svg" alt="">
+        </footer>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+@font-face {
+	font-family: 'Frozen Memory Cyr';
+	src: url('./fonts/frozen_memory_cyr_by_chzshrft.eot'); /* IE 9 Compatibility Mode */
+	src: url('./fonts/frozen_memory_cyr_by_chzshrft.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
+		url('./fonts/frozen_memory_cyr_by_chzshrft.woff2') format('woff2'), /* Super Modern Browsers */
+		url('./fonts/frozen_memory_cyr_by_chzshrft.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+		url('./fonts/frozen_memory_cyr_by_chzshrft.ttf') format('truetype'), /* Safari, Android, iOS */
+		url('./fonts/frozen_memory_cyr_by_chzshrft.svg#frozen_memory_cyr_by_chzshrft') format('svg'); /* Chrome < 4, Legacy iOS */
+}
