@@ -16,7 +16,7 @@ class App {
             this.controller.getNews(e, (data): void => this.view.drawNews(<ModifyData>data));
         });
 
-        this.controller.getSources((data) => this.view.drawSources(<ResponseData>data));
+        this.controller.getSources((data): void => this.view.drawSources(<ResponseData>data));
     }
 }
 
