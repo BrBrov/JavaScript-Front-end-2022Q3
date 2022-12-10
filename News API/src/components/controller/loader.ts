@@ -11,7 +11,7 @@ class Loader {
         callback: Callback = () => {
             console.error('No callback for GET response');
         }
-    ) {
+    ): void {
         this.load('GET', endpoint, callback, options);
     }
 
@@ -25,7 +25,7 @@ class Loader {
         return res;
     }
 
-    makeUrl(options: DynamicObject, endpoint: string) {
+    makeUrl(options: DynamicObject, endpoint: string): string {
         const urlOptions: Urls = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
@@ -36,11 +36,11 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method: string, endpoint: string, callback: Callback, options = {}) {
+    load(method: string, endpoint: string, callback: Callback, options = {}): void {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
-            .then((data: ResponseData) => callback(data))
+            .then((data: ResponseData | ModifyData) => callback(data))
             .catch((err) => console.error(err));
     }
 }

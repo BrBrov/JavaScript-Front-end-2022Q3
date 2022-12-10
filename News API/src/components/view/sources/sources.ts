@@ -1,20 +1,23 @@
 import './sources.css';
 
 class Sources {
-    draw(data) {
-        const fragment = document.createDocumentFragment();
-        const sourceItemTemp = document.querySelector('#sourceItemTemp');
+    draw(data: Array<DynamicObject>): void {
+        const fragment: DocumentFragment = <DocumentFragment>document.createDocumentFragment();
+        const sourceItemTemp: HTMLTemplateElement = <HTMLTemplateElement>document.querySelector('#sourceItemTemp');
 
-        data.forEach((item) => {
-            const sourceClone = sourceItemTemp.content.cloneNode(true);
+        data.forEach((item: DynamicObject) => {
+            const sourceClone: HTMLElement = sourceItemTemp.content.cloneNode(true) as HTMLElement;
 
-            sourceClone.querySelector('.source__item-name').textContent = item.name;
-            sourceClone.querySelector('.source__item').setAttribute('data-source-id', item.id);
+            let elem: HTMLElement = sourceClone.querySelector('.source__item-name') as HTMLElement;
+            elem.textContent = <string>item.name;
+            elem = sourceClone.querySelector('.source__item') as HTMLElement;
+            elem.setAttribute('data-source-id', <string>item.id);
 
             fragment.append(sourceClone);
         });
 
-        document.querySelector('.sources').append(fragment);
+        const elem: HTMLElement = document.querySelector('.sources') as HTMLElement;
+        elem.append(fragment);
     }
 }
 

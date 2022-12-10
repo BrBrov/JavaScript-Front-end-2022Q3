@@ -16,7 +16,22 @@ declare global {
     }
     //response data
     interface ResponseData {
-        status: string;
-        source: Array<DynamicObject>;
+        readonly status: string;
+        sources: Array<DynamicObject>;
+    }
+    interface ModifyData {
+        readonly status: string;
+        totalResults: number;
+        articles: Array<NewsData>;
+    }
+
+    interface SourceInNews {
+        id: string;
+        name: string;
+    }
+
+    interface NewsData {
+        [key: string]: string;
+        source: SourceInNews;
     }
 }
