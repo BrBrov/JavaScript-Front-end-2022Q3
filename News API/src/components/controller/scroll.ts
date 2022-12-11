@@ -13,11 +13,12 @@ class Scroll {
         this.scrollBar = document.querySelector('.sources') as HTMLElement;
     }
     getPosition(e: MouseEvent): void {
+        e.preventDefault();
         this.clickControl = <boolean>true;
         this.startPosition = e.pageX - this.scrollBar.offsetLeft;
         this.offset = this.scrollBar.scrollLeft;
     }
-    endMOving(): void {
+    endMoving(): void {
         this.clickControl = false;
     }
     move(e: MouseEvent): void {
@@ -27,7 +28,7 @@ class Scroll {
         this.scrollBar.scrollLeft = this.offset - step;
     }
     wheel(e: WheelEvent): void {
-        console.log(e);
+        e.preventDefault();
         this.scrollBar.scrollLeft += e.deltaY - 75; //speed mode
     }
 }

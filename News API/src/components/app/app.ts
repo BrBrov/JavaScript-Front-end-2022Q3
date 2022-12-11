@@ -20,8 +20,8 @@ class App {
         this.controller.getSources((data): void => this.view.drawSources(<ResponseData>data));
         this.scroll.getScrollBar();
         this.scroll.scrollBar.addEventListener('mousedown', (e: MouseEvent): void => this.scroll.getPosition(e));
-        this.scroll.scrollBar.addEventListener('mouseleave', (): void => this.scroll.endMOving());
-        this.scroll.scrollBar.addEventListener('mouseup', (): void => this.scroll.endMOving());
+        this.scroll.scrollBar.addEventListener('mouseleave', (): void => this.scroll.endMoving());
+        this.scroll.scrollBar.addEventListener('mouseup', (): void => this.scroll.endMoving());
         this.scroll.scrollBar.addEventListener('mousemove', (e: MouseEvent): void => this.scroll.move(e));
         this.scroll.scrollBar.addEventListener('wheel', (e: WheelEvent): void => this.scroll.wheel(e));
     }
