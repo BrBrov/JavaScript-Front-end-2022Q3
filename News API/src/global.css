@@ -24,7 +24,7 @@ header h1 {
     }    
 }
 main{
-    min-height: calc(100vh - 260px);
+    min-height: calc(100vh - 247px);
 }
 footer {
     height: 100px;
@@ -52,6 +52,7 @@ footer .git{
     height: 60px;
 }
 footer .git .git-img{
+    display: block;
     width: 100%;
     height: 100%;
 }
@@ -60,7 +61,8 @@ footer .rss{
     width: 120px;
     height: 60px;
 }
-footer .git .git-img{
+footer .rss .rss-img{
+    display: block;
     width: 100%;
     height: 100%;
 }

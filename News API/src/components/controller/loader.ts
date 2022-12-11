@@ -1,3 +1,8 @@
+enum ConsoleText {
+    ErrCallback = 'No callback for GET response',
+    ResponseStatus = 'Sorry, but there is ${res.status} error: ${res.statusText}',
+}
+
 class Loader {
     baseLink: string;
     options: { apiKey: string };
@@ -9,7 +14,7 @@ class Loader {
     getResp(
         { endpoint, options = {} }: Endpoint,
         callback: Callback = () => {
-            console.error('No callback for GET response');
+            console.error(ConsoleText.ErrCallback);
         }
     ): void {
         this.load('GET', endpoint, callback, options);
@@ -17,8 +22,7 @@ class Loader {
 
     errorHandler(res: Response): Response {
         if (!res.ok) {
-            if (res.status === 401 || res.status === 404)
-                console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
+            if (res.status === 401 || res.status === 404) console.log(ConsoleText.ResponseStatus);
             throw Error(res.statusText);
         }
 
