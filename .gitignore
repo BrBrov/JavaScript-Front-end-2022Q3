@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+/.idea/brbrov-JSFE2022Q3.iml
+/.idea/modules.xml
+/.idea/vcs.xml
