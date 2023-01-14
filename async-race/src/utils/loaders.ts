@@ -1,9 +1,9 @@
-import {isNumberObject} from 'util/types';
-
 export default class Loaders {
     private readonly host: string = 'http://127.0.0.1:3000';
     private readonly garage: string = '/garage';
     private readonly winners: string = '/winners';
+    private countCars: number | undefined;
+    private countWinners: number | undefined;
     public async getCars(limit?: number, page?: number): Promise<CarsData> {
         let path = '';
         if (page) {
@@ -57,7 +57,7 @@ export default class Loaders {
         // _limit = number
         // _sort = 'id'|'wins'|'time'
         // _order= 'ASC'|'DESC'
-        // If _limit param is passed api returns a header X-Total-Count that countains total number of records.
+        // If _limit param is passed api returns a header X-Total-Count that contains total number of records.
         let path = '';
         if (page) {
             path += `?_page=${page}`;
@@ -114,6 +114,21 @@ export default class Loaders {
     private async RequestServer<T>(url: URL, options?: RequestInit): Promise<T> {
         const response: Response = await fetch(url, options!);
         if (!response.ok) throw new Error(`Server error: ${response.statusText} -> ${response.status}`);
-        return await response.json();
+        const data = await response.json();
+        if (this.checkTypeAllWinners(data)) {
+            const count = response.headers.get('X-Total-Count');
+            if (count) this.countWinners = Number(count);
+        }
+        if (this.checkTypeCarsData(data)) {
+            const count = response.headers.get('X-Total-Count');
+            if (count) this.countCars = Number(count);
+        }
+        return data;
+    }
+    private checkTypeAllWinners(data: AllWinners): data is AllWinners {
+        return !data[0].time;
+    }
+    private checkTypeCarsData(data: CarsData): data is CarsData {
+        return !data[0].color;
     }
 }
