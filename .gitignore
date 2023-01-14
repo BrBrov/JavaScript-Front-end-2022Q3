@@ -6,6 +6,8 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 .idea
+async-race-api
+async-race-api/*
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
@@ -106,3 +108,5 @@ dist
 /.idea/brbrov-JSFE2022Q3.iml
 /.idea/modules.xml
 /.idea/vcs.xml
+!/async-race-api/
+/async-race-api/
