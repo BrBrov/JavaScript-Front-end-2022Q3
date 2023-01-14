@@ -27,7 +27,7 @@ export default class Footer {
 
     footer.append(elem);
 
-    elem = this.createLink(Links.rss, 'rss', './assets/png/rss.png');
+    elem = this.createLink(Links.rss, 'rss', './assets/img/rss.png');
 
     footer.append(elem);
 

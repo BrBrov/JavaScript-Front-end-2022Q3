@@ -1,3 +1,4 @@
+import './main.scss';
 import ButtonElement from '../../components/button/button';
 
 export default class Main {
