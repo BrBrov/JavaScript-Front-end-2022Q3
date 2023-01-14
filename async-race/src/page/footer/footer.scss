@@ -1,0 +1,30 @@
+.footer{
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 20px;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.footer__git-wrapper{
+  width: 50px;
+  height: 50px;
+}
+
+.footer__git-link,
+.footer__git-img,
+.footer__rss-link,
+.footer__rss-img
+{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.footer__text {
+  font-family: 'Gagalin', serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1em;
+}
