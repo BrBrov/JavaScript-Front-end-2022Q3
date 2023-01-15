@@ -1,14 +1,5 @@
 export default class SaveElems {
-  private readonly saveClass: SaveElems | undefined;
-
   private template: HTMLElement | undefined;
-
-  constructor() {
-    if (!this.saveClass) {
-      this.saveClass = new SaveElems();
-      this.saveClass.template = undefined;
-    }
-  }
 
   public save(template: HTMLElement): void {
     this.template = template;
@@ -19,5 +10,9 @@ export default class SaveElems {
       return null;
     }
     return this.template;
+  }
+
+  public clear(): void {
+    this.template = undefined;
   }
 }

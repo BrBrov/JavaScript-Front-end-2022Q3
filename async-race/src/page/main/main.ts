@@ -3,18 +3,24 @@ import ButtonElement from '../../components/button/button';
 import GarageMenu from '../../components/garage/garage-menu';
 import Garage from '../../components/garage/garage';
 import State from '../../utils/state';
+import SaveElems from '../../utils/save-elems';
 
 export default class Main {
   public main: HTMLElement;
 
   public garage: Garage | undefined;
 
+  // public winners: Winners;
+
   public garageMenu: GarageMenu;
 
   private state: State;
 
+  private save: SaveElems;
+
   constructor() {
     this.state = new State();
+    this.save = new SaveElems();
     this.garageMenu = new GarageMenu();
     this.main = this.createMain();
   }
@@ -46,16 +52,31 @@ export default class Main {
 
   public createGarage(data: CarsData): HTMLElement {
     this.garage = new Garage(this.state.getGaragePage(), data);
-    console.log(this.garage.garage);
     return <HTMLElement> this.garage.garage;
   }
 
+  // public createWinners(data: CarsData): HTMLElement {
+  //
+  // }
+
   public addGarage(): void {
-    const block: HTMLElement = this.main.querySelector('.main__block-view') as HTMLElement;
+    const block: HTMLElement = this.removeBlock();
     if (!block) throw new Error('Cannot find .main__block-view');
     if (!this.garageMenu.MenuGarage) throw new Error('Not found garage menu into main!');
     if (!this.garage?.garage) throw new Error('Cannot find garage!');
     block.append(this.garageMenu.MenuGarage);
     block.append(this.garage.garage);
+    console.log(this.save.restore());
+    this.main.append(block);
+  }
+
+  private removeBlock(): HTMLElement {
+    let block: HTMLElement = this.main.querySelector('.main__block-view') as HTMLElement;
+    const copy: HTMLElement = block.cloneNode(true) as HTMLElement;
+    this.save.save(copy);
+    block.remove();
+    block = document.createElement('div');
+    block.className = 'main__block-view';
+    return block;
   }
 }
