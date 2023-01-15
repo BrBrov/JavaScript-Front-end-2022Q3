@@ -1,23 +1,23 @@
 export default class SaveElems {
-    private readonly saveClass: SaveElems | undefined;
-    private template: HTMLElement | undefined;
+  private readonly saveClass: SaveElems | undefined;
 
-    constructor() {
-        if (!this.saveClass) {
-            this.saveClass = new SaveElems();
-            this.saveClass.template = undefined;
-        }
-        return this.saveClass;
-    }
+  private template: HTMLElement | undefined;
 
-    public save(template: HTMLElement): void {
-        this.template = template;
+  constructor() {
+    if (!this.saveClass) {
+      this.saveClass = new SaveElems();
+      this.saveClass.template = undefined;
     }
+  }
 
-    public restore(): HTMLElement | null {
-        if (!this.template) {
-            return null;
-        }
-        return this.template;
+  public save(template: HTMLElement): void {
+    this.template = template;
+  }
+
+  public restore(): HTMLElement | null {
+    if (!this.template) {
+      return null;
     }
+    return this.template;
+  }
 }

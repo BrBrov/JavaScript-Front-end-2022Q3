@@ -28,7 +28,7 @@ export default class GarageMenu {
     input.type = 'text';
     input.placeholder = 'Enter car name';
 
-    block.append(block);
+    block.append(input);
 
     input = document.createElement('input');
     input.className = 'main__car-palette';

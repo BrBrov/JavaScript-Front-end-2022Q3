@@ -2,126 +2,136 @@ import ButtonElement from '../button/button';
 import Car from '../car/car';
 import './car-race.scss';
 import '../../assets/svg/finish.svg';
+
 export default class CarRace {
-    public carRace: HTMLElement;
-    private btnStart: ButtonElement | undefined;
-    private btnStop: ButtonElement | undefined;
-    private btnSelect: ButtonElement | undefined;
-    private btnRemove: ButtonElement | undefined;
-    private name: HTMLSpanElement | undefined;
+  public carRace: HTMLElement;
 
-    public car: Car | undefined;
+  private btnStart: ButtonElement | undefined;
 
-    public startFlag: boolean = false;
+  private btnStop: ButtonElement | undefined;
 
-//     Here must enter car data
-// {
-//     name: string,
-//     color: string,
-//     id: number
-// }
-    constructor(data: CarData) {
-        this.carRace = this.createCar(data);
+  private btnSelect: ButtonElement | undefined;
+
+  private btnRemove: ButtonElement | undefined;
+
+  private name: HTMLSpanElement | undefined;
+
+  public car: Car | undefined;
+
+  public startFlag: boolean = false;
+
+  //     Here must enter car data
+  // {
+  //     name: string,
+  //     color: string,
+  //     id: number
+  // }
+  constructor(data: CarData) {
+    this.carRace = this.createCar(data);
+  }
+
+  public checkStartFlag(flag: boolean): void {
+    this.startFlag = flag;
+    this.switcherBtn();
+  }
+
+  public updateCar(name: string, color: string): void {
+    this.name!.textContent = name;
+    this.car?.setColor(color);
+  }
+
+  private switcherBtn(): void {
+    if (this.startFlag) {
+      this.btnStart?.disable();
+      this.btnRemove?.disable();
+      this.btnSelect?.disable();
+    } else {
+      this.btnSelect?.enable();
+      this.btnStart?.enable();
+      this.btnRemove?.enable();
     }
+  }
 
-    public checkStartFlag(flag: boolean): void {
-        this.startFlag = flag;
-        this.switcherBtn();
-    }
+  private createCar(data: CarData): HTMLElement {
+    const wrapper: HTMLElement = document.createElement('div');
+    wrapper.className = 'main__car-block';
+    wrapper.dataset.id = `${data.id}`;
 
-    public updateCar(name: string, color: string): void {
-        this.name!.textContent = name;
-        this.car?.setColor(color);
-    }
+    let block: HTMLElement = document.createElement('div');
+    block.className = 'main__cars-panel';
 
-    private switcherBtn(): void {
-        if (this.startFlag) {
-            this.btnStart?.disable();
-            this.btnRemove?.disable();
-            this.btnSelect?.disable();
-        } else {
-            this.btnSelect?.enable();
-            this.btnStart?.enable();
-            this.btnRemove?.enable();
-        }
-    }
-    private createCar(data: CarData): HTMLElement {
-        const wrapper: HTMLElement = document.createElement('div');
-        wrapper.className = 'main__car-block';
-        wrapper.dataset.id = `${data.id}`;
+    wrapper.append(block);
 
-        let block: HTMLElement = document.createElement('div');
-        block.className = 'main__cars-panel';
+    let panel: HTMLElement = document.createElement('div');
+    panel.className = 'main__top-panel';
 
-        wrapper.append(block);
+    this.createBtn();
 
-        let panel: HTMLElement = document.createElement('div');
-        panel.className = 'main__top-panel';
+    panel.append(this.btnSelect!.button);
 
-        this.createBtn();
+    panel.append(this.btnRemove!.button);
 
-        panel.append(this.btnSelect!.button);
+    block.append(panel);
 
-        panel.append(this.btnRemove!.button);
+    panel = document.createElement('div');
+    panel.className = 'main__bottom-panel';
 
-        block.append(panel);
+    panel.append(this.btnStart!.button);
 
-        panel = document.createElement('div');
-        panel.className = 'main__panel-bottom';
+    panel.append(this.btnStop!.button);
 
-        panel.append(this.btnStart!.button);
+    block.append(panel);
 
-        panel.append(this.btnStop!.button);
+    block = document.createElement('div');
+    block.className = 'main__track-block';
 
-        const track: HTMLElement = this.createTrack(data.name, data.color, data.id);
+    const text: HTMLSpanElement = document.createElement('span');
+    text.className = 'main-car-name';
+    text.textContent = data.name;
 
-        block.append(track);
+    block.append(text);
 
-        wrapper.append(block);
+    const track: HTMLElement = this.createTrack(data.color, data.id);
 
-        return wrapper;
-    }
+    block.append(track);
 
-    private createBtn(): void {
-        this.btnSelect = new ButtonElement('main__button-select', 'Select');
-        this.btnRemove = new ButtonElement('main__button-remove', 'Remove');
-        this.btnStart = new ButtonElement('main__button-start', 'Start');
-        this.btnStop = new ButtonElement('main__button-stop', 'Stop');
-    }
-    private createTrack(name: string, color: string, id: number): HTMLElement {
-        const block: HTMLElement = document.createElement('div');
-        block.className = 'main__track';
+    wrapper.append(block);
 
-        let panel: HTMLElement = document.createElement('div');
-        panel.className = 'main__name-block';
+    return wrapper;
+  }
 
-        this.name = document.createElement('span');
-        this.name.className = 'main__car-name';
-        this.name.textContent = name;
+  private createBtn(): void {
+    this.btnSelect = new ButtonElement('main__button-select', 'Select');
+    this.btnRemove = new ButtonElement('main__button-remove', 'Remove');
+    this.btnStart = new ButtonElement('main__button-start', 'Start');
+    this.btnStop = new ButtonElement('main__button-stop', 'Stop');
+  }
 
-        panel.append(this.name);
+  private createTrack(color: string, id: number): HTMLElement {
+    const block: HTMLElement = document.createElement('div');
+    block.className = 'main__track';
 
-        panel = document.createElement('div');
-        panel.className = 'main__car-track';
+    const panel: HTMLElement = document.createElement('div');
+    panel.className = 'main__car-track';
 
-        this.car = new Car(color, id);
+    this.car = new Car(color, id);
 
-        panel.append(this.car.car);
+    panel.append(this.car.car);
 
-        const finish: HTMLElement = document.createElement('div');
-        finish.className = 'main__finish';
+    const finish: HTMLElement = document.createElement('div');
+    finish.className = 'main__finish';
 
-        const flag: HTMLImageElement = document.createElement('img');
-        flag.className = 'main__finish-flag';
-        flag.alt = 'Finish';
-        flag.src = './assets/svg/finish.svg';
+    const flag: HTMLImageElement = document.createElement('img');
+    flag.className = 'main__finish-flag';
+    flag.alt = 'Finish';
+    flag.src = './assets/svg/finish.svg';
 
-        finish.append(flag);
+    finish.append(flag);
 
-        block.append(panel);
+    block.append(panel);
 
-        block.append(finish);
+    block.append(finish);
 
-        return block;
-    }
+    return block;
+  }
 }

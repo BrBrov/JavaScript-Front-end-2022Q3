@@ -1,29 +1,32 @@
 import './garage-label.scss';
+
 export default class GarageLabel {
-    label: HTMLElement;
-    constructor(count?: number) {
-        this.label = this.createLabel(count);
-    }
+  label: HTMLElement;
 
-    private createLabel(count?: number): HTMLElement {
-        const elem: HTMLElement = document.createElement('div');
-        elem.className = 'main__garage-label';
+  constructor(count?: number) {
+    this.label = this.createLabel(count);
+  }
 
-        let text: HTMLSpanElement = document.createElement('span');
-        text.className = 'main__garage-title';
-        text.textContent = 'GARAGE: ';
+  private createLabel(count?: number): HTMLElement {
+    const elem: HTMLElement = document.createElement('div');
+    elem.className = 'main__garage-label';
 
-        elem.append(text);
+    let text: HTMLSpanElement = document.createElement('span');
+    text.className = 'main__garage-title';
+    text.textContent = 'GARAGE: ';
 
-        text = document.createElement('span');
-        text.className = 'main__garage-count';
-        text.textContent = `${count || 0}`;
+    elem.append(text);
 
-        elem.append(text);
+    text = document.createElement('span');
+    text.className = 'main__garage-count';
+    text.textContent = `${count || 0}`;
 
-        return elem;
-    }
-    public setCount(count: number): void {
-        (this.label.querySelector('.main__garage-count') as HTMLElement).textContent = `${count}`;
-    }
+    elem.append(text);
+
+    return elem;
+  }
+
+  public setCount(count: number): void {
+    (this.label.querySelector('.main__garage-count') as HTMLElement).textContent = `${count}`;
+  }
 }
