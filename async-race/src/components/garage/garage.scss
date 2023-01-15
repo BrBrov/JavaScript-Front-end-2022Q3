@@ -1,0 +1,13 @@
+.main__garage-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.main__race-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+}
+

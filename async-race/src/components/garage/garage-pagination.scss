@@ -1,0 +1,48 @@
+$text: #051551;
+
+.main__garage-pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+}
+
+.main__page-left,
+.main__page-right {
+  width: 25px;
+  height: 17px;
+  font-family: 'AMG Anahit', sans-serif;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: $text;
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(180deg, #80e5b8, #a6e6cb, #d4e5da);
+}
+
+.main__page-left:hover,
+.main__page-right:hover {
+  color: #094c03;
+}
+
+.main__page-left:active,
+.main__page-right:active {
+  color: #620404;
+}
+
+.main__page-input {
+  width: 18px;
+  height: 18px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  font-family: 'AMG Anahit', sans-serif;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: $text;
+}
+
+.main__page-input:active {
+  border: none;
+  border-radius: 5px;
+}

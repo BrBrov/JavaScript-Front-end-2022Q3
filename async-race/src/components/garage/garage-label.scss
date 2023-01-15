@@ -1,0 +1,24 @@
+$text: #14a09a;
+
+.main__garage-label {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+.main__garage-title {
+  font-family: 'Gagalin', serif;
+  font-size: 2em;
+  font-weight: 500;
+  font-style: normal;
+  color: $text;
+}
+
+.main__garage-count {
+  font-family: 'Gagalin', serif;
+  font-size: 2em;
+  font-weight: 500;
+  font-style: normal;
+  color: $text;
+}

@@ -1,5 +1,5 @@
 export default class CarSVG {
-  private svg: SVGElement;
+  public svg: SVGElement;
 
   constructor(color: string, className: string, id: number) {
     this.svg = this.createCarSvg(color, className, id);
@@ -25,7 +25,7 @@ export default class CarSVG {
     return svg;
   }
 
-  public colorReDrow(color: string): void {
+  public colorReDraw(color: string): void {
     const path: SVGElement = this.svg.getElementsByTagNameNS('http://www.w3.org/2000/svg', 'path')[0];
     path.setAttribute('fill', `${color}`);
   }

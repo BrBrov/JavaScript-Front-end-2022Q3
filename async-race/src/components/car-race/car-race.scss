@@ -1,0 +1,93 @@
+.main__car-block {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.main__cars-panel{
+  position: relative;
+  z-index: 0;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.main__top-panel,
+.main__panel-bottom {
+  display: flex;
+  width: 280px;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.main__button-select,
+.main__button-remove,
+.main__button-start,
+.main__button-stop {
+  width: 120px;
+  height: 40px;
+  font-family: 'Gagalin', sans-serif;
+  font-size: 1.2em;
+  font-style: normal;
+  color: #0b2241;
+  background: radial-gradient(circle at center, #96eae1, #61e8d9, #1cead8, #00fddf);
+  border: none;
+  border-radius: 5px;
+}
+
+.main__button-select:hover,
+.main__button-remove:hover,
+.main__button-start:hover,
+.main__button-stop:hover {
+  background: radial-gradient(circle at center, #96eabd, #61e890, #1cea83, #00fd76);
+  box-shadow: #2946b0 1px 0 1px 2px;
+}
+
+.main__button-select:active,
+.main__button-remove:active,
+.main__button-start:active,
+.main__button-stop:active {
+  background: radial-gradient(circle at center, #dcec97, #e4e861, #bdea1c, #cffd00);
+  box-shadow: #0b2241 1px 0 1px 2px;
+}
+
+.main__track{
+  display: flex;
+  width: 80%;
+  position: relative;
+  z-index: 0;
+  flex-direction: column;
+}
+
+.main__name-block{
+  display: flex;
+  position: relative;
+  z-index: 0;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.main__car-name{
+  font-family: 'Gagalin', sans-serif;
+  font-size: 1.2em;
+  font-weight: normal;
+  color: #4dddff;
+}
+
+.main__car-track {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+}
+
+.main__finish{
+  position: relative;
+  z-index: 1;
+}
+
+.main__finish-flag {
+  width: 100%;
+  height: 100%;
+}

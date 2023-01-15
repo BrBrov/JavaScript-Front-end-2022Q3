@@ -2,59 +2,64 @@ import './garage-menu.scss';
 import ButtonElement from '../button/button';
 
 export default class GarageMenu {
-    private btnCreateUpdate: ButtonElement | undefined;
-    private btnRace: ButtonElement | undefined;
-    private btnReset: ButtonElement | undefined;
-    private btnGenerateCars: ButtonElement | undefined;
+  private btnCreateUpdate: ButtonElement | undefined;
 
-    public MenuGarage: HTMLElement;
-    constructor() {
-        this.MenuGarage = this.createGarageMenu();
-    }
-    private createGarageMenu(): HTMLElement {
-        const wrapper: HTMLElement = document.createElement('div');
-        wrapper.className = 'main__garage-menu';
+  private btnRace: ButtonElement | undefined;
 
-        let block: HTMLElement = document.createElement('div');
-        block.className = 'main__block-manipulate';
+  private btnReset: ButtonElement | undefined;
 
-        let input: HTMLInputElement = document.createElement('input');
-        input.className = 'main__car-name';
-        input.type = 'text';
-        input.placeholder = 'Enter car name';
+  private btnGenerateCars: ButtonElement | undefined;
 
-        block.append(block);
+  public MenuGarage: HTMLElement;
 
-        input = document.createElement('input');
-        input.className = 'main__car-palette';
-        input.type = 'color';
-        input.value = '#ffffff';
+  constructor() {
+    this.MenuGarage = this.createGarageMenu();
+  }
 
-        block.append(input);
+  private createGarageMenu(): HTMLElement {
+    const wrapper: HTMLElement = document.createElement('div');
+    wrapper.className = 'main__garage-menu';
 
-        this.btnCreateUpdate = new ButtonElement('main__update-create', 'Create car');
+    let block: HTMLElement = document.createElement('div');
+    block.className = 'main__block-manipulate';
 
-        block.append(this.btnCreateUpdate.button);
+    let input: HTMLInputElement = document.createElement('input');
+    input.className = 'main__car-name';
+    input.type = 'text';
+    input.placeholder = 'Enter car name';
 
-        wrapper.append(block);
+    block.append(block);
 
-        block = document.createElement('div');
-        block.className = 'main__block-buttons';
+    input = document.createElement('input');
+    input.className = 'main__car-palette';
+    input.type = 'color';
+    input.value = '#ffffff';
 
-        this.btnRace = new ButtonElement('main__button-race', 'Race');
+    block.append(input);
 
-        block.append(this.btnRace.button);
+    this.btnCreateUpdate = new ButtonElement('main__update-create', 'Create car');
 
-        this.btnReset = new ButtonElement('main__button-reset', 'Reset');
+    block.append(this.btnCreateUpdate.button);
 
-        block.append(this.btnReset.button);
+    wrapper.append(block);
 
-        this.btnGenerateCars = new ButtonElement('main__button-generate', 'Generate 100 cars!');
+    block = document.createElement('div');
+    block.className = 'main__block-buttons';
 
-        block.append(this.btnGenerateCars.button);
+    this.btnRace = new ButtonElement('main__button-race', 'Race');
 
-        wrapper.append(block);
+    block.append(this.btnRace.button);
 
-        return wrapper;
-    }
+    this.btnReset = new ButtonElement('main__button-reset', 'Reset');
+
+    block.append(this.btnReset.button);
+
+    this.btnGenerateCars = new ButtonElement('main__button-generate', 'Generate 100 cars!');
+
+    block.append(this.btnGenerateCars.button);
+
+    wrapper.append(block);
+
+    return wrapper;
+  }
 }
