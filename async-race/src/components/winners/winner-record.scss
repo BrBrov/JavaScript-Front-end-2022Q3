@@ -5,11 +5,11 @@
 }
 
 .main__winner-record:nth-child(odd) {
-  background-color: #b5d8e1;
+  background-color: #cbe6ed;
 }
 
 .main__winner-record:nth-child(even) {
-  background-color: #c4e6d2;
+  background-color: #d7efee;
 }
 
 .main__winner-number {
@@ -21,6 +21,7 @@
   width: 80px;
   flex-direction: row;
   justify-content: center;
+  background-color: #0d1715;
 }
 
 .main__winner-svg {
@@ -47,7 +48,7 @@
   align-self: center;
   text-align: center;
   font-family: 'AMG Anahit', sans-serif;
-  font-size: 1em;
+  font-size: 1.1em;
   font-weight: 500;
   color: #240541;
 }

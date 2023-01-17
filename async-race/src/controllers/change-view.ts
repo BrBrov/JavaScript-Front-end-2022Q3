@@ -32,7 +32,7 @@ export default class ViewChange {
   private async toWinners(ev: Event): Promise<void> {
     ev.stopPropagation();
     if (this.clickCTRL) return;
-    if (this.state.getView() === 'winners') {
+    if (this.state.getView() === 'garage') {
       this.clickCTRL = true;
       const winLoader = new WinnersLoader();
       const carsLoader = new CarsLoader();
@@ -47,7 +47,7 @@ export default class ViewChange {
       const count: number = winLoader.getCountWinners() || 0;
       this.main.createWinners(winsData, carsData, count);
       this.main.addWinners();
-      this.state.setView('garage');
+      this.state.setView('winners');
       this.clickCTRL = false;
     }
   }
@@ -56,7 +56,7 @@ export default class ViewChange {
     ev.stopPropagation();
     if (this.clickCTRL) return;
     console.log(ev);
-    if (this.state.getView() === 'garage') {
+    if (this.state.getView() === 'winners') {
       this.clickCTRL = true;
       console.log('+++');
       if (this.saver.check()) {
@@ -68,7 +68,7 @@ export default class ViewChange {
         this.main.createGarage(carsData, count);
       }
       this.main.addGarage();
-      this.state.setView('winners');
+      this.state.setView('garage');
       this.clickCTRL = false;
     }
   }
