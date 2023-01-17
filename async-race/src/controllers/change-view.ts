@@ -13,6 +13,10 @@ export default class ViewChange {
 
   private clickCTRL: boolean = false;
 
+  private btnGarage: HTMLButtonElement | undefined;
+
+  private btnWinners: HTMLButtonElement | undefined;
+
   constructor(main: Main) {
     this.main = main;
     this.saver = new Save();
@@ -21,11 +25,13 @@ export default class ViewChange {
   }
 
   private addListeners(): void {
-    const btnGarage: HTMLButtonElement = document.querySelector('.main__button-garage') as HTMLButtonElement;
-    const btnWinners: HTMLButtonElement = document.querySelector('.main__button-winners') as HTMLButtonElement;
+    this.btnGarage = document.querySelector('.main__button-garage') as HTMLButtonElement;
+    this.btnWinners = document.querySelector('.main__button-winners') as HTMLButtonElement;
 
-    btnGarage.addEventListener('click', this.toGarage.bind(this));
-    btnWinners.addEventListener('click', this.toWinners.bind(this));
+    this.setBtnView();
+
+    this.btnGarage.addEventListener('click', this.toGarage.bind(this));
+    this.btnWinners.addEventListener('click', this.toWinners.bind(this));
   }
   // main__block-view for garage;
 
@@ -48,6 +54,7 @@ export default class ViewChange {
       this.main.createWinners(winsData, carsData, count);
       this.main.addWinners();
       this.state.setView('winners');
+      this.setBtnView();
       this.clickCTRL = false;
     }
   }
@@ -69,7 +76,18 @@ export default class ViewChange {
       }
       this.main.addGarage();
       this.state.setView('garage');
+      this.setBtnView();
       this.clickCTRL = false;
+    }
+  }
+
+  private setBtnView(): void {
+    if (this.state.getView() === 'garage') {
+      this.btnGarage!.disabled = true;
+      this.btnWinners!.disabled = false;
+    } else {
+      this.btnGarage!.disabled = false;
+      this.btnWinners!.disabled = true;
     }
   }
 }

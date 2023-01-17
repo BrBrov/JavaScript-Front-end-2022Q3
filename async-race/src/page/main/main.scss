@@ -45,6 +45,13 @@
   box-shadow: #0f282e 0 0 1px 1px;
 }
 
+.main__button-garage:disabled,
+.main__button-winners:disabled {
+  color: #101f23;
+  background: #acd5e3;
+  box-shadow: none;
+}
+
 .main__block-view {
   display: flex;
   flex-direction: column;
