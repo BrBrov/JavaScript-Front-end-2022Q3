@@ -1,6 +1,6 @@
 import GarageLabel from './garage-label';
 import CarRace from '../car-race/car-race';
-import Pagination from './garage-pagination';
+import Pagination from '../pagination-block/pagination';
 import './garage.scss';
 
 export default class Garage {
@@ -34,7 +34,7 @@ export default class Garage {
 
     wrapper.append(raceBlock);
 
-    this.pagination = new Pagination();
+    this.pagination = new Pagination('garage');
 
     wrapper.append(this.pagination.pagination);
 

@@ -43,29 +43,54 @@ export default class Page {
 
     const fakeData: CarsData = [
       {
-        name: 'Tesla',
-        color: '#e6e6fa',
+        name: 'Tesla Govno',
+        color: '#0d0dda',
         id: 1,
       },
       {
-        name: 'BMW',
+        name: 'BMW Korito',
         color: '#fede00',
         id: 2,
       },
       {
-        name: 'Mersedes',
+        name: 'Mersedes Tazik',
         color: '#6c779f',
         id: 3,
       },
       {
-        name: 'Ford',
+        name: 'Ford Pony',
         color: '#ef3c40',
         id: 4,
       },
     ];
 
-    this.main.createGarage(fakeData);
-    this.main.addGarage();
+    const fakeWin: AllWinners = [
+      {
+        id: 1,
+        wins: 1,
+        time: 10,
+      },
+      {
+        id: 2,
+        wins: 2,
+        time: 5,
+      },
+      {
+        id: 3,
+        wins: 5,
+        time: 2,
+      },
+      {
+        id: 4,
+        wins: 2,
+        time: 7.55,
+      },
+    ];
+
+    // this.main.createGarage(fakeData);
+    // this.main.addGarage();
+    this.main.createWinners(fakeWin, fakeData);
+    this.main.addWinners();
   }
 
   public exam(): void {

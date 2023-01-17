@@ -28,6 +28,8 @@ export default class WinnerRecord {
 
     carWrapper.append(this.car.svg);
 
+    wrapper.append(carWrapper);
+
     const otherDataArray: Array<string | number> = [];
     otherDataArray.push(carData.name);
     otherDataArray.push(data.wins);

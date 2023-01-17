@@ -1,13 +1,20 @@
 import './winners.scss';
+import TableHeader from './winner-theader';
+import WinRecord from './winner-record';
+import PaginationBlock from '../pagination-block/pagination';
 
 export default class Winners {
   public winners: HTMLElement;
 
-  constructor(data: AllWinners) {
-    this.winners = this.createWinners(data);
+  private tableHeader: TableHeader | undefined;
+
+  private pagination: HTMLElement | undefined;
+
+  constructor(data: AllWinners, cars: CarsData) {
+    this.winners = this.createWinners(data, cars);
   }
 
-  private createWinners(data: AllWinners): HTMLElement {
+  private createWinners(data: AllWinners, cars: CarsData): HTMLElement {
     const wrapper: HTMLElement = document.createElement('div');
     wrapper.className = 'main__winners-block';
 
@@ -18,6 +25,27 @@ export default class Winners {
     const pages: HTMLElement = this.createPageCounterBlock(1);
 
     wrapper.append(pages);
+
+    const tableWrapper: HTMLElement = document.createElement('div');
+    tableWrapper.className = 'main__winners-table';
+
+    this.tableHeader = new TableHeader();
+
+    tableWrapper.append(this.tableHeader.header);
+
+    data.forEach((win: Winner) => {
+      const car: CarData[] = cars.filter((carData: CarData) => win.id === carData.id);
+
+      const winRecord: HTMLElement = new WinRecord(win, car[0]).record;
+
+      tableWrapper.append(winRecord);
+    });
+
+    wrapper.append(tableWrapper);
+
+    this.pagination = new PaginationBlock('winner').pagination;
+
+    wrapper.append(this.pagination);
 
     return wrapper;
   }

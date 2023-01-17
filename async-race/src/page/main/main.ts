@@ -2,6 +2,7 @@ import './main.scss';
 import ButtonElement from '../../components/button/button';
 import GarageMenu from '../../components/garage/garage-menu';
 import Garage from '../../components/garage/garage';
+import Winners from '../../components/winners/winners';
 import State from '../../utils/state';
 import SaveElems from '../../utils/save-elems';
 
@@ -10,7 +11,7 @@ export default class Main {
 
   public garage: Garage | undefined;
 
-  // public winners: Winners;
+  public winners: Winners | undefined;
 
   public garageMenu: GarageMenu;
 
@@ -55,9 +56,10 @@ export default class Main {
     return <HTMLElement> this.garage.garage;
   }
 
-  // public createWinners(data: CarsData): HTMLElement {
-  //
-  // }
+  public createWinners(winners: AllWinners, data: CarsData): HTMLElement {
+    this.winners = new Winners(winners, data);
+    return <HTMLElement> this.winners.winners;
+  }
 
   public addGarage(): void {
     const block: HTMLElement = this.removeBlock();
@@ -66,7 +68,14 @@ export default class Main {
     if (!this.garage?.garage) throw new Error('Cannot find garage!');
     block.append(this.garageMenu.MenuGarage);
     block.append(this.garage.garage);
-    console.log(this.save.restore());
+    this.main.append(block);
+  }
+
+  public addWinners(): void {
+    const block: HTMLElement = this.removeBlock();
+    if (!block) throw new Error('Cannot find .main__block-view');
+    if (!this.winners) throw new Error('Winners block was not created!');
+    block.append(this.winners.winners);
     this.main.append(block);
   }
 
