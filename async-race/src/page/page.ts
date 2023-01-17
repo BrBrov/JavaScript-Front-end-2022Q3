@@ -2,12 +2,14 @@ import './page.scss';
 import Header from './header/header';
 import Main from './main/main';
 import Footer from './footer/footer';
-// import State from '../utils/state';
+import State from '../utils/state';
+import CarsLoader from '../utils/loaders-cars';
+// import WinnersLoader from '../utils/loaders-winners';
 
 export default class Page {
   private readonly main: Main;
 
-  // private state: State;
+  private state: State | undefined;
 
   private garage: HTMLElement | undefined;
 
@@ -31,7 +33,6 @@ export default class Page {
     return [container, page];
   }
 
-  // TODO: must add state page logic
   private addElemsToPage(header: HTMLElement, main: Main, footer: HTMLElement): void {
     const page: HTMLElement[] = this.generatePage();
 
@@ -41,59 +42,75 @@ export default class Page {
 
     document.body.append(page[0]);
 
-    const fakeData: CarsData = [
-      {
-        name: 'Tesla Govno',
-        color: '#0d0dda',
-        id: 1,
-      },
-      {
-        name: 'BMW Korito',
-        color: '#fede00',
-        id: 2,
-      },
-      {
-        name: 'Mersedes Tazik',
-        color: '#6c779f',
-        id: 3,
-      },
-      {
-        name: 'Ford Pony',
-        color: '#ef3c40',
-        id: 4,
-      },
-    ];
+    this.state = new State();
 
-    const fakeWin: AllWinners = [
-      {
-        id: 1,
-        wins: 1,
-        time: 10,
-      },
-      {
-        id: 2,
-        wins: 2,
-        time: 5,
-      },
-      {
-        id: 3,
-        wins: 5,
-        time: 2,
-      },
-      {
-        id: 4,
-        wins: 2,
-        time: 7.55,
-      },
-    ];
-
-    // this.main.createGarage(fakeData);
-    // this.main.addGarage();
-    this.main.createWinners(fakeWin, fakeData);
-    this.main.addWinners();
+    if (this.state && this.state.getView() === 'garage') {
+      const loader: CarsLoader = new CarsLoader();
+      new Promise((resolve, reject) => {
+        resolve(loader.getCars(7, this.state?.getGaragePage()));
+        reject(new Error('Cannot load cars data!'));
+      })
+        .then((carsData): void => {
+          console.log(carsData);
+          this.main.createGarage(<CarsData>carsData);
+          this.main.addGarage();
+        })
+        .catch((e: Error) => {
+          throw e;
+        });
+    } else {
+      // this.main.createWinners(fakeWin, fakeData);
+      // this.main.addWinners();
+    }
   }
 
   public exam(): void {
     console.log('App started!');
   }
 }
+// TODO: this fake data for testing
+// const fakeData: CarsData = [
+//   {
+//     name: 'Tesla Govno',
+//     color: '#0d0dda',
+//     id: 1,
+//   },
+//   {
+//     name: 'BMW Korito',
+//     color: '#fede00',
+//     id: 2,
+//   },
+//   {
+//     name: 'Mersedes Tazik',
+//     color: '#6c779f',
+//     id: 3,
+//   },
+//   {
+//     name: 'Ford Pony',
+//     color: '#ef3c40',
+//     id: 4,
+//   },
+// ];
+//
+// const fakeWin: AllWinners = [
+//   {
+//     id: 1,
+//     wins: 1,
+//     time: 10,
+//   },
+//   {
+//     id: 2,
+//     wins: 2,
+//     time: 5,
+//   },
+//   {
+//     id: 3,
+//     wins: 5,
+//     time: 2,
+//   },
+//   {
+//     id: 4,
+//     wins: 2,
+//     time: 7.55,
+//   },
+// ];
