@@ -5,13 +5,14 @@ import Footer from './footer/footer';
 import State from '../utils/state';
 import CarsLoader from '../utils/loaders-cars';
 import WinnersLoader from '../utils/loaders-winners';
+import ViewChange from '../controllers/change-view';
 
 export default class Page {
-  private readonly main: Main;
+  readonly main: Main;
 
   private readonly state: State;
 
-  private garage: HTMLElement | undefined;
+  private listeners: ViewChange | undefined;
 
   constructor() {
     this.state = new State();
@@ -43,77 +44,40 @@ export default class Page {
     document.body.append(page[0]);
 
     if (this.state && this.state.getView() === 'garage') {
-      const loader: CarsLoader = new CarsLoader();
-      loader.getCars(7, this.state.getGaragePage())
-        .then((data: CarsData): HTMLElement => {
-          const count: number = loader.getCountCars() || 0;
-          return this.main.createGarage(data, count);
-        })
-        .then((): void => this.main.addGarage());
+      this.garageLoad();
     } else {
-      const winLoader: WinnersLoader = new WinnersLoader();
-      const carsLoader: CarsLoader = new CarsLoader();
-      let winData: AllWinners;
-      winLoader.getWinners(this.state.getWinnersPage(), 10)
-        .then((wins: AllWinners): Promise<CarsData> => {
-          winData = wins;
-          return carsLoader.getCars();
-        })
-        .then((carsData) => {
-          const count: number = winLoader.getCountWinners() || 0;
-          this.main.createWinners(winData, carsData, count);
-          this.main.addWinners();
-        });
+      this.winnersLoad();
     }
+    this.listeners = new ViewChange(this.main);
+  }
+
+  public garageLoad(): void {
+    const loader: CarsLoader = new CarsLoader();
+    loader.getCars(7, this.state.getGaragePage())
+      .then((data: CarsData): HTMLElement => {
+        const count: number = loader.getCountCars() || 0;
+        return this.main.createGarage(data, count);
+      })
+      .then((): void => this.main.addGarage());
+  }
+
+  public winnersLoad(): void {
+    const winLoader: WinnersLoader = new WinnersLoader();
+    const carsLoader: CarsLoader = new CarsLoader();
+    let winData: AllWinners;
+    winLoader.getWinners(this.state.getWinnersPage(), 10)
+      .then((wins: AllWinners): Promise<CarsData> => {
+        winData = wins;
+        return carsLoader.getCars();
+      })
+      .then((carsData) => {
+        const count: number = winLoader.getCountWinners() || 0;
+        this.main.createWinners(winData, carsData, count);
+        this.main.addWinners();
+      });
   }
 
   public exam(): void {
     console.log('App started!');
   }
 }
-// TODO: this fake data for testing
-// const fakeData: CarsData = [
-//   {
-//     name: 'Tesla Govno',
-//     color: '#0d0dda',
-//     id: 1,
-//   },
-//   {
-//     name: 'BMW Korito',
-//     color: '#fede00',
-//     id: 2,
-//   },
-//   {
-//     name: 'Mersedes Tazik',
-//     color: '#6c779f',
-//     id: 3,
-//   },
-//   {
-//     name: 'Ford Pony',
-//     color: '#ef3c40',
-//     id: 4,
-//   },
-// ];
-//
-// const fakeWin: AllWinners = [
-//   {
-//     id: 1,
-//     wins: 1,
-//     time: 10,
-//   },
-//   {
-//     id: 2,
-//     wins: 2,
-//     time: 5,
-//   },
-//   {
-//     id: 3,
-//     wins: 5,
-//     time: 2,
-//   },
-//   {
-//     id: 4,
-//     wins: 2,
-//     time: 7.55,
-//   },
-// ];

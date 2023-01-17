@@ -19,6 +19,7 @@ export default class Garage {
   private createGarage(data: CarsData, count: number): HTMLElement {
     const wrapper: HTMLElement = document.createElement('div');
     wrapper.className = 'main__garage-block';
+    wrapper.dataset.note = 'garage';
     this.label = new GarageLabel(count);
 
     wrapper.append(this.label.label);

@@ -1,18 +1,18 @@
 export default class SaveElems {
-  private template: HTMLElement | undefined;
+  private template: Node | undefined;
 
-  public save(template: HTMLElement): void {
+  public save(template: Node): void {
     this.template = template;
   }
 
-  public restore(): HTMLElement | null {
+  public restore(): Node | undefined {
     if (!this.template) {
-      return null;
+      return undefined;
     }
-    return this.template;
+    return this.template.cloneNode(true);
   }
 
-  public clear(): void {
-    this.template = undefined;
+  public check(): boolean {
+    return !!this.template;
   }
 }

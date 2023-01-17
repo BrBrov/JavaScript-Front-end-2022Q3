@@ -31,7 +31,8 @@ declare global {
       view: string; // 'garage' or 'winners'
       garagePage: number;
       winnersPage: number;
-      count?: number;
+      kindSort: string; // ''|'id'|'wins'|'time'
+      sort: string; // ''| ASC'|'DESC'
     }
     type EmptyObject = {};
 }

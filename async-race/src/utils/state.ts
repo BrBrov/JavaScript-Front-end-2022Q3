@@ -5,18 +5,19 @@ export default class State {
     this.getState();
   }
 
-  public changeView(): void {
-    if (this.state) {
-      this.state.view = this.state?.view === 'garage' ? 'winners' : 'garage';
-    }
-    this.setState();
-  }
-
   public getView(): string {
     if (!this.state) {
       this.getState();
     }
     return this.state!.view;
+  }
+
+  public setView(view: string): void {
+    if (!this.state) {
+      this.getState();
+    }
+    this.state!.view = view;
+    this.setState();
   }
 
   public getGaragePage(): number {
@@ -49,17 +50,47 @@ export default class State {
     this.setState();
   }
 
+  public getSort(): string {
+    return <string> this.state!.kindSort;
+  }
+
+  public setSort(sort: string): void {
+    if (!this.state) {
+      this.getState();
+    }
+    this.state!.kindSort = sort;
+    this.setState();
+  }
+
+  public getOrder(): string {
+    if (this.state) {
+      this.getState();
+    }
+    return <string> this.state!.sort;
+  }
+
+  public setOrder(order: string): void {
+    if (this.state) {
+      this.getState();
+    }
+    this.state!.sort = order;
+    this.setState();
+  }
+
   private getState(): void {
     const data = localStorage.getItem('state');
     if (!data) {
-      const newState: StateData = {
+      this.state = {
         view: 'garage',
         garagePage: 1,
         winnersPage: 1,
+        kindSort: '',
+        sort: '',
       };
-      localStorage.setItem('state', JSON.stringify(newState));
+      this.setState();
+      return;
     }
-    this.state = JSON.parse(data!);
+    this.state = JSON.parse(data);
   }
 
   private setState(): void {

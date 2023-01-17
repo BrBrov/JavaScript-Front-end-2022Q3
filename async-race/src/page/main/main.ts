@@ -15,7 +15,11 @@ export default class Main {
 
   public garageMenu: GarageMenu;
 
-  private state: State;
+  public btnGarage: ButtonElement | undefined;
+
+  public btnWinners: ButtonElement | undefined;
+
+  state: State;
 
   private save: SaveElems;
 
@@ -33,13 +37,13 @@ export default class Main {
     const menu: HTMLElement = document.createElement('div');
     menu.className = 'main__menu-wrapper';
 
-    let btn: HTMLButtonElement = new ButtonElement('main__button-garage', 'Garage').button;
+    this.btnGarage = new ButtonElement('main__button-garage', 'Garage');
 
-    menu.append(btn);
+    menu.append(this.btnGarage.button);
 
-    btn = new ButtonElement('main__button-winners', 'Winners').button;
+    this.btnWinners = new ButtonElement('main__button-winners', 'Winners');
 
-    menu.append(btn);
+    menu.append(this.btnWinners.button);
 
     main.append(menu);
 
@@ -79,9 +83,10 @@ export default class Main {
     this.main.append(block);
   }
 
-  private removeBlock(): HTMLElement {
+  public removeBlock(): HTMLElement {
     let block: HTMLElement = this.main.querySelector('.main__block-view') as HTMLElement;
     const copy: HTMLElement = block.cloneNode(true) as HTMLElement;
+    // main__winners-block or main__garage-block
     this.save.save(copy);
     block.remove();
     block = document.createElement('div');

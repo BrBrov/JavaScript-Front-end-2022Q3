@@ -17,6 +17,7 @@ export default class Winners {
   private createWinners(data: AllWinners, cars: CarsData, count: number): HTMLElement {
     const wrapper: HTMLElement = document.createElement('div');
     wrapper.className = 'main__winners-block';
+    wrapper.dataset.note = 'winners';
 
     const title: HTMLElement = this.createWinTitle(count);
 
