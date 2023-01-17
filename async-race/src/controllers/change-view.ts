@@ -62,10 +62,8 @@ export default class ViewChange {
   private async toGarage(ev: Event): Promise<void> {
     ev.stopPropagation();
     if (this.clickCTRL) return;
-    console.log(ev);
     if (this.state.getView() === 'winners') {
       this.clickCTRL = true;
-      console.log('+++');
       if (this.saver.check()) {
         this.main.garage!.garage = this.saver.restore() as HTMLElement;
       } else {
