@@ -4,17 +4,17 @@ import Main from './main/main';
 import Footer from './footer/footer';
 import State from '../utils/state';
 import CarsLoader from '../utils/loaders-cars';
-// import WinnersLoader from '../utils/loaders-winners';
+import WinnersLoader from '../utils/loaders-winners';
 
 export default class Page {
   private readonly main: Main;
 
-  private state: State | undefined;
+  private readonly state: State;
 
   private garage: HTMLElement | undefined;
 
   constructor() {
-    // this.state = new State();
+    this.state = new State();
     const { header } = new Header();
     this.main = new Main();
     const { footer } = new Footer();
@@ -42,25 +42,28 @@ export default class Page {
 
     document.body.append(page[0]);
 
-    this.state = new State();
-
     if (this.state && this.state.getView() === 'garage') {
       const loader: CarsLoader = new CarsLoader();
-      new Promise((resolve, reject) => {
-        resolve(loader.getCars(7, this.state?.getGaragePage()));
-        reject(new Error('Cannot load cars data!'));
-      })
-        .then((carsData): void => {
-          console.log(carsData);
-          this.main.createGarage(<CarsData>carsData);
-          this.main.addGarage();
+      loader.getCars(7, this.state.getGaragePage())
+        .then((data: CarsData): HTMLElement => {
+          const count: number = loader.getCountCars() || 0;
+          return this.main.createGarage(data, count);
         })
-        .catch((e: Error) => {
-          throw e;
-        });
+        .then((): void => this.main.addGarage());
     } else {
-      // this.main.createWinners(fakeWin, fakeData);
-      // this.main.addWinners();
+      const winLoader: WinnersLoader = new WinnersLoader();
+      const carsLoader: CarsLoader = new CarsLoader();
+      let winData: AllWinners;
+      winLoader.getWinners(this.state.getWinnersPage(), 10)
+        .then((wins: AllWinners): Promise<CarsData> => {
+          winData = wins;
+          return carsLoader.getCars();
+        })
+        .then((carsData) => {
+          const count: number = winLoader.getCountWinners() || 0;
+          this.main.createWinners(winData, carsData, count);
+          this.main.addWinners();
+        });
     }
   }
 

@@ -31,6 +31,7 @@ declare global {
       view: string; // 'garage' or 'winners'
       garagePage: number;
       winnersPage: number;
+      count?: number;
     }
     type EmptyObject = {};
 }

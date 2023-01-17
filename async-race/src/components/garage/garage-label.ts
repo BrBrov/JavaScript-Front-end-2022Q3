@@ -19,7 +19,7 @@ export default class GarageLabel {
 
     text = document.createElement('span');
     text.className = 'main__garage-count';
-    text.textContent = `${count || 0}`;
+    text.textContent = `${count}`;
 
     elem.append(text);
 

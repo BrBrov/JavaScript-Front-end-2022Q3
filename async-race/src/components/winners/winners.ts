@@ -10,15 +10,15 @@ export default class Winners {
 
   private pagination: HTMLElement | undefined;
 
-  constructor(data: AllWinners, cars: CarsData) {
-    this.winners = this.createWinners(data, cars);
+  constructor(data: AllWinners, cars: CarsData, count: number) {
+    this.winners = this.createWinners(data, cars, count);
   }
 
-  private createWinners(data: AllWinners, cars: CarsData): HTMLElement {
+  private createWinners(data: AllWinners, cars: CarsData, count: number): HTMLElement {
     const wrapper: HTMLElement = document.createElement('div');
     wrapper.className = 'main__winners-block';
 
-    const title: HTMLElement = this.createWinTitle(data.length);
+    const title: HTMLElement = this.createWinTitle(count);
 
     wrapper.append(title);
 

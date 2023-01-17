@@ -12,11 +12,11 @@ export default class Garage {
 
   public garage: HTMLElement | undefined;
 
-  constructor(count: number, data: CarsData) {
-    this.garage = this.createGarage(count, data);
+  constructor(data: CarsData, count: number) {
+    this.garage = this.createGarage(data, count);
   }
 
-  private createGarage(count: number, data: CarsData): HTMLElement {
+  private createGarage(data: CarsData, count: number): HTMLElement {
     const wrapper: HTMLElement = document.createElement('div');
     wrapper.className = 'main__garage-block';
     this.label = new GarageLabel(count);

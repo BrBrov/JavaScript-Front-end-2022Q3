@@ -51,13 +51,13 @@ export default class Main {
     return main;
   }
 
-  public createGarage(data: CarsData): HTMLElement {
-    this.garage = new Garage(this.state.getGaragePage(), data);
+  public createGarage(data: CarsData, count: number): HTMLElement {
+    this.garage = new Garage(data, count);
     return <HTMLElement> this.garage.garage;
   }
 
-  public createWinners(winners: AllWinners, data: CarsData): HTMLElement {
-    this.winners = new Winners(winners, data);
+  public createWinners(winners: AllWinners, data: CarsData, count: number): HTMLElement {
+    this.winners = new Winners(winners, data, count);
     return <HTMLElement> this.winners.winners;
   }
 

@@ -57,9 +57,9 @@ export default class LoadersCars extends Loader {
     return this.RequestServer(url, requestInit);
   }
 
-  public getCountCars(): number | null {
+  public getCountCars(): number {
     if (!this.countCars) {
-      return null;
+      return 0;
     }
     return this.countCars;
   }
