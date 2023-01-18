@@ -24,4 +24,8 @@ export default class Button {
   public enable(): void {
     this.button.disabled = false;
   }
+
+  public checkDisable(): boolean {
+    return this.button.disabled;
+  }
 }

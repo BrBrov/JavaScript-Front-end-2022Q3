@@ -19,10 +19,10 @@ export default class Loader {
   }
 
   private checkTypeAllWinners(data: AllWinners): data is AllWinners {
-    return !!data[0].time;
+    return !!(Array.isArray(data) && data[0].time);
   }
 
   private checkTypeCarsData(data: CarsData): data is CarsData {
-    return !!data[0].color;
+    return !!(Array.isArray(data) && data[0].color);
   }
 }

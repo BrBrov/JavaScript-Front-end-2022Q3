@@ -2,13 +2,13 @@ import './garage-menu.scss';
 import ButtonElement from '../button/button';
 
 export default class GarageMenu {
-  private btnCreateUpdate: ButtonElement | undefined;
+  public btnCreateUpdate: ButtonElement | undefined;
 
-  private btnRace: ButtonElement | undefined;
+  public btnRace: ButtonElement | undefined;
 
-  private btnReset: ButtonElement | undefined;
+  public btnReset: ButtonElement | undefined;
 
-  private btnGenerateCars: ButtonElement | undefined;
+  public btnGenerateCars: ButtonElement | undefined;
 
   public MenuGarage: HTMLElement;
 
@@ -38,6 +38,7 @@ export default class GarageMenu {
     block.append(input);
 
     this.btnCreateUpdate = new ButtonElement('main__update-create', 'Create car');
+    this.btnCreateUpdate.button.dataset.mode = 'create';
 
     block.append(this.btnCreateUpdate.button);
 

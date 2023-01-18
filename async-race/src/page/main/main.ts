@@ -5,6 +5,7 @@ import Garage from '../../components/garage/garage';
 import Winners from '../../components/winners/winners';
 import State from '../../utils/state';
 import SaveElems from '../../utils/save-elems';
+import GarageController from '../../controllers/garage-controller';
 
 export default class Main {
   public main: HTMLElement;
@@ -19,9 +20,11 @@ export default class Main {
 
   public btnWinners: ButtonElement | undefined;
 
-  state: State;
+  public state: State;
 
   private save: SaveElems;
+
+  private garageLogic: GarageController | undefined;
 
   constructor() {
     this.state = new State();
@@ -73,6 +76,7 @@ export default class Main {
     block.append(this.garageMenu.MenuGarage);
     block.append(this.garage.garage);
     this.main.append(block);
+    this.garageLogic = new GarageController(this.garageMenu.MenuGarage, this.garage.garage);
   }
 
   public addWinners(): void {

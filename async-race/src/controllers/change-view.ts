@@ -3,6 +3,7 @@ import State from '../utils/state';
 import CarsLoader from '../utils/loaders-cars';
 import WinnersLoader from '../utils/loaders-winners';
 import Main from '../page/main/main';
+import ButtonElement from '../components/button/button';
 
 export default class ViewChange {
   private saver: Save;
@@ -13,25 +14,24 @@ export default class ViewChange {
 
   private clickCTRL: boolean = false;
 
-  private btnGarage: HTMLButtonElement | undefined;
+  private btnGarage: ButtonElement | undefined;
 
-  private btnWinners: HTMLButtonElement | undefined;
+  private btnWinners: ButtonElement | undefined;
 
   constructor(main: Main) {
     this.main = main;
+    this.btnGarage = this.main.btnGarage;
+    this.btnWinners = this.main.btnWinners;
     this.saver = new Save();
     this.state = new State();
     this.addListeners();
   }
 
   private addListeners(): void {
-    this.btnGarage = document.querySelector('.main__button-garage') as HTMLButtonElement;
-    this.btnWinners = document.querySelector('.main__button-winners') as HTMLButtonElement;
-
     this.setBtnView();
 
-    this.btnGarage.addEventListener('click', this.toGarage.bind(this));
-    this.btnWinners.addEventListener('click', this.toWinners.bind(this));
+    this.btnGarage?.button.addEventListener('click', this.toGarage.bind(this));
+    this.btnWinners?.button.addEventListener('click', this.toWinners.bind(this));
   }
   // main__block-view for garage;
 
@@ -81,11 +81,11 @@ export default class ViewChange {
 
   private setBtnView(): void {
     if (this.state.getView() === 'garage') {
-      this.btnGarage!.disabled = true;
-      this.btnWinners!.disabled = false;
+      this.btnGarage?.disable();
+      this.btnWinners?.enable();
     } else {
-      this.btnGarage!.disabled = false;
-      this.btnWinners!.disabled = true;
+      this.btnGarage?.enable();
+      this.btnWinners?.disable();
     }
   }
 }
