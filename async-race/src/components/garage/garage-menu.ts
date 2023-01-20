@@ -1,5 +1,7 @@
 import './garage-menu.scss';
 import ButtonElement from '../button/button';
+import State from '../../utils/state';
+import GarageController from '../../controllers/garage-controller';
 
 export default class GarageMenu {
   public btnCreateUpdate: ButtonElement | undefined;
@@ -12,8 +14,13 @@ export default class GarageMenu {
 
   public MenuGarage: HTMLElement;
 
+  private controller: GarageController;
+
   constructor() {
     this.MenuGarage = this.createGarageMenu();
+    this.controller = new GarageController();
+    this.controller.addMenuElems(this.MenuGarage);
+    this.controller.addMenuListeners();
   }
 
   private createGarageMenu(): HTMLElement {
@@ -23,17 +30,20 @@ export default class GarageMenu {
     let block: HTMLElement = document.createElement('div');
     block.className = 'main__block-manipulate';
 
+    const state: State = new State();
+
     let input: HTMLInputElement = document.createElement('input');
     input.className = 'main__car-name';
     input.type = 'text';
     input.placeholder = 'Enter car name';
+    input.value = state.getInputCarName() || '';
 
     block.append(input);
 
     input = document.createElement('input');
     input.className = 'main__car-palette';
     input.type = 'color';
-    input.value = '#ffffff';
+    input.value = state.getInputColor() || '#ffffff';
 
     block.append(input);
 

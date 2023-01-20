@@ -4,8 +4,6 @@ import GarageMenu from '../../components/garage/garage-menu';
 import Garage from '../../components/garage/garage';
 import Winners from '../../components/winners/winners';
 import State from '../../utils/state';
-import SaveElems from '../../utils/save-elems';
-import GarageController from '../../controllers/garage-controller';
 
 export default class Main {
   public main: HTMLElement;
@@ -22,13 +20,8 @@ export default class Main {
 
   public state: State;
 
-  private save: SaveElems;
-
-  private garageLogic: GarageController | undefined;
-
   constructor() {
     this.state = new State();
-    this.save = new SaveElems();
     this.garageMenu = new GarageMenu();
     this.main = this.createMain();
   }
@@ -76,7 +69,6 @@ export default class Main {
     block.append(this.garageMenu.MenuGarage);
     block.append(this.garage.garage);
     this.main.append(block);
-    this.garageLogic = new GarageController(this.garageMenu.MenuGarage, this.garage.garage);
   }
 
   public addWinners(): void {
@@ -89,9 +81,13 @@ export default class Main {
 
   public removeBlock(): HTMLElement {
     let block: HTMLElement = this.main.querySelector('.main__block-view') as HTMLElement;
-    const copy: HTMLElement = block.cloneNode(true) as HTMLElement;
     // main__winners-block or main__garage-block
-    this.save.save(copy);
+    if (block.querySelector('.main__garage-menu')) {
+      const inputName: string = (<HTMLInputElement>block.querySelector('.main__car-name')).value;
+      const inputColor: string = (<HTMLInputElement>block.querySelector('.main__car-palette')).value;
+      this.state.setInputCarName(inputName);
+      this.state.setInputColor(inputColor);
+    }
     block.remove();
     block = document.createElement('div');
     block.className = 'main__block-view';

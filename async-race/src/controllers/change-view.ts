@@ -1,4 +1,3 @@
-import Save from '../utils/save-elems';
 import State from '../utils/state';
 import CarsLoader from '../utils/loaders-cars';
 import WinnersLoader from '../utils/loaders-winners';
@@ -6,8 +5,6 @@ import Main from '../page/main/main';
 import ButtonElement from '../components/button/button';
 
 export default class ViewChange {
-  private saver: Save;
-
   private main: Main;
 
   private state: State;
@@ -22,7 +19,6 @@ export default class ViewChange {
     this.main = main;
     this.btnGarage = this.main.btnGarage;
     this.btnWinners = this.main.btnWinners;
-    this.saver = new Save();
     this.state = new State();
     this.addListeners();
   }
@@ -64,14 +60,10 @@ export default class ViewChange {
     if (this.clickCTRL) return;
     if (this.state.getView() === 'winners') {
       this.clickCTRL = true;
-      if (this.saver.check()) {
-        this.main.garage!.garage = this.saver.restore() as HTMLElement;
-      } else {
-        const carLoader = new CarsLoader();
-        const carsData: CarsData = await carLoader.getCars(7, this.state.getGaragePage());
-        const count: number = carLoader.getCountCars();
-        this.main.createGarage(carsData, count);
-      }
+      const carLoader = new CarsLoader();
+      const carsData: CarsData = await carLoader.getCars(7, this.state.getGaragePage());
+      const count: number = carLoader.getCountCars();
+      this.main.createGarage(carsData, count);
       this.main.addGarage();
       this.state.setView('garage');
       this.setBtnView();

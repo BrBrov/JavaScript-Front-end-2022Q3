@@ -1,10 +1,12 @@
 import GarageUtils from '../utils/garage-utils';
 import LoaderCar from '../utils/loaders-cars';
+import CarsGen from '../components/cars-data/cars-data';
+import State from '../utils/state';
 
 export default class GarageController {
-  private garage: HTMLElement;
+  private garage: HTMLElement | undefined;
 
-  private menu: HTMLElement;
+  private menu: HTMLElement | undefined;
 
   private nameCar: HTMLInputElement | undefined;
 
@@ -24,43 +26,57 @@ export default class GarageController {
 
   private pgInput: HTMLInputElement | undefined;
 
-  // private modeRace: boolean = false;
-  //
-  // private modeCreate: boolean = false;
+  private modeRace: boolean = false;
 
-  constructor(menu: HTMLElement, garage: HTMLElement) {
-    this.menu = menu;
-    this.garage = garage;
-    this.addElems();
-    this.addListeners();
+  private modeCreate: boolean = false;
+
+  private clickCTRL: boolean = false;
+
+  public addMenuElems(block: HTMLElement): void {
+    this.menu = block;
+    this.btnCreateUpdate = block.querySelector('.main__update-create') as HTMLButtonElement;
+    this.btnRace = block.querySelector('.main__button-race') as HTMLButtonElement;
+    this.btnReset = block.querySelector('.main__button-reset') as HTMLButtonElement;
+    this.btnCreateCars = block.querySelector('.main__button-generate') as HTMLButtonElement;
+    this.nameCar = block.querySelector('.main__car-name') as HTMLInputElement;
+    this.colorCar = block.querySelector('.main__car-palette') as HTMLInputElement;
   }
 
-  private addElems(): void {
-    this.btnCreateUpdate = this.menu?.querySelector('.main__update-create') as HTMLButtonElement;
-    this.btnRace = this.menu?.querySelector('.main__button-race') as HTMLButtonElement;
-    this.btnReset = this.menu?.querySelector('.main__button-reset') as HTMLButtonElement;
-    this.btnCreateCars = this.menu?.querySelector('.main__button-generate') as HTMLButtonElement;
-    this.nameCar = this.menu?.querySelector('.main__car-name') as HTMLInputElement;
-    this.colorCar = this.menu?.querySelector('.main__car-palette') as HTMLInputElement;
-    this.pgLeft = this.garage?.querySelector('.main__page-left') as HTMLButtonElement;
-    this.pgRight = this.garage?.querySelector('.main__page-right') as HTMLButtonElement;
-    this.pgInput = this.garage?.querySelector('.main__page-input') as HTMLInputElement;
+  public addGarageElems(block: HTMLElement): void {
+    this.garage = block;
   }
 
-  private addListeners(): void {
+  public addPageElems(block: HTMLElement): void {
+    this.pgLeft = block.querySelector('.main__page-left') as HTMLButtonElement;
+    this.pgRight = block.querySelector('.main__page-right') as HTMLButtonElement;
+    this.pgInput = block.querySelector('.main__page-input') as HTMLInputElement;
+  }
+
+  public addMenuListeners(): void {
     this.btnCreateUpdate?.addEventListener('click', this.onBtnCreateUpdate.bind(this));
     this.btnRace?.addEventListener('click', this.onRace.bind(this));
     this.btnReset?.addEventListener('click', this.onReset.bind(this));
     this.btnCreateCars?.addEventListener('click', this.onCreateCars.bind(this));
   }
 
+  public addPaginationListeners(): void {
+    this.pgLeft?.addEventListener('click', this.onPgLeft.bind(this));
+    this.pgRight?.addEventListener('click', this.onPgRight.bind(this));
+    this.pgInput?.addEventListener('blur', this.onPgInput.bind(this));
+  }
+  // Menu controllers;
+
   private async onBtnCreateUpdate(ev: Event): Promise<void> {
     ev.stopPropagation();
+    if (this.clickCTRL) return;
+    this.clickCTRL = true;
     const target: HTMLElement = ev.target as HTMLElement;
     const carsLoader = new LoaderCar();
     if (!this.nameCar!.value) {
       this.nameCar!.placeholder = 'You don\'t enter car!';
       setTimeout(() => { this.nameCar!.placeholder = 'Enter car name!'; });
+      this.clickCTRL = false;
+      return;
     }
     const text: string = this.nameCar!.value;
     const color: string = this.colorCar!.value;
@@ -74,19 +90,106 @@ export default class GarageController {
 
     if (!resp.name) throw new Error('Car wasn\'t create!');
     const utils = new GarageUtils();
-    await utils.updateRaceList(this.garage);
+    if (!this.garage) throw new Error('Wrong garage elems into updateRaceList');
+    await utils.updateRaceList();
     this.nameCar!.value = '';
+    target.dataset.mode = 'create';
+    this.clickCTRL = false;
   }
 
   private async onRace(ev: Event): Promise<void> {
+    // TODO: create start race;
+
     console.log(ev);
   }
 
   private async onReset(ev: Event): Promise<void> {
+    // TODO: create reset race;
+
     console.log(ev);
   }
 
   private async onCreateCars(ev: Event): Promise<void> {
-    console.log(ev);
+    ev.stopPropagation();
+    if (this.clickCTRL) return;
+    this.clickCTRL = true;
+    const carsData: CarParams[] = new CarsGen().getNewCars();
+    const loader = new LoaderCar();
+    carsData.forEach((car: CarParams) => loader.createCar(car.name, car.color));
+    const utils = new GarageUtils();
+    await utils.updateRaceList();
+    this.clickCTRL = false;
+  }
+
+  // Pagination controllers;
+
+  private async onPgLeft(ev:Event): Promise<void> {
+    ev.stopPropagation();
+
+    if (this.clickCTRL) return;
+    this.clickCTRL = true;
+
+    const btn: HTMLButtonElement = ev.target as HTMLButtonElement;
+
+    const { view } = (btn.parentElement as HTMLElement).dataset;
+    const state = new State();
+    const util: GarageUtils = new GarageUtils();
+
+    if (view === 'garage') {
+      let page: number = state.getGaragePage();
+      if (page === 1) return;
+      page = page > 1 ? (page - 1) : 1;
+      state.setGaragePage(page);
+      await util.updateRaceList();
+    } else {
+      let page = state.getWinnersPage();
+      page = page > 1 ? (page - 1) : 1;
+      state.setWinnersPage(page);
+    }
+    this.clickCTRL = false;
+  }
+
+  private async onPgRight(ev:Event): Promise<void> {
+    ev.stopPropagation();
+
+    if (this.clickCTRL) return;
+    this.clickCTRL = true;
+
+    const btn: HTMLButtonElement = ev.target as HTMLButtonElement;
+
+    const { view } = (btn.parentElement as HTMLElement).dataset;
+    const state = new State();
+    const util: GarageUtils = new GarageUtils();
+
+    if (view === 'garage') {
+      let page: number = state.getGaragePage();
+      page += 1;
+      state.setGaragePage(page);
+      await util.updateRaceList();
+    } else {
+      let page = state.getWinnersPage();
+      page += 1;
+      state.setWinnersPage(page);
+    }
+    this.clickCTRL = false;
+  }
+
+  private async onPgInput(ev: Event): Promise<void> {
+    const input: HTMLInputElement = ev.target as HTMLInputElement;
+
+    const { view } = (input.parentElement as HTMLElement).dataset;
+    const state = new State();
+    const util: GarageUtils = new GarageUtils();
+
+    if (view === 'garage') {
+      let page: number = Number(input.value);
+      if (page < 1) page = 1;
+      state.setGaragePage(page);
+      await util.updateRaceList();
+    } else {
+      let page = state.getWinnersPage();
+      if (page < 1) page = 1;
+      state.setWinnersPage(page);
+    }
   }
 }

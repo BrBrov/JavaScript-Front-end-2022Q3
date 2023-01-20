@@ -42,6 +42,10 @@ const baseConfig = {
                 generator: {
                     filename: path.join('assets/fonts', '[name][ext]'),
                 },
+            },
+            {
+                test: /\.json$/,
+                type: 'json'
             }
         ],
     },

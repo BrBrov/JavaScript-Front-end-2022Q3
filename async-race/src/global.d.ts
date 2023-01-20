@@ -33,6 +33,11 @@ declare global {
       winnersPage: number;
       kindSort: string; // ''|'id'|'wins'|'time'
       sort: string; // ''| ASC'|'DESC'
+      name: string;
+      color: string;
     }
     type EmptyObject = {};
+    interface CarsDB {
+      [key: string] : string[];
+    }
 }

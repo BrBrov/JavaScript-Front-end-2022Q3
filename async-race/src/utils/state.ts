@@ -35,6 +35,30 @@ export default class State {
     this.setState();
   }
 
+  public getInputCarName(): string {
+    return <string> this.state?.name;
+  }
+
+  public setInputCarName(name: string): void {
+    if (!this.state) {
+      this.getState();
+    }
+    this.state!.name = name;
+    this.setState();
+  }
+
+  public getInputColor(): string {
+    return <string> this.state?.color;
+  }
+
+  public setInputColor(color: string): void {
+    if (!this.state) {
+      this.getState();
+    }
+    this.state!.color = color;
+    this.setState();
+  }
+
   public getWinnersPage(): number {
     if (!this.state) {
       this.getState();
@@ -86,6 +110,8 @@ export default class State {
         winnersPage: 1,
         kindSort: '',
         sort: '',
+        name: '',
+        color: '#ffffff',
       };
       this.setState();
       return;

@@ -7,13 +7,15 @@ export default class Loader {
     const response: Response = await fetch(url, options!);
     if (!response.ok) throw new Error(`Server error: ${response.statusText} -> ${response.status}`);
     const data = await response.json();
-    if (this.checkTypeCarsData(data)) {
-      const count = response.headers.get('X-Total-Count');
-      if (count) this.countCars = Number(count);
-    }
-    if (this.checkTypeAllWinners(data)) {
-      const count = response.headers.get('X-Total-Count');
-      if (count) this.countWinners = Number(count);
+    if (data.length && data.length !== 0) {
+      if (this.checkTypeCarsData(data)) {
+        const count = response.headers.get('X-Total-Count');
+        if (count) this.countCars = Number(count);
+      }
+      if (this.checkTypeAllWinners(data)) {
+        const count = response.headers.get('X-Total-Count');
+        if (count) this.countWinners = Number(count);
+      }
     }
     return data;
   }
