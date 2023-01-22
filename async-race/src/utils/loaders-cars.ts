@@ -39,12 +39,12 @@ export default class LoadersCars extends Loader {
   }
 
   public async deleteCar(id: number): Promise<EmptyObject> {
-    const url: URL = new URL(`${this.garage}${id}`, this.host);
+    const url: URL = new URL(`${this.garage}/${id}`, this.host);
     return this.RequestServer<EmptyObject>(url, { method: 'DELETE' });
   }
 
   public async updateCar(id: number, name: string, color: string): Promise<CarData> {
-    const url: URL = new URL(`${this.garage}${id}`, this.host);
+    const url: URL = new URL(`${this.garage}/${id}`, this.host);
     const car: CarParams = {
       name,
       color,

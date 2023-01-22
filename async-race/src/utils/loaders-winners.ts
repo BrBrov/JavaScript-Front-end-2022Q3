@@ -37,7 +37,7 @@ export default class WinnersLoader extends Loafer {
   }
 
   public async getWinner(id: number): Promise<Winner | EmptyObject> {
-    const url: URL = new URL(`${this.winners}${id}`, this.host);
+    const url: URL = new URL(`${this.winners}/${id}`, this.host);
     return this.RequestServer<Winner | EmptyObject>(url, { method: 'GET' });
   }
 
@@ -57,12 +57,12 @@ export default class WinnersLoader extends Loafer {
   }
 
   public async deleteWinner(id: number): Promise<EmptyObject> {
-    const url: URL = new URL(`${this.winners}${id}`, this.host);
+    const url: URL = new URL(`${this.winners}/${id}`, this.host);
     return this.RequestServer<EmptyObject>(url, { method: 'DELETE' });
   }
 
   public async updateWinner(id: number, wins: number, time: number): Promise<Winner | EmptyObject> {
-    const url: URL = new URL(`${this.winners}${id}`, this.host);
+    const url: URL = new URL(`${this.winners}/${id}`, this.host);
     const body: WinnerParam = {
       wins,
       time,

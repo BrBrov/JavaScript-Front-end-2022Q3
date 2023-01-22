@@ -17,17 +17,17 @@ export default class GarageUtils {
     if (resp.length === 0) {
       let page: number = state.getGaragePage();
       if (page <= 1) {
-        throw new Error('No cars data into server or server error!');
+        throw new Error('Page cannot to be less then 1!');
       }
       page -= 1;
       state.setGaragePage(page);
       await this.updateRaceList();
+      return;
     }
 
     resp.forEach((car: CarData) => {
       const race = new CarRace(car);
       raceBlock.append(race.carRace);
-      // TODO: add listener for every cars!
     });
     titleCount.textContent = String(loader.getCountCars());
     this.updateGaragePageInput();

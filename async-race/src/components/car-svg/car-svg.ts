@@ -9,6 +9,7 @@ export default class CarSVG {
     const svg: SVGSVGElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.classList.add(`${className}`);
     svg.dataset.id = `${id}`;
+    svg.dataset.color = color;
     // svg.setAttribute('viewBox', '0 0 60 35');
     // svg.setAttribute('width', '65');
     // svg.setAttribute('height', '46');

@@ -6,15 +6,15 @@ import '../../assets/svg/finish.svg';
 export default class CarRace {
   public carRace: HTMLElement;
 
-  private btnStart: ButtonElement | undefined;
+  public btnStart: ButtonElement | undefined;
 
-  private btnStop: ButtonElement | undefined;
+  public btnStop: ButtonElement | undefined;
 
-  private btnSelect: ButtonElement | undefined;
+  public btnSelect: ButtonElement | undefined;
 
-  private btnRemove: ButtonElement | undefined;
+  public btnRemove: ButtonElement | undefined;
 
-  private name: HTMLSpanElement | undefined;
+  public name: HTMLSpanElement | undefined;
 
   public car: Car | undefined;
 
@@ -26,30 +26,9 @@ export default class CarRace {
   //     color: string,
   //     id: number
   // }
+
   constructor(data: CarData) {
     this.carRace = this.createCar(data);
-  }
-
-  public checkStartFlag(flag: boolean): void {
-    this.startFlag = flag;
-    this.switcherBtn();
-  }
-
-  public updateCar(name: string, color: string): void {
-    this.name!.textContent = name;
-    this.car?.setColor(color);
-  }
-
-  private switcherBtn(): void {
-    if (this.startFlag) {
-      this.btnStart?.disable();
-      this.btnRemove?.disable();
-      this.btnSelect?.disable();
-    } else {
-      this.btnSelect?.enable();
-      this.btnStart?.enable();
-      this.btnRemove?.enable();
-    }
   }
 
   private createCar(data: CarData): HTMLElement {
@@ -65,7 +44,7 @@ export default class CarRace {
     let panel: HTMLElement = document.createElement('div');
     panel.className = 'main__top-panel';
 
-    this.createBtn();
+    this.createBtn(data.id);
 
     panel.append(this.btnSelect!.button);
 
@@ -86,7 +65,7 @@ export default class CarRace {
     block.className = 'main__track-block';
 
     const text: HTMLSpanElement = document.createElement('span');
-    text.className = 'main-car-name';
+    text.className = 'main__name-car';
     text.textContent = data.name;
 
     block.append(text);
@@ -100,11 +79,15 @@ export default class CarRace {
     return wrapper;
   }
 
-  private createBtn(): void {
+  private createBtn(id: number): void {
     this.btnSelect = new ButtonElement('main__button-select', 'Select');
+    this.btnSelect.button.dataset.id = `${id}`;
     this.btnRemove = new ButtonElement('main__button-remove', 'Remove');
+    this.btnRemove.button.dataset.id = `${id}`;
     this.btnStart = new ButtonElement('main__button-start', 'Start');
+    this.btnStart.button.dataset.id = `${id}`;
     this.btnStop = new ButtonElement('main__button-stop', 'Stop');
+    this.btnStop.button.dataset.id = `${id}`;
   }
 
   private createTrack(color: string, id: number): HTMLElement {

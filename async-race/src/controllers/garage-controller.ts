@@ -26,10 +26,6 @@ export default class GarageController {
 
   private pgInput: HTMLInputElement | undefined;
 
-  private modeRace: boolean = false;
-
-  private modeCreate: boolean = false;
-
   private clickCTRL: boolean = false;
 
   public addMenuElems(block: HTMLElement): void {
@@ -74,7 +70,7 @@ export default class GarageController {
     const carsLoader = new LoaderCar();
     if (!this.nameCar!.value) {
       this.nameCar!.placeholder = 'You don\'t enter car!';
-      setTimeout(() => { this.nameCar!.placeholder = 'Enter car name!'; });
+      setTimeout(() => { this.nameCar!.placeholder = 'Enter car name!'; }, 1000);
       this.clickCTRL = false;
       return;
     }
@@ -86,14 +82,16 @@ export default class GarageController {
     } else {
       const id = Number(target.dataset.mode);
       resp = await carsLoader.updateCar(id, text, color);
+      target.dataset.mode = 'create';
+      this.nameCar!.value = '';
+      this.btnCreateUpdate!.textContent = 'Create';
     }
 
     if (!resp.name) throw new Error('Car wasn\'t create!');
     const utils = new GarageUtils();
-    if (!this.garage) throw new Error('Wrong garage elems into updateRaceList');
     await utils.updateRaceList();
-    this.nameCar!.value = '';
-    target.dataset.mode = 'create';
+    // this.nameCar!.value = '';
+    // target.dataset.mode = 'create';
     this.clickCTRL = false;
   }
 
@@ -137,7 +135,10 @@ export default class GarageController {
 
     if (view === 'garage') {
       let page: number = state.getGaragePage();
-      if (page === 1) return;
+      if (page === 1) {
+        this.clickCTRL = false;
+        return;
+      }
       page = page > 1 ? (page - 1) : 1;
       state.setGaragePage(page);
       await util.updateRaceList();

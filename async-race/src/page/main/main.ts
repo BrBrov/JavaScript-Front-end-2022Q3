@@ -4,6 +4,7 @@ import GarageMenu from '../../components/garage/garage-menu';
 import Garage from '../../components/garage/garage';
 import Winners from '../../components/winners/winners';
 import State from '../../utils/state';
+import RaceController from '../../controllers/race-controller';
 
 export default class Main {
   public main: HTMLElement;
@@ -19,6 +20,8 @@ export default class Main {
   public btnWinners: ButtonElement | undefined;
 
   public state: State;
+
+  private RaceController: RaceController | undefined;
 
   constructor() {
     this.state = new State();
@@ -53,6 +56,7 @@ export default class Main {
 
   public createGarage(data: CarsData, count: number): HTMLElement {
     this.garage = new Garage(data, count);
+    this.RaceController = new RaceController(this.garage!.garage as HTMLElement);
     return <HTMLElement> this.garage.garage;
   }
 

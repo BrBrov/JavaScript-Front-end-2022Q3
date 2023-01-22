@@ -5,7 +5,7 @@ export default class Loader {
 
   protected async RequestServer<T>(url: URL, options?: RequestInit): Promise<T> {
     const response: Response = await fetch(url, options!);
-    if (!response.ok) throw new Error(`Server error: ${response.statusText} -> ${response.status}`);
+    if (!response.ok) return <T> {};
     const data = await response.json();
     if (data.length && data.length !== 0) {
       if (this.checkTypeCarsData(data)) {

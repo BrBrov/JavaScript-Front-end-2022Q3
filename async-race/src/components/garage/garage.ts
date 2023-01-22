@@ -52,23 +52,15 @@ export default class Garage {
     this.carsArray = data.map((carData: CarData) => new CarRace(carData));
   }
 
-  public updateGarage(data: CarsData): void {
-    this.generateCarsRace(data);
-  }
+  // public updateGarage(data: CarsData): void {
+  //   this.generateCarsRace(data);
+  // }
 
   // private onPagination(data: CarsData): void {
   //   this.generateCarsRace(data);
   // }
 
-  public setCarCount(count: number): void {
-    this.label?.setCount(count);
-  }
-
-  public updateCar(name: string, color: string, id: number): void {
-    const carRace: CarRace | undefined = this.carsArray?.find((race: CarRace) => race.carRace.dataset.id === `${id}`);
-    if (carRace) {
-      carRace.updateCar(name, color);
-    }
-    throw new Error('Not found car for update!');
-  }
+  // public setCarCount(count: number): void {
+  //   this.label?.setCount(count);
+  // }
 }

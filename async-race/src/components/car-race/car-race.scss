@@ -7,10 +7,11 @@
 .main__track-block {
   flex: 1 1 auto;
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: start;
 }
-.main-car-name {
+.main__name-car {
   display: block;
   box-sizing: border-box;
   padding: 0 10px;
@@ -87,10 +88,13 @@
 
 .main__car-wrapper{
   display: block;
+  position: relative;
   box-sizing: border-box;
   padding: 0 10px 0 5px;
   width: 67px;
   height: 35px;
+  //transform: translate(1370%);
+  //left: calc(100% - 67px);
 }
 
 .main__car-svg {
