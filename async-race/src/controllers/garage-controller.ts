@@ -2,6 +2,11 @@ import GarageUtils from '../utils/garage-utils';
 import LoaderCar from '../utils/loaders-cars';
 import CarsGen from '../components/cars-data/cars-data';
 import State from '../utils/state';
+import RaceElems from '../utils/race-elems';
+import Animate from '../utils/animation';
+import DriveLoader from '../utils/loader-drive';
+import WinnersLoader from '../utils/loaders-winners';
+import WinLogo from '../components/winner-logo/winner-logo';
 
 export default class GarageController {
   private garage: HTMLElement | undefined;
@@ -96,9 +101,78 @@ export default class GarageController {
   }
 
   private async onRace(ev: Event): Promise<void> {
-    // TODO: create start race;
+    ev.stopPropagation();
 
-    console.log(ev);
+    let winner: boolean = false;
+
+    this.garage = document.querySelector('.main__race-block') as HTMLElement;
+
+    const raceElems: NodeListOf<HTMLElement> = this.garage!.querySelectorAll('.main__car-block');
+
+    const raceBlocks: RaceElems[] = [...raceElems].map((elem: HTMLElement): RaceElems => {
+      return new RaceElems(elem);
+    });
+
+    const animArr: Promise<EngineCarParams>[] = [];
+    const driveLoader: DriveLoader = new DriveLoader();
+    const carsLoader: LoaderCar = new LoaderCar();
+    const winLoader: WinnersLoader = new WinnersLoader();
+
+    raceBlocks.forEach(async (race: RaceElems): Promise<void> => {
+      race.offBtnOnStart();
+      const params = await driveLoader.startEngine(race.id!);
+      const duration = params.distance / params.velocity;
+      const anim = new Animate(race.car!, duration);
+      anim.animate!.onfinish = (e: AnimationPlaybackEvent) => {
+        if (winner) {
+          return;
+        }
+        winner = true;
+        const t = e.target as Animation;
+        let carData: CarData | null = null;
+        carsLoader.getCar(Number(t.id))
+          .then((car: CarData) => {
+            console.log(car);
+            carData = car;
+            return winLoader.getWinner(Number(t.id));
+          })
+          .then((win: Winner | EmptyObject) => {
+            if (!('wins' in win)) {
+              let newTime = Math.round(duration) / 10;
+              newTime = Math.round(newTime) / 10;
+              return winLoader.createWinner(Number(t.id), 1, newTime);
+            }
+            const wins = win.wins + 1;
+            let durationMath = Math.round(win.time) / 10;
+            durationMath = Math.round(durationMath) / 10;
+            const time = durationMath < win.time ? durationMath : win.time;
+            return winLoader.updateWinner(win.id, wins, time);
+          })
+          .then((win: Winner | EmptyObject) => {
+            if (!('wins' in win)) throw new Error('Winner wasn\'t created!');
+            console.log(win);
+            const showLogo = new WinLogo(carData!, win);
+            showLogo.show();
+          });
+      };
+      const prom: Promise<EngineCarParams> = new Promise((resolve, reject) => {
+        let id: string = '';
+        anim.start()
+          .then((ident: string) => {
+            id = ident;
+            return driveLoader.checkDriverMode(Number(id));
+          })
+          .then((succes: SuccessRace) => {
+            if (!succes.success) {
+              anim.stop();
+              reject(driveLoader.stopEngine(Number(id)));
+            }
+            resolve(driveLoader.stopEngine(Number(id)));
+          });
+      });
+      animArr.push(prom);
+    });
+    Promise.all(animArr);
   }
 
   private async onReset(ev: Event): Promise<void> {

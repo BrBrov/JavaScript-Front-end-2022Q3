@@ -20,7 +20,7 @@ export default class LoadersCars extends Loader {
 
   // Operation for cars
   public async getCar(id: number): Promise<CarData> {
-    const url = new URL(`${this.garage}${id}`, this.host);
+    const url = new URL(`${this.garage}/${id}`, this.host);
     return this.RequestServer<CarData>(url, { method: 'GET' });
   }
 
