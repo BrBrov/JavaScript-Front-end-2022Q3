@@ -58,6 +58,7 @@ export default class GarageController {
     this.btnRace?.addEventListener('click', this.onRace.bind(this));
     this.btnReset?.addEventListener('click', this.onReset.bind(this));
     this.btnCreateCars?.addEventListener('click', this.onCreateCars.bind(this));
+    this.nameCar?.addEventListener('blur', this.onInputName.bind(this));
   }
 
   public addPaginationListeners(): void {
@@ -76,6 +77,8 @@ export default class GarageController {
     if (!this.nameCar!.value) {
       this.nameCar!.placeholder = 'You don\'t enter car!';
       setTimeout(() => { this.nameCar!.placeholder = 'Enter car name!'; }, 1000);
+      target.textContent = 'Create';
+      target.dataset.id = 'create';
       this.clickCTRL = false;
       return;
     }
@@ -179,9 +182,17 @@ export default class GarageController {
   }
 
   private async onReset(ev: Event): Promise<void> {
-    // TODO: create reset race;
-
-    console.log(ev);
+    ev.stopPropagation();
+    const raceArr: NodeListOf<HTMLElement> = document.querySelectorAll('.main__car-block');
+    raceArr.forEach((item: HTMLElement) => {
+      const car: HTMLElement = item.querySelector('.main__car-wrapper') as HTMLElement;
+      const anim = car.getAnimations();
+      anim[0].updatePlaybackRate(500);
+      anim[0].reverse();
+      anim[0].finish();
+      const race = new RaceElems(item);
+      race.resetBtn();
+    });
   }
 
   private async onCreateCars(ev: Event): Promise<void> {
@@ -194,6 +205,16 @@ export default class GarageController {
     const utils = new GarageUtils();
     await utils.updateRaceList();
     this.clickCTRL = false;
+  }
+
+  private onInputName(ev: Event): void {
+    const target: HTMLInputElement = ev.target as HTMLInputElement;
+    if (!target.value) {
+      target.placeholder = 'You don\'t enter car!';
+      setTimeout(() => { target.placeholder = 'Enter car name!'; }, 1000);
+      this.btnCreateUpdate!.textContent = 'Create';
+      this.btnCreateUpdate!.dataset.id = 'create';
+    }
   }
 
   // Pagination controllers;
