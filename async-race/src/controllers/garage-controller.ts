@@ -110,7 +110,8 @@ export default class GarageController {
     const raceElems: NodeListOf<HTMLElement> = this.garage!.querySelectorAll('.main__car-block');
 
     const raceBlocks: RaceElems[] = [...raceElems].map((elem: HTMLElement): RaceElems => {
-      return new RaceElems(elem);
+      const race: RaceElems = new RaceElems(elem);
+      return race;
     });
 
     const animArr: Promise<EngineCarParams>[] = [];
@@ -132,25 +133,27 @@ export default class GarageController {
         let carData: CarData | null = null;
         carsLoader.getCar(Number(t.id))
           .then((car: CarData) => {
-            console.log(car);
             carData = car;
             return winLoader.getWinner(Number(t.id));
           })
           .then((win: Winner | EmptyObject) => {
             if (!('wins' in win)) {
-              let newTime = Math.round(duration) / 10;
-              newTime = Math.round(newTime) / 10;
+              console.log(duration);
+              let newTime = Math.ceil(Number(duration)) / 10;
+              newTime = Math.round(newTime) / 100;
+              console.log(newTime);
               return winLoader.createWinner(Number(t.id), 1, newTime);
             }
             const wins = win.wins + 1;
-            let durationMath = Math.round(win.time) / 10;
-            durationMath = Math.round(durationMath) / 10;
+            console.log(duration);
+            let durationMath = Math.ceil(Number(duration)) / 10;
+            durationMath = Math.round(durationMath) / 100;
+            console.log(durationMath);
             const time = durationMath < win.time ? durationMath : win.time;
             return winLoader.updateWinner(win.id, wins, time);
           })
           .then((win: Winner | EmptyObject) => {
             if (!('wins' in win)) throw new Error('Winner wasn\'t created!');
-            console.log(win);
             const showLogo = new WinLogo(carData!, win);
             showLogo.show();
           });

@@ -52,14 +52,19 @@ export default class RaceController {
     btnUpdateCar.textContent = 'Update';
 
     const input: HTMLInputElement = document.querySelector('.main__car-name') as HTMLInputElement;
-
-    const carName: HTMLSpanElement = this.block.querySelector('.main__name-car') as HTMLSpanElement;
-    input.value = <string>carName.textContent;
-
     const inputColor: HTMLInputElement = document.querySelector('.main__car-palette') as HTMLInputElement;
-    const carSvg: SVGElement = this.block.querySelector('.main__car-svg') as SVGElement;
 
-    inputColor.value = <string>carSvg.dataset.color;
+    const raceArr: NodeListOf<HTMLElement> = this.block.querySelectorAll('.main__car-block');
+
+    raceArr.forEach((item: HTMLElement) => {
+      if (item.dataset.id === id) {
+        const carName: HTMLSpanElement = item.querySelector('.main__name-car') as HTMLSpanElement;
+        input.value = <string>carName.textContent;
+
+        const carSvg: SVGElement = item.querySelector('.main__car-svg') as SVGElement;
+        inputColor.value = <string>carSvg.dataset.color;
+      }
+    });
   }
 
   private async onRemove(ev: Event): Promise<void> {
