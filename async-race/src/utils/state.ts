@@ -35,30 +35,6 @@ export default class State {
     this.setState();
   }
 
-  public getInputCarName(): string {
-    return <string> this.state?.name;
-  }
-
-  public setInputCarName(name: string): void {
-    if (!this.state) {
-      this.getState();
-    }
-    this.state!.name = name;
-    this.setState();
-  }
-
-  public getInputColor(): string {
-    return <string> this.state?.color;
-  }
-
-  public setInputColor(color: string): void {
-    if (!this.state) {
-      this.getState();
-    }
-    this.state!.color = color;
-    this.setState();
-  }
-
   public getWinnersPage(): number {
     if (!this.state) {
       this.getState();
@@ -75,14 +51,14 @@ export default class State {
   }
 
   public getSort(): string {
-    return <string> this.state!.kindSort;
+    return <string> this.state!.sort;
   }
 
   public setSort(sort: string): void {
     if (!this.state) {
       this.getState();
     }
-    this.state!.kindSort = sort;
+    this.state!.sort = sort;
     this.setState();
   }
 
@@ -90,14 +66,38 @@ export default class State {
     if (this.state) {
       this.getState();
     }
-    return <string> this.state!.sort;
+    return <string> this.state!.order;
   }
 
   public setOrder(order: string): void {
     if (this.state) {
       this.getState();
     }
-    this.state!.sort = order;
+    this.state!.order = order;
+    this.setState();
+  }
+
+  public getName(): string {
+    return this.state!.name;
+  }
+
+  public setName(name: string): void {
+    if (this.state) {
+      this.getState();
+    }
+    this.state!.name = name;
+    this.setState();
+  }
+
+  public getColor(): string {
+    return this.state!.color;
+  }
+
+  public setColor(color: string): void {
+    if (this.state) {
+      this.getState();
+    }
+    this.state!.color = color;
     this.setState();
   }
 
@@ -108,10 +108,10 @@ export default class State {
         view: 'garage',
         garagePage: 1,
         winnersPage: 1,
-        kindSort: '',
-        sort: '',
+        sort: 'id',
+        order: 'DESC',
         name: '',
-        color: '#ffffff',
+        color: '',
       };
       this.setState();
       return;

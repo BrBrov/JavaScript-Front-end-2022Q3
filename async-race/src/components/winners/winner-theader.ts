@@ -13,7 +13,7 @@ export default class WinnerTableHeader {
 
     const classNames: Array<string> = ['main__table-number', 'main__table-car', 'main__table-name', 'main__table-wins', 'main__table-time'];
 
-    const arrData: Array<string> = ['Number', 'Car', 'Name', 'Wins', 'Best time'];
+    const arrData: Array<string> = ['ID ↓', 'Car', 'Name', 'Wins', 'Best time']; // ↑
 
     arrData.forEach((info: string, index: number) => {
       const span: HTMLSpanElement = this.createSpan(info, classNames[index]);

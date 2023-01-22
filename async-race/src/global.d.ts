@@ -31,8 +31,8 @@ declare global {
       view: string; // 'garage' or 'winners'
       garagePage: number;
       winnersPage: number;
-      kindSort: string; // ''|'id'|'wins'|'time'
-      sort: string; // ''| ASC'|'DESC'
+      sort: string; // ''|'id'|'wins'|'time'
+      order: string; // ''| ASC'|'DESC'
       name: string;
       color: string;
     }
@@ -41,3 +41,4 @@ declare global {
       [key: string] : string[];
     }
 }
+// ↓ ↑;

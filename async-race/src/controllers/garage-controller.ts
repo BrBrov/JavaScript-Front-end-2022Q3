@@ -241,9 +241,15 @@ export default class GarageController {
       state.setGaragePage(page);
       await util.updateRaceList();
     } else {
-      let page = state.getWinnersPage();
+      console.log('<<');
+      let page: number = state.getWinnersPage();
+      if (page === 1) {
+        this.clickCTRL = false;
+        return;
+      }
       page = page > 1 ? (page - 1) : 1;
       state.setWinnersPage(page);
+      await util.updateWinTables();
     }
     this.clickCTRL = false;
   }
@@ -266,9 +272,11 @@ export default class GarageController {
       state.setGaragePage(page);
       await util.updateRaceList();
     } else {
+      console.log('>>');
       let page = state.getWinnersPage();
       page += 1;
       state.setWinnersPage(page);
+      await util.updateWinTables();
     }
     this.clickCTRL = false;
   }

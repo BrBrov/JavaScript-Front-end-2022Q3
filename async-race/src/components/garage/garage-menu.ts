@@ -36,14 +36,14 @@ export default class GarageMenu {
     input.className = 'main__car-name';
     input.type = 'text';
     input.placeholder = 'Enter car name';
-    input.value = state.getInputCarName() || '';
+    input.value = state.getName() || '';
 
     block.append(input);
 
     input = document.createElement('input');
     input.className = 'main__car-palette';
     input.type = 'color';
-    input.value = state.getInputColor() || '#ffffff';
+    input.value = state.getColor() || '#ffffff';
 
     block.append(input);
 

@@ -89,8 +89,8 @@ export default class Main {
     if (block.querySelector('.main__garage-menu')) {
       const inputName: string = (<HTMLInputElement>block.querySelector('.main__car-name')).value;
       const inputColor: string = (<HTMLInputElement>block.querySelector('.main__car-palette')).value;
-      this.state.setInputCarName(inputName);
-      this.state.setInputColor(inputColor);
+      this.state.setName(inputName);
+      this.state.setColor(inputColor);
     }
     block.remove();
     block = document.createElement('div');

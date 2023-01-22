@@ -65,7 +65,12 @@ export default class Page {
     const winLoader: WinnersLoader = new WinnersLoader();
     const carsLoader: CarsLoader = new CarsLoader();
     let winData: AllWinners;
-    winLoader.getWinners(this.state.getWinnersPage(), 10)
+    winLoader.getWinners(
+      this.state.getWinnersPage(),
+      10,
+      'id',
+      'DESC',
+    )
       .then((wins: AllWinners): Promise<CarsData> => {
         winData = wins;
         return carsLoader.getCars();
