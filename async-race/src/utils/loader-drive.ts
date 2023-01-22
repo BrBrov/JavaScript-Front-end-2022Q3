@@ -1,11 +1,11 @@
-export default class CarsLoader {
+export default class DriveLoader {
   private readonly garage: string = '/engine';
 
   private readonly host: string = 'http://127.0.0.1:3000';
 
-  public startEngine: boolean = false;
+  public start: boolean = false;
 
-  public async StartEngine(id: number): Promise<EngineCarParams> {
+  public async startEngine(id: number): Promise<EngineCarParams> {
     let path = '/engine';
     path += `?id=${id}&status=started`;
     const url: URL = new URL(path, this.host);
@@ -16,7 +16,7 @@ export default class CarsLoader {
     throw new Error(`Bad response: ${resp.status} -> ${resp.statusText}`);
   }
 
-  public async StopEngine(id: number): Promise<EngineCarParams> {
+  public async stopEngine(id: number): Promise<EngineCarParams> {
     let path = '/engine';
     path += `?id=${id}&status=stopped`;
     const url: URL = new URL(path, this.host);

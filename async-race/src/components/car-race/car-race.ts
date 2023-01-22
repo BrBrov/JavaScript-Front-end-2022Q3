@@ -88,6 +88,7 @@ export default class CarRace {
     this.btnStart.button.dataset.id = `${id}`;
     this.btnStop = new ButtonElement('main__button-stop', 'Stop');
     this.btnStop.button.dataset.id = `${id}`;
+    this.btnStop.disable();
   }
 
   private createTrack(color: string, id: number): HTMLElement {

@@ -70,6 +70,14 @@
   box-shadow: #0b2241 1px 0 1px 2px;
 }
 
+.main__button-select:disabled,
+.main__button-remove:disabled,
+.main__button-start:disabled,
+.main__button-stop:disabled {
+  background: radial-gradient(circle at center, #c5d3ce, #98aea5, #6a7f76, #475a53);
+  box-shadow: #0b2241 1px 0 1px 2px;
+}
+
 .main__track{
   display: flex;
   width: 100%;
