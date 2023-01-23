@@ -188,21 +188,21 @@ export default class GarageController {
       const car: HTMLElement = item.querySelector('.main__car-wrapper') as HTMLElement;
       const anim = car.getAnimations();
 
-      if (anim.length === 0) {
-        const keyFrame: KeyframeEffect = new KeyframeEffect(
-          car,
-          [
-            { left: '0%' },
-          ],
-          { duration: 0, fill: 'forwards' },
-        );
-        const animate: Animation = new Animation(keyFrame);
-        animate.play();
+      if (anim.length !== 0) {
+        anim[0].finish();
       }
 
-      anim[0].updatePlaybackRate(500);
-      anim[0].reverse();
-      anim[0].finish();
+      const keyFrame: KeyframeEffect = new KeyframeEffect(
+        car,
+        [
+          { left: '0%' },
+        ],
+        { duration: 50, fill: 'forwards' },
+      );
+
+      const animate: Animation = new Animation(keyFrame);
+      animate.onfinish = () => animate.finish();
+      animate.play();
       const race = new RaceElems(item);
       race.resetBtn();
     });

@@ -113,26 +113,21 @@ export default class RaceController {
 
     const anim: Animation[] | undefined = racePanel.car!.getAnimations();
 
-    console.log(racePanel.car);
-
-    if (anim.length === 0) {
-      const keyFrame: KeyframeEffect = new KeyframeEffect(
-        racePanel.car!,
-        [
-          { left: '0%' },
-        ],
-        { duration: 0, fill: 'forwards' },
-      );
-
-      const animate: Animation = new Animation(keyFrame);
-      await animate.play();
+    if (anim.length !== 0) {
+      anim[0].finish();
     }
 
-    anim[0].updatePlaybackRate(500);
+    const keyFrame: KeyframeEffect = new KeyframeEffect(
+      racePanel.car!,
+      [
+        { left: '0%' },
+      ],
+      { duration: 50, fill: 'forwards' },
+    );
 
-    anim[0].onfinish = () => anim[0].finish();
-
-    await anim[0].reverse();
+    const animate: Animation = new Animation(keyFrame);
+    animate.onfinish = () => animate.finish();
+    animate.play();
     racePanel.resetBtn();
   }
 }
