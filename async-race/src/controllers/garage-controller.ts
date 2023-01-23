@@ -300,15 +300,13 @@ export default class GarageController {
     const { view } = (input.parentElement as HTMLElement).dataset;
     const state = new State();
     const util: GarageUtils = new GarageUtils();
+    let page: number = Number(input.value);
+    if (page < 1) page = 1;
 
     if (view === 'garage') {
-      let page: number = Number(input.value);
-      if (page < 1) page = 1;
       state.setGaragePage(page);
       await util.updateRaceList();
     } else {
-      let page = state.getWinnersPage();
-      if (page < 1) page = 1;
       state.setWinnersPage(page);
       await util.updateWinTables();
     }

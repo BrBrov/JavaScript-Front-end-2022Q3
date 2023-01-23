@@ -68,8 +68,8 @@ export default class Page {
     winLoader.getWinners(
       this.state.getWinnersPage(),
       10,
-      'id',
-      'DESC',
+      this.state.getSort(),
+      this.state.getOrder(),
     )
       .then((wins: AllWinners): Promise<CarsData> => {
         winData = wins;

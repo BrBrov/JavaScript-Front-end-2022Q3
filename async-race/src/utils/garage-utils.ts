@@ -69,7 +69,6 @@ export default class GarageUtils {
     });
 
     const tableHeader: HTMLElement = document.querySelector('.main__winners-theader') as HTMLElement;
-    console.log(tableHeader);
     tableHeader.remove();
 
     winCount.textContent = `${winnersLoader.getCountWinners()}`;

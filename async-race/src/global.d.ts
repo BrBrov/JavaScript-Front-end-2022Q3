@@ -32,7 +32,7 @@ declare global {
       garagePage: number;
       winnersPage: number;
       sort: string; // ''|'id'|'wins'|'time'
-      order: string; // ''| ASC'|'DESC'
+      order: string; // ''| 'ASC'|'DESC'
       name: string;
       color: string;
     }

@@ -28,8 +28,8 @@ export default class WinnersLoader extends Loafer {
       path += !page || !limit ? '?' : '&';
       path += `_sort=${sort}`;
     }
-    if (!order) {
-      path += !page || !limit || !sort ? '?' : '&';
+    if (order) {
+      path += (!page || !limit || !sort) ? '?' : '&';
       path += `_order=${order}`;
     }
     const url: URL = new URL(this.winners + path, this.host);

@@ -5,6 +5,7 @@ import Garage from '../../components/garage/garage';
 import Winners from '../../components/winners/winners';
 import State from '../../utils/state';
 import RaceController from '../../controllers/race-controller';
+import WinnersController from '../../controllers/winners-controller';
 
 export default class Main {
   public main: HTMLElement;
@@ -22,6 +23,8 @@ export default class Main {
   public state: State;
 
   private RaceController: RaceController | undefined;
+
+  private WinnersController: WinnersController | undefined;
 
   constructor() {
     this.state = new State();
@@ -62,6 +65,7 @@ export default class Main {
 
   public createWinners(winners: AllWinners, data: CarsData, count: number): HTMLElement {
     this.winners = new Winners(winners, data, count);
+    this.WinnersController = new WinnersController(this.winners.winners);
     return <HTMLElement> this.winners.winners;
   }
 
