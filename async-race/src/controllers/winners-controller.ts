@@ -51,7 +51,6 @@ export default class WinnersController {
     }
 
     if (!text.endsWith('↓') && !text.endsWith('↑')) {
-      console.log('none');
       state.setOrder('ASC');
       state.setSort('id');
     }
@@ -64,22 +63,17 @@ export default class WinnersController {
     const utils: GarageUtils = new GarageUtils();
     const state: State = new State();
 
-    console.log('wins');
-
     if (text.endsWith('↓')) {
-      console.log('d');
       state.setOrder('ASC');
       state.setSort('wins');
     }
 
     if (text.endsWith('↑')) {
-      console.log('u');
       state.setOrder('DESC');
       state.setSort('wins');
     }
 
     if (!text.endsWith('↓') && !text.endsWith('↑')) {
-      console.log('none');
       state.setOrder('ASC');
       state.setSort('wins');
     }
@@ -92,22 +86,17 @@ export default class WinnersController {
     const utils: GarageUtils = new GarageUtils();
     const state: State = new State();
 
-    console.log('wins');
-
     if (text.endsWith('↓')) {
-      console.log('d');
       state.setOrder('ASC');
       state.setSort('time');
     }
 
     if (text.endsWith('↑')) {
-      console.log('u');
       state.setOrder('DESC');
       state.setSort('time');
     }
 
     if (!text.endsWith('↓') && !text.endsWith('↑')) {
-      console.log('none');
       state.setOrder('ASC');
       state.setSort('time');
     }

@@ -141,17 +141,13 @@ export default class GarageController {
           })
           .then((win: Winner | EmptyObject) => {
             if (!('wins' in win)) {
-              console.log(duration);
               let newTime = Math.ceil(Number(duration)) / 10;
               newTime = Math.round(newTime) / 100;
-              console.log(newTime);
               return winLoader.createWinner(Number(t.id), 1, newTime);
             }
             const wins = win.wins + 1;
-            console.log(duration);
             let durationMath = Math.ceil(Number(duration)) / 10;
             durationMath = Math.round(durationMath) / 100;
-            console.log(durationMath);
             const time = durationMath < win.time ? durationMath : win.time;
             return winLoader.updateWinner(win.id, wins, time);
           })
@@ -254,7 +250,6 @@ export default class GarageController {
       state.setGaragePage(page);
       await util.updateRaceList();
     } else {
-      console.log('<<');
       let page: number = state.getWinnersPage();
       if (page === 1) {
         this.clickCTRL = false;
@@ -285,7 +280,6 @@ export default class GarageController {
       state.setGaragePage(page);
       await util.updateRaceList();
     } else {
-      console.log('>>');
       let page = state.getWinnersPage();
       page += 1;
       state.setWinnersPage(page);
