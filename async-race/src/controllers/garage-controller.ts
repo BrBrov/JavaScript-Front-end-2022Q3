@@ -210,11 +210,11 @@ export default class GarageController {
     this.clickCTRL = true;
     const carsData: CarParams[] = new CarsGen().getNewCars();
     const loader = new LoaderCar();
+    const utils = new GarageUtils();
     carsData.forEach(async (car: CarParams) => {
       await loader.createCar(car.name, car.color);
+      await utils.updateRaceList();
     });
-    const utils = new GarageUtils();
-    await utils.updateRaceList();
     this.clickCTRL = false;
   }
 
