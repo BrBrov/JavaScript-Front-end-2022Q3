@@ -310,6 +310,7 @@ export default class GarageController {
       let page = state.getWinnersPage();
       if (page < 1) page = 1;
       state.setWinnersPage(page);
+      await util.updateWinTables();
     }
   }
 }

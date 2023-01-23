@@ -33,7 +33,7 @@ export default class GarageUtils {
       raceBlock.append(race.carRace);
     });
     titleCount.textContent = String(loader.getCountCars());
-    this.updateGaragePageInput();
+    this.updatePageInput('garage');
   }
 
   public async updateWinTables(): Promise<void> {
@@ -48,8 +48,8 @@ export default class GarageUtils {
     const winners: AllWinners = await winnersLoader.getWinners(
       state.getWinnersPage(),
       10,
-      'id',
-      'DESC',
+      state.getSort(),
+      state.getOrder(),
     );
 
     if (winners.length === 0) {
@@ -85,11 +85,16 @@ export default class GarageUtils {
       const record: WinnerRecord = new WinnerRecord(winner, car);
       tableBlock.append(record.record);
     });
+    this.updatePageInput('winners');
   }
 
-  private updateGaragePageInput(): void {
+  private updatePageInput(view: string): void {
     const inputPage: HTMLInputElement = document.querySelector('.main__page-input') as HTMLInputElement;
     const state = new State();
-    inputPage.value = String(state.getGaragePage());
+    if (view === 'garage') {
+      inputPage.value = String(state.getGaragePage());
+    } else {
+      inputPage.value = String(state.getWinnersPage());
+    }
   }
 }
