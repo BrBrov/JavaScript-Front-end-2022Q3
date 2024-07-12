@@ -253,7 +253,7 @@ class Draw {
         this.dc.fillRect(x, y, width, height);
         this.dc.font = '20px sans-serif';
         this.dc.fillStyle = '#b03939';
-        x = this.canvas.width / 1.1;
+        x = this.canvas.width / 2;
         y = y + y / 3;
         this.dc.textAlign = 'center';
         this.dc.fillText(`Hooray! You solved the puzzle in`, x, y);
